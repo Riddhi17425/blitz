@@ -1,0 +1,34 @@
+How To call Helper Function for image Storing with Compression 
+    Full Project its 
+        Laravel - 12 Versions;
+        PHP - 8.2 Versions;
+
+
+    - $imagePath = '';  // this is Pre Define variable if image not found then call it and go without error
+
+    if ($request->hasFile('image') && $request->file('image')->isValid()) {
+        $imagePath = storeImage($request->file('image'), 'admin/product');
+        if (!$imagePath) {
+            return redirect()->back()
+                ->with('error', 'Failed to upload image. Please try again.')
+                ->withInput();
+        } 
+    }
+
+    storeImage('image' , 'file path')   // this is main helper function found it App/Helpers/helper.php
+
+
+
+    Now For Pdf
+
+    $brochure_pdf_Path = ''; 
+    if ($request->hasFile('brochure_pdf') && $request->file('brochure_pdf')->isValid()) {
+        $brochure_pdf_Path = storePDFWithOriginalName($request->file('brochure_pdf'), 'admin/product/brochure');
+        if (!$brochure_pdf_Path) {
+            return redirect()->back()
+                ->with('error', 'Failed to upload brochure_pdf. Please try again.')
+                ->withInput();
+        } 
+    }
+
+    storePDFWithOriginalName('pdf' , 'file path')  //pass in main pdf and where to store like public/admin/product/pdf  
