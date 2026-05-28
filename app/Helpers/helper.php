@@ -5,6 +5,8 @@ use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\Drivers\Imagick\Driver as ImagickDriver;
 use Ilovepdf\Ilovepdf;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 if (! function_exists('storeImage')) {
     function storeImage($file, $folder, $quality = 60, $maxWidth = 1200, $maxHeight = 1200)
@@ -151,4 +153,52 @@ if (! function_exists('storeImage')) {
         }
     }
     
+}
+
+if (! function_exists('storeImageWithTimeId')) {
+    function storeImageWithTimeId($file, $folder)
+    {
+        if (!$file || !$file->isValid()) {
+            return null;
+        }
+
+        try {
+            $directoryPath = public_path($folder);
+            if (!file_exists($directoryPath)) {
+                mkdir($directoryPath, 0755, true);
+            }
+
+            $baseName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $safeBase = preg_replace('/[^a-zA-Z0-9_-]/', '', str_replace(' ', '_', $baseName)) ?: 'image';
+            $ext = strtolower($file->getClientOriginalExtension());
+            $filename = time() . '_' . uniqid() . '_' . substr($safeBase, 0, 20) . '.' . $ext;
+
+            $file->move($directoryPath, $filename);
+            return $filename;
+        } catch (\Exception $e) {
+            Log::error('Image storage failed: ' . $e->getMessage());
+            return null;
+        }
+    }
+}
+
+if (! function_exists('storeFileWithTimeId')) {
+    function storeFileWithTimeId($file, $folder)
+    {
+        if (!$file) {
+            return null;
+        }
+
+        try {
+            $originalExt = strtolower($file->getClientOriginalExtension() ?: 'pdf');
+            $baseName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+            $safeBase = Str::slug($baseName) ?: 'file';
+            $filename = time() . '_' . uniqid() . '_' . $safeBase . '.' . $originalExt;
+            Storage::disk('public')->putFileAs($folder, $file, $filename);
+            return trim($folder, '/') . '/' . $filename;
+        } catch (\Exception $e) {
+            Log::error('File storage failed: ' . $e->getMessage());
+            return null;
+        }
+    }
 }

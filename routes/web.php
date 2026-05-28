@@ -3,11 +3,15 @@
 //=================Admin===============
 
 use App\Http\Controllers\Admin\BannerController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\IndustryController;
 use App\Http\Controllers\Admin\LoginController;
-use App\Http\Controllers\Admin\BlogsController; 
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\BlogsController;
+use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\TestimonialsController;
+use Illuminate\Support\Facades\Route;
 //=================WEB=================    
 use App\Http\Controllers\Web\HomeController;
 
@@ -66,6 +70,38 @@ use App\Http\Controllers\Web\HomeController;
         Route::get('/edit/blogs/{id}' , [BlogsController::class , 'EditBlogs'])->name('blogs.edit');
         Route::delete("/delete/blogs/{id}" , [BlogsController::class , 'DestoryBlogs'])->name('blogs.delete');
         Route::put('/update/blogs/{id}' , [BlogsController::class , 'UpdateBlogs'])->name('blogs.update');
+
+        // Industries
+        Route::get('/industries', [IndustryController::class, 'index'])->name('industries');
+        Route::get('/add/industries', [IndustryController::class, 'create'])->name('industries.create');
+        Route::post('/industries/store', [IndustryController::class, 'store'])->name('industries.store');
+        Route::get('/edit/industries/{id}', [IndustryController::class, 'edit'])->name('industries.edit');
+        Route::put('/update/industries/{id}', [IndustryController::class, 'update'])->name('industries.update');
+        Route::delete('/delete/industries/{id}', [IndustryController::class, 'destroy'])->name('industries.delete');
+
+        // Categories
+        Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+        Route::get('/add/categories', [CategoryController::class, 'create'])->name('categories.create');
+        Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');
+        Route::get('/edit/categories/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
+        Route::put('/update/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
+        Route::delete('/delete/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.delete');
+
+        // Sub Categories
+        Route::get('/sub-categories', [SubCategoryController::class, 'index'])->name('sub_categories');
+        Route::get('/add/sub-categories', [SubCategoryController::class, 'create'])->name('sub_categories.create');
+        Route::post('/sub-categories/store', [SubCategoryController::class, 'store'])->name('sub_categories.store');
+        Route::get('/edit/sub-categories/{id}', [SubCategoryController::class, 'edit'])->name('sub_categories.edit');
+        Route::put('/update/sub-categories/{id}', [SubCategoryController::class, 'update'])->name('sub_categories.update');
+        Route::delete('/delete/sub-categories/{id}', [SubCategoryController::class, 'destroy'])->name('sub_categories.delete');
+
+        // FAQs
+        Route::get('/faqs', [FaqController::class, 'index'])->name('faqs');
+        Route::get('/add/faqs', [FaqController::class, 'create'])->name('faqs.create');
+        Route::post('/faqs/store', [FaqController::class, 'store'])->name('faqs.store');
+        Route::get('/edit/faqs/{id}', [FaqController::class, 'edit'])->name('faqs.edit');
+        Route::put('/update/faqs/{id}', [FaqController::class, 'update'])->name('faqs.update');
+        Route::delete('/delete/faqs/{id}', [FaqController::class, 'destroy'])->name('faqs.delete');
 
     });  
     

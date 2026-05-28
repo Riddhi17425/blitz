@@ -7,9 +7,13 @@
 
     <!-- Jquery Page Js -->
     <script src="{{ asset('public/admin/js/template.js')}}"></script>
-    <script src="{{ asset('public/admin/js/page/index.js')}}"></script>
+    {{-- <script src="{{ asset('public/admin/js/page/index.js')}}"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1Jr7axGGkwvHRnNfoOzoVRFV3yOPHJEU&amp;callback=myMap"></script>  
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/additional-methods.min.js"></script>
+
     <script>
         $('#myDataTable')
         .addClass( 'nowrap')

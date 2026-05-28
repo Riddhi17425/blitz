@@ -40,6 +40,42 @@
                                 <li><a class="ms-link {{ request()->routeIs('blogs.addBlogs') ? 'active' : '' }}" href="{{ route('blogs.addBlogs') }}">Blogs Add</a></li>
                             </ul> 
                     </li>
+
+                    <li class="collapsed">
+                        <a class="m-link {{ request()->routeIs('industries') ? 'active' : '' }} {{ request()->routeIs('industries.create') ? 'active' : '' }} {{ request()->routeIs('industries.edit') ? 'active' : '' }}" data-bs-toggle="collapse" data-bs-target="#menu-industries" href="javascript:void(0);">
+                            <i class="icofont-truck-loaded fs-5"></i> <span>Industries</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                            <ul class="sub-menu collapse" id="menu-industries">
+                                <li><a class="ms-link {{ request()->routeIs('industries') ? 'active' : '' }}" href="{{ route('industries') }}">List</a></li>
+                                <li><a class="ms-link {{ request()->routeIs('industries.create') ? 'active' : '' }}" href="{{ route('industries.create') }}">Add</a></li>
+                            </ul>
+                    </li>
+
+                    <li class="collapsed">
+                        <a class="m-link {{ request()->routeIs('categories') ? 'active' : '' }} {{ request()->routeIs('categories.create') ? 'active' : '' }} {{ request()->routeIs('categories.edit') ? 'active' : '' }}" data-bs-toggle="collapse" data-bs-target="#menu-categories" href="javascript:void(0);">
+                            <i class="icofont-truck-loaded fs-5"></i> <span>Categories</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                            <ul class="sub-menu collapse" id="menu-categories">
+                                <li><a class="ms-link {{ request()->routeIs('categories') ? 'active' : '' }}" href="{{ route('categories') }}">List</a></li>
+                                <li><a class="ms-link {{ request()->routeIs('categories.create') ? 'active' : '' }}" href="{{ route('categories.create') }}">Add</a></li>
+                            </ul>
+                    </li>
+
+                    <li class="collapsed">
+                        <a class="m-link {{ request()->routeIs('sub_categories') ? 'active' : '' }} {{ request()->routeIs('sub_categories.create') ? 'active' : '' }} {{ request()->routeIs('sub_categories.edit') ? 'active' : '' }}" data-bs-toggle="collapse" data-bs-target="#menu-sub-categories" href="javascript:void(0);">
+                            <i class="icofont-truck-loaded fs-5"></i> <span>Sub Categories</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                            <ul class="sub-menu collapse" id="menu-sub-categories">
+                                <li><a class="ms-link {{ request()->routeIs('sub_categories') ? 'active' : '' }}" href="{{ route('sub_categories') }}">List</a></li>
+                                <li><a class="ms-link {{ request()->routeIs('sub_categories.create') ? 'active' : '' }}" href="{{ route('sub_categories.create') }}">Add</a></li>
+                            </ul>
+                    </li>
+
+                    <li class="collapsed">
+                        <a class="m-link {{ request()->routeIs('faqs') ? 'active' : '' }} {{ request()->routeIs('faqs.create') ? 'active' : '' }} {{ request()->routeIs('faqs.edit') ? 'active' : '' }}" data-bs-toggle="collapse" data-bs-target="#menu-faqs" href="javascript:void(0);">
+                            <i class="icofont-truck-loaded fs-5"></i> <span>FAQs</span> <span class="arrow icofont-rounded-down ms-auto text-end fs-5"></span></a>
+                            <ul class="sub-menu collapse" id="menu-faqs">
+                                <li><a class="ms-link {{ request()->routeIs('faqs') ? 'active' : '' }}" href="{{ route('faqs') }}">List</a></li>
+                                <li><a class="ms-link {{ request()->routeIs('faqs.create') ? 'active' : '' }}" href="{{ route('faqs.create') }}">Add</a></li>
+                            </ul>
+                    </li>
                 </ul>
                 <!-- Menu: menu collepce btn -->
                 <button type="button" class="btn btn-link sidebar-mini-btn text-light">

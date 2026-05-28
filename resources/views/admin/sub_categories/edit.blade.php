@@ -1,0 +1,249 @@
+@extends('admin.layouts.app')
+
+@section('content')
+@php
+    $oldTitles = old('cta_title');
+    $oldDescriptions = old('cta_description');
+    $oldExistingIcons = old('existing_cta_icon');
+
+    $ctaItems = [];
+    if (is_array($oldTitles)) {
+        foreach ($oldTitles as $idx => $title) {
+            $ctaItems[] = [
+                'title' => $title,
+                'description' => $oldDescriptions[$idx] ?? '',
+                'icon' => $oldExistingIcons[$idx] ?? null
+            ];
+        }
+    } else {
+        $dbTitles = $subCategory->cta_title ?? [];
+        $dbDescriptions = $subCategory->cta_description ?? [];
+        $dbIcons = $subCategory->cta_icon ?? [];
+        
+        $maxCount = max(count($dbTitles), count($dbDescriptions), count($dbIcons));
+        for ($i = 0; $i < $maxCount; $i++) {
+            $ctaItems[] = [
+                'title' => $dbTitles[$i] ?? '',
+                'description' => $dbDescriptions[$i] ?? '',
+                'icon' => $dbIcons[$i] ?? null
+            ];
+        }
+    }
+@endphp
+<div class="body d-flex py-lg-3 py-md-2">
+    <div class="container-xxl">
+        <div class="row align-items-center mb-4">
+            <div class="col-md-6"><h3 class="fw-bold">Edit Sub Category</h3></div>
+            <div class="col-md-6 text-end"><a href="{{ route('sub_categories') }}" class="btn btn-secondary">Back</a></div>
+        </div>
+
+        @if(session('error'))<div class="alert alert-danger">{{ session('error') }}</div>@endif
+
+        <div class="card"><div class="card-body">
+            <form id="subCategoryForm" action="{{ route('sub_categories.update', $subCategory->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <h5 class="fw-bold mb-3 pb-2 border-bottom text-primary">General Information</h5>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Title <span class="text-danger">*</span></label>
+                        <input type="text" name="title" value="{{ old('title', $subCategory->title) }}" class="form-control @error('title') is-invalid @enderror" placeholder="Enter title">
+                        @error('title')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Short Form <span class="text-danger">*</span></label>
+                        <input type="text" name="short_form" value="{{ old('short_form', $subCategory->short_form) }}" class="form-control @error('short_form') is-invalid @enderror" placeholder="Short form">
+                        @error('short_form')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label class="form-label">Short Description</label>
+                        <textarea name="short_description" class="form-control @error('short_description') is-invalid @enderror" rows="3" placeholder="Enter short description">{{ old('short_description', $subCategory->short_description) }}</textarea>
+                        @error('short_description')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label class="form-label">Description <span class="text-danger">*</span></label>
+                        <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror" rows="4">{{ old('description', $subCategory->description) }}</textarea>
+                        @error('description')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                </div>
+
+                <h5 class="fw-bold my-4 pb-2 border-bottom text-primary">Media & Files</h5>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Catalogue PDF</label>
+                        @if($subCategory->catalogue_pdf)
+                            <div class="mb-2"><a href="{{ asset('storage/app/public/' . $subCategory->catalogue_pdf) }}" target="_blank" class="btn btn-sm btn-outline-info"><i class="bi bi-file-earmark-pdf"></i> Download current file</a></div>
+                        @else
+                            <div class="text-muted small mb-2">No file uploaded</div>
+                        @endif
+                        <input type="file" name="catalogue_pdf" class="form-control @error('catalogue_pdf') is-invalid @enderror">
+                        @error('catalogue_pdf')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">List Image</label>
+                        @if($subCategory->list_img)
+                            <div class="mb-2"><img src="{{ asset('/public/images/sub_category_list/' . $subCategory->list_img) }}" style="max-height: 80px;" class="img-thumbnail" alt="List image"></div>
+                        @else
+                            <div class="text-muted small mb-2">No image uploaded</div>
+                        @endif
+                        <input type="file" name="list_img" class="form-control @error('list_img') is-invalid @enderror">
+                        @error('list_img')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Detail Image</label>
+                        @if($subCategory->detail_img)
+                            <div class="mb-2"><img src="{{ asset('/public/images/sub_category_detail/' . $subCategory->detail_img) }}" style="max-height: 80px;" class="img-thumbnail" alt="Detail image"></div>
+                        @else
+                            <div class="text-muted small mb-2">No image uploaded</div>
+                        @endif
+                        <input type="file" name="detail_img" class="form-control @error('detail_img') is-invalid @enderror">
+                        @error('detail_img')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                </div>
+
+                <h5 class="fw-bold my-4 pb-2 border-bottom text-primary">CTA Image Section</h5>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">CTA Image</label>
+                        @if($subCategory->cta_img)
+                            <div class="mb-2"><img src="{{ asset('/public/images/sub_category_cta/' . $subCategory->cta_img) }}" style="max-height: 80px;" class="img-thumbnail" alt="CTA image"></div>
+                        @else
+                            <div class="text-muted small mb-2">No image uploaded</div>
+                        @endif
+                        <input type="file" name="cta_img" class="form-control @error('cta_img') is-invalid @enderror">
+                        @error('cta_img')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">CTA Image Title</label>
+                        <input type="text" name="cta_img_title" value="{{ old('cta_img_title', $subCategory->cta_img_title) }}" class="form-control @error('cta_img_title') is-invalid @enderror" placeholder="CTA image title">
+                        @error('cta_img_title')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label class="form-label">CTA Image Description</label>
+                        <textarea id="cta_img_description" name="cta_img_description" class="form-control @error('cta_img_description') is-invalid @enderror" rows="4">{{ old('cta_img_description', $subCategory->cta_img_description) }}</textarea>
+                        @error('cta_img_description')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center my-4 pb-2 border-bottom">
+                    <h5 class="fw-bold mb-0 text-primary">CTA Items</h5>
+                    <button type="button" class="btn btn-sm btn-primary" id="add-cta-item"><i class="fa fa-plus"></i> Add CTA Item</button>
+                </div>
+                <div id="cta-items-container" class="mb-4">
+                    <!-- Dynamic CTA items will be appended here -->
+                </div>
+                <button type="submit" class="btn btn-primary">Update Sub Category</button>
+            </form>
+        </div></div>
+    </div>
+</div>
+
+<script>
+    let ctaIndex = 0;
+    function addCtaItem(title = '', description = '', iconName = '') {
+        const container = $('#cta-items-container');
+        let iconHtml = '';
+        if (iconName) {
+            const assetUrl = "{{ asset('/public/images/sub_category_cta_icons') }}/" + iconName;
+            iconHtml = `
+                <div class="mb-2 d-flex align-items-center gap-2">
+                    <img src="${assetUrl}" style="max-height: 50px;" class="img-thumbnail" alt="Icon">
+                    <span class="text-muted small">${iconName}</span>
+                    <input type="hidden" name="existing_cta_icon[${ctaIndex}]" value="${iconName}">
+                </div>
+            `;
+        }
+        
+        const itemHtml = `
+            <div class="cta-item card mb-3 bg-light border" data-index="${ctaIndex}">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-bold mb-0">CTA Item #${ctaIndex + 1}</h6>
+                        <button type="button" class="btn btn-sm btn-outline-danger remove-cta-item"><i class="fa fa-trash"></i> Remove</button>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">CTA Icon</label>
+                            ${iconHtml}
+                            <input type="file" name="cta_icon[${ctaIndex}]" class="form-control" accept="image/*">
+                            <small class="text-muted">Leave empty to keep current icon</small>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">CTA Title</label>
+                            <input type="text" name="cta_title[${ctaIndex}]" value="${title}" class="form-control" placeholder="Enter CTA Title">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">CTA Description</label>
+                            <textarea name="cta_description[${ctaIndex}]" class="form-control" rows="2" placeholder="Enter CTA Description">${description}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        container.append(itemHtml);
+        ctaIndex++;
+        updateCtaHeaders();
+    }
+
+    function updateCtaHeaders() {
+        $('#cta-items-container .cta-item').each(function(idx) {
+            $(this).find('h6').text('CTA Item #' + (idx + 1));
+        });
+    }
+
+    $(function() {
+        $(document).on('click', '.remove-cta-item', function() {
+            $(this).closest('.cta-item').remove();
+            updateCtaHeaders();
+        });
+
+        $('#add-cta-item').click(function() {
+            addCtaItem();
+        });
+
+        // Initialize from existing items
+        @foreach($ctaItems as $item)
+            addCtaItem(
+                {!! json_encode($item['title']) !!},
+                {!! json_encode($item['description']) !!},
+                {!! json_encode($item['icon']) !!}
+            );
+        @endforeach
+        
+        if (ctaIndex === 0) {
+            addCtaItem();
+        }
+
+        // Initialize Summernote
+        $('#description,#cta_img_description').summernote({
+            placeholder: 'Enter description here...',
+            height: 200,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['insert', ['link', 'picture', 'hr']],
+                ['view', ['fullscreen', 'codeview']],
+            ]
+        });
+
+        $('#subCategoryForm').validate({
+            rules: {
+                title: { required: true, maxlength: 255 },
+                short_form: { required: true, maxlength: 255 },
+                description: { required: true },
+                catalogue_pdf: { extension: 'pdf' },
+                list_img: { extension: 'jpg|jpeg|png|webp' },
+                detail_img: { extension: 'jpg|jpeg|png|webp' },
+                cta_img: { extension: 'jpg|jpeg|png|webp' }
+            },
+            messages: {
+                catalogue_pdf: { extension: 'Only PDF files are allowed.' }
+            }
+        });
+    });
+</script>
+@endsection
