@@ -23,5 +23,7 @@
                 { targets: [-1, -3], className: 'dt-body-right' }
             ]
         });
-
+        setTimeout(function () {
+            $('.alert-success').fadeOut('slow');
+        }, 3000);
     </script>

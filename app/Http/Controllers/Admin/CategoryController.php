@@ -27,11 +27,11 @@ class CategoryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'short_form' => 'nullable|string|max:255',
-            'description' => 'nullable|string',
+            'short_form' => 'required|string|max:255',
+            'description' => 'required|string',
             'catalogue_pdf' => 'nullable|file|mimes:pdf|max:5120',
-            'list_img' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'detail_img' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'list_img' => 'required|file|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'detail_img' => 'required|file|image|mimes:jpg,jpeg,png,webp|max:2048',
             'cta_img_desktop' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
             'cta_img_mobile' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
             'cta_img_title' => 'nullable|string|max:255',
@@ -97,16 +97,15 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::findOrFail($id);
-
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'short_form' => 'nullable|string|max:255',
-            'description' => 'nullable|string',
+            'short_form' => 'required|string|max:255',
+            'description' => 'required|string',
             'catalogue_pdf' => 'nullable|file|mimes:pdf|max:5120',
-            'list_img' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'detail_img' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'cta_img_desktop' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'cta_img_mobile' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'list_img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'detail_img' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'cta_img_desktop' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'cta_img_mobile' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'cta_img_title' => 'nullable|string|max:255',
             'cta_img_description' => 'nullable|string',
         ]);
@@ -179,6 +178,10 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
+        $checkSubCategories = $category->subCategories()->exists();
+        if ($checkSubCategories) {
+            return redirect()->route('categories')->with('error', 'Cannot delete category with existing sub-categories. Please delete sub-categories first.');
+        }
         try {
             if ($category->catalogue_pdf && Storage::disk('public')->exists($category->catalogue_pdf)) {
                 Storage::disk('public')->delete($category->catalogue_pdf);

@@ -17,6 +17,22 @@
 .error{
   color:red;
 }
+/* Datatable pagination styling fix */
+.pagination .page-item .page-link {
+    color: #484c7f !important;
+    background-color: #fff !important;
+    border: 1px solid #dee2e6 !important;
+}
+.pagination .page-item.active .page-link {
+    color: #fff !important;
+    background-color: #484c7f !important;
+    border-color: #484c7f !important;
+}
+.pagination .page-item.disabled .page-link {
+    color: #6c757d !important;
+    background-color: #fff !important;
+    border-color: #dee2e6 !important;
+}
 .loader-wrapper {
   position: fixed;
   top: 0;

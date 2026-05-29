@@ -10,7 +10,9 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BlogsController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\TestimonialsController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
 //=================WEB=================    
 use App\Http\Controllers\Web\HomeController;
@@ -102,6 +104,18 @@ use App\Http\Controllers\Web\HomeController;
         Route::get('/edit/faqs/{id}', [FaqController::class, 'edit'])->name('faqs.edit');
         Route::put('/update/faqs/{id}', [FaqController::class, 'update'])->name('faqs.update');
         Route::delete('/delete/faqs/{id}', [FaqController::class, 'destroy'])->name('faqs.delete');
+
+        // Settings
+        Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+        Route::post('/settings/update', [SettingsController::class, 'update'])->name('settings.update');
+
+        // Products
+        Route::get('/products', [ProductController::class, 'index'])->name('products');
+        Route::get('/add/products', [ProductController::class, 'create'])->name('products.create');
+        Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
+        Route::get('/edit/products/{id}', [ProductController::class, 'edit'])->name('products.edit');
+        Route::put('/update/products/{id}', [ProductController::class, 'update'])->name('products.update');
+        Route::delete('/delete/products/{id}', [ProductController::class, 'destroy'])->name('products.delete');
 
     });  
     

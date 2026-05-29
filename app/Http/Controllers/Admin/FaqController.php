@@ -24,10 +24,10 @@ class FaqController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'faq_title' => 'required|array|min:1',
-            'faq_title.*' => 'required|string|max:255',
-            'faq_description' => 'required|array|min:1',
-            'faq_description.*' => 'required|string',
+            'question' => 'required|array|min:1',
+            'question.*' => 'required|string|max:255',
+            'answer' => 'required|array|min:1',
+            'answer.*' => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -35,19 +35,21 @@ class FaqController extends Controller
         }
 
         try {
-            $items = [];
-            foreach ($request->faq_title as $index => $title) {
-                $items[] = [
-                    'title' => $title,
-                    'description' => $request->faq_description[$index] ?? '',
+            $faqRecords = [];
+            foreach ($request->question as $index => $question) {
+                $faqRecords[] = [
+                    'question' => $question,
+                    'answer' => $request->answer[$index] ?? '',
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ];
             }
 
-            Faq::create([
-                'faq_items' => $items,
-            ]);
+            if (!empty($faqRecords)) {
+                Faq::insert($faqRecords);
+            }
 
-            return redirect()->route('faqs')->with('success', 'FAQ group created successfully.');
+            return redirect()->route('faqs')->with('success', 'FAQ(s) created successfully.');
         } catch (\Exception $e) {
             Log::error('Faq store failed: ' . $e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Failed to save FAQ: ' . $e->getMessage());
@@ -65,10 +67,8 @@ class FaqController extends Controller
         $faq = Faq::findOrFail($id);
 
         $validator = Validator::make($request->all(), [
-            'faq_title' => 'required|array|min:1',
-            'faq_title.*' => 'required|string|max:255',
-            'faq_description' => 'required|array|min:1',
-            'faq_description.*' => 'required|string',
+            'question' => 'required|string|max:255',
+            'answer' => 'required|string',
         ]);
 
         if ($validator->fails()) {
@@ -76,17 +76,12 @@ class FaqController extends Controller
         }
 
         try {
-            $items = [];
-            foreach ($request->faq_title as $index => $title) {
-                $items[] = [
-                    'title' => $title,
-                    'description' => $request->faq_description[$index] ?? '',
-                ];
-            }
+            $faq->update([
+                'question' => $request->question,
+                'answer' => $request->answer,
+            ]);
 
-            $faq->update(['faq_items' => $items]);
-
-            return redirect()->route('faqs')->with('success', 'FAQ group updated successfully.');
+            return redirect()->route('faqs')->with('success', 'FAQ updated successfully.');
         } catch (\Exception $e) {
             Log::error('Faq update failed: ' . $e->getMessage());
             return redirect()->back()->withInput()->with('error', 'Failed to update FAQ: ' . $e->getMessage());

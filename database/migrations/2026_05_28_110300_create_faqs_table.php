@@ -10,7 +10,8 @@ return new class extends Migration
     {
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();
-            $table->json('faq_items')->nullable();
+            $table->string('question')->nullable();
+            $table->string('answer', 500)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

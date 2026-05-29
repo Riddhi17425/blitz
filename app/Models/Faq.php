@@ -10,8 +10,4 @@ class Faq extends Model
     use SoftDeletes;
 
     protected $guarded = [];
-
-    protected $casts = [
-        'faq_items' => 'array',
-    ];
 }

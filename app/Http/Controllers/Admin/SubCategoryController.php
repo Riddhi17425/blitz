@@ -27,12 +27,12 @@ class SubCategoryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'short_form' => 'nullable|string|max:255',
+            'short_form' => 'required|string|max:255',
             'short_description' => 'nullable|string',
-            'description' => 'nullable|string',
+            'description' => 'required|string',
             'catalogue_pdf' => 'nullable|file|mimes:pdf|max:5120',
-            'list_img' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'detail_img' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'list_img' => 'required|file|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'detail_img' => 'required|file|image|mimes:jpg,jpeg,png,webp|max:2048',
             'cta_img' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
             'cta_img_title' => 'nullable|string|max:255',
             'cta_img_description' => 'nullable|string',
@@ -120,9 +120,9 @@ class SubCategoryController extends Controller
 
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
-            'short_form' => 'nullable|string|max:255',
+            'short_form' => 'required|string|max:255',
             'short_description' => 'nullable|string',
-            'description' => 'nullable|string',
+            'description' => 'required|string',
             'catalogue_pdf' => 'nullable|file|mimes:pdf|max:5120',
             'list_img' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
             'detail_img' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',

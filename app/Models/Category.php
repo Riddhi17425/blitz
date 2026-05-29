@@ -10,4 +10,9 @@ class Category extends Model
     use SoftDeletes;
 
     protected $guarded = [];
+
+    public function subCategories()
+    {
+        return $this->hasMany(SubCategory::class);
+    }
 }

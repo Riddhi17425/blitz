@@ -452,14 +452,14 @@
                                     data-bs-target="#flush-collapse{{ $index }}"
                                     aria-expanded="{{ $index == 0 ? 'true' : 'false' }}"
                                     aria-controls="flush-collapse{{ $index }}">
-                                {{ $faq->title }}
+                                {{ $faq->question }}
                             </button>
                         </h2>
                         <div id="flush-collapse{{ $index }}" class="accordion-collapse collapse {{ $index == 0 ? 'show' : '' }}"
                             aria-labelledby="flush-heading{{ $index }}"
                             data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
-                                {!! $faq->description !!}
+                                {!! $faq->answer !!}
                             </div>
                         </div>
                     </div>
