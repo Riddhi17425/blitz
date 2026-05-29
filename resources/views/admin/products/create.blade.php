@@ -54,22 +54,23 @@
                     <!-- Files & Media -->
                     <h5 class="fw-bold my-4 pb-2 border-bottom text-primary"><i class="icofont-image"></i> Files & Media</h5>
                     <div class="row">
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label class="form-label fw-bold">Datasheet (PDF)</label>
                             <input type="file" name="datasheet" class="form-control @error('datasheet') is-invalid @enderror">
                             <small class="text-muted">Upload product specifications in PDF format (Max: 10MB)</small>
                             @error('datasheet')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label class="form-label fw-bold">List Image <span class="text-danger">*</span></label>
                             <input type="file" name="list_image" class="form-control @error('list_image') is-invalid @enderror" required>
                             <small class="text-muted">Used for listing views. (Max: 2MB)</small>
                             @error('list_image')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
-                        <div class="col-md-4 mb-3">
+                        <div class="col-12 mb-3">
                             <label class="form-label fw-bold">Detail Images (Multiple) <span class="text-danger">*</span></label>
-                            <input type="file" name="detail_images[]" class="form-control @error('detail_images') is-invalid @enderror" multiple required>
+                            <input type="file" name="detail_images[]" id="detailImagesInput" class="form-control @error('detail_images') is-invalid @enderror" multiple required>
                             <small class="text-muted">Upload one or more product detail images. (Max: 2MB per image)</small>
+                            <div id="detailImagesPreview" class="detail-images-preview d-flex flex-wrap gap-3 mt-3"></div>
                             @error('detail_images')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                     </div>
@@ -143,6 +144,25 @@
         // Trigger JQuery validate refresh on Summernote content change
         $('#description,#features').on('summernote.change', function() {
             $(this).valid();
+        });
+
+        $('#detailImagesInput').on('change', function() {
+            let preview = $('#detailImagesPreview').empty();
+            Array.from(this.files || []).forEach(function(file) {
+                if (!file.type.match('image.*')) {
+                    return;
+                }
+
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.append(`
+                        <div class="detail-image-preview-container border rounded p-1">
+                            <img src="${e.target.result}" alt="Detail Image Preview" class="img-fluid rounded" />
+                        </div>
+                    `);
+                };
+                reader.readAsDataURL(file);
+            });
         });
 
         // Dynamic rows script for Technical Specifications
@@ -231,4 +251,17 @@
         });
     });
 </script>
+<style>
+    .detail-images-preview .detail-image-preview-container {
+        width: 180px;
+        height: 180px;
+    }
+
+    .detail-images-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: #f8f9fa;
+    }
+</style>
 @endsection

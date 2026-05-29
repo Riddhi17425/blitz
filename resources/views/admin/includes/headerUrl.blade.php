@@ -14,19 +14,76 @@
 <!-- project css file  -->
 <link rel="stylesheet" href="{{ asset('public/admin/assets/css/ebazar.style.min.css') }}"> 
 <style>
+:root,
+[data-bs-theme="light"],
+#ebazar-layout.theme-blue {
+  --primary-color: #001f3f;
+  --secondary-color: #e21212;
+  --secondary-rgb: 139, 0, 0;
+  --bs-primary: #001f3f;
+  --bs-primary-rgb: 0, 31, 63;
+  --bs-link-color: #001f3f;
+  --bs-link-color-rgb: 0, 31, 63;
+  --bs-link-hover-color: #e21212;
+  --bs-link-hover-color-rgb: 139, 0, 0;
+  --bs-primary-text-emphasis: #00152b;
+  --bs-primary-bg-subtle: #d9e6f2;
+  --bs-primary-border-subtle: #8aa8c6;
+}
+
+.btn-primary {
+    --bs-btn-bg: #001f3f;
+    --bs-btn-border-color: #001f3f;
+    --bs-btn-hover-bg: #e21212;
+    --bs-btn-hover-border-color: #e21212;
+    --bs-btn-active-bg: #00152b;
+    --bs-btn-active-border-color: #00152b;
+    --bs-btn-disabled-bg: #001f3f;
+    --bs-btn-disabled-border-color: #001f3f;
+}
+
+.btn-outline-primary {
+    --bs-btn-color: #001f3f;
+    --bs-btn-border-color: #001f3f;
+    --bs-btn-hover-bg: #e21212;
+    --bs-btn-hover-border-color: #e21212;
+    --bs-btn-active-bg: #00152b;
+    --bs-btn-active-border-color: #00152b;
+}
+
+.sidebar .menu-list .m-link:hover,
+.sidebar .menu-list .ms-link:hover,
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: #fff !important;
+    background-color: #e21212 !important;
+}
+
+.text-primary {
+    color: #001f3f !important;
+}
+
+.bg-primary {
+    background-color: #001f3f !important;
+}
+
+.border-primary {
+    border-color: #001f3f !important;
+}
+
 .error{
   color:red;
 }
 /* Datatable pagination styling fix */
 .pagination .page-item .page-link {
-    color: #484c7f !important;
+    color: #001f3f !important;
     background-color: #fff !important;
     border: 1px solid #dee2e6 !important;
 }
 .pagination .page-item.active .page-link {
     color: #fff !important;
-    background-color: #484c7f !important;
-    border-color: #484c7f !important;
+    background-color: #001f3f !important;
+    border-color: #001f3f !important;
 }
 .pagination .page-item.disabled .page-link {
     color: #6c757d !important;

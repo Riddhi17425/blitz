@@ -114,6 +114,7 @@ use App\Http\Controllers\Web\HomeController;
         Route::get('/add/products', [ProductController::class, 'create'])->name('products.create');
         Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
         Route::get('/edit/products/{id}', [ProductController::class, 'edit'])->name('products.edit');
+        Route::get('/products/{id}/datasheet/download', [ProductController::class, 'downloadDatasheet'])->name('products.datasheet.download');
         Route::put('/update/products/{id}', [ProductController::class, 'update'])->name('products.update');
         Route::delete('/delete/products/{id}', [ProductController::class, 'destroy'])->name('products.delete');
 

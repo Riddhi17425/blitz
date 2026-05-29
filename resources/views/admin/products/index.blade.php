@@ -55,8 +55,8 @@
                                     </td>
                                     <td>
                                         @if($product->datasheet)
-                                            <a href="{{ asset('storage/' . $product->datasheet) }}" target="_blank" download class="btn btn-sm btn-outline-danger">
-                                                <i class="icofont-file-pdf"></i> View PDF
+                                            <a href="{{ route('products.datasheet.download', $product->id) }}" class="btn btn-sm btn-outline-danger">
+                                                <i class="icofont-file-pdf"></i> Download PDF
                                             </a>
                                         @else
                                             <span class="text-muted">No PDF</span>

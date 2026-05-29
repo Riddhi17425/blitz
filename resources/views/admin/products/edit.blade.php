@@ -56,12 +56,12 @@
                     <h5 class="fw-bold my-4 pb-2 border-bottom text-primary"><i class="icofont-image"></i> Files & Media</h5>
                     <div class="row">
                         <!-- Datasheet -->
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label class="form-label fw-bold">Datasheet (PDF)</label>
                             <input type="file" name="datasheet" class="form-control @error('datasheet') is-invalid @enderror">
                             @if($product->datasheet)
                                 <div class="mt-2">
-                                    <a href="{{ asset('storage/' . $product->datasheet) }}" target="_blank" download class="text-danger fw-bold"><i class="icofont-file-pdf"></i> View Current PDF</a>
+                                    <a href="{{ route('products.datasheet.download', $product->id) }}" class="text-danger fw-bold"><i class="icofont-file-pdf"></i> Download Current PDF</a>
                                 </div>
                             @endif
                             <small class="text-muted">Upload product specifications in PDF format (Max: 10MB). Leave empty to keep current.</small>
@@ -69,7 +69,7 @@
                         </div>
                         
                         <!-- List Image -->
-                        <div class="col-md-4 mb-3">
+                        <div class="col-md-6 mb-3">
                             <label class="form-label fw-bold">List Image</label>
                             <input type="file" name="list_image" class="form-control @error('list_image') is-invalid @enderror">
                             @if($product->list_image)
@@ -82,14 +82,14 @@
                         </div>
 
                         <!-- Detail Images -->
-                        <div class="col-md-4 mb-3">
+                        <div class="col-12 mb-3">
                             <label class="form-label fw-bold">Detail Images (Multiple)</label>
-                            <input type="file" name="detail_images[]" class="form-control @error('detail_images') is-invalid @enderror" multiple>
+                            <input type="file" name="detail_images[]" id="detailImagesInput" class="form-control @error('detail_images') is-invalid @enderror" multiple>
                             @if(!empty($product->detail_images))
-                                <div class="d-flex flex-wrap gap-3 mt-2">
+                                <div class="detail-images-preview d-flex flex-wrap gap-3 mt-3">
                                     @foreach($product->detail_images as $detail)
-                                        <div class="position-relative detail-image-preview-container border rounded p-1" style="width: 140px; height: 140px;">
-                                            <img src="{{ asset('public/images/product_detail_images/' . $detail) }}" alt="Detail Image" class="img-fluid rounded" style="width: 100%; height: 100%; object-fit: cover;" />
+                                        <div class="position-relative detail-image-preview-container border rounded p-1">
+                                            <img src="{{ asset('public/images/product_detail_images/' . $detail) }}" alt="Detail Image" class="img-fluid rounded" />
                                             <button type="button" class="btn btn-danger btn-sm position-absolute top-0 end-0 m-1 remove-existing-image" data-filename="{{ $detail }}" style="padding: 2px 6px;" title="Remove this image">
                                                 <i class="icofont-trash"></i>
                                             </button>
@@ -97,6 +97,7 @@
                                     @endforeach
                                 </div>
                             @endif
+                            <div id="detailImagesPreview" class="detail-images-preview d-flex flex-wrap gap-3 mt-3"></div>
                             <div id="removedImagesInputs"></div>
                             <small class="text-muted">Add more detail images. (Max: 2MB per image)</small>
                             @error('detail_images')<div class="invalid-feedback">{{ $message }}</div>@enderror
@@ -240,6 +241,25 @@
             $('#removedImagesInputs').append(`<input type="hidden" name="removed_detail_images[]" value="${filename}">`);
         });
 
+        $('#detailImagesInput').on('change', function() {
+            let preview = $('#detailImagesPreview').empty();
+            Array.from(this.files || []).forEach(function(file) {
+                if (!file.type.match('image.*')) {
+                    return;
+                }
+
+                let reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.append(`
+                        <div class="detail-image-preview-container border rounded p-1">
+                            <img src="${e.target.result}" alt="New Detail Image Preview" class="img-fluid rounded" />
+                        </div>
+                    `);
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+
         function updateRemoveButtons() {
             let rows = $('.spec-row');
             if (rows.length <= 1) {
@@ -290,4 +310,17 @@
         });
     });
 </script>
+<style>
+    .detail-images-preview .detail-image-preview-container {
+        width: 180px;
+        height: 180px;
+    }
+
+    .detail-images-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        background: #f8f9fa;
+    }
+</style>
 @endsection

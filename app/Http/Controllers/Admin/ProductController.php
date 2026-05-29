@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -94,6 +95,22 @@ class ProductController extends Controller
     {
         $product = Product::with('technicalSpecifications')->findOrFail($id);
         return view('admin.products.edit', compact('product'));
+    }
+
+    public function downloadDatasheet($id)
+    {
+        $product = Product::findOrFail($id);
+
+        if (!$product->datasheet || !Storage::disk('public')->exists($product->datasheet)) {
+            return redirect()->back()->with('error', 'Datasheet file not found.');
+        }
+
+        $filePath = Storage::disk('public')->path($product->datasheet);
+        $downloadName = $product->product_name
+            ? Str::slug($product->product_name) . '-datasheet.pdf'
+            : basename($product->datasheet);
+
+        return response()->download($filePath, $downloadName);
     }
 
     public function update(Request $request, $id)
