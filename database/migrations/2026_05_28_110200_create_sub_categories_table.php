@@ -10,7 +10,9 @@ return new class extends Migration
     {
         Schema::create('sub_categories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->string('title');
+            $table->string('sub_category_url')->nullable();
             $table->string('short_form')->nullable();
             $table->text('short_description')->nullable();
             $table->text('description')->nullable();
@@ -23,6 +25,7 @@ return new class extends Migration
             $table->json('cta_icon')->nullable();
             $table->json('cta_title')->nullable();
             $table->json('cta_description')->nullable();
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

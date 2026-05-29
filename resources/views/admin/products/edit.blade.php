@@ -26,14 +26,53 @@
                     <h5 class="fw-bold mb-3 pb-2 border-bottom text-primary"><i class="icofont-info-circle"></i> General Information</h5>
                     <div class="row">
                         <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Category <span class="text-danger">*</span></label>
+                            <select name="category_id" id="category_id" class="form-control @error('category_id') is-invalid @enderror" required>
+                                <option value="">Select Category</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Sub Category <span class="text-danger">*</span></label>
+                            <select name="sub_category_id" id="sub_category_id" class="form-control @error('sub_category_id') is-invalid @enderror" required>
+                                <option value="">Select Sub Category</option>
+                                @foreach($subCategories as $subCategory)
+                                    <option value="{{ $subCategory->id }}" {{ old('sub_category_id', $product->sub_category_id) == $subCategory->id ? 'selected' : '' }}>{{ $subCategory->title }}</option>
+                                @endforeach
+                            </select>
+                            @error('sub_category_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </div>
+                        <div class="col-md-6 mb-3">
                             <label class="form-label fw-bold">Product Name <span class="text-danger">*</span></label>
-                            <input type="text" name="product_name" value="{{ old('product_name', $product->product_name) }}" class="form-control @error('product_name') is-invalid @enderror" placeholder="Enter product name" required>
+                            <input type="text" name="product_name" id="product_name" value="{{ old('product_name', $product->product_name) }}" class="form-control @error('product_name') is-invalid @enderror" placeholder="Enter product name" required>
                             @error('product_name')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Product URL <span class="text-danger">*</span></label>
+                            <input type="text" name="product_url" id="product_url" value="{{ old('product_url', $product->product_url ?: \Illuminate\Support\Str::slug($product->product_name)) }}" class="form-control @error('product_url') is-invalid @enderror" placeholder="product-url" required>
+                            @error('product_url')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label fw-bold">Product Model <span class="text-danger">*</span></label>
                             <input type="text" name="product_modal" value="{{ old('product_modal', $product->product_modal) }}" class="form-control @error('product_modal') is-invalid @enderror" placeholder="Enter product model" required>
                             @error('product_modal')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label fw-bold">Featured</label>
+                            <div class="form-check form-switch">
+                                <input type="hidden" name="is_featured" value="0">
+                                <input class="form-check-input" type="checkbox" name="is_featured" value="1" {{ old('is_featured', $product->is_featured) ? 'checked' : '' }}>
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label class="form-label fw-bold">Active</label>
+                            <div class="form-check form-switch">
+                                <input type="hidden" name="is_active" value="0">
+                                <input class="form-check-input" type="checkbox" name="is_active" value="1" {{ old('is_active', is_null($product->is_active) ? 1 : $product->is_active) ? 'checked' : '' }}>
+                            </div>
                         </div>
                     </div>
 
@@ -165,6 +204,21 @@
                         <i class="icofont-plus-circle"></i> Add More
                     </button>
 
+                    <!-- Meta Details -->
+                    <h5 class="fw-bold my-4 pb-2 border-bottom text-primary"><i class="icofont-listine-lines"></i> Meta Details</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Meta Title</label>
+                            <input type="text" name="meta_title" value="{{ old('meta_title', $product->meta_title) }}" class="form-control @error('meta_title') is-invalid @enderror" placeholder="Meta title for SEO">
+                            @error('meta_title')<div class="invalid-feedback">{{ $message }}</  div>@enderror   
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Meta Description</label>
+                            <textarea name="meta_description" class="form-control @error('meta_description') is-invalid @enderror" rows="3" placeholder="Meta description for SEO">{{ old('meta_description', $product->meta_description)   }}</textarea>   
+                            @error('meta_description')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </div>
+                    </div>
+
                     <div class="mt-4 border-top pt-3 text-end">
                         <button type="submit" class="btn btn-primary px-5 py-2"><i class="icofont-save"></i> Update Product</button>
                     </div>
@@ -195,6 +249,42 @@
         // Trigger validation on Summernote change
         $('#description,#features').on('summernote.change', function() {
             $(this).valid();
+        });
+
+        const selectedSubCategoryId = @json(old('sub_category_id', $product->sub_category_id));
+        const subCategoriesByCategoryUrl = @json(url('/admin/sub-categories/by-category'));
+
+        function loadSubCategories(categoryId, selectedId = null) {
+            const $subSelect = $('#sub_category_id');
+            $subSelect.html('<option value="">Select Sub Category</option>');
+            if (!categoryId) {
+                return;
+            }
+            $.get(subCategoriesByCategoryUrl + '/' + categoryId, function(data) {
+                data.forEach(function(item) {
+                    const selected = String(selectedId) === String(item.id) ? 'selected' : '';
+                    $subSelect.append('<option value="' + item.id + '" ' + selected + '>' + item.title + '</option>');
+                });
+            });
+        }
+
+        $('#category_id').on('change', function() {
+            loadSubCategories($(this).val());
+        });
+
+        if ($('#category_id').val()) {
+            loadSubCategories($('#category_id').val(), selectedSubCategoryId);
+        }
+
+        function slugify(value) {
+            return value.toString().toLowerCase().trim()
+                .replace(/[^a-z0-9\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/^-|-$/g, '');
+        }
+        $('#product_url').on('input', function() {
+            $(this).val(slugify($(this).val()));
         });
 
         // Dynamic rows script for Technical Specifications
@@ -273,7 +363,10 @@
         $('#productForm').validate({
             ignore: [],
             rules: {
+                category_id: { required: true },
+                sub_category_id: { required: true },
                 product_name: { required: true, maxlength: 255 },
+                product_url: { required: true, maxlength: 255 },
                 product_modal: { required: true, maxlength: 255 },
                 description: { required: true },
                 datasheet: { extension: 'pdf' },
@@ -281,7 +374,10 @@
                 'detail_images[]': { extension: 'jpg|jpeg|png|webp' }
             },
             messages: {
+                category_id: { required: 'Category is required.' },
+                sub_category_id: { required: 'Sub Category is required.' },
                 product_name: { required: 'Product Name is required.' },
+                product_url: { required: 'Product URL is required.' },
                 product_modal: { required: 'Product Model is required.' },
                 description: { required: 'Description is required.' },
                 datasheet: { extension: 'Only PDF files are allowed.' },

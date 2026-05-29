@@ -10,6 +10,7 @@ class Banner extends Model
     use SoftDeletes;
     protected $fillable = [
         'id',
+        'category_id',
         'title',
         'description',
         'image',
@@ -18,4 +19,9 @@ class Banner extends Model
         'updated_at',
         'deleted_at'
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('category_url')->nullable();
             $table->string('short_form')->nullable();
             $table->text('description')->nullable();
             $table->string('catalogue_pdf')->nullable();
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->string('cta_img_mobile')->nullable();
             $table->string('cta_img_title')->nullable();
             $table->text('cta_img_description')->nullable();
+            $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

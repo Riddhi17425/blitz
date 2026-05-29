@@ -11,6 +11,7 @@ $(document).ready(function () {
             { data: 'id', name: 'id' },
             
             { data: 'title', name: 'title' },
+            { data: 'category_title', name: 'category.title' },
             { 
                 data: 'image', 
                 name: 'image',
@@ -106,5 +107,4 @@ function validateAndPreviewImage() {
         reader.readAsDataURL(file);
         return true;
     }
-
 

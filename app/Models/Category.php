@@ -11,8 +11,22 @@ class Category extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+
     public function subCategories()
     {
         return $this->hasMany(SubCategory::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function hasAssociations(): bool
+    {
+        return $this->subCategories()->exists() || $this->products()->exists();
     }
 }

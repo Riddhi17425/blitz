@@ -26,8 +26,10 @@
                         <tr>
                             <th>#</th>
                             <th>Title</th>
+                            <th>URL</th>
                             <th>Short Form</th>
                             <th>List Image</th>
+                            <th>Active</th>
                             <th>Created</th>
                             <th>Actions</th>
                         </tr>
@@ -37,11 +39,17 @@
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $category->title }}</td>
+                                <td>{{ $category->category_url }}</td>
                                 <td>{{ $category->short_form }}</td>
                                 <td>
                                     @if($category->list_img)
                                         <img src="{{ asset('public/images/category_list/' . $category->list_img) }}" alt="{{ $category->title }}" style="max-width:120px;" />
                                     @endif
+                                </td>
+                                <td>
+                                    <div class="form-check form-switch d-inline-block">
+                                        <input class="form-check-input js-toggle-flag" type="checkbox" data-url="{{ route('categories.toggle_flag', $category->id) }}" data-field="is_active" {{ $category->is_active || is_null($category->is_active) ? 'checked' : '' }}>
+                                    </div>
                                 </td>
                                 <td>{{ $category->created_at->format('Y-m-d') }}</td>
                                 <td>
@@ -60,4 +68,27 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).on('change', '.js-toggle-flag', function() {
+        const checkbox = $(this);
+        checkbox.prop('disabled', true);
+        $.ajax({
+            url: checkbox.data('url'),
+            type: 'PATCH',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                field: checkbox.data('field'),
+                value: checkbox.is(':checked') ? 1 : 0
+            },
+            complete: function() {
+                checkbox.prop('disabled', false);
+            },
+            error: function(xhr) {
+                checkbox.prop('checked', !checkbox.is(':checked'));
+                const message = xhr.responseJSON?.message || 'Unable to update status.';
+                alert(message);
+            }
+        });
+    });
+</script>
 @endsection

@@ -3,30 +3,41 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class SubCategoryController extends Controller
 {
+    private const ASSOCIATION_MESSAGE = 'You cannot perform this action because this sub-category is associated with products.';
+
     public function index()
     {
-        $subCategories = SubCategory::orderBy('created_at', 'desc')->get();
+        $subCategories = SubCategory::with('category')->orderBy('created_at', 'desc')->get();
         return view('admin.sub_categories.index', compact('subCategories'));
     }
 
     public function create()
     {
-        return view('admin.sub_categories.create');
+        $categories = Category::where('is_active', 1)->orWhereNull('is_active')->orderBy('title')->get();
+        return view('admin.sub_categories.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
+        $request->merge([
+            'sub_category_url' => $request->filled('sub_category_url') ? Str::slug($request->sub_category_url) : Str::slug($request->title),
+        ]);
+
         $validator = Validator::make($request->all(), [
+            'category_id' => 'required|exists:categories,id',
             'title' => 'required|string|max:255',
+            'sub_category_url' => 'required|string|max:255|regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
             'short_form' => 'required|string|max:255',
             'short_description' => 'nullable|string',
             'description' => 'required|string',
@@ -86,7 +97,9 @@ class SubCategoryController extends Controller
             }
 
             SubCategory::create([
+                'category_id' => $request->category_id,
                 'title' => $request->title,
+                'sub_category_url' => $request->sub_category_url,
                 'short_form' => $request->short_form,
                 'short_description' => $request->short_description,
                 'description' => $request->description,
@@ -99,6 +112,7 @@ class SubCategoryController extends Controller
                 'cta_icon' => $ctaIcons,
                 'cta_title' => $ctaTitles,
                 'cta_description' => $ctaDescriptions,
+                'is_active' => 1,
             ]);
 
             return redirect()->route('sub_categories')->with('success', 'Sub Category created successfully.');
@@ -111,15 +125,21 @@ class SubCategoryController extends Controller
     public function edit($id)
     {
         $subCategory = SubCategory::findOrFail($id);
-        return view('admin.sub_categories.edit', compact('subCategory'));
+        $categories = Category::where('is_active', 1)->orWhereNull('is_active')->orderBy('title')->get();
+        return view('admin.sub_categories.edit', compact('subCategory', 'categories'));
     }
 
     public function update(Request $request, $id)
     {
         $subCategory = SubCategory::findOrFail($id);
+        $request->merge([
+            'sub_category_url' => $request->filled('sub_category_url') ? Str::slug($request->sub_category_url) : Str::slug($request->title),
+        ]);
 
         $validator = Validator::make($request->all(), [
+            'category_id' => 'required|exists:categories,id',
             'title' => 'required|string|max:255',
+            'sub_category_url' => 'required|string|max:255|regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
             'short_form' => 'required|string|max:255',
             'short_description' => 'nullable|string',
             'description' => 'required|string',
@@ -204,7 +224,9 @@ class SubCategoryController extends Controller
             }
 
             $subCategory->update([
+                'category_id' => $request->category_id,
                 'title' => $request->title,
+                'sub_category_url' => $request->sub_category_url,
                 'short_form' => $request->short_form,
                 'short_description' => $request->short_description,
                 'description' => $request->description,
@@ -229,6 +251,9 @@ class SubCategoryController extends Controller
     public function destroy($id)
     {
         $subCategory = SubCategory::findOrFail($id);
+        if ($subCategory->hasAssociations()) {
+            return redirect()->route('sub_categories')->with('error', self::ASSOCIATION_MESSAGE);
+        }
         try {
             if ($subCategory->catalogue_pdf && Storage::disk('public')->exists($subCategory->catalogue_pdf)) {
                 Storage::disk('public')->delete($subCategory->catalogue_pdf);
@@ -254,5 +279,41 @@ class SubCategoryController extends Controller
             Log::error('SubCategory delete failed: ' . $e->getMessage());
             return redirect()->route('sub_categories')->with('error', 'Failed to delete sub category.');
         }
+    }
+
+    public function toggleFlag(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'field' => 'required|in:is_active',
+            'value' => 'required|boolean',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['success' => false, 'message' => 'Invalid request.'], 422);
+        }
+
+        $subCategory = SubCategory::findOrFail($id);
+
+        if ($request->field === 'is_active' && $subCategory->hasAssociations()) {
+            return response()->json(['success' => false, 'message' => self::ASSOCIATION_MESSAGE], 422);
+        }
+
+        $subCategory->update([
+            $request->field => $request->boolean('value'),
+        ]);
+
+        return response()->json(['success' => true, 'message' => 'Sub category updated successfully.']);
+    }
+
+    public function getByCategory($categoryId)
+    {
+        $subCategories = SubCategory::where('category_id', $categoryId)
+            ->where(function ($query) {
+                $query->where('is_active', 1)->orWhereNull('is_active');
+            })
+            ->orderBy('title')
+            ->get(['id', 'title']);
+
+        return response()->json($subCategories);
     }
 }

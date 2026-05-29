@@ -18,8 +18,13 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Title <span class="text-danger">*</span></label>
-                        <input type="text" name="title" value="{{ old('title', $category->title) }}" class="form-control @error('title') is-invalid @enderror" placeholder="Enter title" required>
+                        <input type="text" name="title" id="title" value="{{ old('title', $category->title) }}" class="form-control @error('title') is-invalid @enderror" placeholder="Enter title" required>
                         @error('title')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Category URL <span class="text-danger">*</span></label>
+                        <input type="text" name="category_url" id="category_url" value="{{ old('category_url', $category->category_url ?: \Illuminate\Support\Str::slug($category->title)) }}" class="form-control @error('category_url') is-invalid @enderror" placeholder="category-url" required>
+                        @error('category_url')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Short Form <span class="text-danger">*</span></label>
@@ -134,10 +139,22 @@
             $(this).valid();
         });
 
+        function slugify(value) {
+            return value.toString().toLowerCase().trim()
+                .replace(/[^a-z0-9\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/^-|-$/g, '');
+        }
+        $('#category_url').on('input', function() {
+            $(this).val(slugify($(this).val()));
+        });
+
         $('#categoryForm').validate({
             ignore: [],
             rules: {
                 title: { required: true, maxlength: 255 },
+                category_url: { required: true, maxlength: 255 },
                 short_form: { required: true, maxlength: 255 },
                 description: { summernoteRequired: true },
                 catalogue_pdf: { extension: 'pdf' },
@@ -148,6 +165,7 @@
             },
             messages: {
                 title: { required: 'Title is required.' },
+                category_url: { required: 'Category URL is required.' },
                 short_form: { required: 'Short Form is required.' },
                 description: { summernoteRequired: 'Description is required.' },
                 catalogue_pdf: { extension: 'Only PDF files are allowed.' }

@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('banners', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('category_id')->nullable();
             $table->string('title')->nullable();
             $table->longText('description')->nullable();
             $table->string('image')->nullable();

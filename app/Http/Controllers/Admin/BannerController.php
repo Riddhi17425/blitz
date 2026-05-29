@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Banner;
+use App\Models\Category;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver as GdDriver;
 use Str;
@@ -20,13 +21,15 @@ class BannerController extends Controller
     }
 
     public function create(){
-        return view('admin.banner.create'); 
+        $categories = Category::orderBy('title')->get();
+        return view('admin.banner.create', compact('categories')); 
     }
 
    public function Store(Request $request)
 {
     // Validate input
     $validator = Validator::make($request->all(), [
+        'category_id'      => 'required|exists:categories,id',
         'banners_desc'    => 'required|string|max:500',
         'banners_title'   => 'required|string|max:255',
         'banners_status'  => 'nullable|in:Active,In-Active',
@@ -60,6 +63,7 @@ class BannerController extends Controller
 
         
         Banner::create([
+            'category_id'  => $request->category_id,
             'title'       => $request->banners_title,
             'description' => $request->banners_desc,
             'status'      => $request->banners_status ?? 'Active',
@@ -76,9 +80,12 @@ class BannerController extends Controller
 
     public function getData()
     {
-        $banners = Banner::whereNull('deleted_at')->get();
+        $banners = Banner::with('category')->whereNull('deleted_at')->get();
         return DataTables::of($banners)
             ->addIndexColumn()
+            ->addColumn('category_title', function ($row) {
+                return $row->category->title ?? '-';
+            })
             ->addColumn('action', function ($row) {
                 
                 $editUrl = route('banners.edit', $row->id);
@@ -96,7 +103,8 @@ class BannerController extends Controller
     }
     public function Edit($id){
         $banners = Banner::find($id);
-        return view('admin.banner.edit' , compact('banners'));
+        $categories = Category::orderBy('title')->get();
+        return view('admin.banner.edit' , compact('banners', 'categories'));
     }
 
     public function Destory($id){
@@ -119,6 +127,7 @@ class BannerController extends Controller
     {
         // 1. Validate the request
         $validator = Validator::make($request->all(), [
+            'category_id'      => 'required|exists:categories,id',
             'banners_desc'    => 'required|string|max:500',
             'banners_title'   => 'required|string|max:255',
             'banners_status'  => 'required|in:Active,In-Active',
@@ -157,6 +166,7 @@ class BannerController extends Controller
             
             // 4. Update whychooseus data
             $banners->update([
+                'category_id'  => $request->category_id,
                 'title'       => $request->banners_title,
                 'description' => $request->banners_desc,
                 'status'      => $request->banners_status,

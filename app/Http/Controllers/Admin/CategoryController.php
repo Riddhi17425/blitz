@@ -9,9 +9,12 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
+    private const ASSOCIATION_MESSAGE = 'You cannot perform this action because this category is associated with sub-categories or products.';
+
     public function index()
     {
         $categories = Category::orderBy('created_at', 'desc')->get();
@@ -25,8 +28,13 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+        $request->merge([
+            'category_url' => $request->filled('category_url') ? Str::slug($request->category_url) : Str::slug($request->title),
+        ]);
+
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
+            'category_url' => 'required|string|max:255|regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
             'short_form' => 'required|string|max:255',
             'description' => 'required|string',
             'catalogue_pdf' => 'nullable|file|mimes:pdf|max:5120',
@@ -70,6 +78,7 @@ class CategoryController extends Controller
 
             Category::create([
                 'title' => $request->title,
+                'category_url' => $request->category_url,
                 'short_form' => $request->short_form,
                 'description' => $request->description,
                 'catalogue_pdf' => $cataloguePath,
@@ -79,6 +88,7 @@ class CategoryController extends Controller
                 'cta_img_mobile' => $ctaMobile,
                 'cta_img_title' => $request->cta_img_title,
                 'cta_img_description' => $request->cta_img_description,
+                'is_active' => 1,
             ]);
 
             return redirect()->route('categories')->with('success', 'Category created successfully.');
@@ -97,8 +107,13 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $category = Category::findOrFail($id);
+        $request->merge([
+            'category_url' => $request->filled('category_url') ? Str::slug($request->category_url) : Str::slug($request->title),
+        ]);
+
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
+            'category_url' => 'required|string|max:255|regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
             'short_form' => 'required|string|max:255',
             'description' => 'required|string',
             'catalogue_pdf' => 'nullable|file|mimes:pdf|max:5120',
@@ -157,6 +172,7 @@ class CategoryController extends Controller
 
             $category->update([
                 'title' => $request->title,
+                'category_url' => $request->category_url,
                 'short_form' => $request->short_form,
                 'description' => $request->description,
                 'catalogue_pdf' => $cataloguePath,
@@ -178,9 +194,8 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
-        $checkSubCategories = $category->subCategories()->exists();
-        if ($checkSubCategories) {
-            return redirect()->route('categories')->with('error', 'Cannot delete category with existing sub-categories. Please delete sub-categories first.');
+        if ($category->hasAssociations()) {
+            return redirect()->route('categories')->with('error', self::ASSOCIATION_MESSAGE);
         }
         try {
             if ($category->catalogue_pdf && Storage::disk('public')->exists($category->catalogue_pdf)) {
@@ -197,5 +212,29 @@ class CategoryController extends Controller
             Log::error('Category delete failed: ' . $e->getMessage());
             return redirect()->route('categories')->with('error', 'Failed to delete category.');
         }
+    }
+
+    public function toggleFlag(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'field' => 'required|in:is_active',
+            'value' => 'required|boolean',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['success' => false, 'message' => 'Invalid request.'], 422);
+        }
+
+        $category = Category::findOrFail($id);
+
+        if ($request->field === 'is_active' && $category->hasAssociations()) {
+            return response()->json(['success' => false, 'message' => self::ASSOCIATION_MESSAGE], 422);
+        }
+
+        $category->update([
+            $request->field => $request->boolean('value'),
+        ]);
+
+        return response()->json(['success' => true, 'message' => 'Category updated successfully.']);
     }
 }

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductTechnicalSpecification;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -16,27 +19,23 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::orderBy('created_at', 'desc')->get();
+        $products = Product::with(['category', 'subCategory'])->orderBy('created_at', 'desc')->get();
         return view('admin.products.index', compact('products'));
     }
 
     public function create()
     {
-        return view('admin.products.create');
+        $categories = Category::where('is_active', 1)->orWhereNull('is_active')->orderBy('title')->get();
+        return view('admin.products.create', compact('categories'));
     }
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'product_name' => 'required|string|max:255',
-            'product_modal' => 'required|string|max:255',
-            'datasheet' => 'nullable|file|mimes:pdf|max:10240',
-            'description' => 'required|string',
-            'features' => 'nullable|string',
-            'list_image' => 'required|file|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'detail_images' => 'required|array|min:1',
-            'detail_images.*' => 'file|image|mimes:jpg,jpeg,png,webp|max:2048',
+        $request->merge([
+            'product_url' => $request->filled('product_url') ? Str::slug($request->product_url) : Str::slug($request->product_name),
         ]);
+
+        $validator = Validator::make($request->all(), $this->productValidationRules($request));
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -63,13 +62,20 @@ class ProductController extends Controller
             }
 
             $product = Product::create([
-                'product_name' => $request->product_name,
-                'product_modal' => $request->product_modal,
+                'category_id' => $request->category_id,
+                'sub_category_id' => $request->sub_category_id,
+                'product_name' => $request->product_name ?? null,
+                'product_url' => $request->product_url ?? null,
+                'product_modal' => $request->product_modal ?? null,
                 'datasheet' => $datasheetPath,
-                'description' => $request->description,
-                'features' => $request->features,
+                'description' => $request->description ?? null,
+                'features' => $request->features ?? null,
                 'list_image' => $listImage,
                 'detail_images' => $detailImages,
+                'meta_title' => $request->meta_title ?? null,
+                'meta_description' => $request->meta_description ?? null,
+                'is_featured' => $request->boolean('is_featured'),
+                'is_active' => $request->has('is_active') ? $request->boolean('is_active') : true,
             ]);
 
             // Save Technical Specifications
@@ -94,7 +100,14 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::with('technicalSpecifications')->findOrFail($id);
-        return view('admin.products.edit', compact('product'));
+        $categories = Category::where('is_active', 1)->orWhereNull('is_active')->orderBy('title')->get();
+        $subCategories = SubCategory::where('category_id', $product->category_id)
+            ->where(function ($query) {
+                $query->where('is_active', 1)->orWhereNull('is_active');
+            })
+            ->orderBy('title')
+            ->get();
+        return view('admin.products.edit', compact('product', 'categories', 'subCategories'));
     }
 
     public function downloadDatasheet($id)
@@ -116,17 +129,11 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
-
-        $validator = Validator::make($request->all(), [
-            'product_name' => 'required|string|max:255',
-            'product_modal' => 'required|string|max:255',
-            'datasheet' => 'nullable|file|mimes:pdf|max:10240',
-            'description' => 'required|string',
-            'features' => 'nullable|string',
-            'list_image' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'detail_images' => 'nullable|array',
-            'detail_images.*' => 'file|image|mimes:jpg,jpeg,png,webp|max:2048',
+        $request->merge([
+            'product_url' => $request->filled('product_url') ? Str::slug($request->product_url) : Str::slug($request->product_name),
         ]);
+
+        $validator = Validator::make($request->all(), $this->productValidationRules($request, false));
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -175,13 +182,20 @@ class ProductController extends Controller
             }
 
             $product->update([
+                'category_id' => $request->category_id,
+                'sub_category_id' => $request->sub_category_id,
                 'product_name' => $request->product_name,
+                'product_url' => $request->product_url,
                 'product_modal' => $request->product_modal,
                 'datasheet' => $datasheetPath,
                 'description' => $request->description,
                 'features' => $request->features,
                 'list_image' => $listImage,
                 'detail_images' => $detailImages,
+                'is_featured' => $request->boolean('is_featured'),
+                'is_active' => $request->boolean('is_active'),
+                'meta_title' => $request->meta_title ?? null,
+                'meta_description' => $request->meta_description ?? null,
             ]);
 
             // Sync Technical Specifications (Delete old ones and save new list)
@@ -236,5 +250,59 @@ class ProductController extends Controller
             Log::error('Product delete failed: ' . $e->getMessage());
             return redirect()->route('products')->with('error', 'Failed to delete product.');
         }
+    }
+
+    public function toggleFlag(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'field' => 'required|in:is_featured,is_active',
+            'value' => 'required|boolean',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['success' => false, 'message' => 'Invalid request.'], 422);
+        }
+
+        $product = Product::findOrFail($id);
+        $product->update([
+            $request->field => $request->boolean('value'),
+        ]);
+
+        return response()->json(['success' => true, 'message' => 'Product updated successfully.']);
+    }
+
+    private function productValidationRules(Request $request, bool $isCreate = true): array
+    {
+        $rules = [
+            'category_id' => 'required|exists:categories,id',
+            'sub_category_id' => [
+                'required',
+                Rule::exists('sub_categories', 'id')->where(function ($query) use ($request) {
+                    $query->where('category_id', $request->category_id);
+                }),
+            ],
+            'product_name' => 'required|string|max:255',
+            'product_url' => 'required|string|max:255|regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
+            'product_modal' => 'required|string|max:255',
+            'datasheet' => 'nullable|file|mimes:pdf|max:10240',
+            'description' => 'required|string',
+            'features' => 'nullable|string',
+            'is_featured' => 'nullable|boolean',
+            'is_active' => 'nullable|boolean',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string|max:500',
+        ];
+
+        if ($isCreate) {
+            $rules['list_image'] = 'required|file|image|mimes:jpg,jpeg,png,webp|max:2048';
+            $rules['detail_images'] = 'required|array|min:1';
+            $rules['detail_images.*'] = 'file|image|mimes:jpg,jpeg,png,webp|max:2048';
+        } else {
+            $rules['list_image'] = 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048';
+            $rules['detail_images'] = 'nullable|array';
+            $rules['detail_images.*'] = 'file|image|mimes:jpg,jpeg,png,webp|max:2048';
+        }
+
+        return $rules;
     }
 }

@@ -40,6 +40,7 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Title</th>
+                                        <th>Category</th>
                                         <th>Image</th>
                                         <th>Status</th>
                                         <th>Actions</th>  

@@ -16,9 +16,24 @@
                 <h5 class="fw-bold mb-3 pb-2 border-bottom text-primary">General Information</h5>
                 <div class="row">
                     <div class="col-md-6 mb-3">
+                        <label class="form-label">Category <span class="text-danger">*</span></label>
+                        <select name="category_id" class="form-control @error('category_id') is-invalid @enderror" required>
+                            <option value="">Select Category</option>
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
+                            @endforeach
+                        </select>
+                        @error('category_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-6 mb-3">
                         <label class="form-label">Title <span class="text-danger">*</span></label>
-                        <input type="text" name="title" value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror" placeholder="Enter title" required>
+                        <input type="text" name="title" id="title" value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror" placeholder="Enter title" required>
                         @error('title')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Sub Category URL <span class="text-danger">*</span></label>
+                        <input type="text" name="sub_category_url" id="sub_category_url" value="{{ old('sub_category_url', old('title') ? \Illuminate\Support\Str::slug(old('title')) : '') }}" class="form-control @error('sub_category_url') is-invalid @enderror" placeholder="sub-category-url" required>
+                        @error('sub_category_url')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Short Form <span class="text-danger">*</span></label>
@@ -190,10 +205,30 @@
             $(this).valid();
         });
 
+        let subCategoryUrlTouched = $('#sub_category_url').val().length > 0;
+        function slugify(value) {
+            return value.toString().toLowerCase().trim()
+                .replace(/[^a-z0-9\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/^-|-$/g, '');
+        }
+        $('#sub_category_url').on('input', function() {
+            subCategoryUrlTouched = true;
+            $(this).val(slugify($(this).val()));
+        });
+        $('#title').on('input', function() {
+            if (!subCategoryUrlTouched) {
+                $('#sub_category_url').val(slugify($(this).val()));
+            }
+        });
+
         $('#subCategoryForm').validate({
             ignore: [],
             rules: {
+                category_id: { required: true },
                 title: { required: true, maxlength: 255 },
+                sub_category_url: { required: true, maxlength: 255 },
                 short_form: { required: true, maxlength: 255 },
                 description: { required: true },
                 catalogue_pdf: { extension: 'pdf' },
@@ -202,7 +237,9 @@
                 cta_img: { extension: 'jpg|jpeg|png|webp' }
             },
             messages: {
+                category_id: { required: 'Category is required.' },
                 title: { required: 'Title is required.' },
+                sub_category_url: { required: 'Sub Category URL is required.' },
                 short_form: { required: 'Short Form is required.' },
                 description: { required: 'Description is required.' },
                 catalogue_pdf: { extension: 'Only PDF files are allowed.' }

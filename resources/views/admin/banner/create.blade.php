@@ -44,6 +44,20 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label">Category <span class="required-star">*</span></label>
+                                            <select name="category_id" class="form-control @error('category_id') is-invalid @enderror">
+                                                <option value="">Select Category</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                                        {{ $category->title }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            @error('category_id')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                         <div class="col-md-4 mb-3">
                                             <label class="form-label">Images <span class="required-star">*</span></label>
                                             <input type="file" name="banners_image" id="banners_image"

@@ -17,8 +17,13 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Title <span class="text-danger">*</span></label>
-                        <input type="text" name="title" value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror" placeholder="Enter title" required>
+                        <input type="text" name="title" id="title" value="{{ old('title') }}" class="form-control @error('title') is-invalid @enderror" placeholder="Enter title" required>
                         @error('title')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Category URL <span class="text-danger">*</span></label>
+                        <input type="text" name="category_url" id="category_url" value="{{ old('category_url', old('title') ? \Illuminate\Support\Str::slug(old('title')) : '') }}" class="form-control @error('category_url') is-invalid @enderror" placeholder="category-url" required>
+                        @error('category_url')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Short Form <span class="text-danger">*</span></label>
@@ -102,11 +107,30 @@
         $('#description,#cta_img_description').on('summernote.change', function() {
             $(this).valid();
         });
+
+        let categoryUrlTouched = $('#category_url').val().length > 0;
+        function slugify(value) {
+            return value.toString().toLowerCase().trim()
+                .replace(/[^a-z0-9\s-]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-')
+                .replace(/^-|-$/g, '');
+        }
+        $('#category_url').on('input', function() {
+            categoryUrlTouched = true;
+            $(this).val(slugify($(this).val()));
+        });
+        $('#title').on('input', function() {
+            if (!categoryUrlTouched) {
+                $('#category_url').val(slugify($(this).val()));
+            }
+        });
         
         $('#categoryForm').validate({
             ignore: [],
             rules: {
                 title: { required: true, maxlength: 255 },
+                category_url: { required: true, maxlength: 255 },
                 short_form: { required: true, maxlength: 255 },
                 description: { required: true },
                 catalogue_pdf: { extension: 'pdf' },
@@ -117,6 +141,7 @@
             },
             messages: {
                 title: { required: 'Title is required.', maxlength: 'Title must be less than 255 characters.' },
+                category_url: { required: 'Category URL is required.' },
                 short_form: { required: 'Short Form is required.', maxlength: 'Short Form must be less than 255 characters.' },
                 description: { required: 'Description is required.' },
                 catalogue_pdf: { extension: 'Only PDF files are allowed.' }

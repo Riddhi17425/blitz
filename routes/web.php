@@ -86,6 +86,7 @@ use App\Http\Controllers\Web\HomeController;
         Route::get('/add/categories', [CategoryController::class, 'create'])->name('categories.create');
         Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');
         Route::get('/edit/categories/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
+        Route::patch('/categories/{id}/toggle-flag', [CategoryController::class, 'toggleFlag'])->name('categories.toggle_flag');
         Route::put('/update/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
         Route::delete('/delete/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.delete');
 
@@ -94,8 +95,10 @@ use App\Http\Controllers\Web\HomeController;
         Route::get('/add/sub-categories', [SubCategoryController::class, 'create'])->name('sub_categories.create');
         Route::post('/sub-categories/store', [SubCategoryController::class, 'store'])->name('sub_categories.store');
         Route::get('/edit/sub-categories/{id}', [SubCategoryController::class, 'edit'])->name('sub_categories.edit');
+        Route::patch('/sub-categories/{id}/toggle-flag', [SubCategoryController::class, 'toggleFlag'])->name('sub_categories.toggle_flag');
         Route::put('/update/sub-categories/{id}', [SubCategoryController::class, 'update'])->name('sub_categories.update');
         Route::delete('/delete/sub-categories/{id}', [SubCategoryController::class, 'destroy'])->name('sub_categories.delete');
+        Route::get('/sub-categories/by-category/{categoryId}', [SubCategoryController::class, 'getByCategory'])->name('sub_categories.by_category');
 
         // FAQs
         Route::get('/faqs', [FaqController::class, 'index'])->name('faqs');
@@ -115,6 +118,7 @@ use App\Http\Controllers\Web\HomeController;
         Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
         Route::get('/edit/products/{id}', [ProductController::class, 'edit'])->name('products.edit');
         Route::get('/products/{id}/datasheet/download', [ProductController::class, 'downloadDatasheet'])->name('products.datasheet.download');
+        Route::patch('/products/{id}/toggle-flag', [ProductController::class, 'toggleFlag'])->name('products.toggle_flag');
         Route::put('/update/products/{id}', [ProductController::class, 'update'])->name('products.update');
         Route::delete('/delete/products/{id}', [ProductController::class, 'destroy'])->name('products.delete');
 
