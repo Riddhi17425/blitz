@@ -20,15 +20,19 @@ use App\Http\Controllers\Web\HomeController;
  
 
     Route::get('/', [HomeController::class, 'index'])->name('front.home');
-    Route::get('/about-us' , [HomeController::class , 'About'])->name('front.about');
-    Route::get('/contact' , [HomeController::class , 'Contact'])->name('front.contact');
-    Route::get('/blogs' , [HomeController::class , 'Blogs'])->name('front.blogs');
-    route::get('/blogs/{url}' , [HomeController::class , 'BlogsDetails'])->name('front.blog.details');
+    Route::get('/about' , [HomeController::class , 'about'])->name('front.about');
+    Route::get('/contact' , [HomeController::class , 'contact'])->name('front.contact');
+    Route::get('/blogs' , [HomeController::class , 'blogs'])->name('front.blogs');
+    Route::get('/blog/{url}' , [HomeController::class , 'blogsDetails'])->name('front.blog.details');
+    Route::get('/product-list' , [HomeController::class , 'productList'])->name('front.product.list');
+    Route::get('/product-details' , [HomeController::class , 'productDetails'])->name('front.product.details');
+    Route::get('/sub-category-list' , [HomeController::class , 'subCategoryList'])->name('front.sub.category.list');
 
-    route::get('/thank-you' , [HomeController::class , 'Thankyou'])->name('thankyou');
-    
+    // remaining pages
+    Route::get('/thank-you' , [HomeController::class , 'Thankyou'])->name('thankyou');
     Route::get('/privacy-policy' , [HomeController::class , 'privacy'])->name('front.privacy.policy');
-    Route::get('/terms-condition' , [HomeController::class , 'termscondition'])->name('front.terms.condition');
+    Route::get('/terms-condition' , [HomeController::class , 'termsCondition'])->name('front.terms.condition');
+
     
     Route::middleware('guest')->group(function(){
         Route::get('/register' , [LoginController::class , 'register_page'])->name('register');

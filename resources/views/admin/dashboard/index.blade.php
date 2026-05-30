@@ -3,39 +3,61 @@
 <!-- Body: Body -->
 <div class="body d-flex py-3">
     <div class="container-xxl">
-        <div class="row g-3 mb-3">
+        <div class="row g-4">
 
-            <!-- Total Products -->
+            <!-- Theme Card: Products -->
             <div class="col-lg-6 col-12">
-                <div class="alert-success alert mb-0">
-                    <div class="d-flex align-items-center">
-                        <div class="avatar rounded no-thumbnail bg-success text-light">
-                            <i class="fa fa-cubes fa-lg"></i> <!-- cube icon for products -->
-                        </div> 
-                        <div class="flex-fill ms-3 text-truncate">
-                            <div class="h6 mb-0">Total Products</div>
-                            <span class="small">{{ $product_count }}</span>
-                        </div> 
-                    </div>
-                </div>
-            </div>
+                <div class="p-4 rounded-4 shadow-sm bg-primary bg-gradient text-white h-100">
 
-            <!-- Total Inquiries -->
-            <div class="col-lg-6 col-12">
-                <div class="alert-danger alert mb-0">
-                    <div class="d-flex align-items-center">
-                        <div class="avatar rounded no-thumbnail bg-danger text-light">
-                            <i class="fa fa-envelope-open fa-lg"></i> <!-- envelope for inquiries -->
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div>
+                            <div class="text-uppercase small fw-semibold opacity-75">
+                                Total Products
+                            </div>
+                            <div class="display-5 fw-bold">
+                                {{ $productCount }}
+                            </div>
+                            <div class="small opacity-75">
+                                Available in system
+                            </div>
                         </div>
-                        <div class="flex-fill ms-3 text-truncate">
-                            <div class="h6 mb-0">Product Inquiries</div>
-                            <span class="small">{{ $product_inquiry }}</span>
+
+                        <div class="bg-white text-primary rounded-circle d-flex align-items-center justify-content-center shadow"
+                            style="width:70px; height:70px;">
+                            <i class="fa fa-cubes fa-2x"></i>
                         </div>
                     </div>
                 </div>
             </div>
 
-        </div><!-- Row end  -->
+            <!-- Theme Card: Industries -->
+            <div class="col-lg-6 col-12">
+                <div class="p-4 rounded-4 shadow-sm bg-danger bg-gradient text-dark h-100">
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div>
+                            <div class="text-uppercase small fw-semibold opacity-75">
+                                Industries
+                            </div>
+                            <div class="display-5 fw-bold">
+                                {{ $industryCount }}
+                            </div>
+                            <div class="small opacity-75">
+                                Business categories
+                            </div>
+                        </div>
+
+                        <div class="bg-white text-danger rounded-circle d-flex align-items-center justify-content-center shadow"
+                            style="width:70px; height:70px;">
+                            <i class="fa fa-industry fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 @endsection

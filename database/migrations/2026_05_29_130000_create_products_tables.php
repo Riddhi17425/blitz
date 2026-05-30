@@ -28,6 +28,7 @@ return new class extends Migration
             $table->boolean('is_featured')->nullable()->default(0);
             $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('product_technical_specifications', function (Blueprint $table) {

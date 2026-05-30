@@ -1,0 +1,239 @@
+:root {
+    --blue: #020844;
+    --blue-head: #0F1729;
+    --red: #E91A1D;
+    --white: #ffffff;
+    --border-color: #313845;
+    --grey-666: #666666;
+    --grey-333: #333333;
+    --grey-ddd: #DDDDDD;
+    --bg-com: #F1F5F9;
+
+    --br: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: auto !important
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #FBFCFD;
+    color: var(--grey-666);
+    font-size: 18px;
+    line-height: 26px;
+}
+
+
+/* Locomotive Scrollbar Track (Peeche ka hissa) */
+.c-scrollbar {
+    width: 10px !important;
+    background: transparent !important; /* Ya fir #cfe5ff agar background chahiye */
+}
+
+/* Locomotive Scrollbar Thumb (Jo drag hota hai) */
+.c-scrollbar_thumb {
+    background-color: var(--blue) !important;
+    border-radius: 0px !important;
+    box-shadow: inset 0 0 5px grey !important;
+    opacity: 1 !important; /* Locomotive default opacity kam rakhta hai, isko 1 karne se hamesha dikhega */
+}
+
+/* Jab user scrollbar par hover kare */
+.c-scrollbar:hover .c-scrollbar_thumb {
+    opacity: 1 !important;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+    display: inline-block;
+
+}
+
+
+.com_btn {
+    padding: 14px 40px;
+    border-radius: 6px;
+    background: var(--blue);
+    color: var(--white);
+    display: inline-block;
+}
+
+
+.com_btn_b_b {
+    background: transparent;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+}
+
+.com_btn_b_b svg path {
+    stroke: var(--blue);
+}
+
+.com_btn_w {
+    background: var(--white);
+    color: var(--blue);
+    border: 1px solid var(--blue);
+}
+
+.com_btn_w svg path {
+    stroke: var(--blue);
+}
+
+.com_btn_w_b {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid var(--white);
+}
+
+
+.mb_80 {
+    margin-bottom: 80px;
+}
+
+.mt_40 {
+    margin-top: 40px;
+}
+
+.mb_40 {
+    margin-bottom: 40px;
+}
+
+.pt_40 {
+    padding-top: 40px;
+}
+
+.pb_40 {
+    padding-bottom: 40px;
+}
+
+.py_40 {
+    padding: 40px 0;
+}
+
+
+.py_80 {
+    padding: 80px 0;
+}
+
+.title_60 {
+   color: var(--blue-head);
+ font-family: "Rufina", serif;
+font-size: 60px;
+font-style: normal;
+font-weight: 700;
+line-height: 70px;
+}
+
+.title_44 {
+    color: var(--blue-head);
+    font-family: "Rufina", serif;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 54px;
+}
+
+.title_36 {
+    color: var(--white);
+    font-family: "Inter", sans-serif;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 44px;
+    text-transform: uppercase;
+}
+
+.title_32 {
+    color: var(--blue-head);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 42px;
+    text-transform: capitalize;
+}
+
+
+.title_24 {
+    color: var(--blue-head);
+    font-family: "Rufina", serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 28px;
+    margin-bottom: 0px;
+}
+
+
+.title_20 {
+    color: var(--blue);
+    font-family: "Rufina", serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+
+}
+
+.title_18 {
+    color: var(--blue);
+    font-family: "Rufina", serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 26px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.line_center,
+.line_left {
+    position: relative;
+    display: inline-block;
+}
+
+.line_center::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 1px;
+    background-color: var(--red);
+    transition: width 0.8s ease-in-out 0.3s;
+}
+
+.line_left::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 1px;
+    background-color: var(--red);
+    transition: width 0.8s ease-in-out 0.3s;
+}
+
+
+.line_center.aos-animate::after,
+.line_left.aos-animate::after {
+    width: 50px;
+}
+
+.bg_com {
+    background-color: var(--bg-com);
+}
+
+.img_rou {
+    border-radius: 12px;
+}
