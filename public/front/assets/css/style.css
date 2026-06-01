@@ -117,26 +117,6 @@
     background-attachment: fixed;
 }
 
-/* Hero Slide 1 Background */
-.hero-slide-1 {
-    background-image: url('../images/hero-banner-1.png');
-}
-
-/* Hero Slide 2 Background */
-.hero-slide-2 {
-    background-image: url('../images/hero-banner-2.png');
-}
-
-
-/* Hero Slide 2 Background */
-.hero-slide-3 {
-    background-image: url('../images/hero-banner-3.png');
-}
-
-/* Hero Slide 2 Background */
-.hero-slide-4 {
-    background-image: url('../images/hero-banner-4.png');
-}
 
 .hero-slide-1 .container,
 .hero-slide-2 .container,

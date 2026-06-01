@@ -5,7 +5,7 @@
 
     <div class="hero-slider">
 
-        <div class="hero-slide hero-slide-1">
+        <div class="hero-slide hero-slide-1" style="background-image: url('public/front/assets/images/hero-banner-1.png');">
             <div class="container">
                 <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
                     <p class="hero-title">Control the Current.<br>Protect the Circuit</p>
@@ -27,7 +27,7 @@
             </div>
         </div>
 
-        <div class="hero-slide hero-slide-2">
+        <div class="hero-slide hero-slide-2" style="background-image: url('public/front/assets/images/hero-banner-2.png');">
             <div class="container">
                 <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
                     <p class="hero-title">Control the Current. Protect the Circuit</p>
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="hero-slide hero-slide-3">
+        <div class="hero-slide hero-slide-3" style="background-image: url('public/front/assets/images/hero-banner-3.png');">
             <div class="container">
                 <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
                     <p class="hero-title">Overcurrent Doesn't Stand a Chance</p>
@@ -71,7 +71,7 @@
             </div>
         </div>
 
-        <div class="hero-slide hero-slide-4">
+        <div class="hero-slide hero-slide-4" style="background-image: url('public/front/assets/images/hero-banner-4.png');">
             <div class="container">
                 <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
                     <p class="hero-title">Stop the Surge Before It Stops You</p>
