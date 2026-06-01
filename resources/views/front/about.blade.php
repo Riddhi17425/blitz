@@ -46,7 +46,7 @@
         <div class="container">
             <div class="row justify-content-between align-items-center">
                 <div class="col-md-6 story-img-col">
-                    <img src="{{ asset('public/front/assets/images/OUR STORY.png') }}" alt="image" class="img-fluid img_rou story-zoom-img">
+                    <img src="{{ asset('public/front/assets/images/who_we_are.webp') }}" alt="image" class="img-fluid img_rou story-zoom-img">
                 </div>
 
                 <div class="col-md-6 story-text-col">
@@ -84,7 +84,7 @@
             </div>
 
               <div class="col-md-6">
-                <img src="{{ asset('public/front/assets/images/OUR STORY.png') }}" alt="image" class=" img-fluid img_rou">
+                <img src="{{ asset('public/front/assets/images/our_story.webp') }}" alt="image" class=" img-fluid img_rou">
             </div>
 
         </div>
