@@ -21,7 +21,7 @@
                                         stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg></span>
                         </a>
-                        <a href="#" class="com_btn com_btn_w_b">Request Quote</a>
+                        <a href="{{ route('front.contact') }}" class="com_btn com_btn_w_b">Request Quote</a>
                     </div>
                 </div>
             </div>
