@@ -28,7 +28,16 @@
 </head>
 
 <body>
-
+    <!-- Global Custom Cursor -->
+    <div class="custom-cursor" id="customCursor">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="4" fill="white"/>
+            <circle cx="20" cy="4" r="3" fill="white"/>
+            <circle cx="20" cy="36" r="3" fill="white"/>
+            <circle cx="4" cy="20" r="3" fill="white"/>
+            <circle cx="36" cy="20" r="3" fill="white"/>
+        </svg>
+    </div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">
