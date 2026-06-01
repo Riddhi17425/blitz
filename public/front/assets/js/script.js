@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  
+
   // 1. MUST BE ADDED BEFORE INITIALIZING SLICK
   // 'init' ensures this only runs exactly once.
   $(".hero-slider").on("init", function (event, slick) {
@@ -65,7 +65,40 @@ $(document).ready(function () {
     ],
   });
 
-  
+  //6. Our Clients Slider (Auto-Ticker)
+  //   if ($(".our_clint img").length > 5) {
+  //     $(".our_clint").slick({
+  //       slidesToShow: 5,
+  //       slidesToScroll: 1,
+  //       autoplay: true,
+  //       autoplaySpeed: 0,
+  //       speed: 3000,
+  //       cssEase: "linear",
+  //       infinite: true,
+  //       arrows: false,
+  //       dots: false,
+  //       responsive: [
+  //         {
+  //           breakpoint: 991,
+  //           settings: {
+  //             slidesToShow: 4,
+  //           },
+  //         },
+  //         {
+  //           breakpoint: 767,
+  //           settings: {
+  //             slidesToShow: 3,
+  //           },
+  //         },
+  //         {
+  //           breakpoint: 480,
+  //           settings: {
+  //             slidesToShow: 2,
+  //           },
+  //         },
+  //       ],
+  //     });
+  //   }
 
 });
 
@@ -99,24 +132,93 @@ document.addEventListener("DOMContentLoaded", function () {
   // ==========================================
   const zoomContainer = document.getElementById("zoomContainer");
 
-  zoomContainer.addEventListener("mousemove", function (e) {
-    // Container ke coordinates nikalna
-    const rect = zoomContainer.getBoundingClientRect();
+  if (zoomContainer) {
+    zoomContainer.addEventListener("mousemove", function (e) {
+      // Container ke coordinates nikalna
+      const rect = zoomContainer.getBoundingClientRect();
 
-    // Mouse ki position ka percentage nikalna
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
+      // Mouse ki position ka percentage nikalna
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
 
-    // CSS properties direct set karna for 0 delay
-    mainImg.style.transformOrigin = `${x}% ${y}%`;
-    mainImg.style.transform = "scale(2.5)"; // Zoom in
-  });
+      // CSS properties direct set karna for 0 delay
+      if (mainImg) {
+        mainImg.style.transformOrigin = `${x}% ${y}%`;
+        mainImg.style.transform = "scale(2.5)"; // Zoom in
+      }
+    });
 
-  zoomContainer.addEventListener("mouseleave", function () {
-    // Mouse bahar jate hi normal kar dena
-    mainImg.style.transformOrigin = "center center";
-    mainImg.style.transform = "scale(1)"; // Zoom out
-  });
+    zoomContainer.addEventListener("mouseleave", function () {
+      // Mouse bahar jate hi normal kar dena
+      if (mainImg) {
+        mainImg.style.transformOrigin = "center center";
+        mainImg.style.transform = "scale(1)"; // Zoom out
+      }
+    });
+  }
+
+  // ==========================================
+  // 3. MAP ANIMATION SCROLL OBSERVER
+  // ==========================================
+  const mapContainer = document.getElementById("globalMapContainer");
+  if (mapContainer) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Jab map viewport mein aayega tabhi animation class lagegi
+          mapContainer.classList.add("start-animation");
+        }
+      });
+    }, { threshold: 0.3 }); // Jab 30% map dikhe tab trigger hoga
+    observer.observe(mapContainer);
+  }
+
+  // ==========================================
+  // 4. STICKY SCROLL ZOOM & SLIDE EFFECT
+  // ==========================================
+  const storySection = document.getElementById("storyScrollSection");
+  if (storySection) {
+    const storyImg = storySection.querySelector(".story-zoom-img");
+    const storyText = storySection.querySelector(".story-text-content");
+
+    window.addEventListener("scroll", () => {
+      const rect = storySection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      let progress = 0;
+      
+      if (rect.top > 0) {
+        progress = 0;
+      } 
+      else if (rect.bottom < windowHeight) {
+        progress = 1;
+      } 
+      else {
+        // total scrollable distance is section height - window height
+        const scrollDistance = rect.height - windowHeight;
+        progress = Math.abs(rect.top) / scrollDistance;
+      }
+      
+      // Image scale: from 2.2 to 1
+      // Image translateX: from 50% (moves to center) to 0
+      const scaleVal = 1 + (1 - progress) * 1.2; 
+      const translateXVal = (1 - progress) * 50; 
+      
+      storyImg.style.transform = `translateX(${translateXVal}%) scale(${scaleVal})`;
+      
+      // Text animation: starts appearing after 30% scroll
+      let textProgress = (progress - 0.3) / 0.7; 
+      if (textProgress < 0) textProgress = 0;
+      if (textProgress > 1) textProgress = 1;
+      
+      storyText.style.opacity = textProgress;
+      storyText.style.transform = `translateX(${(1 - textProgress) * 100}px)`;
+    });
+    
+    // Trigger scroll once on load to set initial state
+    window.dispatchEvent(new Event('scroll'));
+  }
+
 });
 
 
