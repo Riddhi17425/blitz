@@ -383,6 +383,25 @@
 .slide-item {
     margin: 0 10px;
     position: relative;
+    overflow: hidden;
+    border-radius: var(--br);
+    cursor: pointer;
+}
+
+/* Gradient Overlay so text is readable, darkens on hover */
+.slide-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%);
+    opacity: 0.6;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    border-radius: var(--br);
+}
+
+.slide-item:hover::after {
+    opacity: 1;
 }
 
 .indu_slider .title_36 {
@@ -390,10 +409,26 @@
     bottom: 40px;
     left: 32px;
     z-index: 2;
+    pointer-events: none;
+    /* so text doesn't block hover */
+    color: #fff;
+    transition: transform 0.4s ease, color 0.4s ease;
 }
 
 .indu_slider img {
     border-radius: var(--br);
+    width: 100%;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Hover effects */
+.slide-item:hover img {
+    transform: scale(1.1);
+}
+
+.slide-item:hover .title_36 {
+    transform: translateY(-10px);
 }
 
 /* Custom Arrows ke liye CSS */
@@ -412,13 +447,32 @@
     height: 64.8px;
     justify-content: center;
     align-items: center;
-    align-items: center;
     border-radius: 180px;
     border: 1.8px solid rgba(10, 15, 28, 0.20);
     background: var(--white);
     box-shadow: 0 1.8px 3.6px 0 rgba(0, 0, 0, 0.05);
-    backdrop-filter: blur(3.6000001430511475px);
+    backdrop-filter: blur(3.6px);
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Arrow Hover Effect */
+.custom-prev:hover,
+.custom-next:hover,
+.custom-prev2:hover,
+.custom-next2:hover {
+    background: var(--blue);
+    /* Theme Red */
+    border-color: var(--blue);
+    transform: translateY(-3px);
+}
+
+.custom-prev:hover path,
+.custom-next:hover path,
+.custom-prev2:hover path,
+.custom-next2:hover path {
+    stroke: #ffffff !important;
+    transition: stroke 0.3s ease;
 }
 
 /* ========================================= */
@@ -534,6 +588,120 @@
     place-content: center;
     height: 100%;
 }
+
+/* ========================================= */
+/* STICKY SCROLL ANIMATION (Our Story) */
+/* ========================================= */
+.sticky-scroll-section {
+    height: 200vh; /* Gives room to scroll while sticky */
+    position: relative;
+    background: #fff; /* Ensure it covers properly */
+}
+
+.sticky-wrapper {
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.story-img-col {
+    position: relative;
+    z-index: 2;
+}
+
+.story-zoom-img {
+    transform-origin: center center;
+    will-change: transform;
+    border-radius: 20px;
+    /* CSS Transition ensures butter-smooth updates even without JS Lerp */
+    transition: transform 0.1s linear; 
+}
+
+.story-text-col {
+    position: relative;
+    z-index: 1;
+}
+
+.story-text-content {
+    opacity: 0;
+    transform: translateX(100px);
+    will-change: opacity, transform;
+    /* CSS Transition for smooth text slide/fade */
+    transition: opacity 0.1s linear, transform 0.1s linear; 
+}
+
+/* ========================================= */
+/* MAP PINS ANIMATION (Sequential Drop In + Float) */
+/* ========================================= */
+.map-pin {
+    opacity: 0;
+    transform-box: fill-box;
+    transform-origin: bottom center;
+}
+
+.start-animation .map-pin {
+    /* 1st animation: dropIn, 2nd animation: infinite float */
+    animation: dropInPin 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, floatPin 3s ease-in-out infinite alternate;
+}
+
+/* Delays line-by-line (0.4s intervals) */
+.map-pin:nth-of-type(1) {
+    animation-delay: 0.2s, 1.0s;
+}
+
+.map-pin:nth-of-type(2) {
+    animation-delay: 0.6s, 1.4s;
+}
+
+.map-pin:nth-of-type(3) {
+    animation-delay: 1.0s, 1.8s;
+}
+
+.map-pin:nth-of-type(4) {
+    animation-delay: 1.4s, 2.2s;
+}
+
+.map-pin:nth-of-type(5) {
+    animation-delay: 1.8s, 2.6s;
+}
+
+.map-pin:nth-of-type(6) {
+    animation-delay: 2.2s, 3.0s;
+}
+
+.map-pin:nth-of-type(7) {
+    animation-delay: 2.6s, 3.4s;
+}
+
+.map-pin:nth-of-type(8) {
+    animation-delay: 3.0s, 3.8s;
+}
+
+@keyframes dropInPin {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(-30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes floatPin {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-8px);
+    }
+}
+
 
 .tec_res_left .title_44 {
     margin-bottom: 20px;
@@ -1660,3 +1828,30 @@ tbody tr:nth-child(even) {
     width: 48px;
     height: 48px;
 }
+
+/* --------------- Our Clients Auto Slider =================== */
+.our_clint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+}
+
+/* .our_clint img
+{
+   height: 100px;
+   object-fit:contain;
+} */
+
+
+/* .our_clint.slick-initialized {
+    display: block;
+}
+
+.our_clint .slick-slide {
+    margin: 0 15px;
+    display: flex;
+    justify-content: center;
+} */

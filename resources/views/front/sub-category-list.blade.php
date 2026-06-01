@@ -88,7 +88,6 @@
     </div>
 </section>
 
-
 <section  class="tec_res product_cta">
     <div class="container h-100">
         <div class="tec_res_left">
@@ -184,7 +183,7 @@
                 </div>
 
                 <div class="slide-item">
-                    <img class="img-fluid" src="{{ asset('public/front/assets/images/Residential Infrastructure.webp') }}"
+                    <img class="img-fluid" src="{{ asset('public/front/assets/images/Commercial  Buildings.webp') }}"
                         alt="Residential Infrastructure">
                     <div class="title_36">RESIDENTIAL INFRASTRUCTURE</div>
                 </div>
