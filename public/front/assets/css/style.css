@@ -1716,21 +1716,21 @@ tbody tr:nth-child(even) {
 /* INDIVIDUAL CARD THEMES */
 
 .innovation-card {
-    background-image: url(../images/01.webp);
+    background-image: url(../images/globally_certified.webp);
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .reliability-card {
-    background-image: url(../images/02.webp);
+    background-image: url(../images/always_ready.webp);
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .certification-card {
-    background-image: url(../images/03.webp);
+    background-image: url(../images/built_beyond_standards.webp);
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
