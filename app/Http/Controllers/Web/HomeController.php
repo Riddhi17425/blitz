@@ -4,18 +4,15 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
-use App\Models\Contact;
-use App\Models\Country;
-use App\Models\ProductMaster;
-use App\Models\Blog;
-use App\Models\RequestQuate;
+use App\Models\{Category, SubCategory, Banner, BLog};
 
 class HomeController extends Controller 
 { 
     public function index()   
     {
-       return view('front.home');
+        $banners = Banner::whereNull('deleted_at')->where('status', 'Active')->get();
+        $categories = Category::whereNull('deleted_at')->where('is_active', 1)->get();
+        return view('front.home', compact('banners', 'categories'));
     }
 
     public function Thankyou()

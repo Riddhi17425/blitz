@@ -103,15 +103,8 @@
             <div class="col-10">
                 <p class="title_20 line_center" data-aos="fade-up" data-aos-duration="800">ABOUT BLITZ ELECTRICAL</p>
                 <h1 class="title_44 mb_40">Trusted Provider of Electrical Protection & Safety Devices</h1>
-                <p class="home_about_para">Blitz Electrical is committed to advancing electrical safety through
-                    precision-engineered protection
-                    solutions. As a reliable provider of Surge Protection Devices (SPDs), Miniature Circuit Breakers
-                    (MCBs), and fuse technologies, we support safer homes, resilient industries, and dependable
-                    infrastructure.</p>
-                <p class="home_about_para">At Built on innovation, certified quality, and technical expertise, our
-                    solutions are designed to
-                    deliver long-term performance, operational reliability, and confidence in every electrical
-                    installation.</p>
+                <p class="home_about_para">Blitz is a globally trusted brand dedicated to advancing surge protection technologies for modern electrical and industrial systems. Specialising in the design and manufacturing of high-performance AC and DC Surge Protection Devices (SPDs), Miniature Circuit Breakers (MCBs), fuse terminals, and fuse links, every product is engineered to operate flawlessly in the world's most demanding environments.</p>
+                <p class="home_about_para">Built in compliance with global standards such as IEC, our solutions ensure operational continuity, equipment longevity, and the highest level of safety, reflecting excellence in reliability, durability, and innovation.</p>
 
                 <a href="#" class="com_btn mt_40">
                     Learn More About Us <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
@@ -131,8 +124,7 @@
     <div class="container">
         <p class="title_20 line_left" data-aos="fade-up" data-aos-duration="800">Product Range</p>
         <h1 class="title_44">One Brand. Every Protection Need Covered </h1>
-        <p class="mb-0">Residential or industrial, Blitz protection devices are designed to perform in
-            demanding electrical environments. </p>
+        <p class="mb-0">Residential or industrial, Blitz protection devices are designed to perform in demanding electrical environments. </p>
 
         <div class="row pt_40">
             <div class="col-md-3">
@@ -211,8 +203,7 @@
     <div class="container">
         <p class="title_20 line_left" data-aos="fade-up" data-aos-duration="800">Featured Products</p>
         <h1 class="title_44">Designed to Perform. Built to Last</h1>
-        <p class="mb-0">Blitz products are IEC-compliant, rigorously tested, and trusted across the global solar and
-            electrical industries.</p>
+        <p class="mb-0">Blitz products are IEC-compliant, rigorously tested, and trusted across the global solar and electrical industries.</p>
 
         <div class="row pt_40">
             <div class="col-md-3">
@@ -372,42 +363,48 @@
         <div class="text-center">
             <p class="title_20 line_center" data-aos="fade-up" data-aos-duration="800">Why Choose Us</p>
             <h1 class="title_44">Why Blitz Electrical?</h1>
-            <p class="mb-0">From Ahmedabad to the UAE, from Kenya to Bangladesh, Blitz surge protection <br /> devices
-                are earning trust one installation at a time.</p>
+            <p class="mb-0">From Ahmedabad to the UAE, from Kenya to Bangladesh, Blitz surge protection devices are earning trust one installation at a time.</p>
         </div>
 
         <div class="row g-4 pt_40">
             <div class="col-md-3">
                 <div class="counter">
-                    <h2 class="title_44">≤ 25ns</h2>
-                    <h4 class="title_24">Units Delivered</h4>
-                    <p class="mb-0">Across global markets</p>
-                </div>
-            </div>
-
-            <div class="col-md-3">
-                <div class="counter">
                     <h2 class="title_44">8+</h2>
                     <h4 class="title_24">Countries</h4>
-                    <p class="mb-0">Countries where Blitz is active</p>
+                    <p class="mb-0">where Blitz is active</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="counter">
+                    <h2 class="title_44">≤ 25ns</h2>
+                    <h4 class="title_24">Surge</h4>
+                    <p class="mb-0">response time</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="counter">
+                    <h2 class="title_44">IEC</h2>
+                    <h4 class="title_24">Globally</h4>
+                    <p class="mb-0">certified</p>
                 </div>
             </div>
 
             <div class="col-md-3">
                 <div class="counter">
                     <h2 class="title_44">2+</h2>
-                    <h4 class="title_24">Years Experience</h4>
-                    <p class="mb-0">Industry expertise</p>
+                    <h4 class="title_24">Years</h4>
+                    <p class="mb-0">of proven excellence</p>
                 </div>
             </div>
 
-            <div class="col-md-3">
+            {{-- <div class="col-md-3">
                 <div class="counter">
                     <h2 class="title_44">99.9%</h2>
                     <h4 class="title_24">Reliability Rate</h4>
                     <p class="mb-0">Zero-defect commitment</p>
                 </div>
-            </div>
+            </div> --}}
+            
         </div>
 
         <div class="row g-4 pt_40">
@@ -420,10 +417,9 @@
                             stroke="#020844" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
 
-                    <h4 class="title_18">Quality Assured</h4>
-                    <h2 class="title_24">ISO 9001:2015 Certified</h2>
-                    <p class="mb-0">International quality management systems ensuring consistent product excellence at
-                        every stage of manufacturing.</p>
+                    <h4 class="title_18">Premium Build Quality</h4>
+                    <h2 class="title_24">Made to Endure</h2>
+                    <p class="mb-0">Blitz products use high-grade materials for durability, heat resistance, and long-term operational reliability</p>
                 </div>
             </div>
 
@@ -440,10 +436,9 @@
                     </svg>
 
 
-                    <h4 class="title_18">Globally Certified</h4>
-                    <h2 class="title_24">IEC / IS Compliant</h2>
-                    <p class="mb-0">Every product is rigorously tested and certified to international electrotechnical
-                        standards for global use.</p>
+                    <h4 class="title_18">IEC Compliant</h4>
+                    <h2 class="title_24">Globally Certified</h2>
+                    <p class="mb-0">Blitz electrical protection products meet international standards for reliable deployment across global industrial markets</p>
                 </div>
             </div>
 
@@ -465,10 +460,9 @@
                     </svg>
 
 
-                    <h4 class="title_18">In-House Production</h4>
-                    <h2 class="title_24">Advanced Manufacturing</h2>
-                    <p class="mb-0">State-of-the-art automated production lines with zero-tolerance quality control and
-                        precision engineering.</p>
+                    <h4 class="title_18">Reliable Fault Indication </h4>
+                    <h2 class="title_24">Always Stay Informed</h2>
+                    <p class="mb-0">A built-in Green/Red status window lets installers and operators monitor the health of every surge protection device</p>
                 </div>
             </div>
 
@@ -482,10 +476,9 @@
                     </svg>
 
 
-                    <h4 class="title_18">Always Available</h4>
-                    <h2 class="title_24">Dedicated Technical Support</h2>
-                    <p class="mb-0">Expert engineering team available for product selection, application guidance and
-                        after-sales assistance.</p>
+                    <h4 class="title_18">Dedicated Support </h4>
+                    <h2 class="title_24">Service Beyond Sales</h2>
+                    <p class="mb-0">Blitz provides expert product guidance and dependable after-sales support to keep projects running smoothly</p>
                 </div>
             </div>
 
@@ -510,10 +503,9 @@
                     </svg>
 
 
-                    <h4 class="title_18">On-Time Guaranteed</h4>
-                    <h2 class="title_24">Pan-India Fast Delivery</h2>
-                    <p class="mb-0">Robust logistics network ensuring on-time delivery to all major industrial hubs
-                        across India and exports.</p>
+                    <h4 class="title_18">Made in India </h4>
+                    <h2 class="title_24">Proudly Crafted Here</h2>
+                    <p class="mb-0">Designed and manufactured in India, Blitz products carry the precision of local engineering expertise </p>
                 </div>
             </div>
 
@@ -529,10 +521,9 @@
                     </svg>
 
 
-                    <h4 class="title_18">Since 2009</h4>
-                    <h2 class="title_24">Proven Track Record</h2>
-                    <p class="mb-0">15+ years protecting critical infrastructure across solar, industrial, commercial
-                        and residential sectors.</p>
+                    <h4 class="title_18">Fast Response Time </h4>
+                    <h2 class="title_24">Performance Assured</h2>
+                    <p class="mb-0">Blitz SPD devices intercept voltage spikes within ≤25ns, protecting equipment from damaging transient surges</p>
                 </div>
             </div>
         </div>
@@ -548,9 +539,8 @@
 
             <div>
                 <p class="title_20 line_left" data-aos="fade-up" data-aos-duration="800">Industries We Serve</p>
-                <h1 class="title_44">Powering Critical Infrastructure</h1>
-                <p class="mb-0">From solar farms to residential towers, Blitz products safeguard the infrastructure that
-                    drives progress.</p>
+                <h1 class="title_44">Protecting Tomorrow's Powerful Infrastructure</h1>
+                <p class="mb-0">Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised. </p>
             </div>
 
             <div class="custom-arrows">
@@ -589,7 +579,7 @@
                 </div>
 
                 <div class="slide-item">
-                    <img class="img-fluid" src="{{ asset('public/front/assets/images/Residential  Infrastructure.webp') }}"
+                    <img class="img-fluid" src="{{ asset('public/front/assets/images/Residential Infrastructure.webp') }}"
                         alt="Residential Infrastructure">
                     <div class="title_36">RESIDENTIAL INFRASTRUCTURE</div>
                 </div>
@@ -713,7 +703,7 @@
         <div class="row">
             <div class="col-md">
                 <div class="counter2_left">
-                    <img class="img_rou img-fluid" src="assets/images/Manufacturing Excellence.webp"
+                    <img class="img_rou img-fluid" src="{{ asset('public/front/assets/images/Manufacturing Excellence.webp') }}"
                         alt="Manufacturing Excellence">
                     <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_1_134622)">
@@ -749,31 +739,29 @@
 
             <div class="col-md-6">
                 <p class="title_20 line_left" data-aos="fade-up" data-aos-duration="800">Manufacturing Excellence</p>
-                <h1 class="title_44">Precision Engineering at Scale</h1>
-                <p class="mb-0">Our advanced manufacturing facility combines automated production lines with meticulous
-                    quality
-                    control processes to deliver products that meet the highest international standards.</p>
+                <h1 class="title_44">Precision-Powered Innovation</h1>
+                <p class="mb-0">Every Blitz device is designed, assembled, and quality-checked, where skilled engineering and strict manufacturing standards ensure each product is ready for the most demanding environments. </p>
 
                 <div class="pt_40">
                     <div class="counter2_right">
                         <div class="counter2">
                             <h4 class="title_44">50,000+</h4>
-                            <p>sq.ft. Facility</p>
+                            <p>sq. ft. facility</p>
                         </div>
 
                         <div class="counter2">
-                            <h4 class="title_44">50,000+</h4>
-                            <p>sq.ft. Facility</p>
+                            <h4 class="title_44">100%</h4>
+                            <p>Automated QC</p>
                         </div>
 
                         <div class="counter2">
-                            <h4 class="title_44">50,000+</h4>
-                            <p>sq.ft. Facility</p>
+                            <h4 class="title_44">24/7</h4>
+                            <p>Production</p>
                         </div>
 
                         <div class="counter2">
-                            <h4 class="title_44">50,000+</h4>
-                            <p>sq.ft. Facility</p>
+                            <h4 class="title_44">Zero</h4>
+                            <p>Defect Policy</p>
                         </div>
                     </div>
                 </div>
@@ -786,10 +774,8 @@
     <div class="container h-100">
         <div class="tec_res_left">
             <p class="title_20 line_left" data-aos="fade-up" data-aos-duration="800">Technical resources</p>
-            <h2 class="title_44">Download Our Complete
-                Product Catalogue</h2>
-            <p class="mb-0">Access detailed technical specifications, dimensional drawings, and selection
-                guides for our complete product range.</p>
+            <h2 class="title_44">Discover The Complete Blitz Range</h2>
+            <p class="mb-0">Download our complete product catalogue covering surge protection devices, miniature circuit breakers, fuse terminals, and solar accessories - everything you are looking for </p>
 
             <div class="pt_40">
                 <a href="#" class="com_btn">
