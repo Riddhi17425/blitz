@@ -120,83 +120,92 @@
     </div>
 </section>
 
-<section  class="Product_rang py_40">
-    <div class="container">
-        <p class="title_20 line_left" data-aos="fade-up" data-aos-duration="800">Product Range</p>
-        <h1 class="title_44">One Brand. Every Protection Need Covered </h1>
-        <p class="mb-0">Residential or industrial, Blitz protection devices are designed to perform in demanding electrical environments. </p>
+<section  class="Product_rang py_40 sticky-product-section" id="productScrollSection">
+    <div class="sticky-product-wrapper">
+        <div class="container">
+            <p class="title_20 line_left">Product Range</p>
+            <h1 class="title_44">One Brand. Every Protection Need Covered </h1>
+            <p class="mb-0">Residential or industrial, Blitz protection devices are designed to perform in demanding electrical environments. </p>
 
-        <div class="row pt_40">
-            <div class="col-md-3">
-                <div class="mcb-card">
-                    <img src="{{ asset('public/front/assets/images/Background+Border.webp') }}" alt="Miniature Circuit Breaker" class="img-fluid">
+            <div class="row pt_40">
+                <div class="col-md-3 product-scroll-card">
+                    <div class="mcb-card">
+                        <img src="{{ asset('public/front/assets/images/Background+Border.webp') }}" alt="Miniature Circuit Breaker" class="img-fluid">
 
-                    <div class="mcb-overlay">
-                        <h3 class="title_36">MINIATURE<br>CIRCUIT BREAKER</h3>
-                        <a href="#" class="com_btn">
-                            Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="11" viewBox="0 0 24 11" fill="none">
-                                    <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
-                                        stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg></span>
-                        </a>
+                        <div class="mcb-overlay">
+                            <h3 class="title_36">MINIATURE<br>CIRCUIT BREAKER</h3>
+                            <a href="#" class="com_btn com_btn_w_b">
+                                Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="11" viewBox="0 0 24 11" fill="none">
+                                        <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
+                                            stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-3">
-                <div class="mcb-card">
-                    <img src="{{ asset('public/front/assets/images/Background+Border-1.webp') }}" alt="Miniature Circuit Breaker" class="img-fluid">
+                <div class="col-md-3 product-scroll-card">
+                    <div class="mcb-card">
+                        <img src="{{ asset('public/front/assets/images/Background+Border-1.webp') }}" alt="Miniature Circuit Breaker" class="img-fluid">
 
-                    <div class="mcb-overlay">
-                        <h3 class="title_36">MINIATURE<br>CIRCUIT BREAKER</h3>
-                        <a href="#" class="com_btn">
-                            Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="11" viewBox="0 0 24 11" fill="none">
-                                    <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
-                                        stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg></span>
-                        </a>
+                        <div class="mcb-overlay">
+                            <h3 class="title_36">MINIATURE<br>CIRCUIT BREAKER</h3>
+                            <a href="#" class="com_btn com_btn_w_b">
+                                Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="11" viewBox="0 0 24 11" fill="none">
+                                        <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
+                                            stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-3">
-                <div class="mcb-card">
-                    <img src="{{ asset('public/front/assets/images/Background+Border-2.webp') }}" alt="Miniature Circuit Breaker" class="img-fluid">
+                <div class="col-md-3 product-scroll-card">
+                    <div class="mcb-card">
+                        <img src="{{ asset('public/front/assets/images/Background+Border-2.webp') }}" alt="Miniature Circuit Breaker" class="img-fluid">
 
-                    <div class="mcb-overlay">
-                        <h3 class="title_36">MINIATURE<br>CIRCUIT BREAKER</h3>
-                        <a href="#" class="com_btn">
-                            Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="11" viewBox="0 0 24 11" fill="none">
-                                    <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
-                                        stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg></span>
-                        </a>
+                        <div class="mcb-overlay">
+                            <h3 class="title_36">MINIATURE<br>CIRCUIT BREAKER</h3>
+                            <a href="#" class="com_btn com_btn_w_b">
+                                Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="11" viewBox="0 0 24 11" fill="none">
+                                        <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
+                                            stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-3">
-                <div class="mcb-card">
-                    <img src="{{ asset('public/front/assets/images/Background+Border-3.webp') }}" alt="Miniature Circuit Breaker" class="img-fluid">
+                <div class="col-md-3 product-scroll-card">
+                    <div class="mcb-card">
+                        <img src="{{ asset('public/front/assets/images/Background+Border-3.webp') }}" alt="Miniature Circuit Breaker" class="img-fluid">
 
-                    <div class="mcb-overlay">
-                        <h3 class="title_36">MINIATURE<br>CIRCUIT BREAKER</h3>
-                        <a href="#" class="com_btn">Explore MCBs &rarr;</a>
+                        <div class="mcb-overlay">
+                            <h3 class="title_36">MINIATURE<br>CIRCUIT BREAKER</h3>
+                            <a href="#" class="com_btn com_btn_w_b">
+                                Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="11" viewBox="0 0 24 11" fill="none">
+                                        <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
+                                            stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg></span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </section>
 
 <section  class="fea_Pro py_40">
@@ -232,6 +241,39 @@
                             </div>
                         </div>
                     </div>
+
+                       <div class="product-buttons">
+                            <a href="#" class="com_btn com_btn_b_b">
+                                <span><svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none">
+                                        <path
+                                            d="M15 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V7L15 2Z"
+                                            stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M14 2V6C14 6.53043 14.2107 7.03914 14.5858 7.41421C14.9609 7.78929 15.4696 8 16 8H20"
+                                            stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M10 9H8" stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M16 13H8" stroke="#020844" stroke-width="1.33333"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M16 17H8" stroke="#020844" stroke-width="1.33333"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg></span> <span class="ms-2">Datasheet</span>
+                            </a>
+
+                            <a href="#" class="com_btn">
+                                Enquire <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="11" viewBox="0 0 24 11" fill="none">
+                                        <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
+                                            stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg></span>
+                            </a>
+                        </div>
+
                 </div>
             </div>
 
@@ -259,6 +301,38 @@
                                 <span class="spec-label">Poles</span>
                                 <span class="spec-value">2P</span>
                             </div>
+                        </div>
+
+                           <div class="product-buttons">
+                            <a href="#" class="com_btn com_btn_b_b">
+                                <span><svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none">
+                                        <path
+                                            d="M15 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V7L15 2Z"
+                                            stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M14 2V6C14 6.53043 14.2107 7.03914 14.5858 7.41421C14.9609 7.78929 15.4696 8 16 8H20"
+                                            stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M10 9H8" stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M16 13H8" stroke="#020844" stroke-width="1.33333"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M16 17H8" stroke="#020844" stroke-width="1.33333"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg></span> <span class="ms-2">Datasheet</span>
+                            </a>
+
+                            <a href="#" class="com_btn">
+                                Enquire <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="11" viewBox="0 0 24 11" fill="none">
+                                        <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
+                                            stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg></span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -288,6 +362,38 @@
                                 <span class="spec-label">Poles</span>
                                 <span class="spec-value">2P</span>
                             </div>
+                        </div>
+
+                           <div class="product-buttons">
+                            <a href="#" class="com_btn com_btn_b_b">
+                                <span><svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                        fill="none">
+                                        <path
+                                            d="M15 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V7L15 2Z"
+                                            stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M14 2V6C14 6.53043 14.2107 7.03914 14.5858 7.41421C14.9609 7.78929 15.4696 8 16 8H20"
+                                            stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M10 9H8" stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M16 13H8" stroke="#020844" stroke-width="1.33333"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M16 17H8" stroke="#020844" stroke-width="1.33333"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg></span> <span class="ms-2">Datasheet</span>
+                            </a>
+
+                            <a href="#" class="com_btn">
+                                Enquire <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="11" viewBox="0 0 24 11" fill="none">
+                                        <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
+                                            stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg></span>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -320,8 +426,8 @@
                         </div>
 
                         <div class="product-buttons">
-                            <a href="#" class="com_btn">
-                                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            <a href="#" class="com_btn com_btn_b_b">
+                                <span><svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none">
                                         <path
                                             d="M15 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V7L15 2Z"
@@ -337,11 +443,11 @@
                                             stroke-linecap="round" stroke-linejoin="round" />
                                         <path d="M16 17H8" stroke="#020844" stroke-width="1.33333"
                                             stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg></span> Datasheet
+                                    </svg></span> <span class="ms-2">Datasheet</span>
                             </a>
 
                             <a href="#" class="com_btn">
-                                View Product <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                Enquire <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                         height="11" viewBox="0 0 24 11" fill="none">
                                         <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
                                             stroke-linecap="round" stroke-linejoin="round" />
@@ -778,7 +884,7 @@
             <p class="mb-0">Download our complete product catalogue covering surge protection devices, miniature circuit breakers, fuse terminals, and solar accessories - everything you are looking for </p>
 
             <div class="pt_40">
-                <a href="#" class="com_btn">
+                <a href="#" class="com_btn com_btn_w">
                     <span class="me-2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -792,7 +898,7 @@
                     </span> Download Catalogue
                 </a>
 
-                <a href="#" class="com_btn ms-3">
+                <a href="#" class="com_btn com_btn_w_b ms-3">
                     <span class="me-2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path

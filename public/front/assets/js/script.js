@@ -184,39 +184,149 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("scroll", () => {
       const rect = storySection.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      
+
       let progress = 0;
-      
+
       if (rect.top > 0) {
         progress = 0;
-      } 
+      }
       else if (rect.bottom < windowHeight) {
         progress = 1;
-      } 
+      }
       else {
         // total scrollable distance is section height - window height
         const scrollDistance = rect.height - windowHeight;
         progress = Math.abs(rect.top) / scrollDistance;
       }
-      
+
       // Image scale: from 2.2 to 1
       // Image translateX: from 50% (moves to center) to 0
-      const scaleVal = 1 + (1 - progress) * 1.2; 
-      const translateXVal = (1 - progress) * 50; 
-      
+      const scaleVal = 1 + (1 - progress) * 1.2;
+      const translateXVal = (1 - progress) * 50;
+
       storyImg.style.transform = `translateX(${translateXVal}%) scale(${scaleVal})`;
-      
+
       // Text animation: starts appearing after 30% scroll
-      let textProgress = (progress - 0.3) / 0.7; 
+      let textProgress = (progress - 0.3) / 0.7;
       if (textProgress < 0) textProgress = 0;
       if (textProgress > 1) textProgress = 1;
-      
+
       storyText.style.opacity = textProgress;
       storyText.style.transform = `translateX(${(1 - textProgress) * 100}px)`;
     });
-    
-    // Trigger scroll once on load to set initial state
+
     window.dispatchEvent(new Event('scroll'));
+  }
+
+  // ==========================================
+  // 5. CUSTOM ROTATING CURSOR (Follow Mouse)
+  // ==========================================
+  const cursor = document.getElementById("customCursor");
+  if (cursor) {
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let cursorX = mouseX;
+    let cursorY = mouseY;
+    
+    // Track mouse position
+    document.addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    // Smooth animation loop using Lerp
+    function animateCursor() {
+      // Lerp logic for buttery smooth follow
+      cursorX += (mouseX - cursorX) * 0.2;
+      cursorY += (mouseY - cursorY) * 0.2;
+      
+      // Hardware-accelerated transform with centering
+      cursor.style.transform = `translate3d(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%), 0)`;
+      
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Add hover effect on all clickable elements
+    const hoverElements = document.querySelectorAll("a, button, .com_btn, input, textarea, select");
+    hoverElements.forEach((el) => {
+      el.addEventListener("mouseenter", () => cursor.classList.add("hover"));
+      el.addEventListener("mouseleave", () => cursor.classList.remove("hover"));
+    });
+  }
+
+  // ==========================================
+  // 6. PRODUCT CARDS STICKY SCROLL ANIMATION
+  // ==========================================
+  const prodSection = document.getElementById("productScrollSection");
+  if (prodSection) {
+    const cards = prodSection.querySelectorAll(".product-scroll-card");
+    let currentProdProgress = 0;
+    let targetProdProgress = 0;
+
+    window.addEventListener("scroll", () => {
+      const rect = prodSection.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Start the animation as soon as the section enters the viewport from the bottom
+      if (rect.top > windowHeight) {
+        targetProdProgress = 0;
+      } else if (rect.bottom < windowHeight) {
+        targetProdProgress = 1;
+      } else {
+        // The total scroll distance is the height of the section
+        const scrollDist = rect.height;
+        // How much we have scrolled into the section
+        const scrolled = windowHeight - rect.top;
+        targetProdProgress = scrolled / scrollDist;
+      }
+    });
+
+    function animateProdCards() {
+      currentProdProgress += (targetProdProgress - currentProdProgress) * 0.1; // Smooth interpolation
+
+      cards.forEach((card, index) => {
+        // Divide the 0-1 progress among the 4 cards
+        const segment = 1 / cards.length;
+        const start = index * segment;
+        const end = start + segment;
+        
+        let cardProgress = (currentProdProgress - start) / (end - start);
+        if (cardProgress < 0) cardProgress = 0;
+        if (cardProgress > 1) cardProgress = 1;
+        
+        const yOffset = (1 - cardProgress) * 200; // Slide up from 200px
+        card.style.transform = `translateY(${yOffset}px)`;
+        card.style.opacity = cardProgress;
+      });
+
+      requestAnimationFrame(animateProdCards);
+    }
+    animateProdCards();
+  }
+
+  // ==========================================
+  // 7. SMART HEADER (Hide on scroll down, show on scroll up)
+  // ==========================================
+  const header = document.querySelector(".navbar");
+  if (header) {
+    let lastScrollY = window.scrollY;
+    
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 150) {
+        if (window.scrollY > lastScrollY) {
+          // Scrolling down
+          header.classList.add("navbar-hidden");
+        } else {
+          // Scrolling up
+          header.classList.remove("navbar-hidden");
+        }
+      } else {
+        // At top, always show
+        header.classList.remove("navbar-hidden");
+      }
+      lastScrollY = window.scrollY;
+    });
   }
 
 });

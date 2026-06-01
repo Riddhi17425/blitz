@@ -63,7 +63,35 @@ a {
     border-radius: 6px;
     background: var(--blue);
     color: var(--white);
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 1px solid var(--blue);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.com_btn svg, .com_btn span {
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.com_btn svg path {
+    transition: stroke 0.4s ease;
+}
+
+.com_btn:hover {
+    background: transparent;
+    color: var(--blue);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(2, 8, 68, 0.15);
+}
+
+.com_btn:hover svg path {
+    stroke: var(--blue);
+}
+
+.com_btn:hover svg, .com_btn:hover span.ms-2 {
+    transform: translateX(6px);
 }
 
 
@@ -71,26 +99,76 @@ a {
     background: transparent;
     color: var(--blue);
     border: 1px solid var(--blue);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.com_btn_b_b::before {
+    display: none; /* Disable dome fill for variant */
+}
+
+.com_btn_b_b:hover {
+    background: var(--blue);
+    color: var(--white);
 }
 
 .com_btn_b_b svg path {
-    stroke: var(--blue);
+    transition: stroke 0.4s ease;
+}
+.com_btn_b_b:hover svg path {
+    stroke: var(--white);
 }
 
-.com_btn_w {
-    background: var(--white);
-    color: var(--blue);
-    border: 1px solid var(--blue);
-}
 
-.com_btn_w svg path {
-    stroke: var(--blue);
-}
-
+/* Border white, Text white -> Hover: Bg white, Text blue */
 .com_btn_w_b {
     background: transparent;
     color: var(--white);
     border: 1px solid var(--white);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.com_btn_w_b::before {
+    display: none; /* Disable dome fill for variant */
+}
+
+.com_btn_w_b:hover {
+    background: var(--white);
+    color: var(--blue);
+}
+
+.com_btn_w_b svg path {
+    stroke: var(--white);
+    transition: stroke 0.4s ease;
+}
+.com_btn_w_b:hover svg path {
+    stroke: var(--blue);
+}
+
+
+/* Background white, Text blue -> Hover: Bg transparent, Border white, Text white (or blue as requested, usually white for contrast) */
+.com_btn_w {
+    background: var(--white);
+    color: var(--blue);
+    border: 1px solid var(--white);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.com_btn_w::before {
+    display: none; /* Disable dome fill for variant */
+}
+
+.com_btn_w:hover {
+    background: transparent;
+    color: var(--white); /* Adjusted to white for visibility on dark backgrounds, matching common sense for inverse buttons */
+    border-color: var(--white);
+}
+
+.com_btn_w svg path {
+    stroke: var(--blue);
+    transition: stroke 0.4s ease;
+}
+.com_btn_w:hover svg path {
+    stroke: var(--white);
 }
 
 
