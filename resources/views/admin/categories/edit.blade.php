@@ -105,6 +105,39 @@
                         @error('cta_img_description')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                 </div>
+                <h5 class="fw-bold my-4 pb-2 border-bottom text-primary">Sub Category Settings</h5>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label">Sub Category Heading</label>
+                        <input type="text" name="sub_category_heading" value="{{ old('sub_category_heading', $category->sub_category_heading) }}" class="form-control @error('sub_category_heading') is-invalid @enderror" placeholder="Sub Category Heading">
+                        @error('sub_category_heading')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label class="form-label">Sub Category Description</label>
+                        <textarea name="sub_category_description" class="form-control summernote @error('sub_category_description') is-invalid @enderror" rows="4">{{ old('sub_category_description', $category->sub_category_description) }}</textarea>
+                        @error('sub_category_description')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center my-4 pb-2 border-bottom">
+                    <h5 class="fw-bold mb-0 text-primary">FAQs</h5>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-12 mb-3">
+                        <label class="form-label">FAQ Title</label>
+                        <input type="text" name="faq_title" value="{{ old('faq_title', $category->faq_title) }}" class="form-control @error('faq_title') is-invalid @enderror" placeholder="FAQ title">
+                        @error('faq_title')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label class="form-label">FAQ Description</label>
+                        <textarea id="faq_description" name="faq_description" class="form-control summernote @error('faq_description') is-invalid @enderror" rows="4">{{ old('faq_description', $category->faq_description) }}</textarea>
+                        @error('faq_description')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                    <div class="col-md-12 mb-3 text-end">
+                        <button type="button" class="btn btn-sm btn-primary" id="add-faq"><i class="fa fa-plus"></i> Add FAQ</button>
+                    </div>
+                </div>
+                <div id="faqs-container" class="mb-4"></div>
                 <button type="submit" class="btn btn-primary">Update Category</button>
             </form>
         </div></div>
@@ -120,7 +153,7 @@
             return $.trim(value).length > 0;
         }, 'This field is required.');
 
-        $('#description,#cta_img_description').summernote({
+        $('#description,#cta_img_description,#faq_description').summernote({
             placeholder: 'Enter description here...',
             height: 200,
             toolbar: [
@@ -135,7 +168,7 @@
             ]
         });
 
-        $('#description,#cta_img_description').on('summernote.change summernote.blur', function() {
+        $('#description,#cta_img_description,#faq_description').on('summernote.change summernote.blur', function() {
             $(this).valid();
         });
 
@@ -191,6 +224,56 @@
                 }
             }
         });
+    });
+    // FAQs handling for edit
+    let faqIndex = 0;
+    function addFaq(question = '', answer = '') {
+        const id = 'faq_answer_' + faqIndex;
+        const html = `
+            <div class="card mb-3 p-2" data-index="${faqIndex}">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h6 class="fw-bold mb-0">FAQ #${faqIndex + 1}</h6>
+                    <button type="button" class="btn btn-sm btn-outline-danger remove-faq">Remove</button>
+                </div>
+                <div class="mb-2">
+                    <label class="form-label">Question</label>
+                    <input type="text" name="faqs_question[${faqIndex}]" value="${question}" class="form-control">
+                </div>
+                <div>
+                    <label class="form-label">Answer</label>
+                    <textarea id="${id}" name="faqs_answer[${faqIndex}]" class="form-control summernote">${answer}</textarea>
+                </div>
+            </div>
+        `;
+        $('#faqs-container').append(html);
+        // initialize summernote
+        $('#' + id).summernote({ height: 150, toolbar: [['style', ['bold','italic','underline']], ['para', ['ul','ol','paragraph']], ['insert', ['link','picture']], ['view', ['codeview']]] });
+        faqIndex++;
+    }
+
+    $(document).on('click', '#add-faq', function() { addFaq(); });
+    $(document).on('click', '.remove-faq', function() { $(this).closest('.card').remove(); });
+
+    $(function() {
+        // initialize from existing category faqs or old input
+        @php
+            $oldQ = old('faqs_question', []);
+            $oldA = old('faqs_answer', []);
+        @endphp
+        @if(!empty($oldQ))
+            @foreach($oldQ as $i => $q)
+                addFaq({!! json_encode($q) !!}, {!! json_encode($oldA[$i] ?? '') !!});
+            @endforeach
+        @else
+            @php $existingFaqs = $category->faqs ?? []; @endphp
+            @if(!empty($existingFaqs))
+                @foreach($existingFaqs as $f)
+                    addFaq({!! json_encode($f['question'] ?? '') !!}, {!! json_encode($f['answer'] ?? '') !!});
+                @endforeach
+            @else
+                addFaq();
+            @endif
+        @endif
     });
 </script>
 @endsection

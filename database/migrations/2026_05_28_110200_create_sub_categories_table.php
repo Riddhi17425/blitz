@@ -25,6 +25,9 @@ return new class extends Migration
             $table->json('cta_icon')->nullable();
             $table->json('cta_title')->nullable();
             $table->json('cta_description')->nullable();
+            $table->json('faqs')->nullable();
+            $table->string('faq_title')->nullable();
+            $table->text('faq_description')->nullable();
             $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();

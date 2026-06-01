@@ -15,6 +15,7 @@ class SubCategory extends Model
         'cta_icon' => 'array',
         'cta_title' => 'array',
         'cta_description' => 'array',
+        'faqs' => 'array',
         'is_active' => 'boolean',
     ];
 

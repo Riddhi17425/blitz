@@ -37,10 +37,14 @@
                 <h5 class="fw-bold my-4 pb-2 border-bottom text-primary">Certifications</h5>
                 <div class="row">
                     <div class="col-md-12 mb-3">
-                        <input type="file" name="certifications[]" class="form-control @error('certifications.*') is-invalid @enderror" multiple accept="image/*">
-                        <small class="text-muted">You can upload multiple certification images. Existing certifications will be preserved unless removed.</small>
-                        @error('certifications.*')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        <small class="text-muted">Add multiple certifications with name and image. Use Add more to append rows.</small>
                     </div>
+                </div>
+                <div id="certifications-container" class="mb-3">
+                    <!-- dynamic rows appended here -->
+                </div>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-sm btn-primary" id="add-cert">Add Certification</button>
                 </div>
                 @if(!empty($settings->certifications))
                 <div class="row mb-3">
@@ -48,16 +52,17 @@
                         <div class="card p-3 mb-3">
                             <h6 class="fw-bold">Existing Certifications</h6>
                             <div class="row">
-                                @foreach($settings->certifications as $certification)
+                                @foreach($settings->certifications as $cert)
+                                    @php
+                                        $name = is_array($cert) ? ($cert['name'] ?? '') : '';
+                                        $file = is_array($cert) ? ($cert['file'] ?? $cert) : $cert;
+                                    @endphp
                                     <div class="col-md-4 mb-2">
                                         <div class="border rounded p-2 h-100">
-                                            {{-- @if(pathinfo($certification, PATHINFO_EXTENSION) === 'pdf')
-                                                <a href="{{ asset('public/images/settings_certifications/' . $certification) }}" target="_blank">{{ $certification }}</a>
-                                            @else --}}
-                                                <img src="{{ asset('public/images/settings_certifications/' . $certification) }}" class="img-fluid mb-2" alt="Certification">
-                                            {{-- @endif --}}
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="remove_certification[]" value="{{ $certification }}" id="remove_certification_{{ $loop->index }}">
+                                            <img src="{{ asset('public/images/settings_certifications/' . $file) }}" class="img-fluid mb-2" alt="Certification">
+                                            <div><strong>{{ $name }}</strong></div>
+                                            <div class="form-check mt-2">
+                                                <input class="form-check-input" type="checkbox" name="remove_certification[]" value="{{ $file }}" id="remove_certification_{{ $loop->index }}">
                                                 <label class="form-check-label" for="remove_certification_{{ $loop->index }}">Remove</label>
                                             </div>
                                         </div>
@@ -132,6 +137,52 @@
                 $(element).removeClass('is-invalid');
             }
         });
+    });
+    // Certifications dynamic rows
+    let certIndex = 0;
+    function addCertificationRow(name = '') {
+        const html = `
+            <div class="card mb-2 p-2" data-index="${certIndex}">
+                <div class="row g-2 align-items-end">
+                    <div class="col-md-5">
+                        <label class="form-label">Certification Name</label>
+                        <input type="text" name="certifications_name[${certIndex}]" value="${name}" class="form-control">
+                    </div>
+                    <div class="col-md-5">
+                        <label class="form-label">Certification Image</label>
+                        <input type="file" name="certifications_file[${certIndex}]" class="form-control" accept="image/*">
+                    </div>
+                    <div class="col-md-2 text-end">
+                        <button type="button" class="btn btn-danger btn-sm remove-cert">Remove</button>
+                    </div>
+                </div>
+            </div>
+        `;
+        $('#certifications-container').append(html);
+        certIndex++;
+    }
+
+    $(document).on('click', '#add-cert', function() {
+        addCertificationRow('');
+    });
+
+    $(document).on('click', '.remove-cert', function() {
+        $(this).closest('.card').remove();
+    });
+
+    // initialize one empty row
+    $(function() {
+        // Restore old inputs if present
+        @php
+            $oldNames = old('certifications_name', []);
+        @endphp
+        @if(!empty($oldNames))
+            @foreach($oldNames as $n)
+                addCertificationRow({!! json_encode($n) !!});
+            @endforeach
+        @else
+            addCertificationRow();
+        @endif
     });
 </script>
 @endsection

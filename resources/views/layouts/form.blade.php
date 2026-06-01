@@ -20,7 +20,7 @@
                      </div>
                      <div class="contact-text">
                          <span class="contact-title">Phone</span>
-                         <span class="contact-detail">+91 98765 43210</span>
+                         <span class="contact-detail"><a href="tel:+919876543210">+91 98765 43210</a></span>
                      </div>
                  </div>
 
@@ -39,7 +39,7 @@
                      </div>
                      <div class="contact-text">
                          <span class="contact-title">Email</span>
-                         <span class="contact-detail">sales@blitzelectrical.com</span>
+                         <span class="contact-detail"><a href="mailto:sales@blitzelectrical.com">sales@blitzelectrical.com</a></span>
                      </div>
                  </div>
 
@@ -66,57 +66,78 @@
 
          <!-- Right Form Section -->
          <div class="quote-form-wrapper">
-             <form class="quote-form" onsubmit="event.preventDefault();">
+             <form class="quote-form" id="contact-form" action="/contact/submit" method="POST">
+                 @csrf
 
                  <div class="form-row">
                      <div class="form-group">
-                         <label>Full Name</label>
-                         <input type="text" placeholder="John Doe">
+                        <label>Full Name <span class="text-danger">*</span></label>
+                        <input type="text" name="name" placeholder="John Doe" value="{{ old('name') }}">
+                        @error('name')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                      </div>
                      <div class="form-group">
                          <label>Company</label>
-                         <input type="text" placeholder="Company name">
+                        <input type="text" name="company" placeholder="Company name" value="{{ old('company') }}">
+                        @error('company')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                      </div>
                  </div>
 
                  <div class="form-row">
                      <div class="form-group">
-                         <label>Email</label>
-                         <input type="email" placeholder="john@company.com">
+                         <label>Email <span class="text-danger">*</span></label>
+                        <input type="email" name="email" placeholder="john@company.com" value="{{ old('email') }}">
+                        @error('email')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                      </div>
                      <div class="form-group">
-                         <label>Phone</label>
-                         <input type="tel" placeholder="+91 98765 43210">
+                         <label>Phone <span class="text-danger">*</span></label>
+                        <input type="tel" name="phone" placeholder="+91 98765 43210" value="{{ old('phone') }}">
+                        @error('phone')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                      </div>
                  </div>
 
                  <div class="form-row">
                      <div class="form-group">
-                         <label>Country</label>
-                         <select>
-                             <option value="" disabled selected>Select Country</option>
-                             <option value="in">India</option>
-                             <option value="us">United States</option>
-                             <option value="uk">United Kingdom</option>
-                         </select>
+                         <label>Country <span class="text-danger">*</span></label>
+                        <select name="country">
+                            <option value="" disabled {{ old('country') ? '' : 'selected' }}>Select Country</option>
+                            @foreach($countries as $country)
+                                <option value="{{ $country->name }}" {{ old('country') === $country->name ? 'selected' : '' }}>{{ $country->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('country')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                          <i class="fa-solid fa-chevron-down select-icon"></i>
                      </div>
                      <div class="form-group">
                          <label>Product</label>
-                         <select>
-                             <option value="" disabled selected>Select Product</option>
-                             <option value="p1">Surge Protection</option>
-                             <option value="p2">Circuit Breakers</option>
-                             <option value="p3">Solar Accessories</option>
-                         </select>
+                        <select name="product">
+                            <option value="" disabled {{ old('product') ? '' : 'selected' }}>Select Product</option>
+                            @foreach($products as $product)
+                                <option value="{{ $product->product_name }}" {{ old('product') === $product->product_name ? 'selected' : '' }}>{{ $product->product_name }}</option>
+                            @endforeach
+                        </select>
+                        @error('product')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
                          <i class="fa-solid fa-chevron-down select-icon"></i>
                      </div>
                  </div>
 
                  <div class="form-group">
                      <label>Requirement Details</label>
-                     <textarea
-                         placeholder="Describe your project requirements, product types, quantities, and any specifications..."></textarea>
+                    <textarea name="requirement_details" placeholder="Describe your project requirements, product types, quantities, and any specifications...">{{ old('requirement_details') }}</textarea>
+                    @error('requirement_details')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                  </div>
 
                  <button type="submit" class="com_btn">
