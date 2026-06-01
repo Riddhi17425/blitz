@@ -44,6 +44,12 @@ class CategoryController extends Controller
             'cta_img_mobile' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
             'cta_img_title' => 'nullable|string|max:255',
             'cta_img_description' => 'nullable|string',
+            'faq_title' => 'nullable|string|max:255',
+            'faq_description' => 'nullable|string',
+            'faqs_question.*' => 'nullable|string',
+            'faqs_answer.*' => 'nullable|string',
+            'sub_category_heading' => 'nullable|string|max:255',
+            'sub_category_description' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
@@ -88,6 +94,15 @@ class CategoryController extends Controller
                 'cta_img_mobile' => $ctaMobile,
                 'cta_img_title' => $request->cta_img_title,
                 'cta_img_description' => $request->cta_img_description,
+                'sub_category_heading' => $request->sub_category_heading,
+                'sub_category_description' => $request->sub_category_description,
+                'faq_title' => $request->faq_title,
+                'faq_description' => $request->faq_description,
+                'faqs' => array_values(array_filter(array_map(function($q, $a) {
+                    $q = trim($q ?? ''); $a = trim($a ?? '');
+                    if ($q === '' && $a === '') return null;
+                    return ['question' => $q, 'answer' => $a];
+                }, $request->input('faqs_question', []), $request->input('faqs_answer', [])))) ,
                 'is_active' => 1,
             ]);
 
@@ -123,6 +138,12 @@ class CategoryController extends Controller
             'cta_img_mobile' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'cta_img_title' => 'nullable|string|max:255',
             'cta_img_description' => 'nullable|string',
+            'faq_title' => 'nullable|string|max:255',
+            'faq_description' => 'nullable|string',
+            'faqs_question.*' => 'nullable|string',
+            'faqs_answer.*' => 'nullable|string',
+            'sub_category_heading' => 'nullable|string|max:255',
+            'sub_category_description' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
@@ -182,6 +203,15 @@ class CategoryController extends Controller
                 'cta_img_mobile' => $ctaMobile,
                 'cta_img_title' => $request->cta_img_title,
                 'cta_img_description' => $request->cta_img_description,
+                'sub_category_heading' => $request->sub_category_heading,
+                'sub_category_description' => $request->sub_category_description,
+                'faq_title' => $request->faq_title,
+                'faq_description' => $request->faq_description,
+                'faqs' => array_values(array_filter(array_map(function($q, $a) {
+                    $q = trim($q ?? ''); $a = trim($a ?? '');
+                    if ($q === '' && $a === '') return null;
+                    return ['question' => $q, 'answer' => $a];
+                }, $request->input('faqs_question', []), $request->input('faqs_answer', [])))) ,
             ]);
 
             return redirect()->route('categories')->with('success', 'Category updated successfully.');

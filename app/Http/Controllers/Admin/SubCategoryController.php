@@ -47,9 +47,13 @@ class SubCategoryController extends Controller
             'cta_img' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
             'cta_img_title' => 'nullable|string|max:255',
             'cta_img_description' => 'nullable|string',
+            'faq_title' => 'nullable|string|max:255',
+            'faq_description' => 'nullable|string',
             'cta_icon.*' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
             'cta_title.*' => 'nullable|string|max:255',
             'cta_description.*' => 'nullable|string',
+            'faqs_question.*' => 'nullable|string',
+            'faqs_answer.*' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
@@ -96,6 +100,16 @@ class SubCategoryController extends Controller
                 $ctaIcons[] = $iconName;
             }
 
+                $faqs = [];
+                $faqQs = $request->input('faqs_question', []);
+                $faqAs = $request->input('faqs_answer', []);
+                foreach ($faqQs as $i => $q) {
+                    $question = trim($q ?? '');
+                    $answer = trim($faqAs[$i] ?? '');
+                    if ($question === '' && $answer === '') continue;
+                    $faqs[] = ['question' => $question, 'answer' => $answer];
+                }
+
             SubCategory::create([
                 'category_id' => $request->category_id,
                 'title' => $request->title,
@@ -109,9 +123,12 @@ class SubCategoryController extends Controller
                 'cta_img' => $ctaImage,
                 'cta_img_title' => $request->cta_img_title,
                 'cta_img_description' => $request->cta_img_description,
+                'faq_title' => $request->faq_title,
+                'faq_description' => $request->faq_description,
                 'cta_icon' => $ctaIcons,
                 'cta_title' => $ctaTitles,
                 'cta_description' => $ctaDescriptions,
+                'faqs' => $faqs,
                 'is_active' => 1,
             ]);
 
@@ -149,9 +166,13 @@ class SubCategoryController extends Controller
             'cta_img' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
             'cta_img_title' => 'nullable|string|max:255',
             'cta_img_description' => 'nullable|string',
+            'faq_title' => 'nullable|string|max:255',
+            'faq_description' => 'nullable|string',
             'cta_icon.*' => 'nullable|file|image|mimes:jpg,jpeg,png,webp|max:2048',
             'cta_title.*' => 'nullable|string|max:255',
             'cta_description.*' => 'nullable|string',
+            'faqs_question.*' => 'nullable|string',
+            'faqs_answer.*' => 'nullable|string',
         ]);
 
         if ($validator->fails()) {
@@ -214,6 +235,16 @@ class SubCategoryController extends Controller
                 }
             }
 
+            $faqs = [];
+            $faqQs = $request->input('faqs_question', []);
+            $faqAs = $request->input('faqs_answer', []);
+            foreach ($faqQs as $i => $q) {
+                $question = trim($q ?? '');
+                $answer = trim($faqAs[$i] ?? '');
+                if ($question === '' && $answer === '') continue;
+                $faqs[] = ['question' => $question, 'answer' => $answer];
+            }
+
             // Cleanup old icons that are no longer used
             $oldIcons = $subCategory->cta_icon ?? [];
             $deletedIcons = array_diff($oldIcons, $ctaIcons);
@@ -236,9 +267,12 @@ class SubCategoryController extends Controller
                 'cta_img' => $ctaImage,
                 'cta_img_title' => $request->cta_img_title,
                 'cta_img_description' => $request->cta_img_description,
+                'faq_title' => $request->faq_title,
+                'faq_description' => $request->faq_description,
                 'cta_icon' => $ctaIcons,
                 'cta_title' => $ctaTitles,
                 'cta_description' => $ctaDescriptions,
+                'faqs' => $faqs,
             ]);
 
             return redirect()->route('sub_categories')->with('success', 'Sub Category updated successfully.');

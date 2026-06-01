@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Models\{Category};
+use App\Models\{Category, Country, Product};
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,5 +30,20 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('categoriesHF', $categoriesHF);
             }
         );
+
+        View::composer('layouts.form', function ($view) {
+            $countries = collect();
+            $products = collect();
+
+            if (Schema::hasTable('countries')) {
+                $countries = Country::orderBy('name')->get();
+            }
+
+            if (Schema::hasTable('products')) {
+                $products = Product::whereNull('deleted_at')->orderBy('product_name')->get();
+            }
+
+            $view->with('countries', $countries)->with('products', $products);
+        });
     }
 }

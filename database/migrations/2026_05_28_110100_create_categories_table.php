@@ -21,6 +21,11 @@ return new class extends Migration
             $table->string('cta_img_mobile')->nullable();
             $table->string('cta_img_title')->nullable();
             $table->text('cta_img_description')->nullable();
+            $table->json('faqs')->nullable();
+            $table->string('faq_title')->nullable();
+            $table->text('faq_description')->nullable();
+            $table->string('sub_category_heading')->nullable();
+            $table->text('sub_category_description')->nullable();
             $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();

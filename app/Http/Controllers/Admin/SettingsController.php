@@ -23,7 +23,9 @@ class SettingsController extends Controller
             'phone' => 'nullable|string|max:50',
             'email' => 'nullable|email|max:255',
             'head_office_address' => 'nullable|string',
-            'certifications.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'certifications.*' => 'nullable',
+            'certifications_name.*' => 'nullable|string|max:255',
+            'certifications_file.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
             'client_images.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'remove_certification' => 'array',
             'remove_certification.*' => 'nullable|string',
@@ -41,17 +43,39 @@ class SettingsController extends Controller
                 $settings = new Setting();
             }
 
-            $existingCertifications = $settings->certifications ?? [];
+                $existingCertifications = $settings->certifications ?? [];
+                // Normalize existing certifications to array of objects ['name'=>..., 'file'=>...]
+                $normalizedCertifications = [];
+                foreach ($existingCertifications as $cert) {
+                    if (is_array($cert) && isset($cert['file'])) {
+                        $normalizedCertifications[] = $cert;
+                    } elseif (is_string($cert)) {
+                        $normalizedCertifications[] = ['name' => '', 'file' => $cert];
+                    }
+                }
             $existingClientImages = $settings->client_images ?? [];
             $removeCertifications = (array) $request->input('remove_certification', []);
             $removeClientImages = (array) $request->input('remove_client_image', []);
 
-            $certifications = array_values(array_diff($existingCertifications, $removeCertifications));
+            // removeCertifications contains file names to remove
+            $certifications = [];
+            foreach ($normalizedCertifications as $cert) {
+                if (!in_array($cert['file'], $removeCertifications)) {
+                    $certifications[] = $cert;
+                }
+            }
             $clientImages = array_values(array_diff($existingClientImages, $removeClientImages));
 
-            foreach ($request->file('certifications', []) as $file) {
+            // Handle new certification uploads along with names
+            $certNames = (array) $request->input('certifications_name', []);
+            $certFiles = $request->file('certifications_file', []);
+            foreach ($certFiles as $index => $file) {
                 if ($file && $file->isValid()) {
-                    $certifications[] = storeImageWithTimeId($file, 'images/settings_certifications');
+                    $filename = storeImageWithTimeId($file, 'images/settings_certifications');
+                    $certifications[] = [
+                        'name' => $certNames[$index] ?? '',
+                        'file' => $filename,
+                    ];
                 }
             }
 

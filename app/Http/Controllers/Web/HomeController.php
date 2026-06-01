@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\{Category, SubCategory, Banner, BLog};
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Http;
+use App\Models\{Category, SubCategory, Banner, BLog, NewsletterInquiry, ContactInquiry, Product, Country};
 
 class HomeController extends Controller 
 { 
@@ -77,29 +79,92 @@ class HomeController extends Controller
         $metatitle=""; 
         $metadescription="";
 
-        return view('front.contact',compact('metatitle', 'metadescription'));
+        $countries = Country::orderBy('name')->get();
+        $products = Product::whereNull('deleted_at')->orderBy('product_name')->get();
+
+        return view('front.contact', compact('metatitle', 'metadescription', 'countries', 'products'));
     }
 
-    public function contactstore(Request $request)
-    { 
-       
-        $post = new Contact;
-        $post->name = $request->get('name');
-        $post->email = $request->get('email');
-        $post->number = $request->get('contact');
-        $post->company_name = $request->get('company');
-        $post->subject = $request->get('subject');
-        $post->interested_in = $request->get('interest');
-        $post->activity = $request->get('activity');
-        $post->country = $request->get('country');
-        $post->message = $request->get('message') ?? '';
+    public function subscribeNewsletter(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|max:255',
+        ]);
 
-        $post->save();
- 
-       return redirect()->route('thankyou')->with('success', 'Your message has been sent successfully.!');    
+        if ($validator->fails()) {
+            return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
+        }
+
+        $email = $request->input('email');
+
+        $inquiry = NewsletterInquiry::firstOrCreate(['email' => $email]);
+
+        // Send to Google Sheets if webhook provided
+        $webhook = env('GOOGLE_SHEETS_WEBHOOK_URL');
+        if ($webhook) {
+            try {
+                Http::post($webhook, [
+                    'type' => 'newsletter',
+                    'email' => $email,
+                    'created_at' => now()->toDateTimeString()
+                ]);
+            } catch (\Exception $e) {
+                // ignore
+            }
+        }
+
+        return response()->json(['success' => true, 'message' => 'Subscribed successfully.']);
     }
 
-    
+    public function submitContactInquiry(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|string|max:50',
+            'company' => 'nullable|string|max:255',
+            'country' => 'required|string|max:255',
+            'product' => 'nullable|string|max:255',
+            'requirement_details' => 'nullable|string',
+        ]);
+
+        if ($validator->fails()) {
+            // if ($request->ajax()) {
+            //     return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
+            // }
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $inquiry = ContactInquiry::create([
+            'name' => $request->input('name'),
+            'company' => $request->input('company'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'country' => $request->input('country'),
+            'product' => $request->input('product'),
+            'requirement_details' => $request->input('requirement_details'),
+        ]);
+
+        // Send to Google Sheets if webhook provided
+        $webhook = env('GOOGLE_SHEETS_WEBHOOK_URL');
+        if ($webhook) {
+            try {
+                Http::post($webhook, [
+                    'type' => 'contact',
+                    'payload' => $inquiry->toArray(),
+                ]);
+            } catch (\Exception $e) {
+                // ignore failures
+            }
+        }
+
+        if ($request->ajax()) {
+            return response()->json(['success' => true, 'message' => 'Your inquiry has been submitted.']);
+        }
+
+        return redirect()->route('thankyou')->with('success', 'Your message has been sent successfully.');
+    }
+
     public function privacy()
     {
         $metatitle="";
@@ -115,89 +180,4 @@ class HomeController extends Controller
         
         return view('front.terms-condition', compact('metatitle','metadescription'));
     }
-    
-    // public function showCaptcha(Request $request)
-    // {
-    //     $width = 150;
-    //     $height = 60;
-
-    //     // Generate random captcha text
-    //     $characters = '0123456789'; // Only numbers like in your image
-    //     $captcha_text = '';
-    //     for ($i = 0; $i < 4; $i++) { // 4 digits like your example
-    //         $captcha_text .= $characters[rand(0, strlen($characters) - 1)];
-    //     }
- 
-    //     // Store captcha in session
-    //     session(['captcha_code' => $captcha_text]);
- 
-    //     // Create ImageManager with GD driver
-    //     $manager = ImageManager::gd();
-    //     $img = $manager->create($width, $height)->fill('#f8f8f8'); // Light gray background
-
-    //     // Add colorful background dots
-    //     $colors = ['#f0dcdbff', '#ceebf5ff', '#daf1daff', '#c5c1adff', '#e7c5e7ff', '#b8b59bff', '#cab6afff'];
-        
-    //     for ($i = 0; $i < 80; $i++) {
-    //         $color = $colors[array_rand($colors)];
-    //         $x = rand(0, $width);
-    //         $y = rand(0, $height);
-            
-    //         // Create small circles instead of single pixels
-    //         $img->drawCircle($x, $y, function ($circle) use ($color) {
-    //             $circle->radius(rand(1, 3));
-    //             $circle->background($color);
-    //         });
-    //     }
-        
-    //     // Add some subtle gray dots for texture
-    //     for ($i = 0; $i < 30; $i++) {
-    //         $img->drawPixel(rand(0, $width), rand(0, $height), '#e0e0e0');
-    //     }
-
-    //     // Add some very light noise lines
-    //     for ($i = 0; $i < 3; $i++) {
-    //         $img->drawLine(function($line) use ($width, $height) {
-    //             $line->from(rand(0, $width), rand(0, $height))
-    //                 ->to(rand(0, $width), rand(0, $height))
-    //                 ->color('#eeeeee');
-    //         });
-    //     }
-
-    //     // Add each digit with spacing like in your image
-    //     $start_x = 20;
-    //     $spacing = 35;
-        
-    //     for ($i = 0; $i < strlen($captcha_text); $i++) {
-    //         $char = $captcha_text[$i];
-    //         $x = $start_x + ($i * $spacing); 
-            
-    //         // Add slight random offset for each character
-    //         $offset_x = rand(-3, 3);
-    //         $offset_y = rand(-2, 2);
-            
-    //         $img->text($char, $x + $offset_x, 35 + $offset_y, function ($font) {
-    //             $font->filename(public_path('front/font/Roboto-Black.ttf'));
-    //             $font->size(28);
-    //             $font->color('#666666'); // Dark gray text
-    //             $font->align('center');
-    //             $font->valign('center');
-    //         });
-    //     }
-    //     return $img->toPng();
-    // }
-
-    // public function verifyCaptcha(Request $request)
-    // {
-    //     $userInput = $request->input('custom_captcha'); // value from input
-    //     $captchaCode = session('captcha_code'); // value stored in session
-
-    //     if ($userInput === $captchaCode) {
-    //         return response()->json(['success' => true]);
-    //     } else {
-    //         return response()->json(['success' => false, 'message' => 'Captcha incorrect']);
-    //     }
-    // }
-    
-
 }

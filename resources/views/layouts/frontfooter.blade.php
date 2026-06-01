@@ -132,10 +132,11 @@
                    <p class="title_24 line_left" >Subscribe to our newsletter
                    </p>
                    <p>Be the first to receive exciting news, insider tips, and special promotions.</p>
-                   <form class="subscribe-box" onsubmit="event.preventDefault();">
-                       <input type="email" placeholder="Enter your email" required>
+                   <form class="subscribe-box" id="newsletter-form">
+                       <input type="email" name="email" id="newsletter-email" placeholder="Enter your email">
                        <button type="submit">Subscribe</button>
                    </form>
+                   <div id="newsletter-message" style="display:none;margin-top:8px;"></div>
                </div>
 
            </div>
@@ -453,8 +454,11 @@
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
    <!-- <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script> -->
    <script src="{{  asset('public/front/assets/js/script.js') }}"></script>
+   <script src="{{ asset('public/front/assets/js/newsletter.js') }}"></script>
+   <script src="{{ asset('public/front/assets/js/contact.js') }}"></script>
    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
    <script>
        Fancybox.bind("[data-fancybox]", {

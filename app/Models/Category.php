@@ -13,6 +13,7 @@ class Category extends Model
 
     protected $casts = [
         'is_active' => 'boolean',
+        'faqs' => 'array',
     ];
 
     public function subCategories()

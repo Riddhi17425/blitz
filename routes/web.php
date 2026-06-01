@@ -22,6 +22,8 @@ use App\Http\Controllers\Web\HomeController;
     Route::get('/', [HomeController::class, 'index'])->name('front.home');
     Route::get('/about' , [HomeController::class , 'about'])->name('front.about');
     Route::get('/contact' , [HomeController::class , 'contact'])->name('front.contact');
+    Route::post('/newsletter/subscribe', [HomeController::class, 'subscribeNewsletter'])->name('newsletter.subscribe');
+    Route::post('/contact/submit', [HomeController::class, 'submitContactInquiry'])->name('contact.submit');
     Route::get('/blogs' , [HomeController::class , 'blogs'])->name('front.blogs');
     Route::get('/blog/{url}' , [HomeController::class , 'blogsDetails'])->name('front.blog.details');
     Route::get('/product-list' , [HomeController::class , 'productList'])->name('front.product.list');
