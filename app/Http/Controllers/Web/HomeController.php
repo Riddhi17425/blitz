@@ -64,11 +64,12 @@ class HomeController extends Controller
         return view('front.product-details',compact('metatitle','metadescription'));
     }
 
-    public function subCategoryList(){
-        $metatitle="";
-        $metadescription="";
+    public function categoryDetails($slug){
+        $category = Category::where('slug', $slug)->first();
+        $metatitle = $category->meta_title ?? '';
+        $metadescription = $category->meta_description ?? '';
 
-        return view('front.sub-category-list',compact('metatitle','metadescription'));
+        return view('front.category-details',compact('metatitle','metadescription','category'));
     }
 
     public function contact()

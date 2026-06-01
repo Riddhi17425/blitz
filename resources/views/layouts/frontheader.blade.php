@@ -32,7 +32,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ route("front.home") }}">
                 <img src="{{ asset('public/front/assets/images/logo.svg') }}" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -40,10 +40,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('front.about') }}">About</a>
+                    </li>
+
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#">
-                            Products
+                            Category
                             <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"
                                 class="dropdown-icon">
                                 <path d="M0.5 0.5L5.5 5.5L10.5 0.5" stroke="currentColor" stroke-width="1.5"
@@ -53,19 +56,22 @@
 
                         <!-- Premium Dropdown Menu -->
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Software Solutions</a></li>
-                            <li><a class="dropdown-item" href="#">Hardware Devices</a></li>
-                            <li><a class="dropdown-item" href="#">Cloud Services</a></li>
-                            <li><a class="dropdown-item" href="#">Accessories</a></li>
+                            @if(isset($categoriesHF) && count($categoriesHF) > 0)
+                                @foreach($categoriesHF as $category)
+                                    <li><a href="{{ route('front.category.details', $category->category_url) }}">{{ $category->title }}</a></li>
+                                @endforeach
+                            @else
+                                <li><a href="#">No categories available</a></li>
+                            @endif
                         </ul>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#">Catalogue</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    {{-- <li class="nav-item"><a class="nav-link" href="#">Catalogue</a></li> --}}
+                    {{-- <li class="nav-item"><a class="nav-link" href="{{ route("front.blogs") }}">Blog</a></li> --}}
+                    <li class="nav-item"><a class="nav-link" href="{{ route("front.contact") }}">Contact</a></li>
                 </ul>
                 <div class="d-flex gap-4">
                     <a href="#" class="com_btn com_btn_b_b">Download Catalogue</a>
-                    <a href="#" class="com_btn ">Request Quote</a>
+                    <a href="{{ route('front.contact') }}" class="com_btn ">Request Quote</a>
                 </div>
             </div>
         </div>
