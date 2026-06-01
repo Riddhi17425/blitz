@@ -1568,15 +1568,15 @@ tbody tr:nth-child(even) {
 /* INDIVIDUAL CARD THEMES */
 
 .innovation-card {
-     background-image: url(../images/01.webp);
-     background-position: right;
+    background-image: url(../images/01.webp);
+    background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .reliability-card {
-     background-image: url(../images/02.webp);
-     background-position: right;
+    background-image: url(../images/02.webp);
+    background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -1599,14 +1599,12 @@ tbody tr:nth-child(even) {
     box-sizing: border-box;
 }
 
-.advantage-content *
-{
+.advantage-content * {
     color: var(--white);
 }
 
-.advantage-content .title_44
-{
- margin-bottom: 24px;
+.advantage-content .title_44 {
+    margin-bottom: 24px;
 }
 
 .advantage-text {
@@ -1621,3 +1619,64 @@ tbody tr:nth-child(even) {
     font-weight: 700;
 }
 
+
+
+/* ------------- certi -------------- */
+
+.certificate_box {
+    padding: 34px;
+    border-radius: var(--br);
+    border: 1px solid var(--grey-ddd);
+    border-radius: var(--br);
+    text-align: center;
+    background-color: var(--white);
+}
+
+.certificate_box img {
+    margin-bottom: 20px;
+}
+
+/* ---- Certificate Fancybox Lightbox ---- */
+.cert_img_link {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: var(--br);
+    cursor: zoom-in;
+    text-decoration: none;
+}
+
+.cert_img_link img {
+    display: block;
+    width: 100%;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.cert_img_link:hover img {
+    transform: scale(1.04);
+    filter: brightness(0.75);
+}
+
+.cert_zoom_icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    opacity: 0;
+    transform: scale(0.7);
+    transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+}
+
+.cert_img_link:hover .cert_zoom_icon {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.cert_zoom_icon svg {
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+    width: 48px;
+    height: 48px;
+}

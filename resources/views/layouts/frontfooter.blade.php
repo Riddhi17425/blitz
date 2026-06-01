@@ -454,6 +454,14 @@
    <!-- <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script> -->
 
    <script src="{{  asset('public/front/assets/js/script.js') }}"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+   <script>
+       Fancybox.bind("[data-fancybox]", {
+           animated: true,
+           showClass: "fancybox-zoomInUp",
+           hideClass: "fancybox-zoomOutDown",
+       });
+   </script>
 
    </main>
 
