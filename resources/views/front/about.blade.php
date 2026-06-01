@@ -21,7 +21,7 @@
                         Africa, Blitz is the name engineers and industries trust when failure is simply not an option.
                     </p>
                     <div class="banner_btns">
-                        <a href="#" class="com_btn">
+                        <a href="{{ route('front.contact') }}" class="com_btn">
                             Request Quote <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="11" viewBox="0 0 24 11" fill="none">
                                     <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
@@ -54,7 +54,7 @@
                         <p class="title_20 line_left">WHO WE ARE</p>
                         <h2 class="title_44 mb_40">A Global Brand Built on a Simple Promise - Reliable Protection, Every Time 
                         </h2>
-                        <p>Blitz is a globally trusted brand dedicated to advancing surge protection technologies for modern electrical and industrial systems. We specialise in designing and manufacturing high-performance AC and DC surge protection devices, miniature circuit breakers, fuse terminals, and fuse links.</p>
+                        <p>Blitz is a globally trusted brand dedicated to advancing surge protection technologies for modern electrical and industrial systems. We specialise in designing and manufacturing high-performance AC and DC surge protection devices, miniature circuit breakers, fuse terminals, and fuse links. </p>
 
                         <p>At Blitz, we know voltage spikes and transient surges do more than just harm your equipment; they shut down your operation and cost your business more than protective devices would. So, each device that leaves our doors is built with one principle: that your system will always stay safe and steady. </p>
                         <p>Driven by a vision of electrical resilience, Blitz empowers industries, utilities, institutions, and infrastructure projects with robust protection solutions that perform under complex, high-risk conditions.</p>

@@ -26,7 +26,7 @@ use App\Http\Controllers\Web\HomeController;
     Route::get('/blog/{url}' , [HomeController::class , 'blogsDetails'])->name('front.blog.details');
     Route::get('/product-list' , [HomeController::class , 'productList'])->name('front.product.list');
     Route::get('/product-details' , [HomeController::class , 'productDetails'])->name('front.product.details');
-    Route::get('/sub-category-list' , [HomeController::class , 'subCategoryList'])->name('front.sub.category.list');
+    Route::get('/category-details/{slug}' , [HomeController::class , 'categoryDetails'])->name('front.category.details');
 
     // remaining pages
     Route::get('/thank-you' , [HomeController::class , 'Thankyou'])->name('thankyou');

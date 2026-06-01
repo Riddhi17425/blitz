@@ -332,32 +332,32 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-const sections = document.querySelectorAll(".content-section");
-const navLinks = document.querySelectorAll(".nav-link");
+// const sections = document.querySelectorAll(".content-section");
+// const navLinks = document.querySelectorAll(".nav-link");
 
 // =========================
 // CLICK SCROLL WITH OFFSET
 // =========================
-navLinks.forEach((link) => {
+// navLinks.forEach((link) => {
 
-  link.addEventListener("click", function (e) {
+//   link.addEventListener("click", function (e) {
 
-    e.preventDefault();
+//     e.preventDefault();
 
-    const targetId = this.getAttribute("href");
-    const targetSection = document.querySelector(targetId);
+//     const targetId = this.getAttribute("href");
+//     const targetSection = document.querySelector(targetId);
 
-    if (targetSection) {
+//     if (targetSection) {
 
-      const offsetTop = targetSection.offsetTop - 120;
+//       const offsetTop = targetSection.offsetTop - 120;
 
-      window.scrollTo({
-        top: offsetTop,
-        behavior: "smooth",
-      });
-    }
-  });
-});
+//       window.scrollTo({
+//         top: offsetTop,
+//         behavior: "smooth",
+//       });
+//     }
+//   });
+// });
 
 
 // document.addEventListener("DOMContentLoaded", function() {

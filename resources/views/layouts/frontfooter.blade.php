@@ -6,9 +6,7 @@
                    <div class="logo">
                        <img src="{{ asset('public/front/assets/images/footer-logo.svg') }}" alt="Blitz Protection Logo">
                    </div>
-                   <p>Lorem ipsum dolor sit amet consectetur. Ut nibh aliquam purus adipiscing et. Suspendisse nibh hac
-                       orci
-                       arcu in at. Iaculis donec et nunc in. Amet tristique vehicula enim.</p>
+                   <p>We do not just make protection devices. We make sure the systems that power your world never stop running. It is the Blitz standard, and we never compromise on it. </p>
                    <div class="contact-info">
                        <span><svg class="me-2" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                xmlns="http://www.w3.org/2000/svg">
@@ -104,22 +102,29 @@
                <div class="footer-links">
                    <p class="title_24 line_left" data-aos="fade-up" data-aos-duration="800">Company</p>
                    <ul>
-                       <li><a href="#">Home</a></li>
-                       <li><a href="#">About</a></li>
-                       <li><a href="#">FAQs</a></li>
+                       <li><a href="{{ route('front.home') }}">Home</a></li>
+                       <li><a href="{{ route('front.about') }}">About</a></li>
+                       {{-- <li><a href="#">FAQs</a></li>
                        <li><a href="#">Catalogues</a></li>
-                       <li><a href="#">Blog</a></li>
-                       <li><a href="#">Contact Us</a></li>
+                       <li><a href="{{ route('front.blogs') }}">Blog</a></li> --}}
+                       <li><a href="{{ route('front.contact') }}">Contact Us</a></li>
                    </ul>
                </div>
 
                <div class="footer-links-product">
-                   <p class="title_24 line_left" data-aos="fade-up" data-aos-duration="800">Product</p>
+                   <p class="title_24 line_left" data-aos="fade-up" data-aos-duration="800">Category</p>
                    <ul>
-                       <li><a href="#">Surge Protection Devices</a></li>
+                        @if(isset($categoriesHF) && count($categoriesHF) > 0)
+                            @foreach($categoriesHF as $category)
+                                <li><a href="{{ route('front.category.details', $category->category_url) }}">{{ $category->title }}</a></li>
+                            @endforeach
+                        @else
+                            <li><a href="#">No categories available</a></li>
+                        @endif
+                       {{-- <li><a href="#">Surge Protection Devices</a></li>
                        <li><a href="#">Miniature Circuit Breakers</a></li>
                        <li><a href="#">Fuses & Fuse Holders</a></li>
-                       <li><a href="#">Solar Accessories</a></li>
+                       <li><a href="#">Solar Accessories</a></li> --}}
                    </ul>
                </div>
 
