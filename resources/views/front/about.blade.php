@@ -51,20 +51,13 @@
 
                 <div class="col-md-6 story-text-col">
                     <div class="ps-md-5 story-text-content">
-                        <p class="title_20 line_left">Product Range</p>
+                        <p class="title_20 line_left">WHO WE ARE</p>
                         <h2 class="title_44 mb_40">A Global Brand Built on a Simple Promise - Reliable Protection, Every Time 
                         </h2>
-                        <p>Access detailed technical specifications, dimensional drawings, and selection Our technical
-                            experts will help you choose the perfect protection solution for your project. Get a customized
-                            quote within 24 hours.</p>
+                        <p>Blitz is a globally trusted brand dedicated to advancing surge protection technologies for modern electrical and industrial systems. We specialise in designing and manufacturing high-performance AC and DC surge protection devices, miniature circuit breakers, fuse terminals, and fuse links.</p>
 
-                        <p>At Blitz, we know voltage spikes and transient surges do more than just harm your equipment; they
-                            shut down your operation and cost your business more than protective devices would. So, each
-                            device that leaves our doors is built with one principle: that your system will always stay safe
-                            and steady.</p>
-                        <p>Driven by a vision of electrical resilience, Blitz empowers industries, utilities, institutions,
-                            and infrastructure projects with robust protection solutions that perform under complex,
-                            high-risk conditions.</p>
+                        <p>At Blitz, we know voltage spikes and transient surges do more than just harm your equipment; they shut down your operation and cost your business more than protective devices would. So, each device that leaves our doors is built with one principle: that your system will always stay safe and steady. </p>
+                        <p>Driven by a vision of electrical resilience, Blitz empowers industries, utilities, institutions, and infrastructure projects with robust protection solutions that perform under complex, high-risk conditions.</p>
                     </div>
                 </div>
             </div>
@@ -861,10 +854,8 @@
 <section  class="tec_res product_cta">
     <div class="container h-100">
         <div class="tec_res_left">
-            <h2 class="title_44" style="color: var(--blue-head); !important">Download Our Complete
-                Product Catalogue</h2>
-            <p class="mb-0" style="color: var(--grey-666) !important;">Access detailed technical specifications, dimensional drawings, and selection
-                guides for our complete product range.</p>
+            <h2 class="title_44" style="color: var(--blue-head); !important">Let's Build Something Safer Together </h2>
+            <p class="mb-0" style="color: var(--grey-666) !important;">Tell us about your project, and our engineering team will come back to you with the right Blitz solution, quickly, accurately, and without the runaround. </p>
 
             <div class="pt_40">
                 <a href="#" class="com_btn">
@@ -878,26 +869,7 @@
                             <path d="M12 15V3" stroke="black" stroke-width="1.33333" stroke-linecap="round"
                                 stroke-linejoin="round" />
                         </svg>
-                    </span> Download Catalogue
-                </a>
-
-                <a href="#" class="com_btn ms-3">
-                    <span class="me-2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M15 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V7L15 2Z"
-                                stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                            <path
-                                d="M14 2V6C14 6.53043 14.2107 7.03914 14.5858 7.41421C14.9609 7.78929 15.4696 8 16 8H20"
-                                stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M10 9H8" stroke="white" stroke-width="1.33333" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M16 13H8" stroke="white" stroke-width="1.33333" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M16 17H8" stroke="white" stroke-width="1.33333" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg>
-                    </span> Technical Datasheets
+                    </span>Talk to Our Team
                 </a>
 
             </div>
