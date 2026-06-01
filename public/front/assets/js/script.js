@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (mapContainer) {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && window.innerWidth > 1024) {
           // Jab map viewport mein aayega tabhi animation class lagegi
           mapContainer.classList.add("start-animation");
         }
@@ -182,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const storyText = storySection.querySelector(".story-text-content");
 
     window.addEventListener("scroll", () => {
+      if (window.innerWidth <= 1024) return;
       const rect = storySection.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
@@ -227,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let mouseY = window.innerHeight / 2;
     let cursorX = mouseX;
     let cursorY = mouseY;
-    
+
     // Track mouse position
     document.addEventListener("mousemove", (e) => {
       mouseX = e.clientX;
@@ -236,13 +237,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Smooth animation loop using Lerp
     function animateCursor() {
+      if (window.innerWidth <= 1024) return;
       // Lerp logic for buttery smooth follow
       cursorX += (mouseX - cursorX) * 0.2;
       cursorY += (mouseY - cursorY) * 0.2;
-      
+
       // Hardware-accelerated transform with centering
       cursor.style.transform = `translate3d(calc(${cursorX}px - 50%), calc(${cursorY}px - 50%), 0)`;
-      
+
       requestAnimationFrame(animateCursor);
     }
     animateCursor();
@@ -265,9 +267,10 @@ document.addEventListener("DOMContentLoaded", function () {
     let targetProdProgress = 0;
 
     window.addEventListener("scroll", () => {
+      if (window.innerWidth <= 1024) return;
       const rect = prodSection.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      
+
       // Start the animation as soon as the section enters the viewport from the bottom
       if (rect.top > windowHeight) {
         targetProdProgress = 0;
@@ -283,6 +286,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function animateProdCards() {
+      if (window.innerWidth <= 1024) return;
       currentProdProgress += (targetProdProgress - currentProdProgress) * 0.1; // Smooth interpolation
 
       cards.forEach((card, index) => {
@@ -290,11 +294,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const segment = 1 / cards.length;
         const start = index * segment;
         const end = start + segment;
-        
+
         let cardProgress = (currentProdProgress - start) / (end - start);
         if (cardProgress < 0) cardProgress = 0;
         if (cardProgress > 1) cardProgress = 1;
-        
+
         const yOffset = (1 - cardProgress) * 200; // Slide up from 200px
         card.style.transform = `translateY(${yOffset}px)`;
         card.style.opacity = cardProgress;
@@ -311,7 +315,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const header = document.querySelector(".navbar");
   if (header) {
     let lastScrollY = window.scrollY;
-    
+
     window.addEventListener("scroll", () => {
       if (window.scrollY > 150) {
         if (window.scrollY > lastScrollY) {

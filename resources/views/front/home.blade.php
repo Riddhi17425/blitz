@@ -127,7 +127,7 @@
             <h1 class="title_44">One Brand. Every Protection Need Covered </h1>
             <p class="mb-0">Residential or industrial, Blitz protection devices are designed to perform in demanding electrical environments. </p>
 
-            <div class="row pt_40">
+            <div class="row py_40">
                 <div class="col-md-3 product-scroll-card">
                     <div class="mcb-card">
                         <img src="{{ asset('public/front/assets/images/Background+Border.webp') }}" alt="Miniature Circuit Breaker" class="img-fluid">

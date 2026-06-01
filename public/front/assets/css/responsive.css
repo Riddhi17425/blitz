@@ -1,8 +1,588 @@
 /* =========================================
-   1820px CONTAINER OVERRIDE
+   1820px CONTAINER OVERRIDE (Figma/Desktop XL)
 ========================================= */
-@media (min-width: 1280px) {
+@media (min-width: 1536px) {
     .container {
         max-width: 1820px !important;
     }
 }
+
+@media (max-width: 1601px) {
+    .container {
+        max-width: 1450px !important;
+    }
+
+    /* Typography Scaling for 1330px Container */
+    .hero-title,
+    .banner_title,
+    .baner_title,
+    .main_head {
+        font-size: 56px;
+        line-height: 1.1;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+        line-height: 32px;
+        margin-bottom: 40px;
+    }
+
+    .com_btn {
+        padding: 10px 26px;
+        font-size: 16px;
+    }
+
+    .hero-content {
+        color: var(--white);
+        max-width: 620px;
+    }
+
+    .navbar {
+        padding: 15px 0;
+    }
+
+    .navbar-brand img {
+        width: 140px;
+    }
+
+    .mb_40 {
+        margin-bottom: 30px;
+    }
+
+    .mt_40 {
+        margin-top: 30px;
+    }
+
+    .py_40 {
+        padding: 30px 0;
+    }
+
+    .title_20 {
+        font-size: 18px;
+        line-height: 20px;
+        margin-bottom: 20px;
+    }
+
+    .home_about .home_about_para {
+        font-size: 20px;
+        line-height: 38px;
+    }
+
+    .title_120 {
+        font-size: 90px;
+    }
+
+    .title_60 {
+        font-size: 50px;
+    }
+
+    .title_44 {
+        font-size: 38px;
+    }
+
+    .title_36 {
+        font-size: 26px;
+        line-height: 36px;
+    }
+
+    .title_24 {
+        font-size: 22px;
+    }
+
+    .title_20 {
+        font-size: 18px;
+    }
+
+    /* Gaps and Paddings */
+    .py_80 {
+        padding: 60px 0;
+    }
+
+    .pt_80 {
+        padding-top: 60px;
+    }
+
+    .pb_80 {
+        padding-bottom: 60px;
+    }
+
+    .pt_40 {
+        padding-top: 30px;
+    }
+
+    .pb_40 {
+        padding-bottom: 30px;
+    }
+
+    .navbar-nav {
+        gap: 40px;
+    }
+
+    .d-flex.gap-5 {
+        gap: 2rem !important;
+    }
+}
+
+
+/* =========================================
+   LARGE DESKTOP (1440px - 1919px)
+========================================= */
+@media (max-width: 1919px) {}
+
+/* =========================================
+   DESKTOP (1280px - 1439px)
+========================================= */
+@media (max-width: 1439px) {}
+
+/* =========================================
+   LAPTOP (1024px - 1279px)
+========================================= */
+@media (max-width: 1279px) {
+    .navbar-nav {
+        gap: 30px;
+    }
+
+    .footer-top {
+        grid-template-columns: 30% 20% 20% 30%;
+        gap: 20px;
+    }
+
+    .footer-links,
+    .footer-links-product {
+        padding: 0 20px;
+    }
+
+    .footer-newsletter {
+        padding-left: 20px;
+    }
+
+    .subscribe-box input {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    .hero-title,
+    .banner_title,
+    .baner_title {
+        font-size: 60px;
+        line-height: 1.1;
+    }
+
+    .hero-subtitle,
+    .baner_desc {
+        font-size: 20px;
+        line-height: 1.4;
+    }
+
+    .title_44 {
+        font-size: 36px;
+    }
+
+    .title_36 {
+        font-size: 30px;
+    }
+
+    .title_24 {
+        font-size: 20px;
+    }
+
+    .title_20 {
+        font-size: 18px;
+    }
+
+    .hero-content {
+        max-width: 600px;
+    }
+}
+
+/* =========================================
+   TABLET (768px - 1023px)
+========================================= */
+@media (max-width: 1023px) {
+    .navbar-nav {
+        gap: 15px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    /* Reset Dropdown for Mobile View */
+    .dropdown-menu {
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        box-shadow: none !important;
+        border: none !important;
+        display: none !important;
+        /* Let Bootstrap toggle it */
+        padding-left: 15px;
+    }
+
+    .nav-item.show .dropdown-menu {
+        display: block !important;
+    }
+
+    .dropdown-submenu>.submenu {
+        position: static !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        display: none !important;
+        padding-left: 15px;
+        margin-top: 10px !important;
+    }
+
+    .dropdown-submenu.show>.submenu {
+        display: block !important;
+    }
+
+    .navbar-collapse {
+        background-color: var(--white);
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+    }
+
+    /* Footer Fixes */
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .footer-brand p {
+        max-width: 100%;
+    }
+
+    .footer-links,
+    .footer-links-product {
+        padding: 0;
+        border-right: none;
+    }
+
+    .footer-newsletter {
+        padding-left: 0;
+        grid-column: 1 / -1;
+    }
+
+    .hero-title,
+    .banner_title,
+    .baner_title {
+        font-size: 48px;
+    }
+
+    .hero-subtitle,
+    .baner_desc {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    .title_60 {
+        font-size: 42px;
+    }
+
+    .title_44 {
+        font-size: 32px;
+    }
+
+    .title_36 {
+        font-size: 26px;
+    }
+
+    /* Blog details fixes */
+    .guide-section-child {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: static;
+    }
+
+    /* Disable heavy JS scroll animations visually */
+    .story-text-content,
+    .product-scroll-card,
+    .map-pin {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+
+    .story-zoom-img {
+        transform: scale(1) !important;
+    }
+
+    .sticky-scroll-section,
+    .sticky-product-section {
+        height: auto !important;
+    }
+
+    .sticky-wrapper,
+    .sticky-product-wrapper {
+        position: static !important;
+        height: auto !important;
+    }
+
+    .custom-cursor {
+        display: none !important;
+    }
+
+    /* About page fixes */
+    .advantage-text {
+        max-width: 80%;
+    }
+
+    .advantage-content {
+        padding-left: 40px;
+    }
+
+    /* Product Page fixes */
+    .table-wrapper table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .table-wrapper th {
+        font-size: 24px;
+    }
+
+    /* Form layout fixes */
+    .quote-section {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .quote-form-wrapper {
+        padding: 20px;
+    }
+
+    /* Layout specific fixes */
+    .banner_grid {
+        grid-template-columns: 1fr;
+    }
+
+    .baner_right {
+        margin-top: 30px;
+    }
+
+    .banner_btns {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .banner_btns .com_btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Layout specific fixes */
+    .py_40 {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+
+    .pt_40 {
+        padding-top: 20px !important;
+    }
+
+    .mb_40 {
+        margin-bottom: 20px !important;
+    }
+
+    .mt_40 {
+        margin-top: 20px !important;
+    }
+
+    .home_about .col-10 {
+        width: 100%;
+    }
+
+    .hero-slide {
+        height: auto;
+        padding: 100px 0;
+    }
+
+    .hero-buttons {
+        gap: 15px;
+    }
+
+    .testimonial-section {
+        padding: 4em 0;
+    }
+
+    .testi-card {
+        height: auto;
+        padding: 30px;
+        margin-left: 0;
+    }
+}
+
+/* =========================================
+   MOBILE (375px - 767px)
+========================================= */
+@media (max-width: 767px) {
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-brand,
+    .footer-newsletter {
+        grid-column: auto;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .contact-info .divider {
+        display: none;
+    }
+
+    .footer-bottom-wrapper {
+        padding-bottom: 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .hero-title,
+    .banner_title,
+    .baner_title {
+        font-size: 36px;
+    }
+
+    .hero-subtitle,
+    .baner_desc {
+        font-size: 16px;
+    }
+
+    .title_60 {
+        font-size: 32px;
+    }
+
+    .title_44 {
+        font-size: 28px;
+    }
+
+    .title_36 {
+        font-size: 24px;
+    }
+
+    .title_24 {
+        font-size: 18px;
+    }
+
+    .title_20 {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons .com_btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* About page fixes */
+    .advantage-card {
+        height: auto;
+        min-height: 400px;
+    }
+
+    .advantage-content {
+        padding: 40px 20px;
+    }
+
+    .advantage-text {
+        max-width: 100%;
+    }
+
+    .advantage-number {
+        font-size: 60px;
+    }
+
+    .vision_mission {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .vision_mission .text-end {
+        text-align: center !important;
+    }
+
+    .certificate_box {
+        margin-bottom: 30px;
+    }
+
+    /* Product Page fixes */
+    .table-wrapper th {
+        font-size: 20px;
+    }
+
+    /* Form layout fixes */
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .quote-form-wrapper {
+        padding: 15px;
+    }
+
+    /* Contact Page fixes */
+    .contact_banner {
+        height: auto;
+        padding: 60px 0;
+    }
+
+    section iframe {
+        height: 350px !important;
+    }
+
+    .home_about_para {
+        font-size: 18px !important;
+        line-height: 1.5 !important;
+    }
+
+    .counter2_right {
+        grid-template-columns: 1fr;
+    }
+
+    .tec_res {
+        height: auto;
+        padding: 40px 0;
+    }
+
+    .custom-arrows {
+        display: none;
+        /* Hide custom arrows on mobile if they overlap or break flow, or adjust */
+    }
+
+    .testimonial-section .col-lg-4 {
+        margin-bottom: 30px;
+    }
+}
+
+/* =========================================
+   MOBILE SMALL (320px - 374px)
+========================================= */
+@media (max-width: 374px) {}
