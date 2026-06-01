@@ -5,9 +5,8 @@
          <div class="quote-content">
 
              <p class="title_20 line_left">Get In Touch</p>
-             <h2 class="title_44">Request a Quote for Your Project</h2>
-             <p class="mb-0">Whether you need a single product or a complete protection solution, our technical team
-                 is ready to help configure the right products for your application.</p>
+             <h2 class="title_44">Request Your Custom Quote</h2>
+             <p class="mb-0">Reach out to our team with your installation details, and we will get back to you with pricing, availability, and any technical guidance you need. </p>
 
              <div class="contact-list pt_40">
                  <div class="contact-item">

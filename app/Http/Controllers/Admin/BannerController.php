@@ -34,9 +34,9 @@ class BannerController extends Controller
         'banners_title'   => 'required|string|max:255',
         'banners_status'  => 'nullable|in:Active,In-Active',
         'banners_alt'     => 'required|string|max:255',
-        'banners_image'   => 'required|file|mimes:jpg,jpeg,png,webp|max:2048',
+        'banners_image'   => 'required|mimes:jpg,jpeg,png,webp|max:2048',
     ]);
- 
+
     if ($validator->fails()) {
         return redirect()->back()
             ->withErrors($validator)
@@ -44,15 +44,12 @@ class BannerController extends Controller
             ->with('error', 'Please fix the validation errors.');
     }
 
-    try {
-        
-
+    // try {
         $imagePath = '';
-            
             // Handle image upload 
             if ($request->hasFile('banners_image') && $request->file('banners_image')->isValid()) {
                 // Try with compression first
-                $imagePath = storeImage($request->file('banners_image'), 'admin/banners');
+                $imagePath = storeImageWithTimeId($request->file('banners_image'), 'admin/banners');
                 
                 if (!$imagePath) {
                     return redirect()->back()
@@ -72,10 +69,10 @@ class BannerController extends Controller
         ]);
 
         return redirect()->route('banners')->with('success', 'Record added successfully!');
-    } catch (\Exception $e) {
-        Log::error('banners Store Error: ' . $e->getMessage());
-        return redirect()->back()->with('error', 'Failed to save: ' . $e->getMessage());
-    }
+    // } catch (\Exception $e) {
+    //     Log::error('banners Store Error: ' . $e->getMessage());
+    //     return redirect()->back()->with('error', 'Failed to save: ' . $e->getMessage());
+    // }
 }   
 
     public function getData()
@@ -155,7 +152,7 @@ class BannerController extends Controller
                     File::delete(public_path('admin/banners/' . $banners->image));
                 }
 
-                $imagePath = storeImage($request->file('banners_image'), 'admin/banners');
+                $imagePath = storeImageWithTimeId($request->file('banners_image'), 'admin/banners');
                 
                 if (!$imagePath) {
                     return redirect()->back()
