@@ -1,7 +1,7 @@
 /* =========================================
    1820px CONTAINER OVERRIDE
 ========================================= */
-@media (min-width: 1400px) {
+@media (min-width: 1280px) {
     .container {
         max-width: 1820px !important;
     }

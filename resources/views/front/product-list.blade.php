@@ -56,7 +56,7 @@
 
 <section class="fea_Pro py_40">
     <div class="container">
-        <p class="title_20 line_left aos-init aos-animate" data-aos="fade-up" data-aos-duration="800">Featured Products
+        <p class="title_20 line_left aos-init aos-animate" >Featured Products
         </p>
         <h2 class="title_44">Designed to Perform. Built to Last</h2>
         <p class="mb-0">Blitz products are IEC-compliant, rigorously tested, and trusted across the global solar and
@@ -215,7 +215,7 @@
 <section class="py_40">
     <div class="container">
         <div class="pb_40">
-            <p class="title_20 line_left" data-aos="fade-up" data-aos-duration="800">Industries We Serve</p>
+            <p class="title_20 line_left" >Industries We Serve</p>
             <h2 class="title_44">Powering Critical Infrastructure</h2>
             <p class="mb-0">From solar farms to residential towers, Blitz products safeguard the infrastructure that
                 drives progress.</p>

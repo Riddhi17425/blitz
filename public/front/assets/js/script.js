@@ -24,11 +24,11 @@ $(document).ready(function () {
   // NOTE: Delete your old .on('setPosition') block completely!
 
   // 3. AOS (Animate On Scroll)
-  AOS.init({
-    duration: 800,
-    once: true,
-    offset: 50,
-  });
+  // AOS.init({
+  //   duration: 800,
+  //   once: true,
+  //   offset: 50,
+  // });
 
   //4. Industry Slider
 

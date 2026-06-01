@@ -56,6 +56,8 @@
     border: 1px solid rgba(0, 0, 0, 0.05);
 
     /* Animation Setup */
+    display: block !important;
+    /* Override Bootstrap's display: none */
     opacity: 0;
     visibility: hidden;
     transform: translateY(15px);
@@ -73,8 +75,8 @@
     height: 15px;
 }
 
-/* Show Dropdown on Hover */
-.navbar-nav .nav-item:hover .dropdown-menu {
+/* Show Dropdown on Hover (Level 1 ONLY) */
+.navbar-nav .nav-item:hover>.dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateY(10px);
@@ -95,9 +97,41 @@
 /* Hover effect on list items */
 .dropdown-item:hover {
     background-color: var(--hero-bg);
-    color: var(--white);
+    color: var(--blue);
     padding-left: 22px;
     /* Smooth right shift effect */
+}
+
+/* --- Level 2 Dropdown (Submenu) --- */
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu>.submenu {
+    top: 0;
+    left: 100%;
+    margin-top: -8px;
+    margin-left: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(15px) translateY(0);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Invisible bridge for submenu */
+.dropdown-submenu::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -10px;
+    width: 15px;
+    height: 100%;
+}
+
+.dropdown-submenu:hover>.submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) translateY(0);
 }
 
 
@@ -644,9 +678,11 @@
     left: 0;
     width: 40px;
     height: 40px;
-    pointer-events: none; /* Let clicks pass through */
+    pointer-events: none;
+    /* Let clicks pass through */
     z-index: 999999;
-    mix-blend-mode: difference; /* Inverts color: white -> black, black -> white */
+    mix-blend-mode: difference;
+    /* Inverts color: white -> black, black -> white */
     transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
@@ -664,12 +700,18 @@
 }
 
 @keyframes rotateCursor {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .custom-cursor.hover {
-    opacity: 0; /* Hides the custom cursor completely when hovering over a link */
+    opacity: 0;
+    /* Hides the custom cursor completely when hovering over a link */
 }
 
 /* ========================================= */
@@ -687,7 +729,8 @@
 /* PRODUCT CARDS SCROLL ANIMATION */
 /* ========================================= */
 .sticky-product-section {
-    height: 300vh; /* Extra height to allow scrolling while pinned */
+    height: 300vh;
+    /* Extra height to allow scrolling while pinned */
     position: relative;
 }
 
@@ -788,8 +831,6 @@
 .tec_res_left .line_left::after {
     background-color: var(--white) !important;
 }
-
-
 
 
 
@@ -956,7 +997,6 @@
 .quote-section {
     display: flex;
     gap: 60px;
-
 }
 
 .quote-content {

@@ -229,7 +229,7 @@
 
                 <div class="content-section" id="faq">
                     <div class="pb_40">
-                        <p class="title_20 line_left" data-aos="fade-up" data-aos-duration="800">Industries We Serve</p>
+                        <p class="title_20 line_left" >Industries We Serve</p>
                         <h2 class="title_44">Powering Critical Infrastructure</h2>
                         <p class="mb-0">From solar farms to residential towers, Blitz products safeguard the
                             infrastructure that
@@ -328,7 +328,7 @@
                 <section class="tec_res blogs_details_cta">
                     <div class="h-100">
                         <div class="tec_res_left">
-                            <p class="title_20 line_left" data-aos="fade-up" data-aos-duration="800">Technical resources
+                            <p class="title_20 line_left" >Technical resources
                             </p>
                             <h2 class="title_44">Download Our Complete
                                 Product Catalogue</h2>

@@ -72,7 +72,7 @@
 
             <div class="col-md-6">
                 <div class="ps-md-5">
-                    <p class="title_20 line_left aos-init aos-animate" data-aos="fade-up" data-aos-duration="800">
+                    <p class="title_20 line_left aos-init aos-animate" >
                         OUR STORY</p>
                     <h2 class="title_44 mb_40">Building a Safer Electrical Future
                     </h2>
@@ -96,7 +96,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="vision_mission">
-                    <p class="title_20 line_left aos-init aos-animate" data-aos="fade-up" data-aos-duration="800">
+                    <p class="title_20 line_left aos-init aos-animate" >
                         Vision</p>
                     <h2 class="title_44 mb-4">A Safer & Smarter <br /> Electrical World
                     </h2>
@@ -109,7 +109,7 @@
 
             <div class="col-md-6">
                 <div class="vision_mission">
-                    <p class="title_20 line_left aos-init aos-animate" data-aos="fade-up" data-aos-duration="800">
+                    <p class="title_20 line_left aos-init aos-animate" >
                         Mission</p>
                     <h2 class="title_44 mb-4">We Exist So Your <br /> Systems Never Fail
                     </h2>
@@ -126,7 +126,7 @@
 
 <section class="py_40 bg_com">
     <div class="container">
-        <p class="title_20 line_left aos-init aos-animate" data-aos="fade-up" data-aos-duration="800">
+        <p class="title_20 line_left aos-init aos-animate" >
             WHAT SETS US APART</p>
         <h2 class="title_44">Built Different For a Reason</h2>
         <p>Three things that make Blitz the protection partner that industries across eight countries keep coming back to. </p>
@@ -187,7 +187,7 @@
 <section class="py_40">
     <div class="container">
       <div class="text-center">
-          <p class="title_20 line_center aos-init aos-animate" data-aos="fade-up" data-aos-duration="800">
+          <p class="title_20 line_center aos-init aos-animate" >
             CERTIFICATIONS</p>
         <h2 class="title_44">Engineered for Safety. Certified for Trust.
         </h2>
@@ -227,7 +227,7 @@
 <section class="py_40 bg_com">
     <div class="container">
       <div class="text-center">
-          <p class="title_20 line_center aos-init aos-animate" data-aos="fade-up" data-aos-duration="800">
+          <p class="title_20 line_center aos-init aos-animate" >
             OUR GLOBAL FOOTPRINT</p>
         <h2 class="title_44">Present Where Reliability Counts
         </h2>
@@ -833,7 +833,7 @@
 <section class="py_40">
     <div class="container">
       <div class="text-center">
-          <p class="title_20 line_center aos-init aos-animate" data-aos="fade-up" data-aos-duration="800">
+          <p class="title_20 line_center aos-init aos-animate" >
             OUR CLIENTS</p>
         <h2 class="title_44">Trusted by the Best in the Business
         </h2>

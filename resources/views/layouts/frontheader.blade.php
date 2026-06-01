@@ -20,7 +20,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('public/front/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('public/front/assets/css/responsive.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
@@ -63,15 +62,78 @@
                             </svg>
                         </a>
 
-                        <!-- Premium Dropdown Menu -->
-                        <ul class="dropdown-menu">
-                            @if(isset($categoriesHF) && count($categoriesHF) > 0)
+
+                          <!-- @if(isset($categoriesHF) && count($categoriesHF) > 0)
                                 @foreach($categoriesHF as $category)
                                     <li><a href="{{ route('front.category.details', $category->category_url) }}">{{ $category->title }}</a></li>
                                 @endforeach
                             @else
                                 <li><a href="#">No categories available</a></li>
-                            @endif
+                            @endif -->
+
+                        <!-- Premium Dropdown Menu -->
+                        <ul class="dropdown-menu">
+                            <!-- Category 1 -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                    Surge Protection (SPD)
+                                    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                                <!-- Level 2 Submenu -->
+                                <ul class="dropdown-menu submenu">
+                                    <li><a class="dropdown-item" href="#">Type 1 SPD</a></li>
+                                    <li><a class="dropdown-item" href="#">Type 2 SPD</a></li>
+                                    <li><a class="dropdown-item" href="#">Type 1+2 SPD</a></li>
+                                    <li><a class="dropdown-item" href="#">DC / Solar SPD</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- Category 2 -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                    Circuit Breakers (MCB)
+                                    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                                <ul class="dropdown-menu submenu">
+                                    <li><a class="dropdown-item" href="#">AC MCB</a></li>
+                                    <li><a class="dropdown-item" href="#">DC MCB</a></li>
+                                    <li><a class="dropdown-item" href="#">Isolator Switches</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- Category 3 -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                    Fuses & Fuse Bases
+                                    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                                <ul class="dropdown-menu submenu">
+                                    <li><a class="dropdown-item" href="#">Solar PV Fuses</a></li>
+                                    <li><a class="dropdown-item" href="#">EV Fuses</a></li>
+                                    <li><a class="dropdown-item" href="#">Cylindrical Fuses</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- Category 4 -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                    Solar Accessories
+                                    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                                <ul class="dropdown-menu submenu">
+                                    <li><a class="dropdown-item" href="#">Solar Cables</a></li>
+                                    <li><a class="dropdown-item" href="#">MC4 Connectors</a></li>
+                                    <li><a class="dropdown-item" href="#">Junction Boxes</a></li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     {{-- <li class="nav-item"><a class="nav-link" href="#">Catalogue</a></li> --}}

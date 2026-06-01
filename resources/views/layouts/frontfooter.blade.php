@@ -100,7 +100,7 @@
                </div>
 
                <div class="footer-links">
-                   <p class="title_24 line_left" data-aos="fade-up" data-aos-duration="800">Company</p>
+                   <p class="title_24 line_left" >Company</p>
                    <ul>
                        <li><a href="{{ route('front.home') }}">Home</a></li>
                        <li><a href="{{ route('front.about') }}">About</a></li>
@@ -112,7 +112,7 @@
                </div>
 
                <div class="footer-links-product">
-                   <p class="title_24 line_left" data-aos="fade-up" data-aos-duration="800">Category</p>
+                   <p class="title_24 line_left" >Category</p>
                    <ul>
                         @if(isset($categoriesHF) && count($categoriesHF) > 0)
                             @foreach($categoriesHF as $category)
@@ -129,7 +129,7 @@
                </div>
 
                <div class="footer-newsletter">
-                   <p class="title_24 line_left" data-aos="fade-up" data-aos-duration="800">Subscribe to our newsletter
+                   <p class="title_24 line_left" >Subscribe to our newsletter
                    </p>
                    <p>Be the first to receive exciting news, insider tips, and special promotions.</p>
                    <form class="subscribe-box" onsubmit="event.preventDefault();">
@@ -453,11 +453,7 @@
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-   <!-- <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script> -->
-
    <!-- <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script> -->
-
    <script src="{{  asset('public/front/assets/js/script.js') }}"></script>
    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
    <script>

@@ -44,7 +44,7 @@
 <section class="py_80">
     <div class="container">
        <div class="mb-4">
-         <p class="title_20 line_left aos-init aos-animate" data-aos="fade-up" data-aos-duration="800">
+         <p class="title_20 line_left aos-init aos-animate" >
             Product Range</p>
         <h2 class="title_44">A Global Brand Built on a Simple Promise - Reliable Protection, Every
             Time 
@@ -141,7 +141,7 @@
         <div style="display: flex; justify-content: space-between; align-items: flex-end;">
 
             <div>
-                <p class="title_20 line_left" data-aos="fade-up" data-aos-duration="800">Industries We Serve</p>
+                <p class="title_20 line_left" >Industries We Serve</p>
                 <h1 class="title_44">Powering Critical Infrastructure</h1>
                 <p class="mb-0">From solar farms to residential towers, Blitz products safeguard the infrastructure that
                     drives progress.</p>
@@ -201,7 +201,7 @@
 <section class="py_40">
     <div class="container">
         <div class="pb_40">
-            <p class="title_20 line_left" data-aos="fade-up" data-aos-duration="800">Industries We Serve</p>
+            <p class="title_20 line_left" >Industries We Serve</p>
             <h2 class="title_44">Powering Critical Infrastructure</h2>
             <p class="mb-0">From solar farms to residential towers, Blitz products safeguard the infrastructure that
                 drives progress.</p>

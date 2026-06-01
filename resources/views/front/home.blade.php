@@ -101,7 +101,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-10">
-                <p class="title_20 line_center" data-aos="fade-up" data-aos-duration="800">ABOUT BLITZ ELECTRICAL</p>
+                <p class="title_20 line_center" >ABOUT BLITZ ELECTRICAL</p>
                 <h1 class="title_44 mb_40">Trusted Provider of Electrical Protection & Safety Devices</h1>
                 <p class="home_about_para">Blitz is a globally trusted brand dedicated to advancing surge protection technologies for modern electrical and industrial systems. Specialising in the design and manufacturing of high-performance AC and DC Surge Protection Devices (SPDs), Miniature Circuit Breakers (MCBs), fuse terminals, and fuse links, every product is engineered to operate flawlessly in the world's most demanding environments.</p>
                 <p class="home_about_para">Built in compliance with global standards such as IEC, our solutions ensure operational continuity, equipment longevity, and the highest level of safety, reflecting excellence in reliability, durability, and innovation.</p>
@@ -210,7 +210,7 @@
 
 <section  class="fea_Pro py_40">
     <div class="container">
-        <p class="title_20 line_left" data-aos="fade-up" data-aos-duration="800">Featured Products</p>
+        <p class="title_20 line_left" >Featured Products</p>
         <h1 class="title_44">Designed to Perform. Built to Last</h1>
         <p class="mb-0">Blitz products are IEC-compliant, rigorously tested, and trusted across the global solar and electrical industries.</p>
 
@@ -467,7 +467,7 @@
 <section  class="py_40">
     <div class="container">
         <div class="text-center">
-            <p class="title_20 line_center" data-aos="fade-up" data-aos-duration="800">Why Choose Us</p>
+            <p class="title_20 line_center" >Why Choose Us</p>
             <h1 class="title_44">Why Blitz Electrical?</h1>
             <p class="mb-0">From Ahmedabad to the UAE, from Kenya to Bangladesh, Blitz surge protection devices are earning trust one installation at a time.</p>
         </div>
@@ -644,7 +644,7 @@
         <div style="display: flex; justify-content: space-between; align-items: flex-end;">
 
             <div>
-                <p class="title_20 line_left" data-aos="fade-up" data-aos-duration="800">Industries We Serve</p>
+                <p class="title_20 line_left" >Industries We Serve</p>
                 <h1 class="title_44">Protecting Tomorrow's Powerful Infrastructure</h1>
                 <p class="mb-0">Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised. </p>
             </div>
@@ -708,7 +708,7 @@
     <div class="row align-items-center">
 
         <div class="col-lg-4">
-            <p class="title_20 line_left aos-init aos-animate" data-aos="fade-up" data-aos-duration="800">
+            <p class="title_20 line_left aos-init aos-animate" >
                 Testimonial</p>
             <h2 class="title_44">What Our Clients Say</h2>
 
@@ -844,7 +844,7 @@
             </div>
 
             <div class="col-md-6">
-                <p class="title_20 line_left" data-aos="fade-up" data-aos-duration="800">Manufacturing Excellence</p>
+                <p class="title_20 line_left" >Manufacturing Excellence</p>
                 <h1 class="title_44">Precision-Powered Innovation</h1>
                 <p class="mb-0">Every Blitz device is designed, assembled, and quality-checked, where skilled engineering and strict manufacturing standards ensure each product is ready for the most demanding environments. </p>
 
@@ -879,7 +879,7 @@
 <section  class="tec_res">
     <div class="container h-100">
         <div class="tec_res_left">
-            <p class="title_20 line_left" data-aos="fade-up" data-aos-duration="800">Technical resources</p>
+            <p class="title_20 line_left" >Technical resources</p>
             <h2 class="title_44">Discover The Complete Blitz Range</h2>
             <p class="mb-0">Download our complete product catalogue covering surge protection devices, miniature circuit breakers, fuse terminals, and solar accessories - everything you are looking for </p>
 
