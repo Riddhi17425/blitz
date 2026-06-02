@@ -99,7 +99,8 @@
                    </div>
                </div>
 
-               <div class="footer-links">
+              <div class="footer_right">
+                 <div class="footer-links">
                    <p class="title_24 line_left" >Company</p>
                    <ul>
                        <li><a href="{{ route('front.home') }}">Home</a></li>
@@ -138,6 +139,7 @@
                    </form>
                    <div id="newsletter-message" style="display:none;margin-top:8px;"></div>
                </div>
+              </div>
 
            </div>
        </div>

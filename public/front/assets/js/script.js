@@ -310,6 +310,91 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // ==========================================
+  // 7. SCROLL-TRIGGERED COUNTER ANIMATION
+  // ==========================================
+  function animateCounter(el, target, duration, prefix, suffix) {
+    let start = 0;
+    const stepTime = 16; // ~60fps
+    const steps = Math.ceil(duration / stepTime);
+    const increment = target / steps;
+    let current = 0;
+    let step = 0;
+
+    const timer = setInterval(() => {
+      step++;
+      current += increment;
+      if (step >= steps || current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      // Format number with commas if >= 1000
+      const formatted = target % 1 === 0
+        ? Math.floor(current).toLocaleString()
+        : current.toFixed(1);
+      el.textContent = prefix + formatted + suffix;
+    }, stepTime);
+  }
+
+  // Counter Section 1 — "Why Choose Us" (.counter h2)
+  const counterSection1 = document.querySelector('.counter')?.closest('section');
+  if (counterSection1) {
+    const counterEls = counterSection1.querySelectorAll('.counter h2');
+    let counted1 = false;
+
+    const obs1 = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !counted1) {
+          counted1 = true;
+          counterEls.forEach(el => {
+            const originalText = el.textContent.trim();
+            // Extract numeric value
+            const numMatch = originalText.match(/[\d,]+(\.\d+)?/);
+            if (!numMatch) return; // Skip non-numeric (like "IEC", "24/7", "Zero")
+            const target = parseFloat(numMatch[0].replace(/,/g, ''));
+            // Extract prefix (before number)
+            const prefixMatch = originalText.match(/^([^0-9]*)/);
+            const prefix = prefixMatch ? prefixMatch[1] : '';
+            // Extract suffix (after number)
+            const suffixMatch = originalText.match(/[\d,]+(\.\d+)?(.*)$/);
+            const suffix = suffixMatch ? suffixMatch[2] : '';
+            el.textContent = prefix + '0' + suffix;
+            animateCounter(el, target, 2000, prefix, suffix);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    obs1.observe(counterSection1);
+  }
+
+  // Counter Section 2 — "Manufacturing Excellence" (.counter2 h4)
+  const counterSection2 = document.querySelector('.counter2')?.closest('section');
+  if (counterSection2) {
+    const counterEls2 = counterSection2.querySelectorAll('.counter2 h4');
+    let counted2 = false;
+
+    const obs2 = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !counted2) {
+          counted2 = true;
+          counterEls2.forEach(el => {
+            const originalText = el.textContent.trim();
+            const numMatch = originalText.match(/[\d,]+(\.\d+)?/);
+            if (!numMatch) return; // Skip "Zero", "24/7", etc.
+            const target = parseFloat(numMatch[0].replace(/,/g, ''));
+            const prefixMatch = originalText.match(/^([^0-9]*)/);
+            const prefix = prefixMatch ? prefixMatch[1] : '';
+            const suffixMatch = originalText.match(/[\d,]+(\.\d+)?(.*)$/);
+            const suffix = suffixMatch ? suffixMatch[2] : '';
+            el.textContent = prefix + '0' + suffix;
+            animateCounter(el, target, 2000, prefix, suffix);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    obs2.observe(counterSection2);
+  }
+
+  // ==========================================
   // 7. SMART HEADER (Hide on scroll down, show on scroll up)
   // ==========================================
   const header = document.querySelector(".navbar");
@@ -384,6 +469,42 @@ document.addEventListener("DOMContentLoaded", function () {
 //     }, 500);
 // });
 
+/* homepage featured products grid */
 
+// $(".pd_grid").slick({
+//   dots: false,
+//   infinite: true,
+//   speed: 800,
+//   cssEase: "linear",
+//   autoplay: true,
+//   autoplaySpeed: 1000,
+//   arrows: false,
+//   slidesToShow: 4,
+//   slidesToScroll: 1,
 
+//   responsive: [
+//     {
+//       breakpoint: 1600,
+//       settings: {
+//         slidesToShow: 3,
+//         slidesToScroll: 1
+//       }
+//     },
+//     {
+//       breakpoint: 992,
+//       settings: {
+//         slidesToShow: 2,
+//         slidesToScroll: 1
+//       }
+//     },
+//     {
+//       breakpoint: 576,
+//       settings: {
+//         slidesToShow: 1,
+//         slidesToScroll: 1
+//       }
+//     }
+//   ]
+// });
+/* homepage featured products grid */
 

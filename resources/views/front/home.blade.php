@@ -109,8 +109,8 @@
         <h1 class="title_44">Designed to Perform. Built to Last</h1>
         <p class="mb-0">Blitz products are IEC-compliant, rigorously tested, and trusted across the global solar and electrical industries.</p>
 
-        <div class="row pt_40">
-            <div class="col-md-3">
+        <div class="pd_grid pt_40">
+            <div class="">
                 <div class="product-card">
                     <div class="product-img-wrapper">
                         <img src="{{ asset('public/front/assets/images/Type 2 Surge Protector.png') }}" alt="Type 2 Surge Protector"
@@ -172,7 +172,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="">
                 <div class="product-card">
                     <div class="product-img-wrapper">
                         <img src="{{ asset('public/front/assets/images/Type 2 Surge Protector.png') }}" alt="Type 2 Surge Protector"
@@ -233,7 +233,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="">
                 <div class="product-card">
                     <div class="product-img-wrapper">
                         <img src="{{ asset('public/front/assets/images/Type 2 Surge Protector.png') }}" alt="Type 2 Surge Protector"
@@ -294,7 +294,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="">
                 <div class="product-card">
                     <div class="product-img-wrapper">
                         <img src="{{ asset('public/front/assets/images/Type 2 Surge Protector.png') }}" alt="Type 2 Surge Protector"

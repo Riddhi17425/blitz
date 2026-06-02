@@ -9,7 +9,7 @@
 
 @media (max-width: 1601px) {
     .container {
-        max-width: 1450px !important;
+        max-width: 1500px !important;
     }
 
     /* Typography Scaling for 1330px Container */
@@ -121,23 +121,98 @@
     .d-flex.gap-5 {
         gap: 2rem !important;
     }
+
+    .footer-links,.footer-links-product {
+    padding: 0 24px;
+}
+
+.footer-newsletter
+{
+     padding-left: 24px;
+}
+}
+
+@media (max-width: 1537px) {
+
+        .container {
+        max-width: 1350px !important;
+    }
+
+        .hero-subtitle {
+        font-size: 16px;
+        line-height: 28px;
+        margin-bottom: 30px;
+    }
+    
+        .navbar {
+        padding: 12px 0;
+    }
+
+        .com_btn {
+        padding: 8px 24px;
+        font-size: 14px;
+    }
+
+        .hero-title, .banner_title, .baner_title, .main_head {
+        font-size: 42px;
+        line-height: 1.1;
+    }
+
+        .hero-subtitle {
+        font-size: 16px;
+        line-height: 28px;
+        margin-bottom: 30px;
+    }
+
+        .title_44 {
+        font-size: 34px;
+            line-height: 40px;
+
+    }
+
+        .mb_40 {
+        margin-bottom: 25px;
+    }
+
+        .mt_40 {
+        margin-top: 25px;
+    }
+
+        .home_about .home_about_para {
+        font-size: 18px;
+        line-height: 32px;
+    }
+
+    body 
+    {
+        font-size: 16px;
+    }
+
+.title_36 {
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.mcb-overlay
+{
+    padding: 20px 20px;
 }
 
 
-/* =========================================
-   LARGE DESKTOP (1440px - 1919px)
-========================================= */
-@media (max-width: 1919px) {}
+.product-card {
+    padding: 15px;
+}
 
-/* =========================================
-   DESKTOP (1280px - 1439px)
-========================================= */
-@media (max-width: 1439px) {}
+.spec-row {
+    padding: 8px 0;
+}
+
+
 
 /* =========================================
    LAPTOP (1024px - 1279px)
 ========================================= */
-@media (max-width: 1279px) {
+@media (max-width: 1281px) {
     .navbar-nav {
         gap: 30px;
     }

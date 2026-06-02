@@ -28,6 +28,8 @@ body {
     color: var(--grey-666);
     font-size: 18px;
     line-height: 26px;
+    overflow-x: hidden;
+    
 }
 
 
