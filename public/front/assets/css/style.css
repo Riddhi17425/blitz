@@ -2065,3 +2065,7 @@ tbody tr:nth-child(even) {
     background-image: url(../images/about-cta.png);
     height: 480px;
 }
+
+.story-img-col {
+    margin-bottom: 20px;
+}

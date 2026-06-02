@@ -999,4 +999,17 @@
         background-image: var(--mobile-bg);
     }
 
+    .mcb-overlay .title_36 {
+        transform: translateY(0);
+    }
+
+    .mcb-overlay .com_btn {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .mcb-card {
+        margin-inline: 10px;
+    }
 }
