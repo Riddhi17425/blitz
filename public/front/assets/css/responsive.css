@@ -382,8 +382,7 @@
         font-size: 70px;
     }
 
-    .advantage-card {}
-
+   
     .contant_svg svg {
         height: 550px;
     }
@@ -582,48 +581,101 @@
         padding-bottom: 20px;
     }
 
-    /* Reset Dropdown for Mobile View */
-    .dropdown-menu {
+    /* Reset positioning so submenus are relative to navbar-collapse */
+    .navbar-nav,
+    .navbar-nav .nav-item.dropdown,
+    .navbar-nav .dropdown-submenu,
+    .navbar-nav .dropdown-submenu.position-relative {
         position: static !important;
+        transform: none !important;
+    }
+
+    /* Drill-down Submenu Layers (Level 1 & Nested) */
+    .dropdown-submenu > .submenu,
+    .nav-item.dropdown > .dropdown-menu {
+        position: absolute !important;
+        top: 0 !important; 
+        left: 100% !important;
+        width: 100% !important;
+        height: 100vh !important;
+        background: var(--white) !important;
+        display: block !important;
+        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        z-index: 20;
         opacity: 1 !important;
         visibility: visible !important;
-        transform: none !important;
         box-shadow: none !important;
         border: none !important;
-        display: none !important;
-        /* Let Bootstrap toggle it */
-        padding-left: 15px;
+        overflow-y: auto;
     }
 
-    .nav-item.show .dropdown-menu {
-        display: block !important;
+    .dropdown-submenu.show > .submenu,
+    .nav-item.dropdown.show > .dropdown-menu {
+        left: 0 !important;
     }
 
-    .dropdown-submenu>.submenu {
-        position: static !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        transform: none !important;
-        display: none !important;
-        padding-left: 15px;
-        margin-top: 10px !important;
-    }
-
-    .dropdown-submenu.show>.submenu {
-        display: block !important;
-    }
-
+    /* Offcanvas Sidebar Base */
     .navbar-collapse {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 320px;
+        height: 100vh;
         background-color: var(--white);
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        z-index: 1000;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+        z-index: 1050;
+        transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: block !important; /* Override collapse hide */
+        overflow-x: hidden;
     }
+
+    .navbar-collapse.show {
+        left: 0;
+    }
+
+    .mobile-offcanvas-header {
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+        height: 85px;
+    }
+
+    .navbar-nav {
+        height: calc(100vh - 85px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 0;
+        margin: 0;
+        gap: 0;
+    }
+
+    .navbar-nav .nav-link,
+    .dropdown-item {
+        padding: 15px 20px !important;
+        border-bottom: 1px solid #f5f5f5;
+        border-radius: 0 !important;
+    }
+
+    .mobile-back-btn {
+        padding: 15px 20px;
+        background: #f8f9fa;
+        font-weight: 600;
+        cursor: pointer;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--blue);
+        font-size: 16px;
+    }
+    .mobile-back-btn svg {
+        transform: rotate(90deg); /* Points left if default is right */
+    }
+
+
 
     /* Footer Fixes */
     .footer-top {
@@ -780,11 +832,6 @@
         text-align: center;
     }
 
-    /* Layout specific fixes */
-    .py_40 {
-        padding-top: 40px !important;
-        padding-bottom: 40px !important;
-    }
 
     .pt_40 {
         padding-top: 20px !important;
@@ -912,11 +959,16 @@
     /* About page fixes */
     .advantage-card {
         height: auto;
-        min-height: 400px;
+        min-height: 800px;
+                background-position-x: center;
     }
 
     .advantage-content {
         padding: 40px 20px;
+    }
+
+        .contant_svg svg {
+        height: 150px;
     }
 
     .advantage-text {
@@ -956,10 +1008,6 @@
     }
 
     /* Contact Page fixes */
-    .contact_banner {
-        height: auto;
-        padding: 60px 0;
-    }
 
     section iframe {
         height: 350px !important;
@@ -1039,4 +1087,71 @@
     .mcb-card {
         margin-inline: 10px;
     }
+
+    .baner_right
+    {
+        display: none;
+    }
+
+    .pd_banner
+    {
+        background-image: none;
+    }
+
+    .about_cats
+    {
+        /* background-image: url(../); */
+        background-position: center;
+    }
+
+    .about_cats {
+    height: 600px;
+}
+
+.tec_res_left {
+    max-width: 100%;
+    height: 100%;
+}
+
+
+    .contact_banner {
+       background-image: none;
+        padding: 30px 0;
+    }
+
+    .contact_banner {
+        height: 100%;
+    } 
+
+    .contact-item
+    {
+        align-items: start;
+    }
+
+    .contact-text
+    
+    {
+        flex: 1;
+    }
+
+        .py_80 {
+        padding: 40px 0;
+    }
+
+    .pro_cat .pro_cat_cont {
+    padding: 20px;
+}
+
+.pro_cat
+{
+    margin-bottom: 16px;
+}
+
+.pro_cat img 
+{
+    height: 500px;
+    object-fit: cover;
+}
+
+    
 }

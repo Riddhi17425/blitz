@@ -30,6 +30,60 @@ $(document).ready(function () {
   //   offset: 50,
   // });
 
+  // Custom Mobile Offcanvas & Drill-Down Menu Logic
+  $(document).ready(function() {
+      // 1. Setup Drill-down Back buttons on Mobile
+      if ($(window).width() <= 1025) {
+          $('.dropdown-submenu, .nav-item.dropdown').each(function() {
+              var $submenu = $(this).children('.submenu, .dropdown-menu');
+              // Extract text without the SVG icon text if any
+              var $clone = $(this).children('a').clone();
+              $clone.children().remove();
+              var parentTitle = $clone.text().trim() || "Back";
+              
+              if ($submenu.length > 0) {
+                  // Inject Back button (Arrow pointing left)
+                  var backBtnHtml = '<li class="mobile-back-btn">' +
+                      '<svg width="10" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+                          '<path d="M5 9L1 5L5 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+                      '</svg>' +
+                      'Back to ' + parentTitle + '</li>';
+                  $submenu.prepend(backBtnHtml);
+              }
+          });
+      }
+
+      // 2. Handle Sliding in (Opening Submenu)
+      $('.dropdown-submenu > a, .nav-item.dropdown > a').on('click', function(e) {
+          if ($(window).width() <= 1025) {
+              var $submenu = $(this).next('.submenu, .dropdown-menu');
+              if ($submenu.length > 0) {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  // Add show to the clicked submenu to slide it in
+                  $(this).parent().addClass('show');
+              }
+          }
+      });
+
+      // 3. Handle Sliding out (Clicking Back)
+      $(document).on('click', '.mobile-back-btn', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          // Remove show from the parent submenu to slide it out
+          $(this).closest('.dropdown-submenu, .nav-item.dropdown').removeClass('show');
+      });
+
+      // Close offcanvas when close button is clicked
+      $('.mobile-menu-close').on('click', function() {
+          $('.navbar-collapse').removeClass('show');
+          // Reset all drill-down menus when closed
+          setTimeout(function() {
+              $('.dropdown-submenu, .nav-item.dropdown').removeClass('show');
+          }, 300); // wait for offcanvas slide out animation
+      });
+  });
+
   //4. Industry Slider
 
   $(document).ready(function () {

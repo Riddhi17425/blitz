@@ -17,7 +17,7 @@
                         <a href="#">About</a>
                     </div>
                     <h2 class="banner_title">Stronger Protection For Smarter Infrastructure</h2>
-                    <p class="baner_desc">From the heart of India to eight countries across Asia, the Middle East, and
+                    <p class="baner_desc mb">From the heart of India to eight countries across Asia, the Middle East, and
                         Africa, Blitz is the name engineers and industries trust when failure is simply not an option.
                     </p>
                     <div class="banner_btns">
@@ -30,7 +30,7 @@
                                         stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg></span>
                         </a>
-                        <a href="#" class="com_btn com_btn_b_b ms-3">Download Catalogue</a>
+                        <a href="#" class="com_btn com_btn_b_b ms-md-3">Download Catalogue</a>
                     </div>
                 </div>
                 <div class="baner_right">
@@ -45,11 +45,11 @@
     <div class="sticky-wrapper">
         <div class="container">
             <div class="row justify-content-between align-items-center">
-                <div class="col-md-6 story-img-col">
+                <div class="col-md-6 story-img-col order-1 order-md-0">
                     <img src="{{ asset('public/front/assets/images/who_we_are.webp') }}" alt="image" class="img-fluid img_rou story-zoom-img">
                 </div>
 
-                <div class="col-md-6 story-text-col">
+                <div class="col-md-6 story-text-col ">
                     <div class="ps-md-5 story-text-content">
                         <p class="title_20 line_left">WHO WE ARE</p>
                         <h2 class="title_44 mb_40">A Global Brand Built on a Simple Promise - Reliable Protection, Every Time 
