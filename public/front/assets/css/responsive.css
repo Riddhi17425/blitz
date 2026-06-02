@@ -146,28 +146,35 @@
         height: 400px;
     }
 
-    .vision_mission img 
-    {
-    width: 200px;
+    .vision_mission img {
+        width: 200px;
     }
 
-    .vision_mission
-    {
+    .vision_mission {
         padding: 24px;
     }
 
     .unique-advantages-section {
-    margin-top: 35px;
-}
+        margin-top: 35px;
+    }
 
-.advantage-card {
-    height: 450px;
-}
+    .advantage-card {
+        height: 450px;
+    }
 
-.product_cta
-{
-    height: 400px;
-}
+    .product_cta {
+        height: 400px;
+    }
+
+    .subscribe-box button {
+        padding: 8px 18px;
+        font-size: 20px;
+    }
+
+    .subscribe-box input {
+        font-size: 20px;
+    }
+
 
 }
 
@@ -356,27 +363,26 @@
     }
 
     .advantage-content {
-    padding-left: 45px;
-}
+        padding-left: 45px;
+    }
 
-.advantage-number {
-    font-size: 70px;
-}
+    .advantage-number {
+        font-size: 70px;
+    }
 
-.advantage-card
-{
-    
-}
+    .advantage-card {}
 
-.contant_svg svg
-{
-    height: 550px;
-}
+    .contant_svg svg {
+        height: 550px;
+    }
 
-.product_cta
-{
-    height: 350px;
-}
+    .product_cta {
+        height: 350px;
+    }
+
+    .multi_ac {
+        background: none;
+    }
 
 
 
@@ -622,7 +628,8 @@
         grid-template-columns: 1fr 1fr;
     }
 
-    .footer-links li, .footer-links-product li {
+    .footer-links li,
+    .footer-links-product li {
         margin-bottom: 10px;
     }
 
@@ -964,16 +971,25 @@
         display: none;
         /* Hide custom arrows on mobile if they overlap or break flow, or adjust */
     }
-
+/* 
     .testimonial-section .col-lg-4 {
         margin-bottom: 30px;
-    }
+    } */
+
+    .bg-curve{
+display: none;
+}
+
 
     .multi_ac {
         background: none;
     }
 
 
-    .indu_slider img {height: 400px;}
- 
+    .indu_slider img {
+        height: 400px;
+    }
+
+ .hero-slide { background-image: var(--mobile-bg); }
+
 }

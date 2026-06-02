@@ -4,7 +4,7 @@
 <section>
     <div class="hero-slider">
         @forelse($banners as $banner)
-            <div class="hero-slide hero-slide-{{ $loop->iteration }}" style="background-image: url('{{ $banner->image ? asset('public/admin/banners/' . $banner->image) : asset('public/front/assets/images/hero-banner-1.png') }}');">
+            <div class="hero-slide hero-slide-{{ $loop->iteration }}" style="--desktop-bg: url('{{ $banner->image ? asset('public/admin/banners/' . $banner->image) : asset('public/front/assets/images/hero-banner-1.png') }}'); --mobile-bg: url('{{ $banner->mobile_image ? asset('public/admin/banners/' . $banner->mobile_image) : ($banner->image ? asset('public/admin/banners/' . $banner->image) : asset('public/front/assets/images/hero-banner-1.png')) }}');">
                 <div class="container">
                     <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
                         <p class="hero-title">{{ $banner->title ?? 'Protect the Circuit' }}</p>
@@ -22,7 +22,7 @@
                 </div>
             </div>
         @empty
-            <div class="hero-slide hero-slide-1" style="background-image: url('{{ asset('public/front/assets/images/hero-banner-1.png') }}');">
+            <div class="hero-slide hero-slide-1" style="--desktop-bg: url('{{ asset('public/front/assets/images/hero-banner-1.png') }}'); --mobile-bg: url('{{ asset('public/front/assets/images/hero-banner-1.png') }}');">
                 <div class="container">
                     <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
                         <p class="hero-title">Control the Current.<br>Protect the Circuit</p>
@@ -696,7 +696,7 @@
     </div>
     <div class="row align-items-center">
 
-        <div class="col-lg-4">
+        <div class="col-lg-4 text-center text-md-start">
             <p class="title_20 line_left aos-init aos-animate" >
                 Testimonial</p>
             <h2 class="title_44">What Our Clients Say</h2>

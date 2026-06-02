@@ -150,6 +150,7 @@
     height: calc(100vh - 100px);
     position: relative;
     overflow: hidden;
+    background-image: var(--desktop-bg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -945,6 +946,7 @@
     border: 1px solid #7476AD;
     border-radius: 4px;
     padding: 4px;
+    padding-right: 9em;
     background: rgba(255, 255, 255, 0.03);
     position: relative;
 }
@@ -2008,8 +2010,7 @@ tbody tr:nth-child(even) {
 /* homepage featured products grid */
 
 
-.product_cta
-{
+.product_cta {
     background-image: url(../images/about-cta.png);
     height: 480px;
 }

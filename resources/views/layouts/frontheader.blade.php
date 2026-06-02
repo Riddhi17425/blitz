@@ -77,7 +77,7 @@
                             @if(isset($categoriesHF) && $categoriesHF->count() > 0)
                                 @foreach($categoriesHF as $category)
                                     <li class="dropdown-submenu position-relative">
-                                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ $category->category_url ? route('front.category.details', $category->category_url) : '#' }}">
+                                        <a class="dropdown-item d-flex justify-content-between align-items-center gap-3" href="{{ $category->category_url ? route('front.category.details', $category->category_url) : '#' }}">
                                             {{ $category->title }}
                                             @if($category->subCategories->count() > 0)
                                                 <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -89,7 +89,7 @@
                                             <ul class="dropdown-menu submenu">
                                                 @foreach($category->subCategories as $subCategory)
                                                     <li class="dropdown-submenu position-relative">
-                                                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                                        <a class="dropdown-item d-flex justify-content-between align-items-center gap-3" href="#">
                                                             {{ $subCategory->title }}
                                                             @if($subCategory->products->count() > 0)
                                                                 <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
