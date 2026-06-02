@@ -18,7 +18,7 @@
             </span>
             <a href="#">Surge Protection Devices</a>
         </div>
-        <div class="row gx-5">
+        <div class="row xl-gx-5 gx-4">
 
             <!-- Left Side: Images -->
             <div class="col-lg-5 mb-4 mb-lg-0">
@@ -26,19 +26,23 @@
 
                     <!-- Main Zoomable Image -->
                     <div class="main-image-container" id="zoomContainer">
-                        <img src="{{ asset('public/front/assets/images/AC SPD 1 PHASE - 2 POLE -1.webp') }}" id="mainImage" alt="AC SPD">
+                        <img src="{{ asset('public/front/assets/images/AC SPD 1 PHASE - 2 POLE -1.webp') }}"
+                            id="mainImage" alt="AC SPD">
                     </div>
 
                     <!-- Thumbnails -->
                     <div class="thumbnail-row">
                         <div class="thumb active">
-                            <img src="{{ asset('public/front/assets/images/AC SPD 1 PHASE - 2 POLE -1.webp') }}" alt="Thumb 1">
+                            <img src="{{ asset('public/front/assets/images/AC SPD 1 PHASE - 2 POLE -1.webp') }}"
+                                alt="Thumb 1">
                         </div>
                         <div class="thumb">
-                            <img src="{{ asset('public/front/assets/images/AC SPD 1 PHASE - 2 POLE -2.webp') }}" alt="Thumb 2">
+                            <img src="{{ asset('public/front/assets/images/AC SPD 1 PHASE - 2 POLE -2.webp') }}"
+                                alt="Thumb 2">
                         </div>
                         <div class="thumb">
-                            <img src="{{ asset('public/front/assets/images/AC SPD 1 PHASE - 2 POLE -3.webp') }}" alt="Thumb 3">
+                            <img src="{{ asset('public/front/assets/images/AC SPD 1 PHASE - 2 POLE -3.webp') }}"
+                                alt="Thumb 3">
                         </div>
                     </div>
                 </div>
@@ -203,11 +207,11 @@
 
 <section class="py_80">
     <div class="container">
-<div class="text-center mb_40">
-        <h2 class="title_44">Technical Specifications
-        </h2>
-        <p>Each product is designed to international standards with rigorous quality control at every stage.</p>
-      </div>
+        <div class="text-center mb_40">
+            <h2 class="title_44">Technical Specifications
+            </h2>
+            <p>Each product is designed to international standards with rigorous quality control at every stage.</p>
+        </div>
         <div class="table-wrapper">
             <table class="table-dark">
                 <thead>
