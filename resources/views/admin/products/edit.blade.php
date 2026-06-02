@@ -36,8 +36,8 @@
                             @error('category_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label class="form-label fw-bold">Sub Category <span class="text-danger">*</span></label>
-                            <select name="sub_category_id" id="sub_category_id" class="form-control @error('sub_category_id') is-invalid @enderror" required>
+                            <label class="form-label fw-bold">Sub Category </label>
+                            <select name="sub_category_id" id="sub_category_id" class="form-control">
                                 <option value="">Select Sub Category</option>
                                 @foreach($subCategories as $subCategory)
                                     <option value="{{ $subCategory->id }}" {{ old('sub_category_id', $product->sub_category_id) == $subCategory->id ? 'selected' : '' }}>{{ $subCategory->title }}</option>
@@ -364,7 +364,7 @@
             ignore: [],
             rules: {
                 category_id: { required: true },
-                sub_category_id: { required: true },
+                // sub_category_id: { required: true },
                 product_name: { required: true, maxlength: 255 },
                 product_url: { required: true, maxlength: 255 },
                 product_modal: { required: true, maxlength: 255 },
@@ -375,7 +375,7 @@
             },
             messages: {
                 category_id: { required: 'Category is required.' },
-                sub_category_id: { required: 'Sub Category is required.' },
+                // sub_category_id: { required: 'Sub Category is required.' },
                 product_name: { required: 'Product Name is required.' },
                 product_url: { required: 'Product URL is required.' },
                 product_modal: { required: 'Product Model is required.' },
