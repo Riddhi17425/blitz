@@ -25,6 +25,10 @@
     padding: 0;
 }
 
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
 /* Icon Animation */
 .nav-link .dropdown-icon {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1046,6 +1050,10 @@
     color: var(--white);
 }
 
+.contact-item:hover .icon-box svg path {
+    stroke: var(--white);
+}
+
 .contact-text {
     display: flex;
     flex-direction: column;
@@ -1190,7 +1198,8 @@
 
 .banner_grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
     align-items: center;
 }
