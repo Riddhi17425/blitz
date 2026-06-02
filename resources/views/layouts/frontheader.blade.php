@@ -74,67 +74,47 @@
 
                         <!-- Premium Dropdown Menu -->
                         <ul class="dropdown-menu">
-                            <!-- Category 1 -->
-                            <li class="dropdown-submenu position-relative">
-                                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
-                                    Surge Protection (SPD)
-                                    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </a>
-                                <!-- Level 2 Submenu -->
-                                <ul class="dropdown-menu submenu">
-                                    <li><a class="dropdown-item" href="#">Type 1 SPD</a></li>
-                                    <li><a class="dropdown-item" href="#">Type 2 SPD</a></li>
-                                    <li><a class="dropdown-item" href="#">Type 1+2 SPD</a></li>
-                                    <li><a class="dropdown-item" href="#">DC / Solar SPD</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- Category 2 -->
-                            <li class="dropdown-submenu position-relative">
-                                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
-                                    Circuit Breakers (MCB)
-                                    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                    <li><a class="dropdown-item" href="#">AC MCB</a></li>
-                                    <li><a class="dropdown-item" href="#">DC MCB</a></li>
-                                    <li><a class="dropdown-item" href="#">Isolator Switches</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- Category 3 -->
-                            <li class="dropdown-submenu position-relative">
-                                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
-                                    Fuses & Fuse Bases
-                                    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                    <li><a class="dropdown-item" href="#">Solar PV Fuses</a></li>
-                                    <li><a class="dropdown-item" href="#">EV Fuses</a></li>
-                                    <li><a class="dropdown-item" href="#">Cylindrical Fuses</a></li>
-                                </ul>
-                            </li>
-
-                            <!-- Category 4 -->
-                            <li class="dropdown-submenu position-relative">
-                                <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
-                                    Solar Accessories
-                                    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                    </svg>
-                                </a>
-                                <ul class="dropdown-menu submenu">
-                                    <li><a class="dropdown-item" href="#">Solar Cables</a></li>
-                                    <li><a class="dropdown-item" href="#">MC4 Connectors</a></li>
-                                    <li><a class="dropdown-item" href="#">Junction Boxes</a></li>
-                                </ul>
-                            </li>
+                            @if(isset($categoriesHF) && $categoriesHF->count() > 0)
+                                @foreach($categoriesHF as $category)
+                                    <li class="dropdown-submenu position-relative">
+                                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="{{ $category->category_url ? route('front.category.details', $category->category_url) : '#' }}">
+                                            {{ $category->title }}
+                                            @if($category->subCategories->count() > 0)
+                                                <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                </svg>
+                                            @endif
+                                        </a>
+                                        @if($category->subCategories->count() > 0)
+                                            <ul class="dropdown-menu submenu">
+                                                @foreach($category->subCategories as $subCategory)
+                                                    <li class="dropdown-submenu position-relative">
+                                                        <a class="dropdown-item d-flex justify-content-between align-items-center" href="#">
+                                                            {{ $subCategory->title }}
+                                                            @if($subCategory->products->count() > 0)
+                                                                <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                </svg>
+                                                            @endif
+                                                        </a>
+                                                        @if($subCategory->products->count() > 0)
+                                                            <ul class="dropdown-menu submenu">
+                                                                @foreach($subCategory->products as $product)
+                                                                    <li>
+                                                                        <a class="dropdown-item" href="{{ route('front.product.details', $product->product_url) }}">{{ $product->product_name }}</a>
+                                                                    </li>
+                                                                @endforeach
+                                                            </ul>
+                                                        @endif
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endforeach
+                            @else
+                                <li><a class="dropdown-item" href="#">No categories available</a></li>
+                            @endif
                         </ul>
                     </li>
                     {{-- <li class="nav-item"><a class="nav-link" href="#">Catalogue</a></li> --}}
@@ -150,4 +130,3 @@
     </nav>
 
     <main  data-scroll-container>
-

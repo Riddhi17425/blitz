@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Http;
-use App\Models\{Category, SubCategory, Banner, BLog, NewsletterInquiry, ContactInquiry, Product, Country, Industry, Testimonial};
+use App\Models\{Category, SubCategory, Banner, BLog, NewsletterInquiry, ContactInquiry, Product, Country, Industry, Testimonial, Setting};
 
 class HomeController extends Controller 
 { 
@@ -16,8 +16,14 @@ class HomeController extends Controller
         $categories = Category::whereNull('deleted_at')->where('is_active', 1)->get();
         $industries = Industry::whereNull('deleted_at')->get();
         $testimonials = Testimonial::whereNull('deleted_at')->where('status', 'Active')->get();
-
-        return view('front.home', compact('banners', 'categories', 'industries', 'testimonials'));
+        $featuredProducts = Product::whereNull('deleted_at')
+            ->where('is_active', 1)
+            ->where('is_featured', 1)
+            ->with(['technicalSpecifications' => function ($query) {
+                $query->where('is_show_on_list', 1);
+            }])->take(4)->get();
+        $countries = Country::orderBy('name')->get();
+        return view('front.home', compact('banners', 'categories', 'industries', 'testimonials', 'featuredProducts', 'countries'));
     }
 
     public function Thankyou()
@@ -32,8 +38,9 @@ class HomeController extends Controller
     {
        $metatitle="";
        $metadescription=""; 
+       $settings = Setting::first();
 
-        return view('front.about',compact('metatitle','metadescription'));
+        return view('front.about',compact('metatitle','metadescription','settings'));
     }
 
     public function blogs()
@@ -55,26 +62,58 @@ class HomeController extends Controller
         return view('front.blog-details',compact('metatitle','metadescription','blogdetail'));
     }
 
-    public function productList(){
+    public function productList(Request $request){
         $metatitle="";
         $metadescription="";
+        $industries = Industry::whereNull('deleted_at')->get();
+        $category = Category::whereNull('deleted_at')
+            ->where(function ($query) {
+                $query->where('is_active', 1)->orWhereNull('is_active');
+            })
+            ->when($request->filled('category'), function ($query) use ($request) {
+                $query->where('category_url', $request->category);
+            }, function ($query) {
+                $query->where(function ($query) {
+                    $query->whereNotNull('faq_title')
+                        ->orWhereNotNull('faq_description')
+                        ->orWhereNotNull('faqs');
+                });
+            })
+            ->orderBy('created_at')
+            ->first();
 
-        return view('front.product-list',compact('metatitle','metadescription'));
+        return view('front.product-list',compact('metatitle','metadescription', 'industries', 'category'));
     }
 
-    public function productDetails(){
-        $metatitle="";
-        $metadescription="";
+    public function productDetails(Request $request, $url = null){
+        $url = $url ?: $request->query('product');
 
-        return view('front.product-details',compact('metatitle','metadescription'));
+        $product = Product::with(['category', 'subCategory', 'technicalSpecifications'])
+            ->whereNull('deleted_at')
+            ->where(function ($query) {
+                $query->where('is_active', 1)->orWhereNull('is_active');
+            })
+            ->when($url, fn ($query) => $query->where('product_url', $url))
+            ->firstOrFail();
+
+        $metatitle = $product->meta_title ?? $product->product_name ?? '';
+        $metadescription = $product->meta_description ?? '';
+
+        return view('front.product-details',compact('metatitle','metadescription','product'));
     }
 
     public function categoryDetails($slug){
-        $category = Category::where('slug', $slug)->first();
+        $category = Category::whereNull('deleted_at')
+            ->where(function ($query) {
+                $query->where('is_active', 1)->orWhereNull('is_active');
+            })
+            ->where('category_url', $slug)
+            ->firstOrFail();
+        $industries = Industry::whereNull('deleted_at')->get();
         $metatitle = $category->meta_title ?? '';
         $metadescription = $category->meta_description ?? '';
 
-        return view('front.category-details',compact('metatitle','metadescription','category'));
+        return view('front.category-details',compact('metatitle','metadescription','category', 'industries'));
     }
 
     public function contact()
@@ -129,6 +168,7 @@ class HomeController extends Controller
             'country' => 'required|string|max:255',
             'product' => 'nullable|string|max:255',
             'requirement_details' => 'nullable|string',
+            'inquiry_type' => 'nullable|string|in:page,popup',
         ]);
 
         if ($validator->fails()) {
@@ -146,6 +186,7 @@ class HomeController extends Controller
             'country' => $request->input('country'),
             'product' => $request->input('product'),
             'requirement_details' => $request->input('requirement_details'),
+            'inquiry_type' => $request->input('inquiry_type', 'page'),
         ]);
 
         // Send to Google Sheets if webhook provided

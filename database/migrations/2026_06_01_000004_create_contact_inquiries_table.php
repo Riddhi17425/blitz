@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('country')->nullable();
             $table->string('product')->nullable();
             $table->text('requirement_details')->nullable();
+            $table->string('inquiry_type')->default('page')->after('requirement_details');
             $table->timestamps();
         });
     }
