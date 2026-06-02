@@ -25,6 +25,10 @@
     padding: 0;
 }
 
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
 /* Icon Animation */
 .nav-link .dropdown-icon {
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -146,6 +150,7 @@
     height: calc(100vh - 100px);
     position: relative;
     overflow: hidden;
+    background-image: var(--desktop-bg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -323,6 +328,9 @@
     background: var(--white);
     border-radius: var(--br);
     border: 1px solid var(--grey-ddd);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
 }
 
@@ -636,7 +644,7 @@
 .sticky-wrapper {
     position: sticky;
     top: 100px;
-    height: calc(100vh - 100px);
+    /* height: calc(100vh - 100px); */
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -824,7 +832,7 @@
 
 .tec_res_left p,
 .tec_res_left .title_44 {
-    color: var(--white) !important;
+    color: var(--white);
 }
 
 .tec_res_left .line_left::after {
@@ -937,6 +945,7 @@
     border: 1px solid #7476AD;
     border-radius: 4px;
     padding: 4px;
+    padding-right: 9em;
     background: rgba(255, 255, 255, 0.03);
     position: relative;
 }
@@ -1043,6 +1052,10 @@
 .contact-item:hover .icon-box {
     background-color: var(--blue);
     color: var(--white);
+}
+
+.contact-item:hover .icon-box svg path {
+    stroke: var(--white);
 }
 
 .contact-text {
@@ -1189,7 +1202,8 @@
 
 .banner_grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
     align-items: center;
 }
@@ -1806,6 +1820,7 @@ tbody tr:nth-child(even) {
 
 
 
+
 /* SECTION */
 
 .unique-advantages-section {
@@ -1825,7 +1840,7 @@ tbody tr:nth-child(even) {
 
 .advantage-card {
     position: sticky;
-    top: 0;
+    top: 0px;
     height: 600px;
     width: 100%;
     border-radius: 12px;
@@ -1841,6 +1856,7 @@ tbody tr:nth-child(even) {
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
+    top: 30px;
 }
 
 .reliability-card {
@@ -1848,6 +1864,7 @@ tbody tr:nth-child(even) {
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
+    top: 90px;
 }
 
 .certification-card {
@@ -1855,6 +1872,7 @@ tbody tr:nth-child(even) {
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
+    top: 200px;
 }
 
 /* CONTENT */
@@ -1878,6 +1896,10 @@ tbody tr:nth-child(even) {
 
 .advantage-text {
     max-width: 55%;
+}
+
+.advantage-text .title_44 {
+    font-family: 'Roboto';
 }
 
 .advantage-number {
@@ -1985,3 +2007,9 @@ tbody tr:nth-child(even) {
 }
 
 /* homepage featured products grid */
+
+
+.product_cta {
+    background-image: url(../images/about-cta.png);
+    height: 480px;
+}

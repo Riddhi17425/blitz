@@ -30,7 +30,7 @@
                                         stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg></span>
                         </a>
-                        <a href="#" class="com_btn">Download Catalogue</a>
+                        <a href="#" class="com_btn ms-3">Download Catalogue</a>
                     </div>
                 </div>
                 <div class="baner_right">
@@ -141,7 +141,7 @@
                         <div class="advantage-text">
                             <h2 class="advantage-number">01</h2>
                             <h3 class="title_44">GLOBALLY CERTIFIED </h3>
-                            <h4 class="titile_24 mb-3">Built to International Standards </h4>
+                            <h4 class="title_24 mb-3">Built to International Standards </h4>
                             <p class="mb-0">
                                All Blitz products are designed and manufactured strictly as per IEC specifications. No matter where your project location is, whether in India, the UAE, or Nigeria, you can always trust Blitz to deliver world-class protection systems without a doubt.
                             </p>
@@ -154,7 +154,7 @@
                         <div class="advantage-text">
                             <h2 class="advantage-number">02</h2>
                             <h3 class="title_44">ALWAYS READY </h3>
-                            <h4 class="titile_24 mb-3">The Right Product, Right When You Need It </h4>
+                            <h4 class="title_24 mb-3">The Right Product, Right When You Need It </h4>
                             <p class="mb-0">
                                 A strong, well-established distribution network ensures that Blitz products reach your project site on time. A high-quality protection solution in the world is useless if it doesn't arrive when your project demands it. 
                             </p>
@@ -167,7 +167,7 @@
                         <div class="advantage-text">
                             <h2 class="advantage-number">03</h2>
                             <h3 class="title_44">BUILT BEYOND STANDARDS </h3>
-                            <h4 class="titile_24 mb-3">Designed To Outlast Harsh Conditions</h4>
+                            <h4 class="title_24 mb-3">Designed To Outlast Harsh Conditions</h4>
                             <p class="mb-0">
                                 From blazing solar fields to heavy-duty industrial panels, Blitz equipment has been built to withstand the situations that destroy weaker machines. Extreme temperatures, constant loads, and unreliable grids - Blitz handles the burden.
                             </p>
@@ -233,7 +233,7 @@
         <p class="mb-0">What started as a vision in Ahmedabad is now a reality across Asia, the Middle East, and Africa - with more industries and more markets choosing Blitz every single day.</p>
       </div>
 
-      <div id="globalMapContainer">
+      <div id="globalMapContainer" class="contant_svg">
         <svg width="100%" height="758" viewBox="0 0 1920 758" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <rect width="1920" height="758" fill="#F1F5F9"/>
 <g clip-path="url(#clip0_203_161)">
@@ -858,19 +858,13 @@
             <p class="mb-0" style="color: var(--grey-666) !important;">Tell us about your project, and our engineering team will come back to you with the right Blitz solution, quickly, accurately, and without the runaround. </p>
 
             <div class="pt_40">
-                <a href="{{ route("front.contact") }}" class="com_btn">
-                    <span class="me-2">
-                        {{-- <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M21 15V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V15"
-                                stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M7 10L12 15L17 10" stroke="black" stroke-width="1.33333" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M12 15V3" stroke="black" stroke-width="1.33333" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                        </svg> --}}
-                    </span>Talk to Our Team
+                <a href="{{ route("front.contact") }}" class="com_btn com_btn_"> Talk to Our Team 
+                    <span class="ms-2"><svg width="24" height="11" viewBox="0 0 24 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.666016 5.33203H22.666" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17.998 0.666016L22.6647 5.33268L17.998 9.99935" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+                    </span>
                 </a>
 
             </div>
