@@ -4,7 +4,13 @@
 <section>
     <div class="hero-slider">
         @forelse($banners as $banner)
-            <div class="hero-slide hero-slide-{{ $loop->iteration }}" style="--desktop-bg: url('{{ $banner->image ? asset('public/admin/banners/' . $banner->image) : asset('public/front/assets/images/hero-banner-1.png') }}'); --mobile-bg: url('{{ $banner->mobile_image ? asset('public/admin/banners/' . $banner->mobile_image) : ($banner->image ? asset('public/admin/banners/' . $banner->image) : asset('public/front/assets/images/hero-banner-1.png')) }}');">
+            <div class="hero-slide hero-slide-{{ $loop->iteration }}"
+                 style="
+                 
+                 --desktop-bg: url('{{ $banner->image ? asset('public/admin/banners/' . $banner->image) : asset('public/front/assets/images/hero-banner-1.png') }}');
+                 
+                 --mobile-bg: url('{{ $banner->mobile_image ? asset('public/admin/banners/' . $banner->mobile_image) : ($banner->image ? asset('public/admin/banners/' . $banner->image) : asset('public/front/assets/images/hero-banner-1.png')) }}');">
+
                 <div class="container">
                     <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
                         <p class="hero-title">{{ $banner->title ?? 'Protect the Circuit' }}</p>
@@ -115,7 +121,7 @@
         <h1 class="title_44">Designed to Perform. Built to Last</h1>
         <p class="mb-0">Blitz products are IEC-compliant, rigorously tested, and trusted across the global solar and electrical industries.</p>
 
-        <div class="pd_grid pt_40">
+        <div class="pd_grid pt_40 common-dots">
             @if(isset($featuredProducts) && $featuredProducts->count())
                 @foreach($featuredProducts as $product)
                         <div class="product-card">
@@ -124,69 +130,66 @@
                             </div>
 
                             <div>
-                                  <div class="product-info">
-                        <p class="product-sku">{{ $product->product_modal }}</p>
-                        <h3 class="title_24">{{ $product->product_name }}</h3>
+                                <div class="product-info">
+                                    <p class="product-sku">{{ $product->product_modal }}</p>
+                                    <h3 class="title_24">{{ $product->product_name }}</h3>
 
-                        <div class="product-specs">
-                            @forelse($product->technicalSpecifications->take(3) as $spec)
-                                <div class="spec-row">
-                                    <span class="spec-label">{{ $spec->parameter }}</span>
-                                    <span class="spec-value">{{ $spec->specifications }}</span>
+                                    <div class="product-specs">
+                                        @forelse($product->technicalSpecifications->where('is_show_on_list', 1)->take(3) as $spec)
+                                            <div class="spec-row">
+                                                <span class="spec-label">{{ $spec->parameter }}</span>
+                                                <span class="spec-value">{{ $spec->specifications }}</span>
+                                            </div>
+                                        @empty
+                                            <div class="spec-row">
+                                                <span class="spec-label">Specifications not available</span>
+                                            </div>
+                                        @endforelse
+                                    </div>
                                 </div>
-                            @empty
-                                <div class="spec-row">
-                                    <span class="spec-label">Specifications not available</span>
+                                <div class="product-buttons">
+                                    @if($product->datasheet)
+                                        <a href="{{ route('products.datasheet.download', $product->id) }}" target="_blank" class="com_btn com_btn_b_b">
+                                            <span><svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                    fill="none">
+                                                    <path
+                                                        d="M15 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V7L15 2Z"
+                                                        stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path
+                                                        d="M14 2V6C14 6.53043 14.2107 7.03914 14.5858 7.41421C14.9609 7.78929 15.4696 8 16 8H20"
+                                                        stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M10 9H8" stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                    <path d="M16 13H8" stroke="#020844" stroke-width="1.33333"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M16 17H8" stroke="#020844" stroke-width="1.33333"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg></span> <span class="ms-2">Datasheet</span>
+                                        </a>
+                                    @endif
+
+                                    <a href="#" class="com_btn product-enquire-button" data-product-name="{{ $product->product_name }}">
+                                        Enquire <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                height="11" viewBox="0 0 24 11" fill="none">
+                                                <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
+                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
+                                                    stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg></span>
+                                    </a>
                                 </div>
-                            @endforelse
-                        </div>
-                    </div>
-
-                    <div class="product-buttons">
-                        @if($product->datasheet)
-                            <a href="{{ route('products.datasheet.download', $product->id) }}" target="_blank" class="com_btn com_btn_b_b">
-                                <span><svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none">
-                                        <path
-                                            d="M15 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V7L15 2Z"
-                                            stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path
-                                            d="M14 2V6C14 6.53043 14.2107 7.03914 14.5858 7.41421C14.9609 7.78929 15.4696 8 16 8H20"
-                                            stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M10 9H8" stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M16 13H8" stroke="#020844" stroke-width="1.33333"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M16 17H8" stroke="#020844" stroke-width="1.33333"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg></span> <span class="ms-2">Datasheet</span>
-                            </a>
-                        @endif
-
-                        <a href="#" class="com_btn product-enquire-button" data-product-name="{{ $product->product_name }}">
-                            Enquire <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="11" viewBox="0 0 24 11" fill="none">
-                                    <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
-                                        stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg></span>
-                        </a>
-                    </div>
                             </div>
-
-                  
                 </div>
-            @endforeach
-        @else
-            <div class="col-12">
-                <p>No featured products available.</p>
-            </div>
-        @endif
-    </div>
-</section>
+                @endforeach
+            @else
+                <div class="col-12">
+                    <p>No featured products available.</p>
+                </div>
+            @endif
+        </div>
+    </section>
 
 
 <div id="product-enquiry-modal" class="product-modal">

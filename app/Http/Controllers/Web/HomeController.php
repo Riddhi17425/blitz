@@ -104,7 +104,7 @@ class HomeController extends Controller
     }
 
     public function categoryDetails($slug){
-        $category = Category::whereNull('deleted_at')->where('category_url', $slug)->with('subCategories')->firstOrFail();
+        $category = Category::whereNull('deleted_at')->where('category_url', $slug)->with('subCategories', 'products')->firstOrFail();
         $industries = Industry::whereNull('deleted_at')->get();
         $metaTitle = $category->meta_title ?? '';
         $metaDescription = $category->meta_description ?? '';
