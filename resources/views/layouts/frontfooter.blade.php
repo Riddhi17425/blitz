@@ -117,7 +117,13 @@
                    <ul>
                         @if(isset($categoriesHF) && count($categoriesHF) > 0)
                             @foreach($categoriesHF as $category)
-                                <li><a href="{{ route('front.category.details', $category->category_url) }}">{{ $category->title }}</a></li>
+                                <li>
+                                    @if($category->category_url == 'solar-accessories')
+                                       <a href="javascript:void(0);">{{ $category->title }}</a>
+                                    @else
+                                        <a href="{{ route('front.category.details', $category->category_url) }}">{{ $category->title }}</a>
+                                    @endif
+                                </li>
                             @endforeach
                         @else
                             <li><a href="#">No categories available</a></li>
