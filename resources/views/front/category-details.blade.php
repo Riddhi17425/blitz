@@ -62,25 +62,11 @@
                      {{ $subValue->short_form ?? '' }}
                   </h4>
                   <p>{{ $subValue->short_description ?? '' }}</p>
-                  <a href="{{ route('front.product.list', $subValue->sub_category_url) }}" class="com_btn com_btn_w_b">View Products</a>
+                  <a href="{{ route('front.product.list', ['cat_url' => $subValue->category->category_url, 'sub_cat_url' => $subValue->sub_category_url]) }}" class="com_btn com_btn_w_b">View Products</a>
                </div>
             </div>
          </div>
          @endforeach
-         {{-- 
-         <div class="col-md-6">
-            <div class="pro_cat">
-               <img src="{{ asset('public/front/assets/images/AC SPD.webp') }}" alt="img" class="img_rou img-fluid">
-               <div class="pro_cat_cont">
-                  <h4 class="title_36">
-                     AC SPD
-                  </h4>
-                  <p>AC & DC surge protectors for solar & industrial systems.</p>
-                  <a href="#" class="com_btn com_btn_w_b">View Products</a>
-               </div>
-            </div>
-         </div>
-         --}}
       </div>
       @elseif(isset($category->products) && $category->products->count())
       <div class="row pt_40">

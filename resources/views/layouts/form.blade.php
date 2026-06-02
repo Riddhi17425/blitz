@@ -21,7 +21,7 @@
                      <div class="contact-text">
                         <span class="contact-title">Phone</span>
                         @if(isset($settings->phone) && $settings->phone != '')
-                            <span class="contact-detail"><a href="tel:{{ $settings->phone }}">{{ $settings->phone }}</a></span>
+                            <span class="contact-detail"><a href="tel:{{ $settings->phone ?? '+91 97252 01620'}}">{{ $settings->phone ?? '+91 97252 01620'}}</a></span>
                         @else
                             <span class="contact-detail"><a href="tel:+919725201620">+91 97252 01620</a></span>
                         @endif

@@ -20,7 +20,7 @@
                                    d="M18.9493 5.05067C17.1752 3.27653 14.5963 2.65215 12.2855 3.27429C11.7415 3.42074 11.1818 3.09848 11.0353 2.5545C10.8889 2.01052 11.2111 1.45081 11.7551 1.30435C14.7485 0.498424 18.0859 1.3021 20.3919 3.60812C22.6979 5.91414 23.5016 9.25147 22.6957 12.2449C22.5492 12.7889 21.9895 13.1111 21.4455 12.9647C20.9015 12.8182 20.5793 12.2585 20.7257 11.7145C21.3479 9.40374 20.7235 6.8248 18.9493 5.05067Z"
                                    fill="#E5EEFF" />
                            </svg>
-                           +91 97252 01620</span>
+                           <a href="tel:{{ $settings->phone ?? '+91 97252 01620' }}">{{ $settings->phone ?? '+91 97252 01620'}}</a></span>
                        <span class="divider">|</span>
                        <span><svg class="me-2" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                xmlns="http://www.w3.org/2000/svg">
@@ -30,8 +30,8 @@
                                <path fill-rule="evenodd" clip-rule="evenodd"
                                    d="M5.13017 7.50712C5.40247 7.02665 6.01273 6.85785 6.49322 7.13019L11.172 9.78172C11.7137 10.073 12.2867 10.073 12.8283 9.78172L17.5071 7.13019C17.9876 6.85785 18.5979 7.02665 18.8702 7.50712C19.1425 7.98759 18.9737 8.59785 18.4932 8.87019L13.8057 11.5267L13.7897 11.5355C12.6485 12.1551 11.3519 12.1551 10.2106 11.5355L10.1946 11.5267L5.50713 8.87019C5.02664 8.59785 4.85787 7.98759 5.13017 7.50712Z"
                                    fill="#E5EEFF" />
-                           </svg>
-                           info@blitzelectrical.in</span>
+                           </svg><a href="mailto:{{ $settings->email ?? 'info@blitzelectrical.in' }}">{{ $settings->email ?? 'info@blitzelectrical.in' }}</a>
+                           </span>
                    </div>
                    <div class="socials">
                        <a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -154,7 +154,7 @@
                <div class="footer-bottom">
                     {{-- Privacy Policy --}}
                    <a href="#"></a>
-                   <p>&copy; 2026 Blitz Protection. All rights reserved.</p>
+                   <p>&copy; {{ date('Y') }} Blitz Protection. All rights reserved.</p>
                    {{-- Terms & Conditions --}}
                    <a href="#"></a>
                </div>

@@ -85,7 +85,7 @@
             <p class="title_20 line_left">Product Range</p>
             <h1 class="title_44">One Brand. Every Protection Need Covered </h1>
             <p class="mb-0">Residential or industrial, Blitz protection devices are designed to perform in demanding electrical environments. </p>
-            <div class="row pt_40">
+            <div class="row pt_40 home_prod common-dots">
                 @if(isset($categories) && $categories->count())
                     @foreach($categories as $category)
                         <div class="col-md-3 product-scroll-card">

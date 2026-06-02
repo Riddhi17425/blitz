@@ -37,6 +37,7 @@ $(document).ready(function () {
       slidesToShow: 4,
       slidesToScroll: 1,
       infinite: true,
+      dots: true,
       prevArrow: $(".custom-prev"),
       nextArrow: $(".custom-next"),
 
@@ -47,7 +48,8 @@ $(document).ready(function () {
             slidesToShow: 2,
             slidesToScroll: 1,
             autoplay: true,
-            dots: true
+            autoplaySpeed: 2000,
+            
           }
         },
         {
@@ -508,6 +510,48 @@ handleResponsiveClass();
 $(window).on('resize', handleResponsiveClass);
 
 $(".pd_slider").slick({
+  dots: true,
+  infinite: true,
+  speed: 800,
+  cssEase: "linear",
+  autoplay: true,
+  autoplaySpeed: 1000,
+  arrows: false,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+
+  responsive: [
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 576,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+/* homepage featured products grid */
+
+function handleResponsiveClass_2() {
+  if ($(window).width() <= 1025) {
+    $('.home_prod').addClass('home_prod_slider');
+  } else {
+    $('.home_prod').removeClass('home_prod_slider');
+  }
+}
+
+handleResponsiveClass_2();
+
+$(window).on('resize', handleResponsiveClass);
+
+$(".home_prod_slider").slick({
   dots: true,
   infinite: true,
   speed: 800,
