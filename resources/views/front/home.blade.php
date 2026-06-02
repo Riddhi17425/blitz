@@ -65,7 +65,7 @@
                 <p class="home_about_para">Blitz is a globally trusted brand dedicated to advancing surge protection technologies for modern electrical and industrial systems. Specialising in the design and manufacturing of high-performance AC and DC Surge Protection Devices (SPDs), Miniature Circuit Breakers (MCBs), fuse terminals, and fuse links, every product is engineered to operate flawlessly in the world's most demanding environments.</p>
                 <p class="home_about_para">Built in compliance with global standards such as IEC, our solutions ensure operational continuity, equipment longevity, and the highest level of safety, reflecting excellence in reliability, durability, and innovation.</p>
 
-                <a href="#" class="com_btn mt_40">
+                <a href="{{ route('front.about') }}" class="com_btn mt_40">
                     Learn More About Us <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                             height="11" viewBox="0 0 24 11" fill="none">
                             <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
