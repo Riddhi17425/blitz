@@ -1,4 +1,6 @@
 $(document).ready(function(){
+    var isContactSubmitting = false;
+    var isProductSubmitting = false;
     $('#contact-form').validate({
         rules: {
             name: {
@@ -78,10 +80,19 @@ $(document).ready(function(){
             element.closest('.form-group').append(error);
         },
         submitHandler: function(form) {
+            if (isContactSubmitting) {
+                return false;
+            }
+            isContactSubmitting = true;
+            $('#contactSubmitBtn')
+                .prop('disabled', true)
+                .html('Submitting...');
+
             form.submit();
         }
     });
 
+    
     $('#product-enquiry-form').validate({
         rules: {
             name: {
@@ -161,6 +172,14 @@ $(document).ready(function(){
             element.closest('.form-group').append(error);
         },
         submitHandler: function(form) {
+            if (isProductSubmitting) {
+                return false;
+            }
+            isProductSubmitting = true;
+            $('#productSubmitBtn')
+                .prop('disabled', true)
+                .html('Submitting...');
+
             form.submit();
         }
     });

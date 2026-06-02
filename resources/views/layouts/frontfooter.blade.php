@@ -146,10 +146,11 @@
        <div class="footer-bottom-wrapper">
            <div class="container">
                <div class="footer-bottom">
-
-                   <a href="#">Privacy Policy</a>
+                    {{-- Privacy Policy --}}
+                   <a href="#"></a>
                    <p>&copy; 2026 Blitz Protection. All rights reserved.</p>
-                   <a href="#">Terms & Conditions</a>
+                   {{-- Terms & Conditions --}}
+                   <a href="#"></a>
                </div>
            </div>
        </div>

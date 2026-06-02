@@ -858,7 +858,7 @@
             <p class="mb-0" style="color: var(--grey-666) !important;">Tell us about your project, and our engineering team will come back to you with the right Blitz solution, quickly, accurately, and without the runaround. </p>
 
             <div class="pt_40">
-                <a href="#" class="com_btn com_btn_"> Talk to Our Team 
+                <a href="{{ route("front.contact") }}" class="com_btn com_btn_"> Talk to Our Team 
                     <span class="ms-2"><svg width="24" height="11" viewBox="0 0 24 11" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0.666016 5.33203H22.666" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M17.998 0.666016L22.6647 5.33268L17.998 9.99935" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>

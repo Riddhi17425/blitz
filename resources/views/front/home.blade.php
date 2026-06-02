@@ -246,7 +246,7 @@
                     <textarea name="requirement_details" placeholder="Describe your project requirements, product types, quantities, and any specifications..."></textarea>
                 </div>
                 <div class="product-modal-submit">
-                    <button type="submit" class="com_btn">Send Enquiry</button>
+                    <button type="submit" class="com_btn" id="productSubmitBtn">Send Enquiry</button>
                 </div>
                 <div id="popup-enquiry-message" class="text-success mt-3" style="display:none;"></div>
             </form>
