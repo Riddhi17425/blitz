@@ -13,7 +13,7 @@
                 <a href="#">Contact</a>
             </div>
             <h2 class="banner_title">Get in Touch</h2>
-            <p class="baner_desc">Have questions about our products? <br> Need technical support or pricing
+            <p class="baner_desc mb-0">Have questions about our products? <br> Need technical support or pricing
                 information? <br /> Our team is here to help you with all your electrical protection needs.</p>
         </div>
     </div>
