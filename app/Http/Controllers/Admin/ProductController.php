@@ -279,7 +279,7 @@ class ProductController extends Controller
         $rules = [
             'category_id' => 'required|exists:categories,id',
             'sub_category_id' => [
-                'required',
+                'nullable',
                 Rule::exists('sub_categories', 'id')->where(function ($query) use ($request) {
                     $query->where('category_id', $request->category_id);
                 }),

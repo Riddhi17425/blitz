@@ -82,70 +82,40 @@
                     </div>
                 </div> --}}
             </div>
-            @else
+            @elseif(isset($category->products) && $category->products->count())
              <div class="row pt_40">
+                @foreach($category->products as $product)
                 <div class="col-md-6">
                     <div class="product-card">
                         <div class="product-img-wrapper">
-                            <img src="{{ asset('public/front/assets/images/Type 2 Surge Protector.png') }}" alt="Type 2 Surge Protector"
-                                class="product-image">
+                            <img src="{{ $product->list_image ? asset('public/images/product_list_images/' . $product->list_image) : asset('public/front/assets/images/Background+Border.webp') }}" alt="{{ $product->product_name }}" class="product-image">
                         </div>
-
                         <div class="product-info">
-                            <p class="product-sku">BZ-SPD40/2P</p>
-                            <h3 class="title_24">Type 2 Surge Protector</h3>
+                            <p class="product-sku">{{ $product->product_modal ?? '' }}</p>
+                            <h3 class="title_24">{{ $product->product_name ?? '' }}</h3>
 
                             <div class="product-specs">
+                                @forelse($product->technicalSpecifications->where('is_show_on_list', 1)->take(3) as $spec)
                                 <div class="spec-row">
-                                    <span class="spec-label">Max Voltage</span>
-                                    <span class="spec-value">275V AC</span>
+                                    <span class="spec-label">{{ $spec->parameter }}</span>
+                                    <span class="spec-value">{{ $spec->specifications }}</span>
                                 </div>
-                                <div class="spec-row">
-                                    <span class="spec-label">Discharge</span>
-                                    <span class="spec-value">40kA</span>
-                                </div>
-                                <div class="spec-row no-border">
-                                    <span class="spec-label">Poles</span>
-                                    <span class="spec-value">2P</span>
-                                </div>
+                                @empty
+                                    <div class="spec-row">
+                                        <span class="spec-label">Specifications not available</span>
+                                    </div>
+                            @endforelse
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-6">
-                    <div class="product-card">
-                        <div class="product-img-wrapper">
-                            <img src="{{ asset('public/front/assets/images/Type 2 Surge Protector.png') }}" alt="Type 2 Surge Protector"
-                                class="product-image">
-                        </div>
-
-                        <div class="product-info">
-                            <p class="product-sku">BZ-SPD40/2P</p>
-                            <h3 class="title_24">Type 2 Surge Protector</h3>
-
-                            <div class="product-specs">
-                                <div class="spec-row">
-                                    <span class="spec-label">Max Voltage</span>
-                                    <span class="spec-value">275V AC</span>
-                                </div>
-                                <div class="spec-row">
-                                    <span class="spec-label">Discharge</span>
-                                    <span class="spec-value">40kA</span>
-                                </div>
-                                <div class="spec-row no-border">
-                                    <span class="spec-label">Poles</span>
-                                    <span class="spec-value">2P</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             @endif
     </div>
 </section>
 
+@if(isset($category->cta_img_desktop) && $category->cta_img_desktop != '')
 <section  class="tec_res product_cta" style="background: url({{ asset('public/images/category_cta_desktop/' . $category->cta_img_desktop) }});">
     <div class="container h-100">
         <div class="tec_res_left">
@@ -190,6 +160,7 @@
         </div>
     </div>
 </section>
+@endif
 
 <section  class="bg_com py_40">
     <div class="container">

@@ -4,7 +4,13 @@
 <section>
     <div class="hero-slider">
         @forelse($banners as $banner)
-            <div class="hero-slide hero-slide-{{ $loop->iteration }}" style="--desktop-bg: url('{{ $banner->image ? asset('public/admin/banners/' . $banner->image) : asset('public/front/assets/images/hero-banner-1.png') }}'); --mobile-bg: url('{{ $banner->mobile_image ? asset('public/admin/banners/' . $banner->mobile_image) : ($banner->image ? asset('public/admin/banners/' . $banner->image) : asset('public/front/assets/images/hero-banner-1.png')) }}');">
+            <div class="hero-slide hero-slide-{{ $loop->iteration }}"
+                 style="
+                 
+                 --desktop-bg: url('{{ $banner->image ? asset('public/admin/banners/' . $banner->image) : asset('public/front/assets/images/hero-banner-1.png') }}');
+                 
+                 --mobile-bg: url('{{ $banner->mobile_image ? asset('public/admin/banners/' . $banner->mobile_image) : ($banner->image ? asset('public/admin/banners/' . $banner->image) : asset('public/front/assets/images/hero-banner-1.png')) }}');">
+
                 <div class="container">
                     <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
                         <p class="hero-title">{{ $banner->title ?? 'Protect the Circuit' }}</p>
@@ -129,7 +135,7 @@
                         <h3 class="title_24">{{ $product->product_name }}</h3>
 
                         <div class="product-specs">
-                            @forelse($product->technicalSpecifications->take(3) as $spec)
+                            @forelse($product->technicalSpecifications->where('is_show_on_list', 1)->take(3) as $spec)
                                 <div class="spec-row">
                                     <span class="spec-label">{{ $spec->parameter }}</span>
                                     <span class="spec-value">{{ $spec->specifications }}</span>
