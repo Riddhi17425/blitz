@@ -1,6 +1,6 @@
 @include('layouts.frontheader')
 
-<main data-scroll-container>
+
 <section>
     <div class="hero-slider">
         @forelse($banners as $banner)
@@ -717,22 +717,22 @@
                     <div class="counter2_right">
                         <div class="counter2">
                             <h4 class="title_44">50,000+</h4>
-                            <p>sq. ft. facility</p>
+                            <p class="mb-0">sq. ft. facility</p>
                         </div>
 
                         <div class="counter2">
                             <h4 class="title_44">100%</h4>
-                            <p>Automated QC</p>
+                            <p class="mb-0">Automated QC</p>
                         </div>
 
                         <div class="counter2">
                             <h4 class="title_44">24/7</h4>
-                            <p>Production</p>
+                            <p class="mb-0">Production</p>
                         </div>
 
                         <div class="counter2">
                             <h4 class="title_44">Zero</h4>
-                            <p>Defect Policy</p>
+                            <p class="mb-0">Defect Policy</p>
                         </div>
                     </div>
                 </div>
