@@ -183,7 +183,7 @@
     </div>
 </section>
 
-
+@if(!empty($settings?->certifications))
 <section class="py_40">
     <div class="container">
       <div class="text-center">
@@ -195,33 +195,32 @@
 
       <div class="py_40">
         <div class="row justify-content-center">
+            @foreach($settings->certifications as $certification)
+                @php
+                    $certificationName = is_array($certification) ? ($certification['name'] ?? '') : '';
+                    $certificationFile = is_array($certification) ? ($certification['file'] ?? '') : $certification;
+                @endphp
+                @if($certificationFile)
             <div class="col-md-3">
                    <div class="certificate_box">
-                    <a href="{{ asset('public/front/assets/images/Certificate.png') }}" data-fancybox="certificates" data-caption="CE-DC-SPD Certificate - Blitz" class="cert_img_link">
-                        <img class="img_round img-fluid" src="{{ asset('public/front/assets/images/Certificate.png') }}" alt="CE-DC-SPD Certificate - Blitz">
+                    <a href="{{ asset('public/images/settings_certifications/' . $certificationFile) }}" data-fancybox="certificates" data-caption="{{ $certificationName ?: 'Certification' }}" class="cert_img_link">
+                        <img class="img_round img-fluid" src="{{ asset('public/images/settings_certifications/' . $certificationFile) }}" alt="{{ $certificationName ?: 'Certification' }}">
                         <span class="cert_zoom_icon">
                             <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
                         </span>
                     </a>
-                    <h4 class="title_24">CE-DC-SPD Certificate - Blitz</h4>
+                    @if($certificationName)
+                        <h4 class="title_24">{{ $certificationName }}</h4>
+                    @endif
                    </div>
             </div>
-
-             <div class="col-md-3">
-                   <div class="certificate_box">
-                    <a href="{{ asset('public/front/assets/images/Certificate.png') }}" data-fancybox="certificates" data-caption="CE-DC-SPD Certificate - Blitz" class="cert_img_link">
-                        <img class="img_round img-fluid" src="{{ asset('public/front/assets/images/Certificate.png') }}" alt="CE-DC-SPD Certificate - Blitz">
-                        <span class="cert_zoom_icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                        </span>
-                    </a>
-                    <h4 class="title_24">CE-DC-SPD Certificate - Blitz</h4>
-                   </div>
-            </div>  
+                @endif
+            @endforeach
         </div>
       </div>
 </div>
 </section>
+@endif
 
 
 <section class="py_40 bg_com">
@@ -830,6 +829,7 @@
 </section>
 
 
+@if(!empty($settings?->client_images))
 <section class="py_40">
     <div class="container">
       <div class="text-center">
@@ -841,14 +841,14 @@
       </div>
 
     <div class="our_clint">
-            <img class=" img-fluid" src="public/front/assets/images/OUR-CLIENTS.png" alt="images">
-            <img class=" img-fluid" src="public/front/assets/images/OUR-CLIENTS.png" alt="images">
-            <img class=" img-fluid" src="public/front/assets/images/OUR-CLIENTS.png" alt="images">
-            <img class=" img-fluid" src="public/front/assets/images/OUR-CLIENTS.png" alt="images">
+            @foreach($settings->client_images as $clientImage)
+                <img class=" img-fluid" src="{{ asset('public/images/settings_clients/' . $clientImage) }}" alt="Client logo">
+            @endforeach
              
     </div>
 </div>
 </section>
+@endif
 
 
 <section  class="tec_res product_cta">

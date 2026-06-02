@@ -83,12 +83,18 @@
 
                                 <div class="mcb-overlay">
                                     <h3 class="title_36">{{ $category->title }}</h3>
-                                    <a href="{{ $category->category_url ? route('front.category.details', $category->category_url) : '#' }}" class="com_btn com_btn_w_b">
-                                        Explore {{ $category->short_form ?: $category->title }} <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="11" viewBox="0 0 24 11" fill="none">
-                                                <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                                <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                            </svg></span>
-                                    </a>
+                                    @if($category->category_url == 'solar-accessories')
+                                        <a href="javascript:void(0);" class="com_btn com_btn_w_b">
+                                                Coming Soon <span class="ms-2"></span>
+                                            </a>
+                                    @else
+                                        <a href="{{ $category->category_url ? route('front.category.details', $category->category_url) : '#' }}" class="com_btn com_btn_w_b">
+                                            Explore {{ $category->short_form ?: $category->title }} <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="11" viewBox="0 0 24 11" fill="none">
+                                                    <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg></span>
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -110,35 +116,35 @@
         <p class="mb-0">Blitz products are IEC-compliant, rigorously tested, and trusted across the global solar and electrical industries.</p>
 
         <div class="row pt_40">
-            <div class="col-md-3">
-                <div class="product-card">
-                    <div class="product-img-wrapper">
-                        <img src="{{ asset('public/front/assets/images/Type 2 Surge Protector.png') }}" alt="Type 2 Surge Protector"
-                            class="product-image">
-                    </div>
+            @if(isset($featuredProducts) && $featuredProducts->count())
+                @foreach($featuredProducts as $product)
+                    <div class="col-md-3">
+                        <div class="product-card">
+                            <div class="product-img-wrapper">
+                                <img src="{{ $product->list_image ? asset('public/images/product_list_images/' . $product->list_image) : asset('public/front/assets/images/Background+Border.webp') }}" alt="{{ $product->product_name }}" class="product-image">
+                            </div>
 
                     <div class="product-info">
-                        <p class="product-sku">BZ-SPD40/2P</p>
-                        <h3 class="title_24">Type 2 Surge Protector</h3>
+                        <p class="product-sku">{{ $product->product_modal }}</p>
+                        <h3 class="title_24">{{ $product->product_name }}</h3>
 
                         <div class="product-specs">
-                            <div class="spec-row">
-                                <span class="spec-label">Max Voltage</span>
-                                <span class="spec-value">275V AC</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">Discharge</span>
-                                <span class="spec-value">40kA</span>
-                            </div>
-                            <div class="spec-row no-border">
-                                <span class="spec-label">Poles</span>
-                                <span class="spec-value">2P</span>
-                            </div>
+                            @forelse($product->technicalSpecifications->take(3) as $spec)
+                                <div class="spec-row">
+                                    <span class="spec-label">{{ $spec->parameter }}</span>
+                                    <span class="spec-value">{{ $spec->specifications }}</span>
+                                </div>
+                            @empty
+                                <div class="spec-row">
+                                    <span class="spec-label">Specifications not available</span>
+                                </div>
+                            @endforelse
                         </div>
                     </div>
 
-                       <div class="product-buttons">
-                            <a href="#" class="com_btn com_btn_b_b">
+                    <div class="product-buttons">
+                        @if($product->datasheet)
+                            <a href="{{ route('products.datasheet.download', $product->id) }}" target="_blank" class="com_btn com_btn_b_b">
                                 <span><svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none">
                                         <path
@@ -157,27 +163,136 @@
                                             stroke-linecap="round" stroke-linejoin="round" />
                                     </svg></span> <span class="ms-2">Datasheet</span>
                             </a>
+                        @endif
 
-                            <a href="#" class="com_btn">
-                                Enquire <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="11" viewBox="0 0 24 11" fill="none">
-                                        <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
-                                            stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg></span>
-                            </a>
-                        </div>
+                        <a href="#" class="com_btn product-enquire-button" data-product-name="{{ $product->product_name }}">
+                            Enquire <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                    height="11" viewBox="0 0 24 11" fill="none">
+                                    <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
+                                        stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg></span>
+                        </a>
+                    </div>
 
                 </div>
             </div>
+            @endforeach
+        @else
+            <div class="col-12">
+                <p>No featured products available.</p>
+            </div>
+        @endif
+    </div>
+</section>
 
-            <div class="col-md-3">
-                <div class="product-card">
-                    <div class="product-img-wrapper">
-                        <img src="{{ asset('public/front/assets/images/Type 2 Surge Protector.png') }}" alt="Type 2 Surge Protector"
-                            class="product-image">
+{{-- <div id="product-detail-modal" class="product-modal">
+    <div class="product-modal-overlay" data-close-modal></div>
+    <div class="product-modal-content">
+        <button type="button" class="product-modal-close" data-close-modal>&times;</button>
+        <div class="product-modal-body">
+            <div class="product-modal-image">
+                <img src="" alt="Product Image" id="detail-modal-image">
+            </div>
+            <div class="product-modal-details">
+                <h2 id="detail-modal-name"></h2>
+                <p class="product-modal-model" id="detail-modal-model"></p>
+                <div class="product-modal-specs" id="detail-modal-specs"></div>
+                <div class="product-modal-actions">
+                    <a href="#" id="detail-modal-datasheet" class="com_btn com_btn_w_b" target="_blank" rel="noopener">View Datasheet</a>
+                    <button type="button" class="com_btn com_btn_b_b" id="detail-modal-enquire">Enquire</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+<div id="product-enquiry-modal" class="product-modal">
+    <div class="product-modal-overlay" data-close-modal></div>
+    <div class="product-modal-content">
+        <button type="button" class="product-modal-close" data-close-modal>&times;</button>
+        <div class="product-modal-body d-block">
+            <div class="modal-form-header w-100 mb-4">
+                <h2 class="title_30 mb-2">Product Enquiry</h2>
+                <p>Please provide your details and we will contact you about this product.</p>
+            </div>
+            <form id="product-enquiry-form" action="{{ route('contact.submit') }}" method="POST" class="quote-form w-100">
+                @csrf
+                <input type="hidden" name="inquiry_type" value="popup">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Product</label>
+                        <input type="text" name="product" id="popup-product-name" readonly>
                     </div>
+                    <div class="form-group">
+                        <label>Country <span class="text-danger">*</span></label>
+                        <select name="country">
+                            <option value="" disabled selected>Select Country</option>
+                            @foreach($countries as $country)
+                                <option value="{{ $country->name }}">{{ $country->name }}</option>
+                            @endforeach
+                        </select>
+                        <i class="fa-solid fa-chevron-down select-icon"></i>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name <span class="text-danger">*</span></label>
+                        <input type="text" name="name" placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Company</label>
+                        <input type="text" name="company" placeholder="Company name">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email <span class="text-danger">*</span></label>
+                        <input type="email" name="email" placeholder="john@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone <span class="text-danger">*</span></label>
+                        <input type="tel" name="phone" placeholder="+91 98765 43210">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Requirement Details</label>
+                    <textarea name="requirement_details" placeholder="Describe your project requirements, product types, quantities, and any specifications..."></textarea>
+                </div>
+                <div class="product-modal-submit">
+                    <button type="submit" class="com_btn">Send Enquiry</button>
+                </div>
+                <div id="popup-enquiry-message" class="text-success mt-3" style="display:none;"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+.product-modal { display:none; position:fixed; inset:0; z-index:9999; align-items:center; justify-content:center; }
+.product-modal.active { display:flex; }
+.product-modal-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.6); }
+.product-modal-content { position:relative; background:#fff; border-radius:20px; max-width:900px; width:100%; max-height:90vh; overflow-y:auto; padding:30px; z-index:1; }
+.product-modal-close { position:absolute; top:18px; right:18px; background:none; border:none; color:#020844; font-size:32px; cursor:pointer; }
+.product-modal-body { display:flex; flex-wrap:wrap; gap:30px; }
+.product-modal-body.d-block { display:block !important; }
+.product-modal-image img { width:100%; max-width:360px; border-radius:16px; object-fit:contain; }
+.product-modal-details { flex:1; min-width:280px; }
+.product-modal-specs .spec-row { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #E6E9F9; }
+.product-modal-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:24px; }
+.product-modal-submit { margin-top:16px; }
+#product-enquiry-form .form-group { position: relative; }
+#product-enquiry-form .select-icon { position: absolute; right: 20px; bottom: 18px; pointer-events: none; color: #020844; }
+#product-enquiry-form select { appearance: none; -webkit-appearance: none; -moz-appearance: none; }
+@media(max-width:768px){ .product-modal-body { flex-direction:column; } }
+</style>
+
+{{-- <section  class="py_40">
 
                     <div class="product-info">
                         <p class="product-sku">BZ-SPD40/2P</p>
@@ -357,7 +472,7 @@
         </div>
     </div>
 
-</section>
+</section> --}}
 
 <section  class="py_40">
     <div class="container">
@@ -788,4 +903,22 @@
 </section> --}}
 
 @include('layouts.form')
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Open product enquiry modal
+    $(document).on('click', '.product-enquire-button', function (e) {
+        e.preventDefault();
+        var productName = $(this).data('product-name');
+        $('#popup-product-name').val(productName);
+        $('#product-enquiry-modal').addClass('active');
+    });
+
+    // Close modals on overlay or close button click
+    $(document).on('click', '[data-close-modal]', function () {
+        $('.product-modal').removeClass('active');
+    });
+});
+</script>
+
 @include('layouts.frontfooter')

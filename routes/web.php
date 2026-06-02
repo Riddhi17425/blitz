@@ -27,8 +27,9 @@ use App\Http\Controllers\Web\HomeController;
     Route::get('/blogs' , [HomeController::class , 'blogs'])->name('front.blogs');
     Route::get('/blog/{url}' , [HomeController::class , 'blogsDetails'])->name('front.blog.details');
     Route::get('/product-list' , [HomeController::class , 'productList'])->name('front.product.list');
-    Route::get('/product-details' , [HomeController::class , 'productDetails'])->name('front.product.details');
+    Route::get('/product-details/{url}' , [HomeController::class , 'productDetails'])->name('front.product.details');
     Route::get('/category-details/{slug}' , [HomeController::class , 'categoryDetails'])->name('front.category.details');
+    Route::get('/products/{id}/datasheet/download', [ProductController::class, 'downloadDatasheet'])->name('products.datasheet.download');
 
     // remaining pages
     Route::get('/thank-you' , [HomeController::class , 'Thankyou'])->name('thankyou');
@@ -123,7 +124,6 @@ use App\Http\Controllers\Web\HomeController;
         Route::get('/add/products', [ProductController::class, 'create'])->name('products.create');
         Route::post('/products/store', [ProductController::class, 'store'])->name('products.store');
         Route::get('/edit/products/{id}', [ProductController::class, 'edit'])->name('products.edit');
-        Route::get('/products/{id}/datasheet/download', [ProductController::class, 'downloadDatasheet'])->name('products.datasheet.download');
         Route::patch('/products/{id}/toggle-flag', [ProductController::class, 'toggleFlag'])->name('products.toggle_flag');
         Route::put('/update/products/{id}', [ProductController::class, 'update'])->name('products.update');
         Route::delete('/delete/products/{id}', [ProductController::class, 'destroy'])->name('products.delete');

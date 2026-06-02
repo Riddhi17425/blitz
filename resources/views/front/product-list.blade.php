@@ -212,94 +212,93 @@
     </div>
 </section>
 
+<section  class="bg_com py_40">
+    <div class="container">
+
+        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+
+            <div>
+                <p class="title_20 line_left" >Industries We Serve</p>
+                <h2 class="title_44">Powering Critical Infrastructure</h2>
+                <p class="mb-0">From solar farms to residential towers, Blitz products safeguard the infrastructure that
+                    drives progress.</p>
+            </div>
+
+            <div class="custom-arrows">
+                <div class="custom-prev">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none">
+                        <path d="M8.25 16.25L1.25 8.75L8.25 1.25" stroke="#EE1A25" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="custom-next">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+                        <path d="M10.7988 22.4004L17.7988 14.9004L10.7988 7.40039" stroke="#EE1A25" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="slider-wrapper pt_40">
+            <div class="indu_slider">
+                @if(isset($industries) && $industries->count())
+                    @foreach($industries as $industry)
+                        <div class="slide-item">
+                            <img class="img-fluid" src="{{ $industry->image ? asset('public/images/industries/' . $industry->image) : asset('public/front/assets/images/placeholder.png') }}" alt="{{ $industry->title }}">
+                            <div class="title_36">{{ strtoupper($industry->title) }}</div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="slide-item">
+                        <img class="img-fluid" src="{{ asset('public/front/assets/images/Solar plants.webp') }}" alt="Solar Plants">
+                        <div class="title_36">SOLAR PLANTS</div>
+                    </div>
+                    <div class="slide-item">
+                        <img class="img-fluid" src="{{ asset('public/front/assets/images/Commercial  Buildings.webp') }}" alt="Commercial Buildings">
+                        <div class="title_36">COMMERCIAL BUILDINGS</div>
+                    </div>
+                    <div class="slide-item">
+                        <img class="img-fluid" src="{{ asset('public/front/assets/images/Data Center.webp') }}" alt="Data Center">
+                        <div class="title_36">DATA CENTER</div>
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+</section>
+
 <section class="py_40">
     <div class="container">
+        @php
+            $categoryFaqs = collect($category->faqs ?? [])->filter(fn ($faq) => !empty($faq['question']) || !empty($faq['answer']))->values();
+        @endphp
         <div class="pb_40">
-            <p class="title_20 line_left" >Industries We Serve</p>
-            <h2 class="title_44">Powering Critical Infrastructure</h2>
-            <p class="mb-0">From solar farms to residential towers, Blitz products safeguard the infrastructure that
-                drives progress.</p>
+            <p class="title_20 line_left" >FAQs</p>
+            <h2 class="title_44">{{ $category->faq_title ?? 'Frequently Asked Questions' }}</h2>
+            @if(!empty($category?->faq_description))
+                <div class="mb-0">{!! $category->faq_description !!}</div>
+            @endif
         </div>
         <div class="accordion" id="blitzFaq">
-
-            <div class="accordion-item">
-                <h4 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne">
-                        What industries commonly use Blitz electrical protection products?
-                    </button>
-                </h4>
-                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#blitzFaq">
-                    <div class="accordion-body">
-                        Blitz electrical protection products are widely used across various industries including
-                        manufacturing, automotive, renewable energy, telecommunications, and residential
-                        construction to ensure safe and reliable power management.
+            @forelse($categoryFaqs as $index => $faq)
+                <div class="accordion-item">
+                    <h4 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#productListFaq{{ $index }}" aria-controls="productListFaq{{ $index }}">
+                            {{ $faq['question'] ?? '' }}
+                        </button>
+                    </h4>
+                    <div id="productListFaq{{ $index }}" class="accordion-collapse collapse" data-bs-parent="#blitzFaq">
+                        <div class="accordion-body">
+                            {!! $faq['answer'] ?? '' !!}
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="accordion-item">
-                <h4 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseTwo">
-                        How do I choose the right fuse or circuit protection solution for my application?
-                    </button>
-                </h4>
-                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#blitzFaq">
-                    <div class="accordion-body">
-                        Choosing the right fuse or circuit protection solution depends on factors such as voltage
-                        rating, current capacity, application type, load requirements, and environmental conditions.
-                        Our experts help you select the most reliable protection solution based on your industry
-                        needs to ensure maximum safety, efficiency, and long-term performance.
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <h4 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseThree">
-                        Are Blitz products tested for international safety and quality standards?
-                    </button>
-                </h4>
-                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#blitzFaq">
-                    <div class="accordion-body">
-                        Yes, all our products undergo rigorous testing and meet major international safety standards
-                        (such as IEC, UL, and CE) to guarantee optimal protection and reliability.
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <h4 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseFour">
-                        Are Blitz products tested for international safety and quality standards?
-                    </button>
-                </h4>
-                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#blitzFaq">
-                    <div class="accordion-body">
-                        Yes, all our products undergo rigorous testing and meet major international safety standards
-                        (such as IEC, UL, and CE) to guarantee optimal protection and reliability.
-                    </div>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <h4 class="accordion-header">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#collapseFive">
-                        Are Blitz products tested for international safety and quality standards?
-                    </button>
-                </h4>
-                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#blitzFaq">
-                    <div class="accordion-body">
-                        Yes, all our products undergo rigorous testing and meet major international safety standards
-                        (such as IEC, UL, and CE) to guarantee optimal protection and reliability.
-                    </div>
-                </div>
-            </div>
-
+            @empty
+                <p class="mb-0">No FAQs available.</p>
+            @endforelse
         </div>
     </div>
 </section>

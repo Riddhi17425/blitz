@@ -22,7 +22,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $categoriesHF = Category::select('id', 'title', 'category_url')->whereNull('deleted_at')->where('is_active', 1)->get();
+        $categoriesHF = Category::whereNull('deleted_at')
+            ->where('is_active', 1)
+            ->with(['subCategories' => function ($query) {
+                $query->where('is_active', 1);
+            }, 'subCategories.products' => function ($query) {
+                $query->where('is_active', 1);
+            }])
+            ->get();
         
         View::composer(
             ['layouts.frontheader', 'layouts.frontfooter'],

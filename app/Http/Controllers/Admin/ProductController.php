@@ -123,7 +123,10 @@ class ProductController extends Controller
             ? Str::slug($product->product_name) . '-datasheet.pdf'
             : basename($product->datasheet);
 
-        return response()->download($filePath, $downloadName);
+        return response()->file($filePath, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $downloadName . '"'
+        ]);
     }
 
     public function update(Request $request, $id)
