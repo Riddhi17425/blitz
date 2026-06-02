@@ -2,96 +2,44 @@
 
 <main data-scroll-container>
 <section>
-
     <div class="hero-slider">
-
-        <div class="hero-slide hero-slide-1" style="background-image: url('public/front/assets/images/hero-banner-1.png');">
-            <div class="container">
-                <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
-                    <p class="hero-title">Control the Current.<br>Protect the Circuit</p>
-                    <p class="hero-subtitle">Designed for the toughest applications, Blitz MCB miniature circuit
-                        breaker delivers fast, precise overcurrent protection, keeping your systems safe</p>
-                    <div class="hero-buttons">
-                        <a href="#" class="com_btn com_btn_w">
-                            Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="11" viewBox="0 0 24 11" fill="none">
-                                    <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
-                                        stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg></span>
-                        </a>
-                        <a href="{{ route('front.contact') }}" class="com_btn com_btn_w_b">Request Quote</a>
+        @forelse($banners as $banner)
+            <div class="hero-slide hero-slide-{{ $loop->iteration }}" style="background-image: url('{{ $banner->image ? asset('public/admin/banners/' . $banner->image) : asset('public/front/assets/images/hero-banner-1.png') }}');">
+                <div class="container">
+                    <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+                        <p class="hero-title">{{ $banner->title ?? 'Protect the Circuit' }}</p>
+                        <p class="hero-subtitle">{{ $banner->description ?? '' }}</p>
+                        <div class="hero-buttons">
+                            <a href="#" class="com_btn com_btn_w">
+                                Explore {{ optional($banner->category)->short_form ?? optional($banner->category)->title ?? 'Products' }} <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="11" viewBox="0 0 24 11" fill="none">
+                                        <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg></span>
+                            </a>
+                            <a href="{{ route('front.contact') }}" class="com_btn com_btn_w_b">Request Quote</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="hero-slide hero-slide-2" style="background-image: url('public/front/assets/images/hero-banner-2.png');">
-            <div class="container">
-                <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
-                    <p class="hero-title">Control the Current. Protect the Circuit</p>
-                    <p class="hero-subtitle">Designed for the toughest applications, Blitz MCB miniature circuit breaker
-                        delivers fast, precise overcurrent protection, keeping your systems safe</p>
-                    <div class="hero-buttons">
-                        <a href="#" class="com_btn com_btn_w">
-                            Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="11" viewBox="0 0 24 11" fill="none">
-                                    <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
-                                        stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg></span>
-                        </a>
-                        <a href="#" class="com_btn com_btn_w_b">Request Quote</a>
+        @empty
+            <div class="hero-slide hero-slide-1" style="background-image: url('{{ asset('public/front/assets/images/hero-banner-1.png') }}');">
+                <div class="container">
+                    <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+                        <p class="hero-title">Control the Current.<br>Protect the Circuit</p>
+                        <p class="hero-subtitle">Designed for the toughest applications, Blitz MCB miniature circuit breaker delivers fast, precise overcurrent protection, keeping your systems safe</p>
+                        <div class="hero-buttons">
+                            <a href="#" class="com_btn com_btn_w">
+                                Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="11" viewBox="0 0 24 11" fill="none">
+                                        <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg></span>
+                            </a>
+                            <a href="{{ route('front.contact') }}" class="com_btn com_btn_w_b">Request Quote</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="hero-slide hero-slide-3" style="background-image: url('public/front/assets/images/hero-banner-3.png');">
-            <div class="container">
-                <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
-                    <p class="hero-title">Overcurrent Doesn't Stand a Chance</p>
-                    <p class="hero-subtitle">Built with premium-grade materials, Blitz solar panel fuses and terminals
-                        deliver reliable heat resistance and long-lasting protection</p>
-                    <div class="hero-buttons">
-                        <a href="#" class="com_btn com_btn_w">
-                            Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="11" viewBox="0 0 24 11" fill="none">
-                                    <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
-                                        stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg></span>
-                        </a>
-                        <a href="#" class="com_btn com_btn_w_b">Request Quote</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-slide hero-slide-4" style="background-image: url('public/front/assets/images/hero-banner-4.png');">
-            <div class="container">
-                <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
-                    <p class="hero-title">Stop the Surge Before It Stops You</p>
-                    <p class="hero-subtitle">Voltage spikes strike without warning. Blitz AC power surge protection
-                        device reacts in under 25 nanoseconds, neutralising transient surges</p>
-                    <div class="hero-buttons">
-                        <a href="#" class="com_btn com_btn_w">
-                            Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                    height="11" viewBox="0 0 24 11" fill="none">
-                                    <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
-                                        stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg></span>
-                        </a>
-                        <a href="#" class="com_btn com_btn_w_b">Request Quote</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforelse
     </div>
 
 </section>
@@ -128,81 +76,29 @@
             <p class="mb-0">Residential or industrial, Blitz protection devices are designed to perform in demanding electrical environments. </p>
 
             <div class="row pt_40">
-                <div class="col-md-3 product-scroll-card">
-                    <div class="mcb-card">
-                        <img src="{{ asset('public/front/assets/images/Background+Border.webp') }}" alt="Miniature Circuit Breaker" class="img-fluid">
+                @if(isset($categories) && $categories->count())
+                    @foreach($categories as $category)
+                        <div class="col-md-3 product-scroll-card">
+                            <div class="mcb-card">
+                                <img src="{{ $category->list_img ? asset('public/images/category_list/' . $category->list_img) : asset('public/front/assets/images/Background+Border.webp') }}" alt="{{ $category->title }}" class="img-fluid">
 
-                        <div class="mcb-overlay">
-                            <h3 class="title_36">MINIATURE<br>CIRCUIT BREAKER</h3>
-                            <a href="#" class="com_btn com_btn_w_b">
-                                Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="11" viewBox="0 0 24 11" fill="none">
-                                        <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
-                                            stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg></span>
-                            </a>
+                                <div class="mcb-overlay">
+                                    <h3 class="title_36">{{ $category->title }}</h3>
+                                    <a href="{{ $category->category_url ? route('front.category.details', $category->category_url) : '#' }}" class="com_btn com_btn_w_b">
+                                        Explore {{ $category->short_form ?: $category->title }} <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="11" viewBox="0 0 24 11" fill="none">
+                                                <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                            </svg></span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+                    @endforeach
+                @else
+                    <div class="col-12">
+                        <p>No product categories available.</p>
                     </div>
-                </div>
-
-                <div class="col-md-3 product-scroll-card">
-                    <div class="mcb-card">
-                        <img src="{{ asset('public/front/assets/images/Background+Border-1.webp') }}" alt="Miniature Circuit Breaker" class="img-fluid">
-
-                        <div class="mcb-overlay">
-                            <h3 class="title_36">MINIATURE<br>CIRCUIT BREAKER</h3>
-                            <a href="#" class="com_btn com_btn_w_b">
-                                Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="11" viewBox="0 0 24 11" fill="none">
-                                        <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
-                                            stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 product-scroll-card">
-                    <div class="mcb-card">
-                        <img src="{{ asset('public/front/assets/images/Background+Border-2.webp') }}" alt="Miniature Circuit Breaker" class="img-fluid">
-
-                        <div class="mcb-overlay">
-                            <h3 class="title_36">MINIATURE<br>CIRCUIT BREAKER</h3>
-                            <a href="#" class="com_btn com_btn_w_b">
-                                Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="11" viewBox="0 0 24 11" fill="none">
-                                        <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
-                                            stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-3 product-scroll-card">
-                    <div class="mcb-card">
-                        <img src="{{ asset('public/front/assets/images/Background+Border-3.webp') }}" alt="Miniature Circuit Breaker" class="img-fluid">
-
-                        <div class="mcb-overlay">
-                            <h3 class="title_36">MINIATURE<br>CIRCUIT BREAKER</h3>
-                            <a href="#" class="com_btn com_btn_w_b">
-                                Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
-                                        height="11" viewBox="0 0 24 11" fill="none">
-                                        <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
-                                            stroke-linecap="round" stroke-linejoin="round" />
-                                        <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
-                                            stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg></span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @endif
             </div>
         </div>
     </div>
@@ -668,33 +564,31 @@
 
         <div class="slider-wrapper pt_40">
             <div class="indu_slider">
-
-                <div class="slide-item">
-                    <img class="img-fluid" src="{{ asset('public/front/assets/images/Solar plants.webp') }}" alt="Solar Plants">
-                    <div class="title_36">SOLAR PLANTS</div>
-                </div>
-
-                <div class="slide-item">
-                    <img class="img-fluid" src="{{ asset('public/front/assets/images/Commercial  Buildings.webp') }}" alt="Commercial Buildings">
-                    <div class="title_36">COMMERCIAL BUILDINGS</div>
-                </div>
-
-                <div class="slide-item">
-                    <img class="img-fluid" src="{{ asset('public/front/assets/images/Data Center.webp') }}" alt="Data Center">
-                    <div class="title_36">DATA CENTER</div>
-                </div>
-
-                <div class="slide-item">
-                    <img class="img-fluid" src="{{ asset('public/front/assets/images/Residential Infrastructure.webp') }}"
-                        alt="Residential Infrastructure">
-                    <div class="title_36">RESIDENTIAL INFRASTRUCTURE</div>
-                </div>
-
-                <div class="slide-item">
-                    <img class="img-fluid" src="{{ asset('public/front/assets/images/Solar plants.webp') }}" alt="Solar Plants">
-                    <div class="title_36">SOLAR PLANTS</div>
-                </div>
-
+                @if(isset($industries) && $industries->count())
+                    @foreach($industries as $industry)
+                        <div class="slide-item">
+                            <img class="img-fluid" src="{{ $industry->image ? asset('public/images/industries/' . $industry->image) : asset('public/front/assets/images/placeholder.png') }}" alt="{{ $industry->title }}">
+                            <div class="title_36">{{ strtoupper($industry->title) }}</div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="slide-item">
+                        <img class="img-fluid" src="{{ asset('public/front/assets/images/Solar plants.webp') }}" alt="Solar Plants">
+                        <div class="title_36">SOLAR PLANTS</div>
+                    </div>
+                    <div class="slide-item">
+                        <img class="img-fluid" src="{{ asset('public/front/assets/images/Commercial  Buildings.webp') }}" alt="Commercial Buildings">
+                        <div class="title_36">COMMERCIAL BUILDINGS</div>
+                    </div>
+                    <div class="slide-item">
+                        <img class="img-fluid" src="{{ asset('public/front/assets/images/Data Center.webp') }}" alt="Data Center">
+                        <div class="title_36">DATA CENTER</div>
+                    </div>
+                    <div class="slide-item">
+                        <img class="img-fluid" src="{{ asset('public/front/assets/images/Residential Infrastructure.webp') }}" alt="Residential Infrastructure">
+                        <div class="title_36">RESIDENTIAL INFRASTRUCTURE</div>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
@@ -730,6 +624,30 @@
 
         <div class="col-lg-8">
             <div class="testimonial-slider">
+            @if(isset($testimonials) && $testimonials->count())
+                @foreach($testimonials as $testimonial)
+                    <div class="testi-card">
+                        <div class="card-top">
+                            <div class="client-logo">
+                                @if($testimonial->image)
+                                    <img src="{{ asset('public/admin/testimonials/' . $testimonial->image) }}" alt="{{ $testimonial->alt_tag ?? $testimonial->title }}">
+                                @else
+                                    <img src="{{ asset('public/front/assets/images/testimonial-icon1.png') }}" alt="{{ $testimonial->title }}">
+                                @endif
+                            </div>
+                            <div class="client-details">
+                                <h4 class="title_18">{{ $testimonial->title }}</h4>
+                                <p class="mb-0">{{ $testimonial->locations }}</p>
+                            </div>
+                        </div>
+                        <p class="testi-text">{{ $testimonial->description }}</p>
+                        <div class="rating">
+                            {!! str_repeat('★', max(0, intval($testimonial->star))) !!}
+                            {!! str_repeat('<span class="empty">★</span>', max(0, 5 - intval($testimonial->star))) !!}
+                        </div>
+                    </div>
+                @endforeach
+            @else
                 <div class="testi-card">
                     <div class="card-top">
                         <div class="client-logo">
@@ -740,65 +658,13 @@
                             <p class="mb-0">Surat</p>
                         </div>
                     </div>
-                    <p class="testi-text">BLITZ SPD offers superior quality, enhanced durability, and
-                        outstanding performance - all at a budget-friendly price</p>
+                    <p class="testi-text">BLITZ SPD offers superior quality, enhanced durability, and outstanding performance - all at a budget-friendly price</p>
                     <div class="rating">
                         ★★★★<span class="empty">★</span>
                     </div>
                 </div>
-
-                <div class="testi-card">
-                    <div class="card-top">
-                        <div class="client-logo">
-                            <img src="{{ asset('public/front/assets/images/testimonial-icon1.png') }}" alt="Logo">
-                        </div>
-                        <div class="client-details">
-                            <h4 class="title_18">FLAME SOLREN PRIVATE LIMITED</h4>
-                            <p class="mb-0">Surat</p>
-                        </div>
-                    </div>
-                    <p class="testi-text">BLITZ SPD offers superior quality, enhanced durability, and
-                        outstanding performance - all at a budget-friendly price</p>
-                    <div class="rating">
-                        ★★★★<span class="empty">★</span>
-                    </div>
-                </div>
-
-                <div class="testi-card">
-                    <div class="card-top">
-                        <div class="client-logo">
-                            <img src="{{ asset('public/front/assets/images/testimonial-icon1.png') }}" alt="Logo">
-                        </div>
-                        <div class="client-details">
-                            <h4 class="title_18">FLAME SOLREN PRIVATE LIMITED</h4>
-                            <p class="mb-0">Surat</p>
-                        </div>
-                    </div>
-                    <p class="testi-text">BLITZ SPD offers superior quality, enhanced durability, and
-                        outstanding performance - all at a budget-friendly price</p>
-                    <div class="rating">
-                        ★★★★<span class="empty">★</span>
-                    </div>
-                </div>
-
-                <div class="testi-card">
-                    <div class="card-top">
-                        <div class="client-logo">
-                            <img src="{{ asset('public/front/assets/images/testimonial-icon1.png') }}" alt="Logo">
-                        </div>
-                        <div class="client-details">
-                            <h4 class="title_18">FLAME SOLREN PRIVATE LIMITED</h4>
-                            <p class="mb-0">Surat</p>
-                        </div>
-                    </div>
-                    <p class="testi-text">BLITZ SPD offers superior quality, enhanced durability, and
-                        outstanding performance - all at a budget-friendly price</p>
-                    <div class="rating">
-                        ★★★★<span class="empty">★</span>
-                    </div>
-                </div>
-
-            </div>
+            @endif
+        </div>
         </div>
 
     </div>
@@ -876,7 +742,7 @@
     </div>
 </section>
 
-<section  class="tec_res">
+{{-- <section  class="tec_res">
     <div class="container h-100">
         <div class="tec_res_left">
             <p class="title_20 line_left" >Technical resources</p>
@@ -920,7 +786,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 @include('layouts.form')
 @include('layouts.frontfooter')

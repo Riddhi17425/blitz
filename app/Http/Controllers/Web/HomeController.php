@@ -6,15 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Http;
-use App\Models\{Category, SubCategory, Banner, BLog, NewsletterInquiry, ContactInquiry, Product, Country};
+use App\Models\{Category, SubCategory, Banner, BLog, NewsletterInquiry, ContactInquiry, Product, Country, Industry, Testimonial};
 
 class HomeController extends Controller 
 { 
     public function index()   
     {
-        $banners = Banner::whereNull('deleted_at')->where('status', 'Active')->get();
+        $banners = Banner::with('category')->whereNull('deleted_at')->where('status', 'Active')->get();
         $categories = Category::whereNull('deleted_at')->where('is_active', 1)->get();
-        return view('front.home', compact('banners', 'categories'));
+        $industries = Industry::whereNull('deleted_at')->get();
+        $testimonials = Testimonial::whereNull('deleted_at')->where('status', 'Active')->get();
+
+        return view('front.home', compact('banners', 'categories', 'industries', 'testimonials'));
     }
 
     public function Thankyou()

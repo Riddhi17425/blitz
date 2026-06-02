@@ -31,7 +31,7 @@ class TestimonialsController extends Controller
         'testimonials_title'   => 'required|string|max:255',
         'testimonials_status'  => 'nullable|in:Active,In-Active',
         'testimonials_alt'     => 'required|string|max:255',
-        'testimonials_image'   => 'required|file|mimes:jpg,jpeg,png,webp|max:2048',
+        'testimonials_image'   => 'required|mimes:jpg,jpeg,png,webp|max:2048',
         'testimonials_locations' => 'required|string|max:255',
         'testimonials_star' => 'required|numeric|min:0|max:5',
     ]);
@@ -51,7 +51,7 @@ class TestimonialsController extends Controller
             // Handle image upload 
             if ($request->hasFile('testimonials_image') && $request->file('testimonials_image')->isValid()) {
                 // Try with compression first
-                $imagePath = storeImage($request->file('testimonials_image'), 'admin/testimonials');
+                $imagePath = storeImageWithTimeId($request->file('testimonials_image'), 'admin/testimonials');
                 
                 if (!$imagePath) {
                     return redirect()->back()
@@ -152,7 +152,7 @@ class TestimonialsController extends Controller
                     File::delete(public_path('admin/testimonials/' . $testimonials->image));
                 }
 
-                $imagePath = storeImage($request->file('testimonials_image'), 'admin/testimonials');
+                $imagePath = storeImageWithTimeId($request->file('testimonials_image'), 'admin/testimonials');
                 
                 if (!$imagePath) {
                     return redirect()->back()
