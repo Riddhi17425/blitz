@@ -32,34 +32,34 @@ $(document).ready(function () {
 
   //4. Industry Slider
 
- $(document).ready(function () {
+  $(document).ready(function () {
     $(".indu_slider").slick({
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        infinite: true,
-        prevArrow: $(".custom-prev"),
-        nextArrow: $(".custom-next"),
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      infinite: true,
+      prevArrow: $(".custom-prev"),
+      nextArrow: $(".custom-next"),
 
-        responsive: [
-            {
-                breakpoint: 991,
-                settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    autoplay: true,
-                    dots: true
-                }
-            },
-            {
-                breakpoint: 576,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
+      responsive: [
+        {
+          breakpoint: 991,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            autoplay: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 576,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
     });
-});
+  });
 
   //5. Testimonial Slider
   $(".testimonial-slider").slick({
@@ -262,11 +262,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     animateCursor();
 
-    // Add hover effect on all clickable elements
-    const hoverElements = document.querySelectorAll("a, button, .com_btn, input, textarea, select");
-    hoverElements.forEach((el) => {
-      el.addEventListener("mouseenter", () => cursor.classList.add("hover"));
-      el.addEventListener("mouseleave", () => cursor.classList.remove("hover"));
+    // Add hover effect using event delegation for all current and dynamic clickable elements
+    document.addEventListener("mouseover", (e) => {
+      if (e.target.closest("a, button, .com_btn, input, textarea, select")) {
+        cursor.classList.add("hover");
+      }
+    });
+
+    document.addEventListener("mouseout", (e) => {
+      if (e.target.closest("a, button, .com_btn, input, textarea, select")) {
+        cursor.classList.remove("hover");
+      }
     });
   }
 
@@ -490,17 +496,17 @@ document.addEventListener("DOMContentLoaded", function () {
 /* homepage featured products grid */
 
 function handleResponsiveClass() {
-    if ($(window).width() <= 1025) {
-        $('.pd_grid').addClass('pd_slider');
-    } else {
-        $('.pd_grid').removeClass('pd_slider');
-    }
+  if ($(window).width() <= 1025) {
+    $('.pd_grid').addClass('pd_slider');
+  } else {
+    $('.pd_grid').removeClass('pd_slider');
+  }
 }
- 
+
 handleResponsiveClass();
- 
+
 $(window).on('resize', handleResponsiveClass);
- 
+
 $(".pd_slider").slick({
   dots: true,
   infinite: true,
@@ -511,7 +517,7 @@ $(".pd_slider").slick({
   arrows: false,
   slidesToShow: 3,
   slidesToScroll: 1,
- 
+
   responsive: [
     {
       breakpoint: 992,
@@ -529,5 +535,5 @@ $(".pd_slider").slick({
     }
   ]
 });
- 
+
 /* homepage featured products grid */

@@ -768,38 +768,42 @@
 <section  class="bg_com py_40">
     <div class="container">
         <div class="row">
-            <div class="col-md">
-                <div class="counter2_left">
-                    <img class="img_rou img-fluid" src="{{ asset('public/front/assets/images/Manufacturing Excellence.webp') }}"
-                        alt="Manufacturing Excellence">
-                    <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_1_134622)">
-                            <path
-                                d="M40 80C62.0914 80 80 62.0914 80 40C80 17.9086 62.0914 0 40 0C17.9086 0 0 17.9086 0 40C0 62.0914 17.9086 80 40 80Z"
-                                fill="url(#paint0_linear_1_134622)" />
-                            <path
-                                d="M75.9008 57.6562C73.179 63.1815 69.2197 68.0046 64.3307 71.7508C59.4417 75.497 53.7547 78.0654 47.7117 79.2562L29.168 60.7125L55.893 37.6562L75.9008 57.6562Z"
-                                fill="url(#paint1_linear_1_134622)" />
-                            <path
-                                d="M55.8922 37.6563L32.4266 19.5313C31.9873 19.1913 31.4614 18.9813 30.9087 18.9253C30.3561 18.8693 29.7988 18.9694 29.3002 19.2144C28.8016 19.4594 28.3818 19.8393 28.0884 20.3111C27.795 20.7828 27.6399 21.3273 27.6406 21.8829V58.125C27.6414 58.6799 27.7975 59.2234 28.0915 59.694C28.3855 60.1646 28.8054 60.5434 29.3037 60.7874C29.802 61.0314 30.3587 61.1309 30.9107 61.0746C31.4627 61.0183 31.9878 60.8084 32.4266 60.4688L55.8922 42.3516C56.2506 42.0742 56.5408 41.7183 56.7404 41.3114C56.94 40.9045 57.0438 40.4572 57.0438 40.0039C57.0438 39.5507 56.94 39.1034 56.7404 38.6965C56.5408 38.2896 56.2506 37.9337 55.8922 37.6563Z"
-                                fill="#020844" />
-                        </g>
-                        <defs>
-                            <linearGradient id="paint0_linear_1_134622" x1="11.7156" y1="11.7156" x2="68.2844"
-                                y2="68.2844" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="white" />
-                                <stop offset="1" stop-color="#E5EEFF" />
-                            </linearGradient>
-                            <linearGradient id="paint1_linear_1_134622" x1="41.6148" y1="48.2656" x2="64.9586"
-                                y2="71.6094" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#ACBFE4" />
-                                <stop offset="0.93" stop-color="#E5EEFF" stop-opacity="0" />
-                            </linearGradient>
-                            <clipPath id="clip0_1_134622">
-                                <rect width="80" height="80" fill="white" />
-                            </clipPath>
-                        </defs>
-                    </svg>
+            <div class="col-md-6 mb-4 mb-lg-0">
+                <div class="counter2_left position-relative">
+                    <video id="manu_video" class="img_rou img-fluid w-100" poster="{{ asset('public/front/assets/images/Manufacturing Excellence.webp') }}" style="border-radius: 24px; object-fit: cover;">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        Your browser does not support HTML video.
+                    </video>
+                    <div id="play_overlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer; z-index: 10;">
+                        <svg class=" d-none" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_1_134622)">
+                                <path
+                                    d="M40 80C62.0914 80 80 62.0914 80 40C80 17.9086 62.0914 0 40 0C17.9086 0 0 17.9086 0 40C0 62.0914 17.9086 80 40 80Z"
+                                    fill="url(#paint0_linear_1_134622)" />
+                                <path
+                                    d="M75.9008 57.6562C73.179 63.1815 69.2197 68.0046 64.3307 71.7508C59.4417 75.497 53.7547 78.0654 47.7117 79.2562L29.168 60.7125L55.893 37.6562L75.9008 57.6562Z"
+                                    fill="url(#paint1_linear_1_134622)" />
+                                <path
+                                    d="M55.8922 37.6563L32.4266 19.5313C31.9873 19.1913 31.4614 18.9813 30.9087 18.9253C30.3561 18.8693 29.7988 18.9694 29.3002 19.2144C28.8016 19.4594 28.3818 19.8393 28.0884 20.3111C27.795 20.7828 27.6399 21.3273 27.6406 21.8829V58.125C27.6414 58.6799 27.7975 59.2234 28.0915 59.694C28.3855 60.1646 28.8054 60.5434 29.3037 60.7874C29.802 61.0314 30.3587 61.1309 30.9107 61.0746C31.4627 61.0183 31.9878 60.8084 32.4266 60.4688L55.8922 42.3516C56.2506 42.0742 56.5408 41.7183 56.7404 41.3114C56.94 40.9045 57.0438 40.4572 57.0438 40.0039C57.0438 39.5507 56.94 39.1034 56.7404 38.6965C56.5408 38.2896 56.2506 37.9337 55.8922 37.6563Z"
+                                    fill="#020844" />
+                            </g>
+                            <defs>
+                                <linearGradient id="paint0_linear_1_134622" x1="11.7156" y1="11.7156" x2="68.2844"
+                                    y2="68.2844" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="white" />
+                                    <stop offset="1" stop-color="#E5EEFF" />
+                                </linearGradient>
+                                <linearGradient id="paint1_linear_1_134622" x1="41.6148" y1="48.2656" x2="64.9586"
+                                    y2="71.6094" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#ACBFE4" />
+                                    <stop offset="0.93" stop-color="#E5EEFF" stop-opacity="0" />
+                                </linearGradient>
+                                <clipPath id="clip0_1_134622">
+                                    <rect width="80" height="80" fill="white" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </div>
                 </div>
 
             </div>
@@ -899,6 +903,27 @@ document.addEventListener('DOMContentLoaded', function () {
     $(document).on('click', '[data-close-modal]', function () {
         $('.product-modal').removeClass('active');
     });
+
+    // Manufacturing Video Play/Stop Logic
+    var manuVideo = document.getElementById('manu_video');
+    var playOverlay = document.getElementById('play_overlay');
+    if (manuVideo && playOverlay) {
+        playOverlay.addEventListener('click', function() {
+            manuVideo.play();
+        });
+        manuVideo.addEventListener('play', function() {
+            playOverlay.style.display = 'none';
+            manuVideo.setAttribute('controls', 'controls');
+        });
+        manuVideo.addEventListener('pause', function() {
+            playOverlay.style.display = 'block';
+            manuVideo.removeAttribute('controls');
+        });
+        manuVideo.addEventListener('ended', function() {
+            playOverlay.style.display = 'block';
+            manuVideo.removeAttribute('controls');
+        });
+    }
 });
 </script>
 

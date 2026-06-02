@@ -175,6 +175,10 @@
         font-size: 20px;
     }
 
+    .hero-slide {
+        height: calc(100vh - 70px);
+    }
+
 
 }
 
@@ -393,117 +397,118 @@
 /* =========================================
    LAPTOP (1024px - 1279px)
 ========================================= */
+
+
 @media (max-width: 1281px) {
+
     .navbar-nav {
         gap: 30px;
     }
 
-    @media (max-width: 1281px) {
+    .container {
+        max-width: 1250px !important;
+    }
 
-        .container {
-            max-width: 1250px !important;
-        }
+    .com_btn {
+        padding: 6px 18px;
+    }
 
-        .com_btn {
-            padding: 6px 18px;
-        }
+    .navbar-nav {
+        gap: 30px;
+    }
 
-        .navbar-nav {
-            gap: 30px;
-        }
+    .footer-top {
+        grid-template-columns: 31% 65%;
+        gap: 20px;
+    }
 
-        .footer-top {
-            grid-template-columns: 31% 65%;
-            gap: 20px;
-        }
+    .footer-links,
+    .footer-links-product {
+        padding: 0 20px;
+    }
 
-        .footer-links,
-        .footer-links-product {
-            padding: 0 20px;
-        }
+    .footer-newsletter {
+        padding-left: 20px;
+    }
 
-        .footer-newsletter {
-            padding-left: 20px;
-        }
+    .subscribe-box input {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
 
-        .subscribe-box input {
-            font-size: 16px;
-            padding: 10px 15px;
-        }
-
-        /* .hero-title,
+    /* .hero-title,
                             .banner_title,
                             .baner_title {
                                 font-size: 60px;
                                 line-height: 1.1;
                             } */
 
-        /* .hero-title,
+    /* .hero-title,
     .banner_title,
     .baner_title {
         font-size: 60px;
         line-height: 1.1;
     } */
 
-        .hero-subtitle,
-        .baner_desc {
-            font-size: 18px;
-            line-height: 1.5;
-        }
+    .hero-subtitle,
+    .baner_desc {
+        font-size: 18px;
+        line-height: 1.5;
+    }
 
-        /* .hero-subtitle,
+    /* .hero-subtitle,
     .baner_desc {
         font-size: 20px;
         line-height: 1.4;
     } */
 
-        .home_about .home_about_para {
-            font-size: 16px;
-            line-height: 28px;
-        }
+    .home_about .home_about_para {
+        font-size: 16px;
+        line-height: 28px;
+    }
 
-        .title_44 {
-            font-size: 36px;
-        }
+    .title_44 {
+        font-size: 36px;
+    }
 
-        /* .title_44 {
+    /* .title_44 {
         font-size: 36px;
     } */
 
-        /* .title_24 {
+    /* .title_24 {
         font-size: 20px;
     } */
 
-        .title_36 {
-            font-size: 30px;
-        }
-
-        .title_24 {
-            font-size: 20px;
-        }
-
-        .title_36 {
-            font-size: 24px;
-            line-height: 30px;
-        }
-
-        .title_20 {
-            font-size: 18px;
-        }
-
-        .title_20 {
-            font-size: 16px;
-        }
-
-        body {
-            font-size: 14px;
-            line-height: 26px;
-        }
-
-        .hero-content {
-            max-width: 600px;
-        }
+    .title_36 {
+        font-size: 30px;
     }
+
+    .title_24 {
+        font-size: 20px;
+    }
+
+    .title_36 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .title_20 {
+        font-size: 18px;
+    }
+
+    .title_20 {
+        font-size: 16px;
+    }
+
+    body {
+        font-size: 14px;
+        line-height: 26px;
+    }
+
+    .hero-content {
+        max-width: 600px;
+    }
+
 
     .hero-content {
         max-width: 600px;
@@ -556,7 +561,6 @@
     .form-group textarea {
         padding: 8px 14px;
     }
-
 
 }
 
@@ -971,14 +975,15 @@
         display: none;
         /* Hide custom arrows on mobile if they overlap or break flow, or adjust */
     }
-/* 
+
+    /* 
     .testimonial-section .col-lg-4 {
         margin-bottom: 30px;
     } */
 
-    .bg-curve{
-display: none;
-}
+    .bg-curve {
+        display: none;
+    }
 
 
     .multi_ac {
@@ -990,6 +995,8 @@ display: none;
         height: 400px;
     }
 
- .hero-slide { background-image: var(--mobile-bg); }
+    .hero-slide {
+        background-image: var(--mobile-bg);
+    }
 
 }
