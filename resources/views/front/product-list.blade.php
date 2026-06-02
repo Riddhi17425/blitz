@@ -14,37 +14,32 @@
                             </svg>
                         </span>
                         
-                        <a href="#">Product Category</a>
-                        <span><svg width="6" height="11" viewBox="0 0 6 11" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.666992 0.666016L5.33366 5.33268L0.666992 9.99935" stroke="#666666"
-                                    stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </span>
-                        <a href="#">Surge Protection Devices</a>
-                        <span><svg width="6" height="11" viewBox="0 0 6 11" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0.666992 0.666016L5.33366 5.33268L0.666992 9.99935" stroke="#666666"
-                                    stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </span>
-                        <a>AC SPD</a>
+                        @if($category)
+                            <span><svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.666992 0.666016L5.33366 5.33268L0.666992 9.99935" stroke="#666666" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></span>
+                            <a href="#">{{ $category->title ?? ''}}</a>
+                        @endif
+                        @if($subCategory)
+                            <span><svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.666992 0.666016L5.33366 5.33268L0.666992 9.99935" stroke="#666666" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg></span>
+                            <a href="#">{{ $subCategory->title ?? '' }}</a>
+                        @endif
                     </div>
-                    <h1 class="banner_title">Surge Protection Devices</h1>
-                    <h6 class="baner_desc">Protect your solar systems, industrial infrastructure, and mission-critical
-                        electrical equipment from voltage transients, lightning strikes, and costly operational
-                        downtime.</h6>
+                    <h1 class="banner_title">{{ $subCategory->title ?? '' }}</h1>
+                    <h6 class="baner_desc">{!! $subCategory->description ?? '' !!}</h6>
                     <div class="banner_btns">
-                        <a href="#" class="com_btn">
-                            Explore MCBs <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                        <a href="{{ route('front.contact') }}" class="com_btn">Request Quote</a>
+                        {{-- <a href="#" class="com_btn com_btn_b_b">
+                            Download Catalogue <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="11" viewBox="0 0 24 11" fill="none">
                                     <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
                                         stroke-linecap="round" stroke-linejoin="round" />
                                     <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
                                         stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg></span>
-                        </a>
-                        <a href="#" class="com_btn">Request Quote</a>
+                        </a> --}}
                     </div>
                 </div>
                 <div class="baner_right">

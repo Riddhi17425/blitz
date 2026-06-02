@@ -71,7 +71,7 @@ class HomeController extends Controller
         $subCategory = SubCategory::whereNull('deleted_at')->where('is_active', 1)->where('category_id', $category->id)->where('sub_category_url', $sub_cat_url)->first();
         $products = Product::whereNull('deleted_at')->where('is_active', 1)->where('sub_category_id', $subCategory->id)->where('category_id', $subCategory->category_id)->get();
 
-        return view('front.product-list',compact('metaTitle','metaDescription', 'industries', 'subCategory', 'products'));
+        return view('front.product-list',compact('metaTitle','metaDescription', 'industries', 'category', 'subCategory', 'products'));
     }
 
     public function productDetails(Request $request, $url = null){
