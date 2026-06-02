@@ -504,7 +504,7 @@
 /* =========================================
    TABLET (768px - 1023px)
 ========================================= */
-@media (max-width: 1023px) {
+@media (max-width: 1025px) {
     .navbar-nav {
         gap: 15px;
         padding-top: 20px;
@@ -748,6 +748,14 @@
         padding: 30px;
         margin-left: 0;
     }
+
+    .pd_grid {
+        display: block;
+    }
+
+    .product-card {
+        margin-inline: 10px;
+    }
 }
 
 
@@ -911,4 +919,5 @@
     .multi_ac {
         background: none;
     }
+
 }
