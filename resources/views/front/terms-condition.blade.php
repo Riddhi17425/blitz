@@ -50,5 +50,4 @@
         </div>
     </div>
 </section>
-@include('layouts.ft_img')
 @include('layouts.frontfooter')

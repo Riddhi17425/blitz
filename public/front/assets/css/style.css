@@ -736,8 +736,8 @@
 
 .sticky-product-wrapper {
     position: sticky;
-    top: 100px;
-    height: calc(100vh - 100px);
+    top: 50px;
+    /* height: calc(100vh - 100px); */
     display: flex;
     flex-direction: column;
     justify-content: center;
