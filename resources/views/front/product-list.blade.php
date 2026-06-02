@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="baner_right">
-                    <img src="{{ asset('public/front/assets/images/pd-1.webp') }}" alt="product" class="img-fluid">
+                    <img src="{{ asset('/public/images/sub_category_detail/' . $subCategory->detail_img) }}" alt="product" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -52,14 +52,75 @@
 
 <section class="fea_Pro py_40">
     <div class="container">
-        <p class="title_20 line_left aos-init aos-animate" >Featured Products
+        <p class="title_20 line_left aos-init aos-animate" >Products
         </p>
         <h2 class="title_44">Designed to Perform. Built to Last</h2>
         <p class="mb-0">Blitz products are IEC-compliant, rigorously tested, and trusted across the global solar and
             electrical industries.</p>
 
         <div class="row pt_40">
-            <div class="col-md-6">
+            @if(isset($products) && $products->count())
+                @foreach($products as $product)
+                <div class="col-md-6 mb-4">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="{{ $product->list_image ? asset('public/images/product_list_images/' . $product->list_image) : asset('public/front/assets/images/Background+Border.webp') }}" alt="{{ $product->product_name }}" class="product-image">
+                        </div>
+
+                        <div class="product-info">
+                            <p class="product-sku">{{ $product->product_modal ?? '' }}</p>
+                            <h3 class="title_24">{{ $product->product_name ?? '' }}</h3>
+
+                            <div class="product-specs">
+                                @forelse($product->technicalSpecifications->where('is_show_on_list', 1)->take(3) as $spec)
+                                    <div class="spec-row">
+                                        <span class="spec-label">{{ $spec->parameter }}</span>
+                                        <span class="spec-value">{{ $spec->specifications }}</span>
+                                    </div>
+                                @empty
+                                    <div class="spec-row">
+                                        <span class="spec-label">Specifications not available</span>
+                                    </div>
+                                @endforelse
+                            </div>
+                        </div>
+                        <div class="product-buttons">
+                            {{-- @if($product->datasheet)
+                                <a href="{{ route('products.datasheet.download', $product->id) }}" target="_blank" class="com_btn com_btn_b_b">
+                                    <span><svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                            fill="none">
+                                            <path
+                                                d="M15 2H6C5.46957 2 4.96086 2.21071 4.58579 2.58579C4.21071 2.96086 4 3.46957 4 4V20C4 20.5304 4.21071 21.0391 4.58579 21.4142C4.96086 21.7893 5.46957 22 6 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V7L15 2Z"
+                                                stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path
+                                                d="M14 2V6C14 6.53043 14.2107 7.03914 14.5858 7.41421C14.9609 7.78929 15.4696 8 16 8H20"
+                                                stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M10 9H8" stroke="#020844" stroke-width="1.33333" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                            <path d="M16 13H8" stroke="#020844" stroke-width="1.33333"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M16 17H8" stroke="#020844" stroke-width="1.33333"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg></span> <span class="ms-2">Datasheet</span>
+                                </a>
+                            @endif --}}
+                            <a href="{{ route('front.product.details', $product->product_url) }}" class="com_btn">
+                                View Details <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                        height="11" viewBox="0 0 24 11" fill="none">
+                                        <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white"
+                                            stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
+                                    </svg></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            @endif
+            {{-- <div class="col-md-6">
                 <div class="product-card">
                     <div class="product-img-wrapper">
                         <img src="{{ asset('public/front/assets/images/Type 2 Surge Protector.png') }}" alt="Type 2 Surge Protector"
@@ -86,36 +147,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="product-card">
-                    <div class="product-img-wrapper">
-                        <img src="{{ asset('public/front/assets/images/Type 2 Surge Protector.png') }}" alt="Type 2 Surge Protector"
-                            class="product-image">
-                    </div>
-
-                    <div class="product-info">
-                        <p class="product-sku">BZ-SPD40/2P</p>
-                        <h3 class="title_24">Type 2 Surge Protector</h3>
-
-                        <div class="product-specs">
-                            <div class="spec-row">
-                                <span class="spec-label">Max Voltage</span>
-                                <span class="spec-value">275V AC</span>
-                            </div>
-                            <div class="spec-row">
-                                <span class="spec-label">Discharge</span>
-                                <span class="spec-value">40kA</span>
-                            </div>
-                            <div class="spec-row no-border">
-                                <span class="spec-label">Poles</span>
-                                <span class="spec-value">2P</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 

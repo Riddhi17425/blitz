@@ -136,8 +136,8 @@
 
                             <div>
                                 <div class="product-info">
-                                    <p class="product-sku">{{ $product->product_modal }}</p>
-                                    <h3 class="title_24">{{ $product->product_name }}</h3>
+                                    <p class="product-sku">{{ $product->product_modal ?? '' }}</p>
+                                    <h3 class="title_24">{{ $product->product_name ?? ''}}</h3>
 
                                     <div class="product-specs">
                                         @forelse($product->technicalSpecifications->where('is_show_on_list', 1)->take(3) as $spec)
