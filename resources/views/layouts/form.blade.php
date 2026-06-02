@@ -19,8 +19,12 @@
                          </svg>
                      </div>
                      <div class="contact-text">
-                         <span class="contact-title">Phone</span>
-                         <span class="contact-detail"><a href="tel:+919876543210">+91 98765 43210</a></span>
+                        <span class="contact-title">Phone</span>
+                        @if(isset($settings->phone) && $settings->phone != '')
+                            <span class="contact-detail"><a href="tel:{{ $settings->phone }}">{{ $settings->phone }}</a></span>
+                        @else
+                            <span class="contact-detail"><a href="tel:+919725201620">+91 97252 01620</a></span>
+                        @endif
                      </div>
                  </div>
 
@@ -39,7 +43,11 @@
                      </div>
                      <div class="contact-text">
                          <span class="contact-title">Email</span>
-                         <span class="contact-detail"><a href="mailto:sales@blitzelectrical.com">sales@blitzelectrical.com</a></span>
+                         @if(isset($settings->email) && $settings->email != '')
+                             <span class="contact-detail"><a href="mailto:{{ $settings->email }}">{{ $settings->email }}</a></span>
+                         @else
+                             <span class="contact-detail"><a href="mailto:sales@blitzelectrical.com">sales@blitzelectrical.com</a></span>
+                         @endif
                      </div>
                  </div>
 
@@ -58,7 +66,11 @@
                      </div>
                      <div class="contact-text">
                          <span class="contact-title">Head Office</span>
-                         <span class="contact-detail">Mumbai, Maharashtra, India</span>
+                         @if(isset($settings->head_office_address) && $settings->head_office_address != '')
+                             <span class="contact-detail">{{ $settings->head_office_address }}</span>
+                         @else
+                             <span class="contact-detail">B-403/404 Signature-2, Sarkhej Sanand Road, Sarkhej, Ahmedabad 382210</span>
+                         @endif
                      </div>
                  </div>
              </div>
@@ -66,13 +78,13 @@
 
          <!-- Right Form Section -->
          <div class="quote-form-wrapper">
-             <form class="quote-form" id="contact-form" action="/contact/submit" method="POST">
+             <form class="quote-form" id="contact-form" action="{{ route('contact.submit') }}" method="POST">
                  @csrf
 
                  <div class="form-row">
                      <div class="form-group">
                         <label>Full Name <span class="text-danger">*</span></label>
-                        <input type="text" name="name" placeholder="John Doe" value="{{ old('name') }}">
+                        <input type="text" name="name" placeholder="John Doe" value="{{ old('name') }}" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '').replace(/\s{2,}/g, ' ').trimStart();">
                         @error('name')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -96,7 +108,7 @@
                      </div>
                      <div class="form-group">
                          <label>Phone <span class="text-danger">*</span></label>
-                        <input type="tel" name="phone" placeholder="+91 98765 43210" value="{{ old('phone') }}">
+                        <input type="tel" name="phone" placeholder="+91 99999 99999" value="{{ old('phone') }}" oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 15);">
                         @error('phone')
                             <span class="text-danger">{{ $message }}</span>
                         @enderror
@@ -140,7 +152,7 @@
                     @enderror
                  </div>
 
-                 <button type="submit" class="com_btn">
+                 <button type="submit" class="com_btn" id="contactSubmitBtn">
                      Get Quote <svg class="ms-2" width="18" height="18" viewBox="0 0 18 18" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                          <path

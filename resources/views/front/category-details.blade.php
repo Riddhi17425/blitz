@@ -13,14 +13,13 @@
                                     stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
                         </span>
-                        <a href="#">About</a>
+                        <a href="#">{{$category->short_form ?? ''}}</a>
                     </div>
-                    <h2 class="banner_title">Stronger Protection For Smarter Infrastructure</h2>
-                    <p class="baner_desc">From the heart of India to eight countries across Asia, the Middle East, and
-                        Africa, Blitz is the name engineers and industries trust when failure is simply not an option.
+                    <h2 class="banner_title">{{$category->title ?? ''}}</h2>
+                    <p class="baner_desc">{{$category->description ?? ''}}
                     </p>
                     <div class="banner_btns">
-                        <a href="#" class="com_btn">
+                        <a href="{{ route("front.contact") }}" class="com_btn">
                             Request Quote <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                     height="11" viewBox="0 0 24 11" fill="none">
                                     <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333"
@@ -29,11 +28,11 @@
                                         stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg></span>
                         </a>
-                        <a href="#" class="com_btn">Download Catalogue</a>
+                        {{-- <a href="#" class="com_btn">Download Catalogue</a> --}}
                     </div>
                 </div>
                 <div class="baner_right">
-                    <img src="{{ asset('public/front/assets/images/pd-1.webp') }}" alt="product" class="img-fluid">
+                    <img src="{{ asset('public/images/category_detail/' . $category->detail_img) }}" alt="{{$category->title ?? ''}}" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -46,31 +45,29 @@
        <div class="mb-4">
          <p class="title_20 line_left aos-init aos-animate" >
             Product Range</p>
-        <h2 class="title_44">A Global Brand Built on a Simple Promise - Reliable Protection, Every
-            Time 
+        <h2 class="title_44">{{ $category->sub_category_heading ?? '' }}
         </h2>
-        <p>Access detailed technical specifications, dimensional drawings, and selection Our technical
-            experts will help you choose the perfect protection solution for your project. Get a customized
-            quote within 24 hours.</p>
+        <p>{{ $category->sub_category_description ?? '' }}</p>
        </div>
-
+            @if(isset($category->subCategories) && $category->subCategories->count())
             <div class="row">
+                @foreach($category->subCategories as $key => $subValue)
                 <div class="col-md-6">
                     <div class="pro_cat">
-                        <img src="{{ asset('public/front/assets/images/DC SPD.webp') }}" alt="img" class="img_rou img-fluid">
+                        <img src="{{ asset('/public/images/sub_category_list/' . $subValue->list_img) }}" alt="img" class="img_rou img-fluid">
 
                         <div class="pro_cat_cont">
                             <h4 class="title_36">
-                                AC SPD
+                                {{ $subValue->short_form ?? '' }}
                             </h4>
 
-                            <p>AC & DC surge protectors for solar & industrial systems.</p>
-                            <a href="#" class="com_btn com_btn_w_b">View Products</a>
+                            <p>{{ $subValue->short_description ?? '' }}</p>
+                            <a href="{{ route('front.product.list', $subValue->sub_category_url) }}" class="com_btn com_btn_w_b">View Products</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-6">
+                @endforeach
+                {{-- <div class="col-md-6">
                     <div class="pro_cat">
                         <img src="{{ asset('public/front/assets/images/AC SPD.webp') }}" alt="img" class="img_rou img-fluid">
 
@@ -83,18 +80,77 @@
                             <a href="#" class="com_btn com_btn_w_b">View Products</a>
                         </div>
                     </div>
+                </div> --}}
+            </div>
+            @else
+             <div class="row pt_40">
+                <div class="col-md-6">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="{{ asset('public/front/assets/images/Type 2 Surge Protector.png') }}" alt="Type 2 Surge Protector"
+                                class="product-image">
+                        </div>
+
+                        <div class="product-info">
+                            <p class="product-sku">BZ-SPD40/2P</p>
+                            <h3 class="title_24">Type 2 Surge Protector</h3>
+
+                            <div class="product-specs">
+                                <div class="spec-row">
+                                    <span class="spec-label">Max Voltage</span>
+                                    <span class="spec-value">275V AC</span>
+                                </div>
+                                <div class="spec-row">
+                                    <span class="spec-label">Discharge</span>
+                                    <span class="spec-value">40kA</span>
+                                </div>
+                                <div class="spec-row no-border">
+                                    <span class="spec-label">Poles</span>
+                                    <span class="spec-value">2P</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="product-card">
+                        <div class="product-img-wrapper">
+                            <img src="{{ asset('public/front/assets/images/Type 2 Surge Protector.png') }}" alt="Type 2 Surge Protector"
+                                class="product-image">
+                        </div>
+
+                        <div class="product-info">
+                            <p class="product-sku">BZ-SPD40/2P</p>
+                            <h3 class="title_24">Type 2 Surge Protector</h3>
+
+                            <div class="product-specs">
+                                <div class="spec-row">
+                                    <span class="spec-label">Max Voltage</span>
+                                    <span class="spec-value">275V AC</span>
+                                </div>
+                                <div class="spec-row">
+                                    <span class="spec-label">Discharge</span>
+                                    <span class="spec-value">40kA</span>
+                                </div>
+                                <div class="spec-row no-border">
+                                    <span class="spec-label">Poles</span>
+                                    <span class="spec-value">2P</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            @endif
     </div>
 </section>
 
-<section  class="tec_res product_cta">
+<section  class="tec_res product_cta" style="background: url({{ asset('public/images/category_cta_desktop/' . $category->cta_img_desktop) }});">
     <div class="container h-100">
         <div class="tec_res_left">
-            <h2 class="title_44" style="color: var(--blue-head); !important">Download Our Complete
-                Product Catalogue</h2>
-            <p class="mb-0" style="color: var(--grey-666) !important;">Access detailed technical specifications, dimensional drawings, and selection
-                guides for our complete product range.</p>
+            <h2 class="title_44" style="color: var(--blue-head); !important">{{ $category->cta_img_title ?? '' }}</h2>
+            <p class="mb-0" style="color: var(--grey-666) !important;">{!! $category->cta_img_description ?? '' !!}</p>
 
             <div class="pt_40">
                 <a href="#" class="com_btn">
@@ -111,7 +167,7 @@
                     </span> Download Catalogue
                 </a>
 
-                <a href="#" class="com_btn ms-3">
+                {{-- <a href="#" class="com_btn ms-3">
                     <span class="me-2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -128,7 +184,7 @@
                                 stroke-linejoin="round" />
                         </svg>
                     </span> Technical Datasheets
-                </a>
+                </a> --}}
 
             </div>
         </div>

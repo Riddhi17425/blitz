@@ -610,7 +610,6 @@
 
 .tec_res {
     background-color: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), #000;
-    background-image: url('../images/CTA.webp');
     background-size: cover;
     height: 580px;
     background-position-x: right;

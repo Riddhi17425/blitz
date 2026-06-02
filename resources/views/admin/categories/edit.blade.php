@@ -105,7 +105,7 @@
                         @error('cta_img_description')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                 </div>
-                <h5 class="fw-bold my-4 pb-2 border-bottom text-primary">Sub Category Settings</h5>
+                <h5 class="fw-bold my-4 pb-2 border-bottom text-primary">Sub Category</h5>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Sub Category Heading</label>

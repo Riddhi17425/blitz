@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Models\{Category, Country, Product};
+use App\Models\{Category, Country, Product, Setting};
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 
@@ -43,14 +43,16 @@ class AppServiceProvider extends ServiceProvider
             $products = collect();
 
             if (Schema::hasTable('countries')) {
-                $countries = Country::orderBy('name')->get();
+                $countries = Country::select('id', 'name')->orderBy('name')->get();
             }
-
             if (Schema::hasTable('products')) {
-                $products = Product::whereNull('deleted_at')->orderBy('product_name')->get();
+                $products = Product::select('id', 'product_name')->whereNull('deleted_at')->where('is_active', 1)->orderBy('product_name')->get();
+            }
+            if (Schema::hasTable('settings')) {
+                $settings = Setting::select('id', 'phone', 'email', 'head_office_address')->first();
             }
 
-            $view->with('countries', $countries)->with('products', $products);
+            $view->with('countries', $countries)->with('products', $products)->with('settings', $settings);
         });
     }
 }
