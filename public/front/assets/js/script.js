@@ -490,19 +490,19 @@ document.addEventListener("DOMContentLoaded", function () {
 /* homepage featured products grid */
 
 function handleResponsiveClass() {
-    if ($(window).width() >= 1025) {
+    if ($(window).width() <= 1025) {
         $('.pd_grid').addClass('pd_slider');
     } else {
         $('.pd_grid').removeClass('pd_slider');
     }
 }
-
+ 
 handleResponsiveClass();
-
+ 
 $(window).on('resize', handleResponsiveClass);
-
-$(".pd_grid").slick({
-  dots: false,
+ 
+$(".pd_slider").slick({
+  dots: true,
   infinite: true,
   speed: 800,
   cssEase: "linear",
@@ -511,7 +511,7 @@ $(".pd_grid").slick({
   arrows: false,
   slidesToShow: 3,
   slidesToScroll: 1,
-
+ 
   responsive: [
     {
       breakpoint: 992,
@@ -529,5 +529,5 @@ $(".pd_grid").slick({
     }
   ]
 });
-
+ 
 /* homepage featured products grid */

@@ -121,7 +121,7 @@
         <h1 class="title_44">Designed to Perform. Built to Last</h1>
         <p class="mb-0">Blitz products are IEC-compliant, rigorously tested, and trusted across the global solar and electrical industries.</p>
 
-        <div class="pd_grid pt_40">
+        <div class="pd_grid pt_40 common-dots">
             @if(isset($featuredProducts) && $featuredProducts->count())
                 @foreach($featuredProducts as $product)
                         <div class="product-card">
