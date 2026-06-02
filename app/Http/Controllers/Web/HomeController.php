@@ -87,8 +87,10 @@ class HomeController extends Controller
 
         $metaTitle = $product->meta_title ?? $product->product_name ?? '';
         $metaDescription = $product->meta_description ?? '';
+        
+        $countries = Country::orderBy('name')->get();
 
-        return view('front.product-details',compact('metaTitle','metaDescription','product'));
+        return view('front.product-details',compact('metaTitle','metaDescription','product', 'countries'));
     }
 
     public function categoryDetails($slug){

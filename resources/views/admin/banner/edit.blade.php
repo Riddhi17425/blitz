@@ -70,6 +70,21 @@
                                             @endif
                                         </div>
 
+                                        {{-- Mobile Image --}}
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label">Mobile Image</label>
+                                            <input type="file" name="banners_mobile_image" id="banners_mobile_image"
+                                                class="form-control @error('banners_mobile_image') is-invalid @enderror">
+                                            @error('banners_mobile_image')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                            @if($banners->mobile_image)
+                                                <div class="mt-2">
+                                                    <img id="preview_banners_mobile_image" src="{{ asset('public/admin/banners/' . $banners->mobile_image) }}" width="150" height="120" alt="{{ $banners->alt_tag }}">
+                                                </div>
+                                            @endif
+                                        </div>
+
                                         {{-- Status --}}
                                         <div class="col-md-6 mb-3">
                                             <label class="form-label">Status <span class="required-star">*</span></label>

@@ -14,6 +14,7 @@ class Banner extends Model
         'title',
         'description',
         'image',
+        'mobile_image',
         'status',
         'alt_tag', 
         'updated_at',

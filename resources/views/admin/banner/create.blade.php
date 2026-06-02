@@ -69,6 +69,14 @@
                                             
                                              <img id="preview_banners_image" src="#" alt="Preview" class="mt-2" style="max-width: 100px; height: auto; display: none;" />
                                         </div> 
+                                        <div class="col-md-4 mb-3">
+                                            <label class="form-label">Mobile Image</label>
+                                            <input type="file" name="banners_mobile_image" id="banners_mobile_image"
+                                                class="form-control @error('banners_mobile_image') is-invalid @enderror">
+                                            @error('banners_mobile_image')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
                                         <div class="col-md-1 d-flex align-items-end">
                                             <button type="button" class="btn btn-danger removeColor"
                                                 style="display: none;">-</button>

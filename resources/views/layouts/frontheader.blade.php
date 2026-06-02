@@ -118,7 +118,7 @@
                                             <ul class="dropdown-menu submenu">
                                                 @foreach($category->subCategories as $subCategory)
                                                     <li class="dropdown-submenu position-relative">
-                                                        <a class="dropdown-item d-flex justify-content-between align-items-center gap-3" href="#">
+                                                        <a class="dropdown-item d-flex justify-content-between align-items-center gap-3" href="{{ route('front.product.list', ['cat_url' => $category->category_url, 'sub_cat_url' => $subCategory->sub_category_url]) }}">
                                                             {{ $subCategory->title }}
                                                             @if($subCategory->products->count() > 0)
                                                                 <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">

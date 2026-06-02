@@ -35,6 +35,7 @@ class BannerController extends Controller
         'banners_status'  => 'nullable|in:Active,In-Active',
         'banners_alt'     => 'required|string|max:255',
         'banners_image'   => 'required|mimes:jpg,jpeg,png,webp|max:2048',
+        'banners_mobile_image' => 'nullable|mimes:jpg,jpeg,png,webp|max:2048',
     ]);
 
     if ($validator->fails()) {
@@ -46,18 +47,29 @@ class BannerController extends Controller
 
     // try {
         $imagePath = '';
-            // Handle image upload 
-            if ($request->hasFile('banners_image') && $request->file('banners_image')->isValid()) {
-                // Try with compression first
-                $imagePath = storeImageWithTimeId($request->file('banners_image'), 'admin/banners');
-                
-                if (!$imagePath) {
-                    return redirect()->back()
-                        ->with('error', 'Failed to upload image. Please try again.')
-                        ->withInput();
-                }
-            } 
+        $mobileImagePath = '';
 
+        // Handle image upload 
+        if ($request->hasFile('banners_image') && $request->file('banners_image')->isValid()) {
+            $imagePath = storeImageWithTimeId($request->file('banners_image'), 'admin/banners');
+            
+            if (!$imagePath) {
+                return redirect()->back()
+                    ->with('error', 'Failed to upload image. Please try again.')
+                    ->withInput();
+            }
+        } 
+
+        // Handle mobile image upload 
+        if ($request->hasFile('banners_mobile_image') && $request->file('banners_mobile_image')->isValid()) {
+            $mobileImagePath = storeImageWithTimeId($request->file('banners_mobile_image'), 'admin/banners');
+            
+            if (!$mobileImagePath) {
+                return redirect()->back()
+                    ->with('error', 'Failed to upload mobile image. Please try again.')
+                    ->withInput();
+            }
+        }
         
         Banner::create([
             'category_id'  => $request->category_id,
@@ -66,6 +78,7 @@ class BannerController extends Controller
             'status'      => $request->banners_status ?? 'Active',
             'alt_tag'     => $request->banners_alt,
             'image'       => $imagePath,
+            'mobile_image'=> $mobileImagePath,
         ]);
 
         return redirect()->route('banners')->with('success', 'Record added successfully!');
@@ -130,6 +143,7 @@ class BannerController extends Controller
             'banners_status'  => 'required|in:Active,In-Active',
             'banners_alt'     => 'required|string|max:255',
             'banners_image'   => 'nullable|file|mimes:jpg,jpeg,png,webp|max:2048',
+            'banners_mobile_image' => 'nullable|file|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -145,6 +159,8 @@ class BannerController extends Controller
             $banners = Banner::findOrFail($id);
 
             $imagePath = $banners->image;
+            $mobileImagePath = $banners->mobile_image;
+            
             // Handle image upload 
             if ($request->hasFile('banners_image') && $request->file('banners_image')->isValid()) {
                 // Delete old image from public folder
@@ -160,6 +176,22 @@ class BannerController extends Controller
                         ->withInput();
                 }
             } 
+
+            // Handle mobile image upload 
+            if ($request->hasFile('banners_mobile_image') && $request->file('banners_mobile_image')->isValid()) {
+                // Delete old image from public folder
+                if (!empty($banners->mobile_image) && File::exists(public_path('admin/banners/' . $banners->mobile_image))) {
+                    File::delete(public_path('admin/banners/' . $banners->mobile_image));
+                }
+
+                $mobileImagePath = storeImageWithTimeId($request->file('banners_mobile_image'), 'admin/banners');
+                
+                if (!$mobileImagePath) {
+                    return redirect()->back()
+                        ->with('error', 'Failed to upload mobile image. Please try again.')
+                        ->withInput();
+                }
+            }
             
             // 4. Update whychooseus data
             $banners->update([
@@ -169,6 +201,7 @@ class BannerController extends Controller
                 'status'      => $request->banners_status,
                 'alt_tag'     => $request->banners_alt,
                 'image'       => $imagePath,  
+                'mobile_image'=> $mobileImagePath,
             ]);
 
             return redirect()->route('banners')->with('success', 'Banners updated successfully!');

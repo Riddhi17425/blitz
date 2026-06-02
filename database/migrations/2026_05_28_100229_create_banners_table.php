@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title')->nullable();
             $table->longText('description')->nullable();
             $table->string('image')->nullable();
+            $table->string('mobile_image')->nullable()->after('image');
             $table->enum('status', ['Active', 'In-Active']);
             $table->string('alt_tag')->nullable();
             $table->softDeletes();

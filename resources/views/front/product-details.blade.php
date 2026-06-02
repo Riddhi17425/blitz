@@ -71,7 +71,7 @@
                 @endif
 
                 <div class="pb_40">
-                    <a href="{{ route('front.contact') }}" class="com_btn product-enquire-button" data-product-name="{{ $product->product_name }}">
+                    <a href="javascript:void(0);" class="com_btn product-enquire-button" data-product-name="{{ $product->product_name }}">
                         Enquire Now<span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="11" viewBox="0 0 24 11" fill="none">
                             <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
                             <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -87,7 +87,7 @@
                     @endif --}}
                 </div>
 
-                @if($visibleFeatures->isNotEmpty())
+                {{-- @if($visibleFeatures->isNotEmpty())
                     <ul class="feature-list">
                         @foreach($visibleFeatures as $specification)
                             <li>
@@ -99,7 +99,7 @@
                             </li>
                         @endforeach
                     </ul>
-                @endif
+                @endif -->
 
                 @if($product->features)
                     <hr class="dashed-divider">
@@ -204,5 +204,107 @@
 </section>
 @endif
 
+<div id="product-enquiry-modal" class="product-modal">
+    <div class="product-modal-overlay" data-close-modal></div>
+    <div class="product-modal-content">
+        <button type="button" class="product-modal-close" data-close-modal>&times;</button>
+        <div class="product-modal-body d-block">
+            <div class="modal-form-header w-100 mb-4">
+                <h2 class="title_30 mb-2">Product Enquiry</h2>
+                <p>Please provide your details and we will contact you about this product.</p>
+            </div>
+            <form id="product-enquiry-form" action="{{ route('contact.submit') }}" method="POST" class="quote-form w-100">
+                @csrf
+                <input type="hidden" name="inquiry_type" value="popup">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Product</label>
+                        <input type="text" name="product" id="popup-product-name" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Country <span class="text-danger">*</span></label>
+                        <select name="country">
+                            <option value="" disabled selected>Select Country</option>
+                            @foreach($countries as $country)
+                                <option value="{{ $country->name }}">{{ $country->name }}</option>
+                            @endforeach
+                        </select>
+                        <i class="fa-solid fa-chevron-down select-icon"></i>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Full Name <span class="text-danger">*</span></label>
+                        <input type="text" name="name" placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Company</label>
+                        <input type="text" name="company" placeholder="Company name">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email <span class="text-danger">*</span></label>
+                        <input type="email" name="email" placeholder="john@company.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone <span class="text-danger">*</span></label>
+                        <input type="tel" name="phone" placeholder="+91 98765 43210">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Requirement Details</label>
+                    <textarea name="requirement_details" placeholder="Describe your project requirements, product types, quantities, and any specifications..."></textarea>
+                </div>
+                <div class="product-modal-submit">
+                    <button type="submit" class="com_btn" id="productSubmitBtn">Send Enquiry</button>
+                </div>
+                <div id="popup-enquiry-message" class="text-success mt-3" style="display:none;"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
 @include('layouts.form')
+
+<style>
+.product-modal { display:none; position:fixed; inset:0; z-index:9999; align-items:center; justify-content:center; }
+.product-modal.active { display:flex; }
+.product-modal-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.6); }
+.product-modal-content { position:relative; background:#fff; border-radius:20px; max-width:900px; width:100%; max-height:90vh; overflow-y:auto; padding:30px; z-index:1; }
+.product-modal-close { position:absolute; top:18px; right:18px; background:none; border:none; color:#020844; font-size:32px; cursor:pointer; }
+.product-modal-body { display:flex; flex-wrap:wrap; gap:30px; }
+.product-modal-body.d-block { display:block !important; }
+.product-modal-image img { width:100%; max-width:360px; border-radius:16px; object-fit:contain; }
+.product-modal-details { flex:1; min-width:280px; }
+.product-modal-specs .spec-row { display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid #E6E9F9; }
+.product-modal-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:24px; }
+.product-modal-submit { margin-top:16px; }
+#product-enquiry-form .form-group { position: relative; }
+#product-enquiry-form .select-icon { position: absolute; right: 20px; bottom: 18px; pointer-events: none; color: #020844; }
+#product-enquiry-form select { appearance: none; -webkit-appearance: none; -moz-appearance: none; }
+@media(max-width:768px){ .product-modal-body { flex-direction:column; } }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Open product enquiry modal
+    $(document).on('click', '.product-enquire-button', function (e) {
+        e.preventDefault();
+        var productName = $(this).data('product-name');
+        $('#popup-product-name').val(productName);
+        $('#product-enquiry-modal').addClass('active');
+    });
+
+    // Close modals on overlay or close button click
+    $(document).on('click', '[data-close-modal]', function () {
+        $('.product-modal').removeClass('active');
+    });
+});
+</script>
+
 @include('layouts.frontfooter')
