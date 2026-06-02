@@ -30,11 +30,11 @@
                                         stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg></span>
                         </a>
-                        <a href="#" class="com_btn ms-3">Download Catalogue</a>
+                        <a href="#" class="com_btn com_btn_b_b ms-3">Download Catalogue</a>
                     </div>
                 </div>
                 <div class="baner_right">
-                    <img src="{{ asset('public/front/assets/images/pd-1.webp') }}" alt="product" class="img-fluid">
+                    <img src="{{ asset('public/front/assets/images/about-hero.png') }}" alt="product" class="w-75">
                 </div>
             </div>
         </div>
@@ -851,7 +851,7 @@
 @endif
 
 
-<section  class="tec_res product_cta">
+<section  class="about_cats">
     <div class="container h-100">
         <div class="tec_res_left">
             <h2 class="title_44" style="color: var(--blue-head); !important">Let's Build Something Safer Together </h2>

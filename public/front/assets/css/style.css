@@ -2092,3 +2092,16 @@ tbody tr:nth-child(even) {
     height: 480px;
     background-image: var(--product-desk-bg);
 }
+
+.about_cats {
+    background-image: url(../images/about-cta.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+    height: 480px;
+    
+}
+
+.story-img-col {
+    margin-bottom: 20px;
+}
