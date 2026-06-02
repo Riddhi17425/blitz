@@ -66,6 +66,13 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- Mobile Offcanvas Header -->
+                <div class="mobile-offcanvas-header d-flex justify-content-between align-items-center d-xl-none">
+                    <a class="navbar-brand m-0" href="{{ route('front.home') }}">
+                        <img src="{{ asset('public/front/assets/images/logo.svg') }}" alt="logo" style="width:120px;">
+                    </a>
+                    <button type="button" class="btn-close mobile-menu-close" aria-label="Close"></button>
+                </div>
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('front.about') }}">About</a>
