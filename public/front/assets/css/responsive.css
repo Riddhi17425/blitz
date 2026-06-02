@@ -999,6 +999,10 @@
         background-image: var(--mobile-bg);
     }
 
+    .product_cta {
+    background-image: var(--product-mobaile-bg);
+}
+
     .innovation-card {
         background-image: url(../images/about_1_m.webp );
     }
@@ -1007,8 +1011,6 @@
 
         background-image: url(../images/about_2_m.webp);
     }
-
-
 
     .certification-card {
 

@@ -2090,4 +2090,5 @@ tbody tr:nth-child(even) {
     background-size: cover;
     background-position: right;
     height: 480px;
+    background-image: var(--product-desk-bg);
 }

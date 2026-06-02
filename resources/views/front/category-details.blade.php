@@ -154,8 +154,8 @@
 @if(isset($category->cta_img_desktop) && $category->cta_img_desktop != '')
  <section  class="product_cta" 
  style="
-                 --desktop-bg: url('{{ asset('public/images/category_cta_desktop/' . $category->cta_img_desktop) }}');
-                 --mobile-bg: url('{{ asset('public/images/category_cta_desktop/' . $category->cta_img_desktop) }}');
+                 --product-desk-bg: url('{{ asset('public/images/category_cta_desktop/' . $category->cta_img_desktop) }}');
+                 --product-mobaile-bg: url('{{ asset('public/images/category_cta_desktop/' . $category->cta_img_desktop) }}');
  ">
    <div class="container h-100">
       <div class="tec_res_left">
