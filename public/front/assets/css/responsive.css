@@ -8,6 +8,11 @@
 }
 
 @media (max-width: 1601px) {
+
+    .about_cats {
+    
+    height: 380px;
+}
     .container {
         max-width: 1500px !important;
     }
@@ -183,7 +188,10 @@
 }
 
 @media (max-width: 1537px) {
-
+    .about_cats {
+    
+    height: 350px;
+}
     .container {
         max-width: 1350px !important;
     }
@@ -763,7 +771,7 @@
 
     .banner_btns {
         display: flex;
-        /* flex-direction: column; */
+        flex-direction: column;
         gap: 15px;
     }
 
