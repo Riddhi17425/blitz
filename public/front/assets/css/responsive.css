@@ -9,7 +9,7 @@
 
 @media (max-width: 1601px) {
     .container {
-        max-width: 1450px !important;
+        max-width: 1500px !important;
     }
 
     /* Typography Scaling for 1330px Container */
@@ -121,23 +121,185 @@
     .d-flex.gap-5 {
         gap: 2rem !important;
     }
+
+    .footer-links,
+    .footer-links-product {
+        padding: 0 24px;
+    }
+
+    .footer-newsletter {
+        padding-left: 24px;
+    }
+}
+
+@media (max-width: 1537px) {
+
+    .container {
+        max-width: 1350px !important;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+        line-height: 28px;
+        margin-bottom: 30px;
+    }
+
+    .navbar {
+        padding: 12px 0;
+    }
+
+    .com_btn {
+        padding: 8px 24px;
+        font-size: 14px;
+    }
+
+    .hero-title,
+    .banner_title,
+    .baner_title,
+    .main_head {
+        font-size: 42px;
+        line-height: 1.1;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+        line-height: 28px;
+        margin-bottom: 30px;
+    }
+
+    .title_44 {
+        font-size: 34px;
+        line-height: 40px;
+
+    }
+
+    .mb_40 {
+        margin-bottom: 25px;
+    }
+
+    .mt_40 {
+        margin-top: 25px;
+    }
+
+    .home_about .home_about_para {
+        font-size: 18px;
+        line-height: 32px;
+    }
+
+    body {
+        font-size: 16px;
+    }
+
+   .title_36 {
+        font-size: 26px;
+        line-height: 34px;
+    }
+
+    .mcb-overlay {
+        padding: 20px 20px;
+    }
+
+
+    .product-card {
+        padding: 15px;
+    }
+
+    .spec-row {
+        padding: 8px 0;
+
+    }
+
+    .product-sku {
+        margin-bottom: 15px;
+    }
+
+    .product-specs {
+        margin: 15px 0;
+    }
+
+    .pd_grid {
+    gap: 15px;
+}
+
+.product-buttons .com_btn
+{
+    width: 50%;
+}
+
+.product-buttons {
+    gap: 6px;
+}
+
+    .product-buttons .com_btn {
+        padding: 6px 20px;
+    }
+
+    .indu_slider .title_36 {
+    bottom: 26px;
+    left: 26px;
+    }
+
+    .testi-card {
+    height: 350px;
+    padding: 24px;
+    border-radius: 12px;
+}
+
+.client-logo img {
+    max-width: 100px;
+}
+
+.testi-text {
+    margin: 25px 0;
+}
+
+.counter2_right {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.contact-title {
+    font-size: 18px;
+}
+
+.quote-section {
+    gap: 40px;
+}
+
+.quote-form-wrapper {
+    padding: 20px;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    padding: 10px 14px;
+}
+
+.counter {
+    padding: 24px;
+}
+
+.why_Ch {
+    padding: 24px;
+}
+
 }
 
 
-/* =========================================
-   LARGE DESKTOP (1440px - 1919px)
-========================================= */
-@media (max-width: 1919px) {}
-
-/* =========================================
-   DESKTOP (1280px - 1439px)
-========================================= */
-@media (max-width: 1439px) {}
 
 /* =========================================
    LAPTOP (1024px - 1279px)
 ========================================= */
-@media (max-width: 1279px) {
+@media (max-width: 1281px) {
+
+       .container {
+        max-width: 1250px !important;
+    }
+
+        .com_btn {
+        padding: 6px 18px;
+    }
+
     .navbar-nav {
         gap: 30px;
     }
@@ -161,38 +323,98 @@
         padding: 10px 15px;
     }
 
-    .hero-title,
+    /* .hero-title,
     .banner_title,
     .baner_title {
         font-size: 60px;
         line-height: 1.1;
-    }
+    } */
 
-    .hero-subtitle,
+    /* .hero-subtitle,
     .baner_desc {
         font-size: 20px;
         line-height: 1.4;
+    } */
+
+        .home_about .home_about_para {
+        font-size: 16px;
+        line-height: 28px;
     }
 
-    .title_44 {
+    /* .title_44 {
         font-size: 36px;
-    }
+    } */
+
+    /* .title_24 {
+        font-size: 20px;
+    } */
 
     .title_36 {
-        font-size: 30px;
-    }
-
-    .title_24 {
-        font-size: 20px;
+        font-size: 24px;
+        line-height: 30px;
     }
 
     .title_20 {
-        font-size: 18px;
+        font-size: 16px;
+    } 
+
+        body {
+        font-size: 14px;
+        line-height: 26px;
     }
 
     .hero-content {
         max-width: 600px;
     }
+
+        .pt_40 {
+        padding-top: 24px;
+    }
+
+     .pb_40 {
+        padding-bottom: 24px;
+    }
+
+    .sticky-product-wrapper {
+    top: 16px;
+    }
+
+        .testi-card {
+        height: 300px;
+        }
+
+            .title_44 {
+        font-size: 32px;
+        line-height: 38px;
+    }
+
+    .contact-list {
+    gap: 24px;
+}
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+}
+
+    .contact-title {
+        font-size: 16px;
+    }
+
+    .form-group label
+    {
+        font-size: 16px;
+    }
+
+    .quote-form {
+    gap: 15px;
+}
+
+    .form-group input, .form-group select, .form-group textarea {
+        padding: 8px 14px;
+    }
+
+
 }
 
 /* =========================================

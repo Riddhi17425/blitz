@@ -1,6 +1,6 @@
 @include('layouts.frontheader')
 
-<main data-scroll-container>
+
 <section>
     <div class="hero-slider">
         @forelse($banners as $banner)
@@ -115,10 +115,9 @@
         <h1 class="title_44">Designed to Perform. Built to Last</h1>
         <p class="mb-0">Blitz products are IEC-compliant, rigorously tested, and trusted across the global solar and electrical industries.</p>
 
-        <div class="row pt_40">
+        <div class="pd_grid pt_40">
             @if(isset($featuredProducts) && $featuredProducts->count())
                 @foreach($featuredProducts as $product)
-                    <div class="col-md-3">
                         <div class="product-card">
                             <div class="product-img-wrapper">
                                 <img src="{{ $product->list_image ? asset('public/images/product_list_images/' . $product->list_image) : asset('public/front/assets/images/Background+Border.webp') }}" alt="{{ $product->product_name }}" class="product-image">
@@ -175,9 +174,7 @@
                                 </svg></span>
                         </a>
                     </div>
-
                 </div>
-            </div>
             @endforeach
         @else
             <div class="col-12">
@@ -187,26 +184,6 @@
     </div>
 </section>
 
-{{-- <div id="product-detail-modal" class="product-modal">
-    <div class="product-modal-overlay" data-close-modal></div>
-    <div class="product-modal-content">
-        <button type="button" class="product-modal-close" data-close-modal>&times;</button>
-        <div class="product-modal-body">
-            <div class="product-modal-image">
-                <img src="" alt="Product Image" id="detail-modal-image">
-            </div>
-            <div class="product-modal-details">
-                <h2 id="detail-modal-name"></h2>
-                <p class="product-modal-model" id="detail-modal-model"></p>
-                <div class="product-modal-specs" id="detail-modal-specs"></div>
-                <div class="product-modal-actions">
-                    <a href="#" id="detail-modal-datasheet" class="com_btn com_btn_w_b" target="_blank" rel="noopener">View Datasheet</a>
-                    <button type="button" class="com_btn com_btn_b_b" id="detail-modal-enquire">Enquire</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
 
 <div id="product-enquiry-modal" class="product-modal">
     <div class="product-modal-overlay" data-close-modal></div>
@@ -348,7 +325,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="">
                 <div class="product-card">
                     <div class="product-img-wrapper">
                         <img src="{{ asset('public/front/assets/images/Type 2 Surge Protector.png') }}" alt="Type 2 Surge Protector"
@@ -409,7 +386,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="">
                 <div class="product-card">
                     <div class="product-img-wrapper">
                         <img src="{{ asset('public/front/assets/images/Type 2 Surge Protector.png') }}" alt="Type 2 Surge Protector"
@@ -832,22 +809,22 @@
                     <div class="counter2_right">
                         <div class="counter2">
                             <h4 class="title_44">50,000+</h4>
-                            <p>sq. ft. facility</p>
+                            <p class="mb-0">sq. ft. facility</p>
                         </div>
 
                         <div class="counter2">
                             <h4 class="title_44">100%</h4>
-                            <p>Automated QC</p>
+                            <p class="mb-0">Automated QC</p>
                         </div>
 
                         <div class="counter2">
                             <h4 class="title_44">24/7</h4>
-                            <p>Production</p>
+                            <p class="mb-0">Production</p>
                         </div>
 
                         <div class="counter2">
                             <h4 class="title_44">Zero</h4>
-                            <p>Defect Policy</p>
+                            <p class="mb-0">Defect Policy</p>
                         </div>
                     </div>
                 </div>

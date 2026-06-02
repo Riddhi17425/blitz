@@ -198,7 +198,7 @@
 /* =========================================
    CUSTOM SLICK DOTS (Same to Same)
 ========================================= */
-.slick-dots {
+.hero-slider .slick-dots {
     position: absolute;
     bottom: 54px;
     left: 0;
@@ -206,13 +206,13 @@
     width: 100%;
 }
 
-.slick-dots li {
+.hero-slider .slick-dots li {
     margin: 0 4px;
     width: auto;
     height: auto;
 }
 
-.slick-dots li button {
+.hero-slider .slick-dots li button {
     width: 8px;
     height: 8px;
     background-color: #CBD5E1;
@@ -223,20 +223,20 @@
     transition: all 0.3s ease;
 }
 
-.slick-dots li button:before {
+.hero-slider .slick-dots li button:before {
     display: none;
     /* Hide default icon */
 }
 
 /* Active Dot (The Dash) */
-.slick-dots li.slick-active button {
+.hero-slider .slick-dots li.slick-active button {
     width: 28px;
     height: 8px;
     background-color: var(--white);
     border-radius: 9999px;
 }
 
-.slick-dotted.slick-slider {
+.hero-slider .slick-dotted.slick-slider {
     margin-bottom: 0px;
 }
 
@@ -844,8 +844,14 @@
 
 .footer-top {
     display: grid;
-    grid-template-columns: 33% 13% 20% 33%;
+    grid-template-columns: 4fr 8fr;
+    justify-content: space-between;
     padding-bottom: 60px;
+}
+
+.footer_right {
+    display: grid;
+    grid-template-columns: 2fr 3fr 5fr;
 }
 
 .footer-brand {
@@ -933,6 +939,7 @@
     border-radius: 4px;
     padding: 4px;
     background: rgba(255, 255, 255, 0.03);
+    position: relative;
 }
 
 .subscribe-box input {
@@ -950,13 +957,15 @@
 }
 
 .subscribe-box button {
-    padding: 12px 24px;
+    padding: 8px 20px;
     color: var(--blue-head);
     font-size: 24px;
     font-weight: 400;
     line-height: 28px;
     border-radius: 6px;
     background: var(--white);
+    position: absolute;
+    right: 5px;
 }
 
 .subscribe-box button:hover {
@@ -1968,3 +1977,12 @@ tbody tr:nth-child(even) {
     display: flex;
     justify-content: center;
 } */
+
+/* homepage featured products grid */
+.pd_grid {
+    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* homepage featured products grid */
