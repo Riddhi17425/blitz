@@ -400,21 +400,26 @@ document.addEventListener("DOMContentLoaded", function () {
   const header = document.querySelector(".navbar");
   if (header) {
     let lastScrollY = window.scrollY;
+    const HIDE_THRESHOLD = 30;  // Itna neeche scroll hone par hide hoga
+    const SHOW_THRESHOLD = 400;  // Itna upar scroll hone par show hoga
 
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 150) {
-        if (window.scrollY > lastScrollY) {
-          // Scrolling down
-          header.classList.add("navbar-hidden");
-        } else {
-          // Scrolling up
-          header.classList.remove("navbar-hidden");
-        }
-      } else {
-        // At top, always show
+      const currentScrollY = window.scrollY;
+      const scrollDiff = currentScrollY - lastScrollY;
+
+      if (currentScrollY <= 150) {
+        // Page ke bilkul top par — hamesha show karo
         header.classList.remove("navbar-hidden");
+      } else if (scrollDiff > HIDE_THRESHOLD) {
+        // Significant neeche scroll — hide karo
+        header.classList.add("navbar-hidden");
+        lastScrollY = currentScrollY;
+      } else if (scrollDiff < -SHOW_THRESHOLD) {
+        // Significant upar scroll — show karo
+        header.classList.remove("navbar-hidden");
+        lastScrollY = currentScrollY;
       }
-      lastScrollY = window.scrollY;
+      // Choti scroll pe kuch nahi karo (smooth feel)
     });
   }
 

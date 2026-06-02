@@ -78,6 +78,7 @@
 
     .title_44 {
         font-size: 38px;
+        line-height: 46px;
     }
 
     .title_36 {
@@ -144,6 +145,29 @@
     .contact_banner {
         height: 400px;
     }
+
+    .vision_mission img 
+    {
+    width: 200px;
+    }
+
+    .vision_mission
+    {
+        padding: 24px;
+    }
+
+    .unique-advantages-section {
+    margin-top: 35px;
+}
+
+.advantage-card {
+    height: 450px;
+}
+
+.product_cta
+{
+    height: 400px;
+}
 
 }
 
@@ -326,6 +350,35 @@
     .contact_banner {
         height: 358px;
     }
+
+    .advantage-card {
+        height: 400px;
+    }
+
+    .advantage-content {
+    padding-left: 45px;
+}
+
+.advantage-number {
+    font-size: 70px;
+}
+
+.advantage-card
+{
+    
+}
+
+.contant_svg svg
+{
+    height: 550px;
+}
+
+.product_cta
+{
+    height: 350px;
+}
+
+
 
 }
 
@@ -894,4 +947,7 @@
     .testimonial-section .col-lg-4 {
         margin-bottom: 30px;
     }
+
+    .indu_slider img {height: 400px;}
+ 
 }

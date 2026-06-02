@@ -123,7 +123,8 @@
                                 <img src="{{ $product->list_image ? asset('public/images/product_list_images/' . $product->list_image) : asset('public/front/assets/images/Background+Border.webp') }}" alt="{{ $product->product_name }}" class="product-image">
                             </div>
 
-                    <div class="product-info">
+                            <div>
+                                  <div class="product-info">
                         <p class="product-sku">{{ $product->product_modal }}</p>
                         <h3 class="title_24">{{ $product->product_name }}</h3>
 
@@ -174,6 +175,9 @@
                                 </svg></span>
                         </a>
                     </div>
+                            </div>
+
+                  
                 </div>
             @endforeach
         @else

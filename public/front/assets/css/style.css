@@ -327,6 +327,9 @@
     background: var(--white);
     border-radius: var(--br);
     border: 1px solid var(--grey-ddd);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
 }
 
@@ -641,7 +644,7 @@
 .sticky-wrapper {
     position: sticky;
     top: 100px;
-    height: calc(100vh - 100px);
+    /* height: calc(100vh - 100px); */
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -829,7 +832,7 @@
 
 .tec_res_left p,
 .tec_res_left .title_44 {
-    color: var(--white) !important;
+    color: var(--white);
 }
 
 .tec_res_left .line_left::after {
@@ -1816,6 +1819,7 @@ tbody tr:nth-child(even) {
 
 
 
+
 /* SECTION */
 
 .unique-advantages-section {
@@ -1835,7 +1839,7 @@ tbody tr:nth-child(even) {
 
 .advantage-card {
     position: sticky;
-    top: 0;
+    top: 0px;
     height: 600px;
     width: 100%;
     border-radius: 12px;
@@ -1851,6 +1855,7 @@ tbody tr:nth-child(even) {
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
+    top: 30px;
 }
 
 .reliability-card {
@@ -1858,6 +1863,7 @@ tbody tr:nth-child(even) {
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
+    top: 90px;
 }
 
 .certification-card {
@@ -1865,6 +1871,7 @@ tbody tr:nth-child(even) {
     background-position: right;
     background-repeat: no-repeat;
     background-size: cover;
+    top: 200px;
 }
 
 /* CONTENT */
@@ -1888,6 +1895,10 @@ tbody tr:nth-child(even) {
 
 .advantage-text {
     max-width: 55%;
+}
+
+.advantage-text .title_44 {
+    font-family: 'Roboto';
 }
 
 .advantage-number {
@@ -1995,3 +2006,10 @@ tbody tr:nth-child(even) {
 }
 
 /* homepage featured products grid */
+
+
+.product_cta
+{
+    background-image: url(../images/about-cta.png);
+    height: 480px;
+}
