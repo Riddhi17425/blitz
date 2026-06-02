@@ -26,7 +26,7 @@ use App\Http\Controllers\Web\HomeController;
     Route::post('/contact/submit', [HomeController::class, 'submitContactInquiry'])->name('contact.submit');
     Route::get('/blogs' , [HomeController::class , 'blogs'])->name('front.blogs');
     Route::get('/blog/{url}' , [HomeController::class , 'blogsDetails'])->name('front.blog.details');
-    Route::get('/product-list/{sub_cat_url}' , [HomeController::class , 'productList'])->name('front.product.list');
+    Route::get('/product-list/{cat_url}/{sub_cat_url}' , [HomeController::class , 'productList'])->name('front.product.list');
     Route::get('/product-details/{product_url}' , [HomeController::class , 'productDetails'])->name('front.product.details');
     Route::get('/category-details/{slug}' , [HomeController::class , 'categoryDetails'])->name('front.category.details');
     Route::get('/products/{id}/datasheet/download', [ProductController::class, 'downloadDatasheet'])->name('products.datasheet.download');
