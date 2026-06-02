@@ -63,27 +63,15 @@ class HomeController extends Controller
         return view('front.blog-details',compact('metaTitle','metaDescription','blogdetail'));
     }
 
-    public function productList(Request $request){
+    public function productList(Request $request, $cat_url = null, $sub_cat_url = null){
         $metaTitle="";
         $metaDescription="";
         $industries = Industry::whereNull('deleted_at')->get();
-        $category = Category::whereNull('deleted_at')
-            ->where(function ($query) {
-                $query->where('is_active', 1)->orWhereNull('is_active');
-            })
-            ->when($request->filled('category'), function ($query) use ($request) {
-                $query->where('category_url', $request->category);
-            }, function ($query) {
-                $query->where(function ($query) {
-                    $query->whereNotNull('faq_title')
-                        ->orWhereNotNull('faq_description')
-                        ->orWhereNotNull('faqs');
-                });
-            })
-            ->orderBy('created_at')
-            ->first();
+        $category = Category::whereNull('deleted_at')->where('is_active', 1)->where('category_url', $cat_url)->first();
+        $subCategory = SubCategory::whereNull('deleted_at')->where('is_active', 1)->where('category_id', $category->id)->where('sub_category_url', $sub_cat_url)->first();
+        $products = Product::whereNull('deleted_at')->where('is_active', 1)->where('sub_category_id', $subCategory->id)->where('category_id', $subCategory->category_id)->get();
 
-        return view('front.product-list',compact('metaTitle','metaDescription', 'industries', 'category'));
+        return view('front.product-list',compact('metaTitle','metaDescription', 'industries', 'subCategory', 'products'));
     }
 
     public function productDetails(Request $request, $url = null){

@@ -16,12 +16,17 @@
                         <p class="hero-title">{{ $banner->title ?? 'Protect the Circuit' }}</p>
                         <p class="hero-subtitle">{{ $banner->description ?? '' }}</p>
                         <div class="hero-buttons">
-                            <a href="#" class="com_btn com_btn_w">
-                                Explore {{ optional($banner->category)->short_form ?? optional($banner->category)->title ?? 'Products' }} <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="11" viewBox="0 0 24 11" fill="none">
+                            @if($banner->category->category_url == 'solar-accessories')
+                                <a href="javascript:void(0);" class="com_btn com_btn_w"> Coming Soon <span class="ms-2"></span></a>
+                            @else
+                                <a href="{{ $banner->category->category_url ? route('front.category.details', $banner->category->category_url) : '#' }}" class="com_btn com_btn_w">
+                                    Explore {{ optional($banner->category)->short_form ?? optional($banner->category)->title ?? 'Products' }} <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="11" viewBox="0 0 24 11" fill="none">
                                         <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                                         <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg></span>
-                            </a>
+                                </a>
+                            @endif
+                                
                             <a href="{{ route('front.contact') }}" class="com_btn com_btn_w_b">Request Quote</a>
                         </div>
                     </div>
@@ -148,7 +153,7 @@
                                     </div>
                                 </div>
                                 <div class="product-buttons">
-                                    @if($product->datasheet)
+                                    {{-- @if($product->datasheet)
                                         <a href="{{ route('products.datasheet.download', $product->id) }}" target="_blank" class="com_btn com_btn_b_b">
                                             <span><svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                                     fill="none">
@@ -168,7 +173,7 @@
                                                         stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg></span> <span class="ms-2">Datasheet</span>
                                         </a>
-                                    @endif
+                                    @endif --}}
 
                                     <a href="#" class="com_btn product-enquire-button" data-product-name="{{ $product->product_name }}">
                                         Enquire <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24"

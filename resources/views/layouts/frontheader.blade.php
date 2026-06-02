@@ -95,7 +95,11 @@
                             @if(isset($categoriesHF) && $categoriesHF->count() > 0)
                                 @foreach($categoriesHF as $category)
                                     <li class="dropdown-submenu position-relative">
-                                        <a class="dropdown-item d-flex justify-content-between align-items-center gap-3" href="{{ $category->category_url ? route('front.category.details', $category->category_url) : '#' }}">
+                                        @if($category->category_url == 'solar-accessories')
+                                            <a class="dropdown-item d-flex justify-content-between align-items-center gap-3" href="javascript:void(0);">
+                                        @else
+                                            <a class="dropdown-item d-flex justify-content-between align-items-center gap-3" href="{{ $category->category_url ? route('front.category.details', $category->category_url) : '#' }}">
+                                        @endif
                                             {{ $category->title }}
                                             @if($category->subCategories->count() > 0)
                                                 <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">

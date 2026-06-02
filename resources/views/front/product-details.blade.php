@@ -77,14 +77,14 @@
                             <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg></span>
                     </a>
-                    @if($product->datasheet)
+                    {{-- @if($product->datasheet)
                         <a href="{{ route('products.datasheet.download', $product->id) }}" target="_blank" class="com_btn com_btn_b_b">
                             Download Datasheet <span class="ms-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="11" viewBox="0 0 24 11" fill="none">
                                 <path d="M0.666748 5.33325H22.6667" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
                                 <path d="M17.9998 0.666626L22.6664 5.33329L17.9998 9.99996" stroke="white" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg></span>
                         </a>
-                    @endif
+                    @endif --}}
                 </div>
 
                 @if($visibleFeatures->isNotEmpty())
