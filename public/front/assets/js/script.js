@@ -43,7 +43,18 @@ $(document).ready(function () {
       nextArrow: $(".custom-next"),
 
       responsive: [
-        // Aapke responsive settings...
+        {
+          breakpoint: 991,
+          settings: {
+            slidesToShow: 2,
+            autoplay:true,
+            dots: true,
+          },
+          breakpoint: 576,
+          settings: {
+            slidesToShow: 1,            
+          },
+        },
       ],
     });
   });
