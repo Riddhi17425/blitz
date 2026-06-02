@@ -32,21 +32,34 @@ $(document).ready(function () {
 
   //4. Industry Slider
 
-  $(document).ready(function () {
+ $(document).ready(function () {
     $(".indu_slider").slick({
-      slidesToShow: 4,
-      slidesToScroll: 1,
-      infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: true,
+        prevArrow: $(".custom-prev"),
+        nextArrow: $(".custom-next"),
 
-      /* Ye line add karna zaroori hai */
-      prevArrow: $(".custom-prev"),
-      nextArrow: $(".custom-next"),
-
-      responsive: [
-        // Aapke responsive settings...
-      ],
+        responsive: [
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     });
-  });
+});
 
   //5. Testimonial Slider
   $(".testimonial-slider").slick({
@@ -476,40 +489,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* homepage featured products grid */
 
-// $(".pd_grid").slick({
-//   dots: false,
-//   infinite: true,
-//   speed: 800,
-//   cssEase: "linear",
-//   autoplay: true,
-//   autoplaySpeed: 1000,
-//   arrows: false,
-//   slidesToShow: 4,
-//   slidesToScroll: 1,
+function handleResponsiveClass() {
+    if ($(window).width() >= 1025) {
+        $('.pd_grid').addClass('pd_slider');
+    } else {
+        $('.pd_grid').removeClass('pd_slider');
+    }
+}
 
-//   responsive: [
-//     {
-//       breakpoint: 1600,
-//       settings: {
-//         slidesToShow: 3,
-//         slidesToScroll: 1
-//       }
-//     },
-//     {
-//       breakpoint: 992,
-//       settings: {
-//         slidesToShow: 2,
-//         slidesToScroll: 1
-//       }
-//     },
-//     {
-//       breakpoint: 576,
-//       settings: {
-//         slidesToShow: 1,
-//         slidesToScroll: 1
-//       }
-//     }
-//   ]
-// });
+handleResponsiveClass();
+
+$(window).on('resize', handleResponsiveClass);
+
+$(".pd_grid").slick({
+  dots: false,
+  infinite: true,
+  speed: 800,
+  cssEase: "linear",
+  autoplay: true,
+  autoplaySpeed: 1000,
+  arrows: false,
+  slidesToShow: 3,
+  slidesToScroll: 1,
+
+  responsive: [
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1
+      }
+    },
+    {
+      breakpoint: 576,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+  ]
+});
+
 /* homepage featured products grid */
-

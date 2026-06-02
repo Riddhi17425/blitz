@@ -557,7 +557,7 @@
 /* =========================================
    TABLET (768px - 1023px)
 ========================================= */
-@media (max-width: 1023px) {
+@media (max-width: 1025px) {
     .navbar-nav {
         gap: 15px;
         padding-top: 20px;
@@ -611,10 +611,23 @@
     .footer-top {
         grid-template-columns: 1fr;
         gap: 40px;
+        padding-bottom: 40px;
+    }
+
+    .subscribe-box button {
+        font-size: 18px;
     }
 
     .footer_right {
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-links li, .footer-links-product li {
+        margin-bottom: 10px;
+    }
+
+    .footer-newsletter p {
+        margin-bottom: 25px;
     }
 
     .footer-brand {
@@ -739,7 +752,7 @@
 
     .banner_btns {
         display: flex;
-        flex-direction: column;
+        /* flex-direction: column; */
         gap: 15px;
     }
 
@@ -787,6 +800,14 @@
         height: auto;
         padding: 30px;
         margin-left: 0;
+    }
+
+    .pd_grid {
+        display: block;
+    }
+
+    .product-card {
+        margin-inline: 10px;
     }
 }
 
@@ -947,6 +968,11 @@
     .testimonial-section .col-lg-4 {
         margin-bottom: 30px;
     }
+
+    .multi_ac {
+        background: none;
+    }
+
 
     .indu_slider img {height: 400px;}
  
