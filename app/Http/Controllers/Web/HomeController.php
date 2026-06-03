@@ -118,27 +118,26 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|max:255',
         ]);
-
         if ($validator->fails()) {
             return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
         }
 
         $email = $request->input('email');
-
         $inquiry = NewsletterInquiry::firstOrCreate(['email' => $email]);
 
-        // Send to Google Sheets if webhook provided
-        $webhook = env('GOOGLE_SHEETS_WEBHOOK_URL');
-        if ($webhook) {
-            try {
-                Http::post($webhook, [
-                    'type' => 'newsletter',
-                    'email' => $email,
-                    'created_at' => now()->toDateTimeString()
-                ]);
-            } catch (\Exception $e) {
-                // ignore
-            }
+
+        // STORE IN GOOGLE SHEETS
+        $timestamp = Carbon::now()->format('Y-m-d H:i:s');
+        $sheetsData = [
+            'email' => $inquiry->email ?? '',
+            'date'      => $timestamp,
+        ];
+        $response = Http::withHeaders(['Content-Type' => 'application/json'])
+            ->post('https://script.google.com/macros/s/AKfycbzkYnnaYKAhqv4kD7m7kGvXFsAbSefULOpCFNHHgK2Y1kRkgDr9gxx0NC7GHxUTKlPs/exec', 
+                $sheetsData
+            );
+        if ($response->failed()) {
+            \Log::error('Google Sheet request failed: '.$response->body());
         }
 
         return response()->json(['success' => true, 'message' => 'Subscribed successfully.']);

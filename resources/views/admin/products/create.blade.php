@@ -36,7 +36,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label fw-bold">Sub Category </label>
-                            <select name="sub_category_id" id="sub_category_id" class="form-control @error('sub_category_id') is-invalid @enderror" required>
+                            <select name="sub_category_id" id="sub_category_id" class="form-control">
                                 <option value="">Select Sub Category</option>
                             </select>
                             @error('sub_category_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
