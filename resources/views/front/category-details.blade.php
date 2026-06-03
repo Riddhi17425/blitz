@@ -195,7 +195,7 @@
       <div style="display: flex; justify-content: space-between; align-items: flex-end;">
          <div>
             <p class="title_20 line_left" >Industries We Serve</p>
-            <h1 class="title_44">Powering Critical Infrastructure</h1>
+            <h2 class="title_44">Powering Critical Infrastructure</h2>
             <p class="mb-0">From solar farms to residential towers, Blitz products safeguard the infrastructure that
                drives progress.
             </p>
@@ -216,7 +216,7 @@
          </div>
       </div>
       <div class="slider-wrapper pt_40">
-         <div class="indu_slider">
+         <div class="indu_slider common-dots">
             @if(isset($industries) && $industries->count())
             @foreach($industries as $industry)
             <div class="slide-item">

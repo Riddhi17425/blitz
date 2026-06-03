@@ -39,9 +39,9 @@
                 <a href="#">{{ $product->subCategory->title }}</a>
             @endif
         </div>
-        <div class="row xl-gx-5 gx-4">
+        <!-- <div class="row xl-gx-5"> -->
 
-        <div class="row gx-5">
+        <div class="row gx-md-5">
             <div class="col-lg-5 mb-4 mb-lg-0">
                 <div class="image-gallery">
                     <div class="main-image-container" id="zoomContainer">

@@ -135,39 +135,41 @@ $(document).ready(function () {
   });
 
   //6. Our Clients Slider (Auto-Ticker)
-  $(".our_clint").slick({
-    slidesToShow: 6,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 0,
-    speed: 3000,
-    cssEase: "linear",
-    infinite: true,
-    arrows: false,
-    dots: false,
-    pauseOnHover: false,
-    pauseOnFocus: false,
-    responsive: [
-      {
-        breakpoint: 991,
-        settings: {
-          slidesToShow: 4,
+  if ($(".our_clint img").length > 6) {
+    $(".our_clint").slick({
+      slidesToShow: 6,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 0,
+      speed: 3000,
+      cssEase: "linear",
+      infinite: true,
+      arrows: false,
+      dots: false,
+      pauseOnHover: false,
+      pauseOnFocus: false,
+      responsive: [
+        {
+          breakpoint: 991,
+          settings: {
+            slidesToShow: 4,
+          },
         },
-      },
-      {
-        breakpoint: 767,
-        settings: {
-          slidesToShow: 3,
+        {
+          breakpoint: 767,
+          settings: {
+            slidesToShow: 3,
+          },
         },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 2,
+          },
         },
-      },
-    ],
-  });
+      ],
+    });
+  }
 
 });
 
@@ -203,6 +205,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (zoomContainer) {
     zoomContainer.addEventListener("mousemove", function (e) {
+      if (window.innerWidth <= 991) return; // Disable zoom on mobile
+
       // Container ke coordinates nikalna
       const rect = zoomContainer.getBoundingClientRect();
 
@@ -218,6 +222,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     zoomContainer.addEventListener("mouseleave", function () {
+      if (window.innerWidth <= 991) return; // Disable zoom on mobile
+
       // Mouse bahar jate hi normal kar dena
       if (mainImg) {
         mainImg.style.transformOrigin = "center center";
@@ -553,9 +559,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function handleResponsiveClass() {
   if ($(window).width() <= 1025) {
-    $('.pd_grid').addClass('pd_slider');
+    $('.pd_grid, .advantages-stack').addClass('pd_slider');
   } else {
-    $('.pd_grid').removeClass('pd_slider');
+    $('.pd_grid, .advantages-stack').removeClass('pd_slider');
   }
 }
 
