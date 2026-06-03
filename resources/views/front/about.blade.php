@@ -132,9 +132,9 @@
         <p>Three things that make Blitz the protection partner that industries across eight countries keep coming back to. </p>
 
 
-        <section class="unique-advantages-section">
+        <section class="unique-advantages-section common-dots">
 
-            <div class="advantages-stack">
+            <div class="advantages-stack pd_grid">
 
                <article class="advantage-card innovation-card">
                     <div class="advantage-content">

@@ -471,22 +471,24 @@
             <p class="mb-0">From Ahmedabad to the UAE, from Kenya to Bangladesh, Blitz surge protection devices are earning trust one installation at a time.</p>
         </div>
 
-        <div class="row g-4 pt_40">
-            <div class="col-md-3">
+        <div class="row g-2 g-md-4 pt_40">
+            <div class="col-6 col-md-3">
                 <div class="counter">
                     <h2 class="title_44">8+</h2>
                     <h4 class="title_24">Countries</h4>
                     <p class="mb-0">where Blitz is active</p>
                 </div>
             </div>
-            <div class="col-md-3">
+
+            <div class="col-6 col-md-3">
                 <div class="counter">
                     <h2 class="title_44">≤ 25ns</h2>
                     <h4 class="title_24">Surge</h4>
                     <p class="mb-0">response time</p>
                 </div>
             </div>
-            <div class="col-md-3">
+
+            <div class="col-6 col-md-3">
                 <div class="counter">
                     <h2 class="title_44">IEC</h2>
                     <h4 class="title_24">Globally</h4>
@@ -494,7 +496,7 @@
                 </div>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-6 col-md-3">
                 <div class="counter">
                     <h2 class="title_44">2+</h2>
                     <h4 class="title_24">Years</h4>
