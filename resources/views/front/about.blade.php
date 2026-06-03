@@ -30,7 +30,7 @@
                                         stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg></span>
                         </a>
-                        <a href="#" class="com_btn com_btn_b_b ms-md-3">Download Catalogue</a>
+                        <a href="{{ asset('public/brochure.pdf') }}" target="_blank" class="com_btn com_btn_b_b ms-md-3">Download Catalogue</a>
                     </div>
                 </div>
                 <div class="baner_right">

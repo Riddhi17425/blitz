@@ -143,7 +143,8 @@
                        <input type="email" name="email" id="newsletter-email" placeholder="Enter your email">
                        <button type="submit">Subscribe</button>
                    </form>
-                   <div id="newsletter-message" style="display:none;margin-top:8px;"></div>
+                    <div id="newsletter-email-error" class="error-message"></div>
+                   {{-- <div id="newsletter-message" style="display:none;margin-top:8px;"></div> --}}
                </div>
               </div>
 
@@ -470,11 +471,12 @@
    <script src="{{ asset('public/front/assets/js/contact.js') }}"></script>
    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
    <script>
-       Fancybox.bind("[data-fancybox]", {
+        var sitePath = "{{ url('/') }}";
+        Fancybox.bind("[data-fancybox]", {
            animated: true,
            showClass: "fancybox-zoomInUp",
            hideClass: "fancybox-zoomOutDown",
-       });
+        });
    </script>
 
    </main>

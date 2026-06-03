@@ -34,8 +34,8 @@
                <h6 class="baner_desc">{!! $subCategory->description ?? '' !!}</h6>
                <div class="banner_btns">
                   <a href="{{ route('front.contact') }}" class="com_btn">Request Quote</a>
-                  {{-- 
-                  <a href="#" class="com_btn com_btn_b_b">
+                  @if($subCategory->catalogue_pdf)
+                  <a href="{{ asset('storage/app/public/' . $subCategory->catalogue_pdf) }}" target="_blank" class="com_btn com_btn_b_b">
                      Download Catalogue 
                      <span class="ms-2">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24"
@@ -47,7 +47,7 @@
                         </svg>
                      </span>
                   </a>
-                  --}}
+                 @endif
                </div>
             </div>
             <div class="baner_right">

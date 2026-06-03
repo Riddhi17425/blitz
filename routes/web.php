@@ -35,7 +35,7 @@ use App\Http\Controllers\Web\HomeController;
     Route::get('/thank-you' , [HomeController::class , 'thankYou'])->name('thankyou');
     Route::get('/privacy-policy' , [HomeController::class , 'privacy'])->name('front.privacy.policy');
     Route::get('/terms-condition' , [HomeController::class , 'termsCondition'])->name('front.terms.condition');
-
+    
     
     Route::middleware('guest')->group(function(){
         Route::get('/register' , [LoginController::class , 'register_page'])->name('register');
