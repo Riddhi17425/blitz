@@ -13,6 +13,8 @@ class HomeController extends Controller
 { 
     public function index()   
     {
+        $metaTitle = "Electrical Protection & Safety Devices | Blitz Energy India";
+        $metaDescription = "Protect your electrical systems with Blitz Electrical's surge protection devices, MCBs, and safety solutions for residential, commercial, and industrial applications.";
         $banners = Banner::with('category')->whereNull('deleted_at')->where('status', 'Active')->get();
         $categories = Category::whereNull('deleted_at')->where('is_active', 1)->get();
         $industries = Industry::whereNull('deleted_at')->get();
@@ -24,7 +26,8 @@ class HomeController extends Controller
                 $query->where('is_show_on_list', 1);
             }])->take(4)->get();
         $countries = Country::orderBy('name')->get();
-        return view('front.home', compact('banners', 'categories', 'industries', 'testimonials', 'featuredProducts', 'countries'));
+        
+        return view('front.home', compact('banners', 'categories', 'industries', 'testimonials', 'featuredProducts', 'countries', 'metaTitle', 'metaDescription'));
     }
 
     public function thankYou()
@@ -37,8 +40,8 @@ class HomeController extends Controller
 
     public function about()
     {
-       $metaTitle="";
-       $metaDescription=""; 
+       $metaTitle = "About Us | Blitz";
+       $metaDescription = "Blitz is a trusted provider of surge protection devices and electrical safety solutions, dedicated to reliable power system protection and innovation.";
        $settings = Setting::first();
 
         return view('front.about',compact('metaTitle','metaDescription','settings'));
@@ -104,8 +107,8 @@ class HomeController extends Controller
 
     public function contact()
     {
-        $metaTitle=""; 
-        $metaDescription="";
+        $metaTitle="Contact Us | Blitz"; 
+        $metaDescription="Get in touch with Blitz India for expert assistance on surge protection devices, MCBs, electrical safety products, and technical support.";
 
         $countries = Country::orderBy('name')->get();
         $products = Product::whereNull('deleted_at')->orderBy('product_name')->get();

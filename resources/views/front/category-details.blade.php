@@ -43,13 +43,13 @@
 </section>
 <section class="py_80">
    <div class="container">
-      <div class="mb-4">
-         <p class="title_20 line_left aos-init aos-animate" >
+      <div class="mb-lg-4 mb-3 mb-lg-0">
+         <p class="title_20 line_left">
             Product Range
          </p>
          <h2 class="title_44">{{ $category->sub_category_heading ?? '' }}
          </h2>
-         <p>{{ $category->sub_category_description ?? '' }}</p>
+         <p class="mb-0">{{ $category->sub_category_description ?? '' }}</p>
       </div>
       @if(isset($category->subCategories) && $category->subCategories->count())
       <div class="row">
@@ -69,7 +69,7 @@
          @endforeach
       </div>
       @elseif(isset($category->products) && $category->products->count())
-      <div class="row pt_40">
+      <div class="row pt_40 gy-4 gy-lg-0">
          @foreach($category->products as $product)
          <div class="col-md-6">
             <div class="product-card">

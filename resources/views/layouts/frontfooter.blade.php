@@ -34,7 +34,7 @@
                            </span>
                    </div>
                    <div class="socials">
-                       <a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                       <a href="https://www.linkedin.com/company/blitz-protection" target="_blanck"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                xmlns="http://www.w3.org/2000/svg">
                                <g clip-path="url(#clip0_1_135025)">
                                    <path
@@ -48,21 +48,21 @@
                                </defs>
                            </svg>
                        </a>
-                       <a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                               xmlns="http://www.w3.org/2000/svg">
-                               <g clip-path="url(#clip0_1_135026)">
-                                   <path fill-rule="evenodd" clip-rule="evenodd"
-                                       d="M15.9455 23L10.396 15.0901L3.44886 23H0.509766L9.09209 13.2311L0.509766 1H8.05571L13.286 8.45502L19.8393 1H22.7784L14.5943 10.3165L23.4914 23H15.9455ZM19.2185 20.77H17.2397L4.71811 3.23H6.6971L11.7121 10.2532L12.5793 11.4719L19.2185 20.77Z"
-                                       fill="#E5EEFF" />
-                               </g>
-                               <defs>
-                                   <clipPath id="clip0_1_135026">
-                                       <rect width="24" height="24" fill="white" />
-                                   </clipPath>
-                               </defs>
-                           </svg>
-                       </a>
-                       <a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                       <!--<a href="#"  target="_blanck"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"-->
+                       <!--        xmlns="http://www.w3.org/2000/svg">-->
+                       <!--        <g clip-path="url(#clip0_1_135026)">-->
+                       <!--            <path fill-rule="evenodd" clip-rule="evenodd"-->
+                       <!--                d="M15.9455 23L10.396 15.0901L3.44886 23H0.509766L9.09209 13.2311L0.509766 1H8.05571L13.286 8.45502L19.8393 1H22.7784L14.5943 10.3165L23.4914 23H15.9455ZM19.2185 20.77H17.2397L4.71811 3.23H6.6971L11.7121 10.2532L12.5793 11.4719L19.2185 20.77Z"-->
+                       <!--                fill="#E5EEFF" />-->
+                       <!--        </g>-->
+                       <!--        <defs>-->
+                       <!--            <clipPath id="clip0_1_135026">-->
+                       <!--                <rect width="24" height="24" fill="white" />-->
+                       <!--            </clipPath>-->
+                       <!--        </defs>-->
+                       <!--    </svg>-->
+                       <!--</a>-->
+                       <a href="https://www.facebook.com/BlitzEnergyIndia"  target="_blanck"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                xmlns="http://www.w3.org/2000/svg">
                                <g clip-path="url(#clip0_1_135027)">
                                    <path
@@ -76,7 +76,7 @@
                                </defs>
                            </svg>
                        </a>
-                       <a href="#"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                       <a href="https://www.instagram.com/blitzelectrical.in"  target="_blanck"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                xmlns="http://www.w3.org/2000/svg">
                                <g clip-path="url(#clip0_1_135028)">
                                    <path

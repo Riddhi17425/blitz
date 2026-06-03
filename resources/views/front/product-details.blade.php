@@ -196,7 +196,7 @@
         <button type="button" class="product-modal-close" data-close-modal>&times;</button>
         <div class="product-modal-body d-block">
             <div class="modal-form-header w-100 mb-4">
-                <h2 class="title_30 mb-2">Product Enquiry</h2>
+                <h2 class="title_44 mb-2">Product Enquiry</h2>
                 <p>Please provide your details and we will contact you about this product.</p>
             </div>
             <form id="product-enquiry-form" action="{{ route('contact.submit') }}" method="POST" class="quote-form w-100">
@@ -261,7 +261,7 @@
 .product-modal { display:none; position:fixed; inset:0; z-index:9999; align-items:center; justify-content:center; }
 .product-modal.active { display:flex; }
 .product-modal-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.6); }
-.product-modal-content { position:relative; background:#fff; border-radius:20px; max-width:900px; width:100%; max-height:90vh; overflow-y:auto; padding:30px; z-index:1; }
+.product-modal-content { position:relative; background:#fff; border-radius:0px; max-width:900px; width:100%; max-height:90vh; overflow-y:auto; padding:30px; z-index:1; }
 .product-modal-close { position:absolute; top:18px; right:18px; background:none; border:none; color:#020844; font-size:32px; cursor:pointer; }
 .product-modal-body { display:flex; flex-wrap:wrap; gap:30px; }
 .product-modal-body.d-block { display:block !important; }

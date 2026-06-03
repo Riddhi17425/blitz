@@ -168,6 +168,7 @@ body:has(.navbar-nav .nav-item.dropdown .dropdown-menu.show)::after {
 ========================================= */
 .hero-slider {
     background-color: var(--hero-bg);
+    margin-bottom: 0px !important; 
 }
 
 .hero-slide {
@@ -265,9 +266,7 @@ body:has(.navbar-nav .nav-item.dropdown .dropdown-menu.show)::after {
     border-radius: 9999px;
 }
 
-.hero-slider .slick-dotted.slick-slider {
-    margin-bottom: 0px;
-}
+
 
 /* -------comman dots-------------- */
 .common-dots .slick-dots {
@@ -405,6 +404,18 @@ body:has(.navbar-nav .nav-item.dropdown .dropdown-menu.show)::after {
 
 }
 
+.spec-value
+{
+  text-wrap: nowrap;
+}
+
+/*.product-img-wrapper-main*/
+/*{*/
+/*     display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: space-between;*/
+/*}*/
+
 .product-img-wrapper {
     border: 1px solid var(--grey-ddd);
     border-radius: 6px;
@@ -498,7 +509,7 @@ body:has(.navbar-nav .nav-item.dropdown .dropdown-menu.show)::after {
     position: relative;
     overflow: hidden;
     border-radius: var(--br);
-    cursor: pointer;
+    /*cursor: pointer;*/
 }
 
 /* Gradient Overlay so text is readable, darkens on hover */
@@ -617,7 +628,7 @@ body:has(.navbar-nav .nav-item.dropdown .dropdown-menu.show)::after {
     margin-left: 40px;
     border-radius: 18px;
     background: var(--white);
-    /* box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.05); */
+     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.05);
 }
 
 .card-top {
@@ -629,7 +640,8 @@ body:has(.navbar-nav .nav-item.dropdown .dropdown-menu.show)::after {
 
 .client-logo img {
     max-width: 120px;
-    height: auto;
+    height:120px;
+    object-fit:cover;
 }
 
 .client-details h4 {
@@ -2065,22 +2077,21 @@ tbody tr:nth-child(even) {
     object-fit: contain;
 }
 
-.our_clint:not(.slick-initialized) img {
-    flex: 1;
-    max-width: 15%;
-    aspect-ratio: 2/1;
-}
-
 .our_clint.slick-initialized {
     display: block;
 }
 
 .our_clint .slick-slide {
-    margin: 0 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    aspect-ratio: 2/1;
+   
+    height: 90px !important;       
+    object-fit: contain !important; 
+    display: flex !important;
+    align-items: center;            
+    justify-content: center;        
+    margin:0 10px;
+    border: 1px solid var(--grey-666);
+    border-radius: 6px;
+    background: var(--white);
 }
 
 /* homepage featured products grid */

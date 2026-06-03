@@ -47,7 +47,7 @@
 
 <body>
     <!-- Global Custom Cursor -->
-    <div class="custom-cursor" id="customCursor">
+    <!-- <div class="custom-cursor" id="customCursor">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="20" cy="20" r="4" fill="white"/>
             <circle cx="20" cy="4" r="3" fill="white"/>
@@ -55,7 +55,7 @@
             <circle cx="4" cy="20" r="3" fill="white"/>
             <circle cx="36" cy="20" r="3" fill="white"/>
         </svg>
-    </div>
+    </div> -->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
         <div class="container">
@@ -79,13 +79,15 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link d-flex justify-content-between align-items-center" href="javascript:void(0);">
                             Products
-                            <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                class="dropdown-icon">
-                                <path d="M0.5 0.5L5.5 5.5L10.5 0.5" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
+                            <span class="submenu-toggle d-flex align-items-center justify-content-end" style="width: 30px; height: 30px;">
+                                <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                    class="dropdown-icon">
+                                    <path d="M0.5 0.5L5.5 5.5L10.5 0.5" stroke="currentColor" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </span>
                         </a>
 
 
@@ -108,10 +110,12 @@
                                             <a class="dropdown-item d-flex justify-content-between align-items-center gap-3" href="{{ $category->category_url ? route('front.category.details', $category->category_url) : '#' }}">
                                         @endif
                                             {{ $category->title }}
-                                            @if($category->subCategories->count() > 0)
-                                                <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
+                                            @if($category->subCategories->count() > 0 || $category->products->count() > 0)
+                                                <span class="submenu-toggle d-flex align-items-center justify-content-end" style="width: 30px; height: 30px;">
+                                                    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    </svg>
+                                                </span>
                                             @endif
                                         </a>
                                         @if($category->subCategories->count() > 0)
@@ -121,9 +125,11 @@
                                                         <a class="dropdown-item d-flex justify-content-between align-items-center gap-3" href="{{ route('front.product.list', ['cat_url' => $category->category_url, 'sub_cat_url' => $subCategory->sub_category_url]) }}">
                                                             {{ $subCategory->title }}
                                                             @if($subCategory->products->count() > 0)
-                                                                <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                </svg>
+                                                                <span class="submenu-toggle d-flex align-items-center justify-content-end" style="width: 30px; height: 30px;">
+                                                                    <svg width="6" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M1 9L5 5L1 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                    </svg>
+                                                                </span>
                                                             @endif
                                                         </a>
                                                         @if($subCategory->products->count() > 0)
@@ -135,6 +141,14 @@
                                                                 @endforeach
                                                             </ul>
                                                         @endif
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @elseif($category->products->count() > 0)
+                                            <ul class="dropdown-menu submenu">
+                                                @foreach($category->products as $product)
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('front.product.details', $product->product_url) }}">{{ $product->product_name }}</a>
                                                     </li>
                                                 @endforeach
                                             </ul>
@@ -150,7 +164,7 @@
                     {{-- <li class="nav-item"><a class="nav-link" href="{{ route("front.blogs") }}">Blog</a></li> --}}
                     <li class="nav-item"><a class="nav-link" href="{{ route("front.contact") }}">Contact</a></li>
                 </ul>
-                <div class="d-flex gap-3 justify-content-center mt-4">
+                <div class="d-flex gap-3 justify-content-center mt-md-4">
                     <a href="{{ asset('public/brochure.pdf') }}" target="_blank" class="com_btn com_btn_b_b">Download Catalogue</a>
 
                     <a href="{{ route('front.contact') }}" class="com_btn ">Request Quote</a>

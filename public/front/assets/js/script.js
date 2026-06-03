@@ -54,14 +54,14 @@ $(document).ready(function () {
     }
 
     // 2. Handle Sliding in (Opening Submenu)
-    $('.dropdown-submenu > a, .nav-item.dropdown > a').on('click', function (e) {
+      $('.submenu-toggle').on('click', function (e) {
       if ($(window).width() <= 1025) {
-        var $submenu = $(this).next('.submenu, .dropdown-menu');
+        e.preventDefault();
+        e.stopPropagation();
+        var $submenu = $(this).closest('a').next('.submenu, .dropdown-menu');
         if ($submenu.length > 0) {
-          e.preventDefault();
-          e.stopPropagation();
           // Add show to the clicked submenu to slide it in
-          $(this).parent().addClass('show');
+          $(this).closest('li').addClass('show');
         }
       }
     });
@@ -135,9 +135,9 @@ $(document).ready(function () {
   });
 
   //6. Our Clients Slider (Auto-Ticker)
-  if ($(".our_clint img").length > 6) {
+ 
     $(".our_clint").slick({
-      slidesToShow: 6,
+      slidesToShow: 7,
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 0,
@@ -169,7 +169,7 @@ $(document).ready(function () {
         },
       ],
     });
-  }
+
 
 });
 

@@ -222,6 +222,17 @@
 }
 
 @media (max-width: 1537px) {
+    
+    .accordion-button {
+    
+    font-size: 18px;
+    }
+    
+    .title_18 {
+
+   
+    font-size: 16px;
+    }
 
     .bottom-feature-item svg {
         width: 20px;
@@ -375,6 +386,7 @@
 
     .client-logo img {
         max-width: 100px;
+        height:100px;
     }
 
     .testi-text {
@@ -601,7 +613,7 @@
     }
 
     .testi-card {
-        height: 300px;
+        height: 350px;
     }
 
     .title_44 {
@@ -1096,7 +1108,7 @@
     }
 
     .home_about_para {
-        font-size: 18px !important;
+        font-size: 16px !important;
         line-height: 1.5 !important;
     }
 
@@ -1136,8 +1148,9 @@
 
     .hero-slide {
         background-image: var(--mobile-bg);
-        height: calc(100vh - 100px);
+        height: calc(100vh - 125px);
         padding: 26px 0;
+        background-position-x: center;
     }
 
     .product_cta {
