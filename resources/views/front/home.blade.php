@@ -646,8 +646,8 @@
 
             <div>
                 <p class="title_20 line_left" >Industries We Serve</p>
-                <h1 class="title_44">Protecting Tomorrow's Powerful Infrastructure</h1>
-                <p class="mb-0">Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised. </p>
+                <h1 class="title_44">{{ $industryT ?? 'Protecting Tomorrow\'s Powerful Infrastructure' }}</h1>
+                <p class="mb-0">{{ $industryD ?? 'Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised.' }}</p>
             </div>
 
             <div class="custom-arrows">

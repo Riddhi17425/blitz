@@ -38,6 +38,11 @@ class AppServiceProvider extends ServiceProvider
             }
         );
 
+        View::composer('*', function ($view) {
+            $view->with('industryT', "Protecting Tomorrow's Powerful Infrastructure");
+            $view->with('industryD', "Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised.");
+        });
+
         View::composer('layouts.form', function ($view) {
             $countries = collect();
             $products = collect();

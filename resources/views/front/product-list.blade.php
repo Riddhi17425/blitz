@@ -247,10 +247,8 @@
       <div style="display: flex; justify-content: space-between; align-items: flex-end;">
          <div>
             <p class="title_20 line_left" >Industries We Serve</p>
-            <h2 class="title_44">Powering Critical Infrastructure</h2>
-            <p class="mb-0">From solar farms to residential towers, Blitz products safeguard the infrastructure that
-               drives progress.
-            </p>
+            <h1 class="title_44">{{ $industryT ?? 'Protecting Tomorrow\'s Powerful Infrastructure' }}</h1>
+            <p class="mb-0">{{ $industryD ?? 'Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised.' }}</p>
          </div>
          <div class="custom-arrows">
             <div class="custom-prev">
@@ -297,17 +295,17 @@
 <section class="py_40">
    <div class="container">
       @php
-      $categoryFaqs = collect($category->faqs ?? [])->filter(fn ($faq) => !empty($faq['question']) || !empty($faq['answer']))->values();
+      $subCategoryFaqs = collect($subCategory->faqs ?? [])->filter(fn ($faq) => !empty($faq['question']) || !empty($faq['answer']))->values();
       @endphp
       <div class="pb_40">
          <p class="title_20 line_left" >FAQs</p>
-         <h2 class="title_44">{{ $category->faq_title ?? 'Frequently Asked Questions' }}</h2>
-         @if(!empty($category?->faq_description))
-         <div class="mb-0">{!! $category->faq_description !!}</div>
+         <h2 class="title_44">{{ $subCategory->faq_title ?? 'Frequently Asked Questions' }}</h2>
+         @if(!empty($subCategory?->faq_description))
+         <div class="mb-0">{!! $subCategory->faq_description !!}</div>
          @endif
       </div>
       <div class="accordion" id="blitzFaq">
-         @forelse($categoryFaqs as $index => $faq)
+         @forelse($subCategoryFaqs as $index => $faq)
          <div class="accordion-item">
             <h4 class="accordion-header">
                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"

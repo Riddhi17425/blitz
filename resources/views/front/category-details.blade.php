@@ -141,14 +141,14 @@
  <section  class="product_cta" 
  style="
                  --product-desk-bg: url('{{ asset('public/images/category_cta_desktop/' . $category->cta_img_desktop) }}');
-                 --product-mobaile-bg: url('{{ asset('public/images/category_cta_desktop/' . $category->cta_img_desktop) }}');
+                 --product-mobaile-bg: url('{{ asset('public/images/category_cta_mobile/' . $category->cta_img_mobile) }}');
  ">
    <div class="container h-100">
       <div class="tec_res_left">
          <h2 class="title_44" style="color: var(--blue-head); !important">{{ $category->cta_img_title ?? '' }}</h2>
          <p class="mb-0" style="color: var(--grey-666) !important;">{!! $category->cta_img_description ?? '' !!}</p>
          <div class="pt_40">
-            <a href="#" class="com_btn">
+            <a href="{{ asset('public/international_catalogue.pdf') }}" target="_blank" class="com_btn">
                <span class="me-2">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
@@ -195,10 +195,8 @@
       <div style="display: flex; justify-content: space-between; align-items: flex-end;">
          <div>
             <p class="title_20 line_left" >Industries We Serve</p>
-            <h1 class="title_44">Powering Critical Infrastructure</h1>
-            <p class="mb-0">From solar farms to residential towers, Blitz products safeguard the infrastructure that
-               drives progress.
-            </p>
+            <h1 class="title_44">{{ $industryT ?? 'Protecting Tomorrow\'s Powerful Infrastructure' }}</h1>
+            <p class="mb-0">{{ $industryD ?? 'Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised.' }}</p>
          </div>
          <div class="custom-arrows">
             <div class="custom-prev">
