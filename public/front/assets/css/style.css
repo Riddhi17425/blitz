@@ -1557,10 +1557,10 @@ body:has(.navbar-nav .nav-item.dropdown .dropdown-menu.show)::after {
 .product-title {
     color: #0F1729;
     font-family: 'Roboto', sans-serif;
-    font-size: clamp(36px, 5vw, 72px);
+    font-size: 72px;
     font-style: normal;
     font-weight: 500;
-    line-height: clamp(44px, 6vw, 82px);
+    line-height: 74px;
     margin-bottom: 8px;
     letter-spacing: -0.5px;
 }
@@ -1633,10 +1633,11 @@ body:has(.navbar-nav .nav-item.dropdown .dropdown-menu.show)::after {
 table {
     width: 100%;
     flex: 1 1 48%;
-    min-width: 500px;
-    border-collapse: collapse;
-    border: 1px solid #cbd5e1;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--grey-ddd) !important;
     border-radius: 6px;
+    height: 100%;
     overflow: hidden;
 }
 
@@ -2104,4 +2105,9 @@ tbody tr:nth-child(even) {
 
 .story-img-col {
     margin-bottom: 20px;
+}
+
+.common-dots .slick-dots
+{
+    display: none;
 }

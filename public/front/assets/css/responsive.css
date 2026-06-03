@@ -9,6 +9,29 @@
 
 @media (max-width: 1601px) {
 
+    .sticky-product-wrapper {
+    top: 45px;
+    }
+
+    td {
+    padding: 10px 20px;
+    }
+
+    th {
+    font-size: 24px;
+     padding: 10px 20px;
+}
+
+    .thumb {
+    width: 100px;
+    height: 100px;
+    }
+
+    .product-title {
+    font-size: 54px;
+    line-height: 64px;
+    }
+
     .about_cats {
     
     height: 380px;
@@ -188,6 +211,29 @@
 }
 
 @media (max-width: 1537px) {
+
+    .bottom-feature-item svg
+    {
+        width: 20px;
+    }
+
+        th {
+        font-size: 20px;
+    }
+
+    .dashed-divider
+    {
+            margin: 14px 0;
+    }
+
+    .py_80 {
+        padding: 40px 0;
+    }
+
+        .product-title {
+        font-size: 48px;
+        line-height: 60px;
+    }
     .about_cats {
     
     height: 350px;
@@ -407,6 +453,15 @@
 
 
 @media (max-width: 1281px) {
+
+    .thumb {
+    width: 85px;
+    height: 85px;}
+
+        .product-title {
+        font-size: 42px;
+        line-height: 54px;
+    }
 
     .navbar-nav {
         gap: 30px;
@@ -1153,5 +1208,29 @@
     object-fit: cover;
 }
 
+
+.common-dots .slick-dots
+{
+    display: block;
+}
+
+    .hero-slide {
+        padding: 26px 0;
+    }
+
+    .hero-slide
+    {
+        height: calc(100vh - 70px);
+    }
+
+   .hero-slide-1 .container, .hero-slide-2 .container, .hero-slide-3 .container, .hero-slide-4 .container {
+    height: 100%;
+    display: flex;
+    align-items: start;
+}
+
+.hero-slide {
+    background-image: var(--mobile-bg);
+}
     
 }
