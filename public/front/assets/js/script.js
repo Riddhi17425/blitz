@@ -31,57 +31,57 @@ $(document).ready(function () {
   // });
 
   // Custom Mobile Offcanvas & Drill-Down Menu Logic
-  $(document).ready(function() {
-      // 1. Setup Drill-down Back buttons on Mobile
-      if ($(window).width() <= 1025) {
-          $('.dropdown-submenu, .nav-item.dropdown').each(function() {
-              var $submenu = $(this).children('.submenu, .dropdown-menu');
-              // Extract text without the SVG icon text if any
-              var $clone = $(this).children('a').clone();
-              $clone.children().remove();
-              var parentTitle = $clone.text().trim() || "Back";
-              
-              if ($submenu.length > 0) {
-                  // Inject Back button (Arrow pointing left)
-                  var backBtnHtml = '<li class="mobile-back-btn">' +
-                      '<svg width="10" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-                          '<path d="M5 9L1 5L5 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
-                      '</svg>' +
-                      'Back to ' + parentTitle + '</li>';
-                  $submenu.prepend(backBtnHtml);
-              }
-          });
-      }
+  $(document).ready(function () {
+    // 1. Setup Drill-down Back buttons on Mobile
+    if ($(window).width() <= 1025) {
+      $('.dropdown-submenu, .nav-item.dropdown').each(function () {
+        var $submenu = $(this).children('.submenu, .dropdown-menu');
+        // Extract text without the SVG icon text if any
+        var $clone = $(this).children('a').clone();
+        $clone.children().remove();
+        var parentTitle = $clone.text().trim() || "Back";
 
-      // 2. Handle Sliding in (Opening Submenu)
-      $('.dropdown-submenu > a, .nav-item.dropdown > a').on('click', function(e) {
-          if ($(window).width() <= 1025) {
-              var $submenu = $(this).next('.submenu, .dropdown-menu');
-              if ($submenu.length > 0) {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  // Add show to the clicked submenu to slide it in
-                  $(this).parent().addClass('show');
-              }
-          }
+        if ($submenu.length > 0) {
+          // Inject Back button (Arrow pointing left)
+          var backBtnHtml = '<li class="mobile-back-btn">' +
+            '<svg width="10" height="10" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+            '<path d="M5 9L1 5L5 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>' +
+            '</svg>' +
+            'Back to ' + parentTitle + '</li>';
+          $submenu.prepend(backBtnHtml);
+        }
       });
+    }
 
-      // 3. Handle Sliding out (Clicking Back)
-      $(document).on('click', '.mobile-back-btn', function(e) {
+    // 2. Handle Sliding in (Opening Submenu)
+    $('.dropdown-submenu > a, .nav-item.dropdown > a').on('click', function (e) {
+      if ($(window).width() <= 1025) {
+        var $submenu = $(this).next('.submenu, .dropdown-menu');
+        if ($submenu.length > 0) {
           e.preventDefault();
           e.stopPropagation();
-          // Remove show from the parent submenu to slide it out
-          $(this).closest('.dropdown-submenu, .nav-item.dropdown').removeClass('show');
-      });
+          // Add show to the clicked submenu to slide it in
+          $(this).parent().addClass('show');
+        }
+      }
+    });
 
-      // Close offcanvas when close button is clicked
-      $('.mobile-menu-close').on('click', function() {
-          $('.navbar-collapse').removeClass('show');
-          // Reset all drill-down menus when closed
-          setTimeout(function() {
-              $('.dropdown-submenu, .nav-item.dropdown').removeClass('show');
-          }, 300); // wait for offcanvas slide out animation
-      });
+    // 3. Handle Sliding out (Clicking Back)
+    $(document).on('click', '.mobile-back-btn', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      // Remove show from the parent submenu to slide it out
+      $(this).closest('.dropdown-submenu, .nav-item.dropdown').removeClass('show');
+    });
+
+    // Close offcanvas when close button is clicked
+    $('.mobile-menu-close').on('click', function () {
+      $('.navbar-collapse').removeClass('show');
+      // Reset all drill-down menus when closed
+      setTimeout(function () {
+        $('.dropdown-submenu, .nav-item.dropdown').removeClass('show');
+      }, 300); // wait for offcanvas slide out animation
+    });
   });
 
   //4. Industry Slider
@@ -103,7 +103,7 @@ $(document).ready(function () {
             slidesToScroll: 1,
             autoplay: true,
             autoplaySpeed: 2000,
-            
+
           }
         },
         {
@@ -135,39 +135,39 @@ $(document).ready(function () {
   });
 
   //6. Our Clients Slider (Auto-Ticker)
-  //   if ($(".our_clint img").length > 5) {
-  //     $(".our_clint").slick({
-  //       slidesToShow: 5,
-  //       slidesToScroll: 1,
-  //       autoplay: true,
-  //       autoplaySpeed: 0,
-  //       speed: 3000,
-  //       cssEase: "linear",
-  //       infinite: true,
-  //       arrows: false,
-  //       dots: false,
-  //       responsive: [
-  //         {
-  //           breakpoint: 991,
-  //           settings: {
-  //             slidesToShow: 4,
-  //           },
-  //         },
-  //         {
-  //           breakpoint: 767,
-  //           settings: {
-  //             slidesToShow: 3,
-  //           },
-  //         },
-  //         {
-  //           breakpoint: 480,
-  //           settings: {
-  //             slidesToShow: 2,
-  //           },
-  //         },
-  //       ],
-  //     });
-  //   }
+  $(".our_clint").slick({
+    slidesToShow: 6,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 0,
+    speed: 3000,
+    cssEase: "linear",
+    infinite: true,
+    arrows: false,
+    dots: false,
+    pauseOnHover: false,
+    pauseOnFocus: false,
+    responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 767,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+    ],
+  });
 
 });
 
@@ -437,7 +437,7 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.1 });
     obs1.observe(counterSection1);
   }
 
@@ -465,7 +465,7 @@ document.addEventListener("DOMContentLoaded", function () {
           });
         }
       });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.1 });
     obs2.observe(counterSection2);
   }
 
@@ -571,14 +571,14 @@ $(".pd_slider").slick({
   autoplay: true,
   autoplaySpeed: 1000,
   arrows: false,
-  slidesToShow: 3,
+  slidesToShow: 1,
   slidesToScroll: 1,
 
   responsive: [
     {
       breakpoint: 992,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 1,
         slidesToScroll: 1
       }
     },
