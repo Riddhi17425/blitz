@@ -6,20 +6,20 @@
             <div class="baner_left">
                <div class="breadcrumbs">
                   <a href="{{ route('front.home') }}">Home</a>
-                  <span>
+                  {{-- <span>
                      <svg width="6" height="11" viewBox="0 0 6 11" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <path d="M0.666992 0.666016L5.33366 5.33268L0.666992 9.99935" stroke="#666666"
                            stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                      </svg>
-                  </span>
+                  </span> --}}
                   @if($category)
                   <span>
                      <svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0.666992 0.666016L5.33366 5.33268L0.666992 9.99935" stroke="#666666" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                      </svg>
                   </span>
-                  <a href="#">{{ $category->title ?? ''}}</a>
+                  <a href="{{ route('front.category.details', $category->category_url) }}">{{ $category->title ?? ''}}</a>
                   @endif
                   @if($subCategory)
                   <span>
@@ -27,7 +27,7 @@
                         <path d="M0.666992 0.666016L5.33366 5.33268L0.666992 9.99935" stroke="#666666" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                      </svg>
                   </span>
-                  <a href="#">{{ $subCategory->title ?? '' }}</a>
+                  <a href="javascript:void(0);">{{ $subCategory->title ?? '' }}</a>
                   @endif
                </div>
                <h1 class="banner_title">{{ $subCategory->title ?? '' }}</h1>

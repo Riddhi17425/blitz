@@ -113,7 +113,7 @@
                </div>
 
                <div class="footer-links-product">
-                   <p class="title_24 line_left" >Category</p>
+                   <p class="title_24 line_left" >Product</p>
                    <ul>
                         @if(isset($categoriesHF) && count($categoriesHF) > 0)
                             @foreach($categoriesHF as $category)

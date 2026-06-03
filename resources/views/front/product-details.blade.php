@@ -30,13 +30,13 @@
                 <span><svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.666992 0.666016L5.33366 5.33268L0.666992 9.99935" stroke="#666666" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                 </svg></span>
-                <a href="#">{{ $product->category->title }}</a>
+                <a href="{{ route('front.category.details', $product->category->category_url) }}">{{ $product->category->title }}</a>
             @endif
             @if($product->subCategory)
                 <span><svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.666992 0.666016L5.33366 5.33268L0.666992 9.99935" stroke="#666666" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                 </svg></span>
-                <a href="#">{{ $product->subCategory->title }}</a>
+                <a href="javascript:void(0);">{{ $product->subCategory->title }}</a>
             @endif
         </div>
         <!-- <div class="row xl-gx-5"> -->

@@ -80,7 +80,7 @@
 
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#">
-                            Category
+                            Products
                             <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg"
                                 class="dropdown-icon">
                                 <path d="M0.5 0.5L5.5 5.5L10.5 0.5" stroke="currentColor" stroke-width="1.5"

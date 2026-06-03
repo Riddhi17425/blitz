@@ -13,7 +13,7 @@
                            stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                      </svg>
                   </span>
-                  <a href="#">{{$category->short_form ?? ''}}</a>
+                  <a href="javascript:void(0);">{{$category->short_form ?? ''}}</a>
                </div>
                <h2 class="banner_title">{{$category->title ?? ''}}</h2>
                <p class="baner_desc">{{$category->description ?? ''}}
