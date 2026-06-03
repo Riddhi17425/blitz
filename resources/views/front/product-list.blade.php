@@ -181,14 +181,14 @@
          <h2 class="title_44">{{ $subCategory->cta_img_title ?? '' }}</h2>
          <p class="mb-0">{{ $subCategory->cta_img_description ?? '' }}</p>
       </div>
-      <div class="row">
+      <div class="row gy-4 gy-lg-0">
          <div class="col-md-3">
             <div class="d-flex flex-column justify-content-between h-100">
                @for($i = 0; $i < $halfCtas; $i++)
                @if(!empty($ctaTitles[$i]))
                <div class="text-center{{ $i < $halfCtas - 1 ? ' mb-4' : '' }}">
                   @if(!empty($ctaIcons[$i]))
-                  <img src="{{ asset('public/images/sub_category_cta_icons/' . $ctaIcons[$i]) }}" alt="{{ $ctaTitles[$i] }}" class="mb-2" style="width: 70px; height: 70px; object-fit: contain;">
+                  <img src="{{ asset('public/images/sub_category_cta_icons/' . $ctaIcons[$i]) }}" alt="{{ $ctaTitles[$i] }}" class="mb-2" style="width: 60px; height: 60px; object-fit: contain;">
                   @else
                   <svg class="mb-2" width="70" height="70" viewBox="0 0 70 70" fill="none"
                      xmlns="http://www.w3.org/2000/svg">
@@ -266,7 +266,7 @@
          </div>
       </div>
       <div class="slider-wrapper pt_40">
-         <div class="indu_slider">
+         <div class="indu_slider common-dots">
             @if(isset($industries) && $industries->count())
             @foreach($industries as $industry)
             <div class="slide-item">

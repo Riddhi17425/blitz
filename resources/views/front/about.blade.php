@@ -134,7 +134,7 @@
 
         <section class="unique-advantages-section common-dots">
 
-            <div class="advantages-stack pd_grid">
+            <div class="advantages-stack">
 
                <article class="advantage-card innovation-card">
                     <div class="advantage-content">

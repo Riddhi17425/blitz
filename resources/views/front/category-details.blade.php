@@ -214,7 +214,7 @@
          </div>
       </div>
       <div class="slider-wrapper pt_40">
-         <div class="indu_slider">
+         <div class="indu_slider common-dots">
             @if(isset($industries) && $industries->count())
             @foreach($industries as $industry)
             <div class="slide-item">

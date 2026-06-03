@@ -9,6 +9,16 @@
 
 @media (max-width: 1601px) {
 
+    .title_32 {
+    font-size: 26px;
+    line-height: 38px;
+}
+
+    .accordion-button
+    {
+        padding: 20px;
+    }
+
     .sticky-product-wrapper {
         top: 45px;
     }
@@ -679,7 +689,7 @@
         position: fixed;
         top: 0;
         left: -100%;
-        width: 320px;
+        width: 100%;
         height: 100vh;
         background-color: var(--white);
         padding: 0;
@@ -703,7 +713,7 @@
     }
 
     .navbar-nav {
-        height: calc(100vh - 85px);
+        /* height: calc(100vh - 85px); */
         overflow-y: auto;
         overflow-x: hidden;
         padding: 0;
@@ -1027,10 +1037,10 @@
     /* About page fixes */
     .advantage-card {
         height: auto;
-        min-height: 800px;
+        min-height: 650px;
         background-position-x: center;
         margin: 0 5px;
-        margin-bottom: 24px;
+        margin-bottom: 0px;
         box-shadow: none;
     }
 
@@ -1047,7 +1057,8 @@
     }
 
     .advantage-number {
-        font-size: 60px;
+        /* font-size: 60px; */
+     display: none;
     }
 
     .vision_mission {
@@ -1125,7 +1136,7 @@
 
     .hero-slide {
         background-image: var(--mobile-bg);
-        height: calc(100vh - 70px);
+        height: calc(100vh - 100px);
         padding: 26px 0;
     }
 
@@ -1224,7 +1235,7 @@
 
     .common-dots .slick-dots {
         display: block;
-            bottom: -20px;
+            bottom: -30px;
     }
 
 
@@ -1266,6 +1277,33 @@
     }
 
 
+    .product_cta {
+        height: 700px;
+    }
 
+        .product-buttons .com_btn {
+        width: 100%;
+    }
+
+    .thumbnail-row {
+    gap: 10px;
+}
+
+    .thumb {
+        width: 70px;
+        height: 70px;
+    }
+
+        .product-title {
+        font-size: 26px;
+        line-height: 38px;
+    }
+
+    .bottom-features
+    {
+        flex-direction: column;
+        gap: 18px;
+        align-items: start;
+    }
 
 }
