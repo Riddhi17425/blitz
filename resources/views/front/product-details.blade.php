@@ -87,20 +87,6 @@
                     @endif --}}
                 </div>
 
-                {{-- @if($visibleFeatures->isNotEmpty())
-                    <ul class="feature-list">
-                        @foreach($visibleFeatures as $specification)
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                    <path d="M1.33398 7.9987C1.33398 11.6781 4.32122 14.6654 8.00065 14.6654C11.6801 14.6654 14.6673 11.6781 14.6673 7.9987C14.6673 4.31926 11.6801 1.33203 8.00065 1.33203C4.32122 1.33203 1.33398 4.31926 1.33398 7.9987Z" stroke="#666666" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M6 8.0013L7.33333 9.33464L10 6.66797" stroke="#666666" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                                {{ $specification->parameter }}{{ $specification->specifications ? ': ' . $specification->specifications : '' }}
-                            </li>
-                        @endforeach
-                    </ul>
-                @endif -->
-
                 @if($product->features)
                     <hr class="dashed-divider">
                     <div class="product-desc">{!! $product->features !!}</div>
