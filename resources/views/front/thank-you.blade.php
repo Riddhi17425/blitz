@@ -2,10 +2,17 @@
 
 <section class="thank-you-section">
         <div class="image-text-wrapper">
-            <img class="img-fluid" src="{{ asset('public/front/assets/images/Thank-You.webp') }}" alt="thank-you">
+            <!-- <img class="img-fluid" src="{{ asset('public/front/assets/images/Thank-You.webp') }}" alt="thank-you"> -->
+
+          <picture>
+            <source media="(max-width: 767px)" srcset="{{ asset('public/front/assets/images/Thank-You-m.webp') }}">
+            <source media="(min-width: 768px)" srcset="{{ asset('public/front/assets/images/Thank-You.webp') }}">
+            <img src="{{ asset('public/front/assets/images/Thank-You.webp') }}" alt="Banner Image" class=" img-fluid">
+        </picture>
+
             <div class="thank_you_text">
                 <h2 class="title_44">Thank You!</h1>
-                <p class="my-4">
+                <p class="my-3 my-lg-4">
                     We appreciate your interest. Your request has been received successfully. <br>
                     Our team will review the details and get back to you shortly.
                 </p>
@@ -43,23 +50,14 @@
 
 @media (max-width:767px) {
     
-       .image-text-wrapper img
-    
-    {
-        height: 400px;
-        object-fit: cover;
-    filter: brightness(0.5);
 
+        .thank_you_text {
+        position: absolute;
+        top: 24%;
+        left: 0%;
+        width: 100%;
+        padding: 20px;
     }
-
-    .thank_you_text {
-    position: absolute;
-    top: 50%;
-    left: 0%;
-    transform: translateY(-50%);
-    width: 100%;
-    padding: 20px;
-}
     
 }
 

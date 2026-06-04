@@ -781,7 +781,7 @@
 <section  class="bg_com py_40">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 mb-4 mb-lg-0">
+            <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="counter2_left position-relative">
                     <video id="manu_video" class="img_rou img-fluid w-100" poster="{{ asset('public/front/assets/images/Manufacturing Excellence.webp') }}" style="border-radius: 24px; object-fit: cover;">
                         <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
@@ -821,9 +821,9 @@
 
             </div>
 
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <p class="title_20 line_left" >Manufacturing Excellence</p>
-                <h1 class="title_44">Precision-Powered Innovation</h1>
+                <h2 class="title_44">Precision-Powered Innovation</h2>
                 <p class="mb-0">Every Blitz device is designed, assembled, and quality-checked, where skilled engineering and strict manufacturing standards ensure each product is ready for the most demanding environments. </p>
 
                 <div class="pt_40">

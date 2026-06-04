@@ -584,7 +584,7 @@ $(".pd_slider").slick({
     {
       breakpoint: 992,
       settings: {
-        slidesToShow: 1,
+        slidesToShow: 2,
         slidesToScroll: 1
       }
     },
@@ -626,7 +626,7 @@ $(".home_prod_slider").slick({
     {
       breakpoint: 992,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: 3,
         slidesToScroll: 1
       }
     },

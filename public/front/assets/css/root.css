@@ -27,7 +27,7 @@ body {
     background-color: #FBFCFD;
     color: var(--grey-666);
     font-size: 18px;
-    line-height: 26px;
+    line-height: 22px;
     overflow-x: hidden;
     
 }
@@ -71,6 +71,7 @@ a {
     position: relative;
     border: 1px solid var(--blue);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-wrap: nowrap;
 }
 
 .com_btn svg, .com_btn span {

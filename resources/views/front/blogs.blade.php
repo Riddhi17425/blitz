@@ -1,6 +1,6 @@
 @include('layouts.frontheader')
 
-<section class="pd_banner">
+<section class="pd_banner pb-0">
     <div class="banner_wrapper">
         <div class="container">
 
@@ -17,12 +17,12 @@
                         <a href="#">Blogs</a>
                     </div>
                     <h2 class="banner_title">Blitz Electrical Blogs</h2>
-                    <p class="baner_desc">Have questions about our products? <br /> Need technical support or pricing
+                    <p class="baner_desc mb-0">Have questions about our products? <br /> Need technical support or pricing
                         information? <br> Our team is here to help you with all your electrical protection needs.</p>
 
                 </div>
                 <div class="baner_right">
-                    <img src="{{ asset('public/front/assets/images/BLOG.webp') }}" alt="blogs banner" class="img-fluid">
+                    <img src="{{ asset('public/front/assets/images/BLOG.webp') }}" alt="blogs banner" class="w-50">
                 </div>
             </div>
         </div>

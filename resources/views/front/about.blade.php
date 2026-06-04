@@ -45,12 +45,12 @@
     <div class="sticky-wrapper">
         <div class="container">
             <div class="row justify-content-between align-items-center">
-                <div class="col-md-6 story-img-col order-1 order-md-0">
+                <div class="col-lg-6 story-img-col order-1 order-lg-0">
                     <img src="{{ asset('public/front/assets/images/who_we_are.webp') }}" alt="image" class="img-fluid img_rou story-zoom-img">
                 </div>
 
-                <div class="col-md-6 story-text-col ">
-                    <div class="ps-md-5 story-text-content">
+                <div class="col-lg-6 story-text-col ">
+                    <div class="ps-lg-5 story-text-content">
                         <p class="title_20 line_left">WHO WE ARE</p>
                         <h2 class="title_44 mb_40">A Global Brand Built on a Simple Promise - Reliable Protection, Every Time 
                         </h2>
@@ -70,8 +70,8 @@
         <div class="row justify-content-between align-items-center">
           
 
-            <div class="col-md-6">
-                <div class="ps-md-5">
+            <div class="col-lg-6">
+                <div class="ps-lg-5">
                     <p class="title_20 line_left aos-init aos-animate" >
                         OUR STORY</p>
                     <h2 class="title_44 mb_40">Building a Safer Electrical Future
@@ -83,7 +83,7 @@
                 </div>
             </div>
 
-              <div class="col-md-6">
+              <div class="col-lg-6">
                 <img src="{{ asset('public/front/assets/images/our_story.webp') }}" alt="image" class=" img-fluid img_rou">
             </div>
 
@@ -201,7 +201,7 @@
                     $certificationFile = is_array($certification) ? ($certification['file'] ?? '') : $certification;
                 @endphp
                 @if($certificationFile)
-            <div class="col-md-3">
+            <div class="col-md-6  col-lg-3">
                    <div class="certificate_box">
                     <a href="{{ asset('public/images/settings_certifications/' . $certificationFile) }}" data-fancybox="certificates" data-caption="{{ $certificationName ?: 'Certification' }}" class="cert_img_link">
                         <img class="img_round img-fluid" src="{{ asset('public/images/settings_certifications/' . $certificationFile) }}" alt="{{ $certificationName ?: 'Certification' }}">

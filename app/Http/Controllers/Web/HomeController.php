@@ -56,14 +56,14 @@ class HomeController extends Controller
         return view('front.blogs',compact('metaTitle','metaDescription','blogdata'));
     }
 
-    public function blogsDetails($url) 
+    public function blogsDetails($url = null) 
     {
-        $blogdetail = Blog::whereNull('deleted_at')->where('url', $url)->first();
+        // $blogdetail = Blog::whereNull('deleted_at')->where('url', $url)->first();
 
-        $metaTitle = $blogdetail->meta_metaTitle ?? '';
-        $metaDescription = $blogdetail->meta_metaDescription ?? '';
+        // $metaTitle = $blogdetail->meta_metaTitle ?? '';
+        // $metaDescription = $blogdetail->meta_metaDescription ?? '';
 
-        return view('front.blog-details',compact('metaTitle','metaDescription','blogdetail'));
+        return view('front.blog-details');
     }
 
     public function productList(Request $request, $cat_url = null, $sub_cat_url = null){

@@ -164,7 +164,7 @@
                     {{-- <li class="nav-item"><a class="nav-link" href="{{ route("front.blogs") }}">Blog</a></li> --}}
                     <li class="nav-item"><a class="nav-link" href="{{ route("front.contact") }}">Contact</a></li>
                 </ul>
-                <div class="d-flex gap-3 justify-content-center mt-md-4">
+                <div class="d-flex gap-3 justify-content-center mt-4 mt-lg-0">
                     <a href="{{ asset('public/brochure.pdf') }}" target="_blank" class="com_btn com_btn_b_b">Download Catalogue</a>
 
                     <a href="{{ route('front.contact') }}" class="com_btn ">Request Quote</a>
