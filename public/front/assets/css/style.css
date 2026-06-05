@@ -2123,3 +2123,32 @@ tbody tr:nth-child(even) {
 .common-dots .slick-dots {
     display: none;
 }
+
+/* -------------- privacy policy and terms and conditions -------------- */
+
+
+.privacy_banner
+{
+    text-align: center;
+    /* position: relative; */
+}
+
+/* .privacy_banner .title_44
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */    
+
+.privacy_main h4
+{
+    color: var(--blue-head);
+    font-family: "Rufina", serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 32px;
+    margin-top: 20px;
+}
+
