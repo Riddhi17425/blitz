@@ -8,6 +8,7 @@
 
 .navbar-nav {
     gap: 60px;
+    align-items: center;
 }
 
 .navbar {
