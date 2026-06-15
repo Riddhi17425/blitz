@@ -94,6 +94,20 @@
                     </div>
                 </div>
 
+                <h5 class="fw-bold my-4 pb-2 border-bottom text-primary"><i class="icofont-listine-lines"></i> Meta Details</h5>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Meta Title</label>
+                        <input type="text" name="meta_title" value="{{ old('meta_title') }}" class="form-control @error('meta_title') is-invalid @enderror" placeholder="Meta title for SEO">
+                        @error('meta_title')<div class="invalid-feedback">{{ $message }}</  div>@enderror   
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Meta Description</label>
+                        <textarea name="meta_description" class="form-control @error('meta_description') is-invalid @enderror" rows="3" placeholder="Meta description for SEO">{{ old('meta_description')   }}</textarea>   
+                        @error('meta_description')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    </div>
+                </div>
+
                 <div class="d-flex justify-content-between align-items-center my-4 pb-2 border-bottom">
                     <h5 class="fw-bold mb-0 text-primary">FAQs</h5>
                 </div>

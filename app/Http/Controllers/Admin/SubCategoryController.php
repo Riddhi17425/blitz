@@ -130,6 +130,8 @@ class SubCategoryController extends Controller
                 'cta_description' => $ctaDescriptions,
                 'faqs' => $faqs,
                 'is_active' => 1,
+                'meta_title' => $request->meta_title ?? null,
+                'meta_description' => $request->meta_description ?? null,
             ]);
 
             return redirect()->route('sub_categories')->with('success', 'Sub Category created successfully.');
@@ -273,6 +275,8 @@ class SubCategoryController extends Controller
                 'cta_title' => $ctaTitles,
                 'cta_description' => $ctaDescriptions,
                 'faqs' => $faqs,
+                'meta_title' => $request->meta_title ?? null,
+                'meta_description' => $request->meta_description ?? null,
             ]);
 
             return redirect()->route('sub_categories')->with('success', 'Sub Category updated successfully.');

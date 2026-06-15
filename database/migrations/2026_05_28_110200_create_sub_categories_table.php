@@ -28,6 +28,8 @@ return new class extends Migration
             $table->json('faqs')->nullable();
             $table->string('faq_title')->nullable();
             $table->text('faq_description')->nullable();
+            $table->string('meta_title')->nullable();
+            $table->string('meta_description', 500)->nullable();
             $table->boolean('is_active')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();

@@ -104,6 +104,8 @@ class CategoryController extends Controller
                     return ['question' => $q, 'answer' => $a];
                 }, $request->input('faqs_question', []), $request->input('faqs_answer', [])))) ,
                 'is_active' => 1,
+                'meta_title' => $request->meta_title ?? null,
+                'meta_description' => $request->meta_description ?? null,
             ]);
 
             return redirect()->route('categories')->with('success', 'Category created successfully.');
@@ -144,6 +146,7 @@ class CategoryController extends Controller
             'faqs_answer.*' => 'nullable|string',
             'sub_category_heading' => 'nullable|string|max:255',
             'sub_category_description' => 'nullable|string',
+            
         ]);
 
         if ($validator->fails()) {
@@ -205,6 +208,8 @@ class CategoryController extends Controller
                 'cta_img_description' => $request->cta_img_description,
                 'sub_category_heading' => $request->sub_category_heading,
                 'sub_category_description' => $request->sub_category_description,
+                'meta_title' => $request->meta_title ?? null,
+                'meta_description' => $request->meta_description ?? null,
                 'faq_title' => $request->faq_title,
                 'faq_description' => $request->faq_description,
                 'faqs' => array_values(array_filter(array_map(function($q, $a) {

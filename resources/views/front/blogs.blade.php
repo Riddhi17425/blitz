@@ -17,8 +17,7 @@
                         <a href="#">Blogs</a>
                     </div>
                     <h2 class="banner_title">Blitz Electrical Blogs</h2>
-                    <p class="baner_desc mb-0">Have questions about our products? <br /> Need technical support or pricing
-                        information? <br> Our team is here to help you with all your electrical protection needs.</p>
+                    <p class="baner_desc mb-0">Stay informed with expert articles, technical guides, and product insights, covering everything you need to know about electrical protection and solar safety.</p>
 
                 </div>
                 <div class="baner_right">
