@@ -83,7 +83,7 @@
     <div class="sticky-product-wrapper">
         <div class="container">
             <p class="title_20 line_left">Product Range</p>
-            <h1 class="title_44">One Brand. Every Protection Need Covered </h1>
+            <h2 class="title_44">One Brand. Every Protection Need Covered </h2>
             <p class="mb-0">Residential or industrial, Blitz protection devices are designed to perform in demanding electrical environments. </p>
             <div class="row pt_40 home_prod common-dots">
                 @if(isset($categories) && $categories->count())
@@ -123,7 +123,7 @@
 <section  class="fea_Pro py_40">
     <div class="container">
         <p class="title_20 line_left" >Featured Products</p>
-        <h1 class="title_44">Designed to Perform. Built to Last</h1>
+        <h2 class="title_44">Designed to Perform. Built to Last</h2>
         <p class="mb-0">Blitz products are IEC-compliant, rigorously tested, and trusted across the global solar and electrical industries.</p>
 
         <div class="pd_grid pt_40 common-dots">
@@ -206,7 +206,7 @@
         <button type="button" class="product-modal-close" data-close-modal>&times;</button>
         <div class="product-modal-body d-block">
             <div class="modal-form-header w-100 mb-4">
-                <h2 class="title_44 mb-2">Product Enquiry</h2>
+                <p class="title_44 mb-2">Product Enquiry</p>
                 <p>Please provide your details and we will contact you about this product.</p>
             </div>
             <form id="product-enquiry-form" action="{{ route('contact.submit') }}" method="POST" class="quote-form w-100">
@@ -470,47 +470,47 @@
     <div class="container">
         <div class="text-center">
             <p class="title_20 line_center" >Why Choose Us</p>
-            <h1 class="title_44">Why Blitz Electrical?</h1>
+            <h2 class="title_44">Why Blitz Electrical?</h2>
             <p class="mb-0">From Ahmedabad to the UAE, from Kenya to Bangladesh, Blitz surge protection devices are earning trust one installation at a time.</p>
         </div>
 
         <div class="row g-2 g-md-4 pt_40">
             <div class="col-6 col-md-3">
                 <div class="counter">
-                    <h2 class="title_44">8+</h2>
-                    <h4 class="title_24">Countries</h4>
+                    <h3 class="title_44">8+</h3>
+                    <p class="title_24">Countries</p>
                     <p class="mb-0">where Blitz is active</p>
                 </div>
             </div>
 
             <div class="col-6 col-md-3">
                 <div class="counter">
-                    <h2 class="title_44">≤ 25ns</h2>
-                    <h4 class="title_24">Surge</h4>
+                    <h3 class="title_44">≤ 25ns</h3>
+                    <p class="title_24">Surge</p>
                     <p class="mb-0">response time</p>
                 </div>
             </div>
 
             <div class="col-6 col-md-3">
                 <div class="counter">
-                    <h2 class="title_44">IEC</h2>
-                    <h4 class="title_24">Globally</h4>
+                    <h3 class="title_44">IEC</h3>
+                    <p class="title_24">Globally</p>
                     <p class="mb-0">certified</p>
                 </div>
             </div>
 
             <div class="col-6 col-md-3">
                 <div class="counter">
-                    <h2 class="title_44">2+</h2>
-                    <h4 class="title_24">Years</h4>
+                    <h3 class="title_44">2+</h3>
+                    <p class="title_24">Years</p>
                     <p class="mb-0">of proven excellence</p>
                 </div>
             </div>
 
             {{-- <div class="col-md-3">
                 <div class="counter">
-                    <h2 class="title_44">99.9%</h2>
-                    <h4 class="title_24">Reliability Rate</h4>
+                    <h3 class="title_44">99.9%</h3>
+                    <p class="title_24">Reliability Rate</p>
                     <p class="mb-0">Zero-defect commitment</p>
                 </div>
             </div> --}}
@@ -527,8 +527,8 @@
                             stroke="#020844" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
 
-                    <h4 class="title_18">Premium Build Quality</h4>
-                    <h2 class="title_24">Made to Endure</h2>
+                    <p class="title_18">Premium Build Quality</p>
+                    <h3 class="title_24">Made to Endure</h3>
                     <p class="mb-0">Blitz products use high-grade materials for durability, heat resistance, and long-term operational reliability</p>
                 </div>
             </div>
@@ -546,8 +546,8 @@
                     </svg>
 
 
-                    <h4 class="title_18">IEC Compliant</h4>
-                    <h2 class="title_24">Globally Certified</h2>
+                    <p class="title_18">IEC Compliant</p>
+                    <h3 class="title_24">Globally Certified</h3>
                     <p class="mb-0">Blitz electrical protection products meet international standards for reliable deployment across global industrial markets</p>
                 </div>
             </div>
@@ -570,8 +570,8 @@
                     </svg>
 
 
-                    <h4 class="title_18">Reliable Fault Indication </h4>
-                    <h2 class="title_24">Always Stay Informed</h2>
+                    <p class="title_18">Reliable Fault Indication </p>
+                    <h3 class="title_24">Always Stay Informed</h3>
                     <p class="mb-0">A built-in Green/Red status window lets installers and operators monitor the health of every surge protection device</p>
                 </div>
             </div>
@@ -586,8 +586,8 @@
                     </svg>
 
 
-                    <h4 class="title_18">Dedicated Support </h4>
-                    <h2 class="title_24">Service Beyond Sales</h2>
+                    <p class="title_18">Dedicated Support </p>
+                    <h3 class="title_24">Service Beyond Sales</h3>
                     <p class="mb-0">Blitz provides expert product guidance and dependable after-sales support to keep projects running smoothly</p>
                 </div>
             </div>
@@ -613,8 +613,8 @@
                     </svg>
 
 
-                    <h4 class="title_18">Made in India </h4>
-                    <h2 class="title_24">Proudly Crafted Here</h2>
+                    <p class="title_18">Made in India </p>
+                    <h3 class="title_24">Proudly Crafted Here</h3>
                     <p class="mb-0">Designed and manufactured in India, Blitz products carry the precision of local engineering expertise </p>
                 </div>
             </div>
@@ -631,8 +631,8 @@
                     </svg>
 
 
-                    <h4 class="title_18">Fast Response Time </h4>
-                    <h2 class="title_24">Performance Assured</h2>
+                    <p class="title_18">Fast Response Time </p>
+                    <h3 class="title_24">Performance Assured</h3>
                     <p class="mb-0">Blitz SPD devices intercept voltage spikes within ≤25ns, protecting equipment from damaging transient surges</p>
                 </div>
             </div>
@@ -649,7 +649,7 @@
 
             <div>
                 <p class="title_20 line_left" >Industries We Serve</p>
-                <h1 class="title_44">{{ $industryT ?? 'Protecting Tomorrow\'s Powerful Infrastructure' }}</h1>
+                <h2 class="title_44">{{ $industryT ?? 'Protecting Tomorrow\'s Powerful Infrastructure' }}</h2>
                 <p class="mb-0">{{ $industryD ?? 'Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised.' }}</p>
             </div>
 
