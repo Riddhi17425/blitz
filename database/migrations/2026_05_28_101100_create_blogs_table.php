@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->string('title')->nullable();
+            $table->longText('short_description')->nullable();
             $table->longText('detail_description')->nullable();
             $table->text('conclusion')->nullable();
             $table->string('url')->nullable();
@@ -25,7 +26,7 @@ return new class extends Migration
             $table->string('detail_image_alt');
             $table->string('cta_image_alt')->nullable();
             $table->longText('schema_json')->nullable();
-            $table->string('cta_text');
+            $table->string('cta_link_url')->nullable();
             $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();
             $table->enum('status', ['Active', 'In-Active']);

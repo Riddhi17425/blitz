@@ -14,7 +14,7 @@
     <meta property="og:site_name" content="Blitz">
     <meta property="og:title" content="{{ $metaTitle ?? 'Blitz - Control the Current' }}" />
     <meta property="og:description" content="{{ $metaDescription ?? '' }}" />
-    <meta property="og:image" content="">
+    <meta property="og:image" content="{{ $og_image ?? '' }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
     
@@ -22,7 +22,7 @@
     <meta name="twitter:card" content="Blitz">
     <meta name="twitter:title" content="{{ $metaTitle ?? 'Blitz - Control the Current' }}">
     <meta name="twitter:description" content="{{ $metaDescription ?? '' }}">
-    <meta name="twitter:image" content="">
+    <meta name="twitter:image" content="{{ $og_image ?? '' }}">
 
 
     <link rel="icon" href="{{ asset('public/front/assets/images/favicon.png') }}" type="image/x-icon">

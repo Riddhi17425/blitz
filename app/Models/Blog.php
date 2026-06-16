@@ -9,4 +9,7 @@ class Blog extends Model
 {
     use SoftDeletes;
     protected $guarded = [];
+    protected $casts = [
+        'blog_faq' => 'array',
+    ];
 }

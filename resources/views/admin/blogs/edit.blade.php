@@ -211,18 +211,15 @@
 
                                     </div>
 
-                                    {{-- CTA Text --}}
+                                    {{-- CTA Link URL --}}
                                     <div class="col-md-6 mb-3">
-
                                         <label class="form-label">
-                                            CTA Text
+                                            CTA Link URL
                                             <span class="required-star">*</span>
                                         </label>
-
-                                        <input type="text" name="cta_text" class="form-control"
-                                            value="{{ old('cta_text', $blogs->cta_text) }}"
-                                            placeholder="Enter CTA Text">
-
+                                        <input type="text" name="cta_link_url" class="form-control"
+                                            value="{{ old('cta_link_url', $blogs->cta_link_url) }}"
+                                            placeholder="Enter CTA Link URL">
                                     </div>
 
                                     {{-- Date --}}
@@ -293,8 +290,22 @@
                                         rows="4">{{ old('meta_description', $blogs->meta_description) }}</textarea>
 
                                 </div>
-
                             </div>
+
+                            {{-- Short Description --}}
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label">
+                                    Short Description
+                                    <span class="required-star">*</span>
+                                </label>
+                                <textarea name="short_description"
+                                    id="short_description"
+                                    class="form-control">{{ old('short_description', $blogs->short_description) }}</textarea>
+                                @error('short_description')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
                             {{-- Detail Description --}}
                             <div class="card mb-4 border">
 
@@ -363,7 +374,7 @@
 
                                         @if(!empty($blogs->blog_faq))
 
-                                        @foreach(json_decode($blogs->blog_faq) as $key => $faq)
+                                        @foreach($blogs->blog_faq as $key => $faq)
 
                                         <div class="faq-item border p-3 mb-3">
 
@@ -374,7 +385,7 @@
                                                 </label>
 
                                                 <input type="text" name="faq_title[]" class="form-control"
-                                                    value="{{ $faq->faq_title }}" placeholder="Enter FAQ Title">
+                                                    value="{{ $faq['faq_title'] }}" placeholder="Enter FAQ Title">
 
                                             </div>
 
@@ -385,7 +396,7 @@
                                                 </label>
 
                                                 <textarea name="faq_description[]" class="form-control faq_description"
-                                                    rows="4">{{ $faq->faq_description }}</textarea>
+                                                    rows="4">{{ $faq['faq_description'] }}</textarea>
 
                                             </div>
 
@@ -434,7 +445,7 @@
 <script>
 $(document).ready(function() {
 
-    $('#detail_description, #meta_description, #conclusion, #schema_json').summernote({
+    $('#detail_description, #meta_description, #conclusion, #schema_json, #short_description').summernote({
         placeholder: 'Enter Content Here...',
         height: 300
     });

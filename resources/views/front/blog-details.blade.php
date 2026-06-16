@@ -1,52 +1,74 @@
-@include('layouts.frontheader')
-
+@include('layouts.frontheader', [
+    'og_image' => asset('public/admin/blogs/front_image/' . $blog->front_image),
+    'blog_schema' => $blog->blog_schema ?? ''
+])
+@if (isset($blog->blog_faq) && is_countable($blog->blog_faq) && count($blog->blog_faq) > 0)
+    @php
+        $faqSchemaEntities = [];
+        foreach ($blog->blog_faq as $faq) {
+            $question = trim($faq['faq_title'] ?? '');
+            $answer = trim(strip_tags($faq['faq_description'] ?? ''));
+            if ($question && $answer) {
+                $faqSchemaEntities[] = [
+                    '@type' => 'Question',
+                    'name' => $question,
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => $answer,
+                    ],
+                ];
+            }
+        }
+    @endphp
+    @if(!empty($faqSchemaEntities))
+        <script type="application/ld+json">
+            {!! json_encode([
+                '@context' => 'https://schema.org',
+                '@type' => 'FAQPage',
+                'mainEntity' => $faqSchemaEntities,
+            ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+        </script>
+    @endif
+@endif
 <section class="py_80">
     <div class="container">
         <div class="breadcrumbs">
-            <a href="#">Home</a>
+            <a href="{{ route('front.home') }}">Home</a>
             <span><svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.666992 0.666016L5.33366 5.33268L0.666992 9.99935" stroke="#666666"
                         stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </span>
-            <a href="#">blogs</a>
+            <a href="{{ route('front.blogs') }}">blogs</a>
 
-            <span><svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {{-- <span><svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0.666992 0.666016L5.33366 5.33268L0.666992 9.99935" stroke="#666666"
                         stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </span>
-            <a href="#">The Ultimate Guide to Surge Protection for Utility-Scale Solar Systems</a>
+            <a href="#">The Ultimate Guide to Surge Protection for Utility-Scale Solar Systems</a> --}}
 
         </div>
 
-        <h2 class="title_60 mb-4">The Ultimate Guide to Surge Protection for Utility-Scale Solar Systems</h2>
-        <p class="baner_desc mb-0">As PV installations scale to utility capacities, the risk of lightning-induced surges
-            and
-            switching transients increases exponentially. Learn the precision engineering protocols required to
-            safeguard high-voltage DC arrays.</p>
+        <h2 class="title_60 mb-4">{{$blog->title ?? ''}}</h2>
+        <p class="baner_desc mb-0">{!! $blog->short_description ?? '' !!}</p>
 
         <div class="mt-4">
-            <img class="img-fluid img_rou" src="{{ asset('public/front/assets/images/ABOUT US IMAGE.webp') }}" alt="blogs banner">
+            <img class="img-fluid img_rou" src="{{ asset('public/admin/blogs/detail_image/' . $blog->detail_image) }}" alt="{{ $blog->detail_image_alt ?? '' }}">
         </div>
     </div>
 </section>
 
 <section class="guide-section mb_80">
-
     <div class="container">
-
         <div class="guide-section-child">
             <!-- Sidebar -->
             <aside class="sidebar">
-
                 <h4 class="title_24">CONTENTS</h4>
-
                 <ul>
-                    <li><a href="#intro" class="nav-link active">Introduction</a></li>
-                    <li><a href="#vulnerabilities" class="nav-link">System Vulnerabilities</a></li>
-                    <li><a href="#solutions" class="nav-link">Protection Solutions</a></li>
-                    <li><a href="#products" class="nav-link">Product Recommendations</a></li>
+                    <li><a href="#details" class="nav-link active">Details</a></li>
+                    <li><a href="#cta" class="nav-link">CTA</a></li>
+                    <li><a href="#conclusion" class="nav-link">Conclusion</a></li>
                     <li><a href="#faq" class="nav-link">FAQs</a></li>
                 </ul>
 
@@ -54,27 +76,22 @@
 
             <!-- Main Content -->
             <div class="content">
-
-                <!-- Introduction -->
-                <div class="content-section" id="intro">
-
-                    <h2>Difference Between SPD and MCB - Complete Guide</h2>
-
+                <!-- Details -->
+                <div class="content-section" id="details">
+                    {!! $blog->detail_description !!}
+                    {{-- <h2>Difference Between SPD and MCB - Complete Guide</h2>
                     <p>
                         Electrical protection is an extremely important process in establishing the safety,
                         reliability and life of the new electrical systems.
                     </p>
-
                     <p>
                         The <strong>SPD (Surge Protective Device)</strong> and the
                         <strong>MCB (Miniature Circuit Breaker)</strong> are both regarded to be two of the most
                         essential protection appliances of the contemporary world.
-                    </p>
-
+                    </p> --}}
                 </div>
-
-                <!-- Vulnerabilities -->
-                <div class="content-section" id="vulnerabilities">
+                
+                {{-- <div class="content-section" id="vulnerabilities">
 
                     <h2>System Vulnerabilities</h2>
 
@@ -89,8 +106,6 @@
                     </p>
 
                 </div>
-
-                <!-- Solutions -->
                 <div class="content-section" id="solutions">
 
                     <h2>Protection Solutions</h2>
@@ -106,8 +121,6 @@
                     </p>
 
                 </div>
-
-                <!-- Products -->
                 <div class="content-section" id="products">
 
                     <h2>Product Recommendations</h2>
@@ -118,8 +131,6 @@
                     </p>
 
                 </div>
-
-
                 <div class="content-section" id="faq">
                     <h2>The Specification of SPD and MCB</h2>
                     <div class="table-wrapper">
@@ -203,60 +214,51 @@
 
                     </div>
                 </div>
-
-                <!-- FAQ -->
-                <div class="content-section" id="faq">
-
-                    <h2>Real-Life Example – Renewable Energy Installation</h2>
-
+                 <div class="content-section" id="faq">
+                    <h2>Real-Life Example  Renewable Energy Installation</h2>
                     <p>Solar energy farms are unique among industrial facilities due to their immense physical footprint
                         and exposure to atmospheric phenomena. The interconnected nature of DC strings and AC collection
                         networks creates multiple entry points for high-energy surges that can cripple production for
                         weeks.</p>
 
+                </div> --}}
+
+                {{-- CTA --}}
+                <div class="content-section" id="cta">
+                   <a href="{{ $blog->cta_link_url ? $blog->cta_link_url : route('front.contact')  }}"> <img class="img-fluid" src="{{ asset('public/admin/blogs/cta_image/' . $blog->cta_image) }}" alt="{{ $blog->cta_image_alt ?? '' }}"></a>
                 </div>
 
-                <!-- FAQ -->
-                <div class="content-section" id="faq">
-
-                    <h2>Real-Life Example – Renewable Energy Installation</h2>
-
-                    <p>Solar energy farms are unique among industrial facilities due to their immense physical footprint
-                        and exposure to atmospheric phenomena. The interconnected nature of DC strings and AC collection
-                        networks creates multiple entry points for high-energy surges that can cripple production for
-                        weeks.</p>
+                <!-- Conclusion -->
+                <div class="content-section" id="conclusion">
+                    <h2>Conclusion</h2>
+                    {!! $blog->conclusion !!}
                 </div>
 
-                 <div class="content-section">
-                   <a href="#"> <img class="img-fluid" src="public/front/assets/images/CTA.webp" alt="CTA"></a>
-                </div>
-
+                @if (isset($blog->blog_faq) && is_countable($blog->blog_faq) && count($blog->blog_faq) > 0)
                 <div class="content-section" id="faq">
                     <div class="pb_40">
                         <p class="title_20 line_left" >faqs</p>
-                        <h2>{{ $industryT ?? 'Protecting Tomorrow\'s Powerful Infrastructure' }}</h2>
-                        <p class="mb-0">{{ $industryD ?? 'Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised.' }}</p>
+                        {{-- <h2>{{ $industryT ?? 'Protecting Tomorrow\'s Powerful Infrastructure' }}</h2>
+                        <p class="mb-0">{{ $industryD ?? 'Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised.' }}</p> --}}
                     </div>
                     <div class="accordion" id="blitzFaq">
-
+                        @foreach ($blog->blog_faq as $index => $faq)
                         <div class="accordion-item">
                             <h4 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne">
-                                    What industries commonly use Blitz electrical protection products?
+                                    data-bs-target="#collapse_{{ $index }}">
+                                    {{ $faq['faq_title'] ?? '' }}
                                 </button>
                             </h4>
-                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#blitzFaq">
+                            <div id="collapse_{{ $index }}" class="accordion-collapse collapse" data-bs-parent="#blitzFaq">
                                 <div class="accordion-body">
-                                    Blitz electrical protection products are widely used across various industries
-                                    including
-                                    manufacturing, automotive, renewable energy, telecommunications, and residential
-                                    construction to ensure safe and reliable power management.
+                                    {!! $faq['faq_description'] ?? '' !!}
                                 </div>
                             </div>
                         </div>
+                        @endforeach
 
-                        <div class="accordion-item">
+                        {{-- <div class="accordion-item">
                             <h4 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapseTwo">
@@ -275,7 +277,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="accordion-item">
                             <h4 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -291,7 +292,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="accordion-item">
                             <h4 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -307,7 +307,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="accordion-item">
                             <h4 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -322,14 +321,15 @@
                                     (such as IEC, UL, and CE) to guarantee optimal protection and reliability.
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>
-
+                @endif
             </div>
         </div>
     </div>
 </section>
 
 @include('layouts.frontfooter')
+

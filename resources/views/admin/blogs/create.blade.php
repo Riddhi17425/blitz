@@ -181,15 +181,14 @@
                                             placeholder="Enter CTA Image Alt">
                                     </div>
 
-                                    {{-- CTA Text --}}
+                                    {{-- CTA Link URL --}}
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">
-                                            CTA Text
+                                            CTA Link URL
                                             <span class="required-star">*</span>
                                         </label>
-
-                                        <input type="text" name="cta_text" class="form-control"
-                                            placeholder="Enter CTA Text">
+                                        <input type="text" name="cta_link_url" class="form-control"
+                                            placeholder="Enter CTA Link URL">
                                     </div>
 
                                     {{-- Date --}}
@@ -247,6 +246,17 @@
                                         rows="4"></textarea>
                                 </div>
                             </div>
+
+                            {{-- Short Description --}}
+                           <div class="col-md-12 mb-3">
+                              <label class="form-label">Short Description <span class="text-danger">*</span></label>
+                              <textarea name="short_description" id="short_description"
+                                 class="form-control @error('short_description') is-invalid @enderror"
+                                 value="{{ old('short_description') }}" placeholder="Enter short description">{{ old('short_description') }}</textarea>
+                              @error('short_description')
+                              <div class="invalid-feedback">{{ $message }}</div>
+                              @enderror
+                           </div>
 
                             {{-- Detail Description --}}
                             <div class="card mb-4 border">
@@ -364,7 +374,7 @@
 <script>
 $(document).ready(function() {
 
-    $('#detail_description, #meta_description, #conclusion, #schema_json').summernote({
+    $('#detail_description, #meta_description, #conclusion, #schema_json, #short_description').summernote({
         placeholder: 'Enter Content Here...',
         height: 300
     });
