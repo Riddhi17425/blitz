@@ -30,4 +30,54 @@
     </div>
 </section>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": "https://blitzenergyindia.com/contact-us#webpage",
+  "url": "https://blitzenergyindia.com/contact-us",
+  "name": "Contact Blitz Energy India",
+  "description": "Contact Blitz Energy India for inquiries related to electrical protection devices such as SPDs, MCBs, Fuses, and Solar Accessories.",
+  "isPartOf": {
+    "@id": "https://blitzenergyindia.com/#website"
+  },
+  "about": {
+    "@id": "https://blitzenergyindia.com/#organization"
+  },
+  "mainEntity": {
+    "@type": "Organization",
+    "@id": "https://blitzenergyindia.com/#organization",
+    "name": "Blitz Energy India",
+    "url": "https://blitzenergyindia.com/",
+    "telephone": "+91 97252 01620",
+    "email": "info@blitzelectrical.in",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "B-403/404 Signature-2, Sarkhej Sanand Road, Sarkhej",
+      "addressLocality": "Ahmedabad",
+      "addressRegion": "Gujarat",
+      "postalCode": "382210",
+      "addressCountry": "IN"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91 97252 01620",
+      "contactType": "customer support",
+      "email": "info@blitzelectrical.in",
+      "availableLanguage": [
+        "English",
+        "Hindi",
+		"Gujarati"
+      ]
+    }
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://blitzenergyindia.com/public/front/assets/images/logo.svg"
+  },
+  "inLanguage": "en-IN"
+}
+</script>
+
+
 @include('layouts.frontfooter')
