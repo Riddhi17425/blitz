@@ -331,5 +331,52 @@
     </div>
 </section>
 
-@include('layouts.frontfooter')
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll(".sidebar ul li a.nav-link");
+        const sections = document.querySelectorAll(".content-section");
 
+        // Click Event: Change active class and smooth scroll
+        links.forEach(link => {
+            link.addEventListener("click", function (e) {
+                e.preventDefault();
+                
+                links.forEach(l => l.classList.remove("active"));
+                this.classList.add("active");
+
+                const targetId = this.getAttribute("href");
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+
+        // Scroll Event: Automatically update active class based on scroll position
+        window.addEventListener("scroll", function () {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                // Adjusting the offset so the active class changes properly before it hits the exact top
+                if (window.scrollY >= sectionTop - 180) {
+                    current = section.getAttribute("id");
+                }
+            });
+
+            if (current) {
+                links.forEach(link => {
+                    link.classList.remove("active");
+                    if (link.getAttribute("href") === "#" + current) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+@include('layouts.frontfooter')
