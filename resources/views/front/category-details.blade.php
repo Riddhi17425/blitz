@@ -19,7 +19,7 @@
                <p class="baner_desc">{{$category->description ?? ''}}
                </p>
                <div class="banner_btns">
-                  <a href="{{ route("front.contact") }}" class="com_btn">
+                  <a href="#getInTouchForm" class="com_btn">
                   Request Quote 
                   <span class="ms-2">
                      <svg xmlns="http://www.w3.org/2000/svg" width="24"

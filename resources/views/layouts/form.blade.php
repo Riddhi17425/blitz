@@ -1,4 +1,4 @@
-<section class="py_40">
+<section class="py_40" id="getInTouchForm">
      <div class="container">
      <div class="quote-section">
          <!-- Left Content Section -->

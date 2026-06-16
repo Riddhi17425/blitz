@@ -52,8 +52,8 @@ class HomeController extends Controller
         $metaTitle= "";
         $metaDescription= "";
         
-        $blogdata = Blog::wherenull('deleted_at')->get();
-        return view('front.blogs',compact('metaTitle','metaDescription','blogdata'));
+        $blogs = Blog::wherenull('deleted_at')->get();
+        return view('front.blogs',compact('metaTitle','metaDescription','blogs'));
     }
 
     public function blogsDetails($url = null) 

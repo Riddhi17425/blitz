@@ -27,8 +27,8 @@
                                 </a>
                             @endif
                                 
-                            <a href="{{ route('front.contact') }}" class="com_btn com_btn_w_b">Request Quote</a>
-                        </div>
+                            <a href="#getInTouchForm" class="com_btn com_btn_w_b">Request Quote</a>
+                        </div> 
                     </div>
                 </div>
             </div>

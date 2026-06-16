@@ -589,7 +589,19 @@
            showClass: "fancybox-zoomInUp",
            hideClass: "fancybox-zoomOutDown",
         });
+        // For Redirecting Request Quote button to Request Quote Form
+        document.querySelectorAll('a[href="#getInTouchForm"]').forEach(function(link) {
+            link.addEventListener("click", function(e) {
+                e.preventDefault();
+
+                document.querySelector("#getInTouchForm").scrollIntoView({
+                    behavior: "smooth"
+                });
+            });
+        });
    </script>
+
+   
 
    </main>
 
