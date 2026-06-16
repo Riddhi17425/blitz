@@ -20,6 +20,40 @@
     if ($visibleFeatures->isEmpty()) {
         $visibleFeatures = $technicalSpecifications->take(4);
     }
+
+    $breadcrumSchema = [
+        '@context' => 'https://schema.org/',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            [
+                '@type' => 'ListItem',
+                'position' => 1,
+                'name' => $product->category->title ?? '',
+                'item' => $product->category->category_url ? route('front.category.details', $product->category->category_url) : '',
+            ],
+            [
+                '@type' => 'ListItem',
+                'position' => 2,
+                'name' => $product->subCategory->title ?? '',
+                'item' => $product->subCategory->sub_category_url ? route('front.product.list', ['cat_url' => $product->category->category_url, 'sub_cat_url' => $product->subCategory->sub_category_url]) : '',
+            ],
+            [
+                '@type' => 'ListItem',
+                'position' => 3,
+                'name' => $product->product_name ?? '',
+                'item' => $product->subCategory->sub_category_url ? route('front.product.details', $product->product_url) : '',
+            ]
+        ]
+    ];
+
+    $productSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Product',
+        'name' => $product->product_name ?? '',
+        'image' => $product->list_image ? asset('public/images/product_list_images/' . $product->list_image) : asset('public/front/assets/images/Background+Border.webp'),
+        'description' => $product->description ? strip_tags($product->description) : '',
+    ];
+
 @endphp
 
 <section class="py_80">
@@ -293,4 +327,10 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+<script type="application/ld+json">
+    {!! json_encode($productSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
+<script type="application/ld+json">
+   {!! json_encode($breadcrumSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
 @include('layouts.frontfooter')

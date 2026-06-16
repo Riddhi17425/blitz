@@ -1,4 +1,37 @@
 @include('layouts.frontheader')
+@php
+    $breadcrumSchema = [
+        '@context' => 'https://schema.org/',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => [
+            [
+                '@type' => 'ListItem',
+                'position' => 1,
+                'name' => $category->title ?? '',
+                'item' => $category->category_url ? route('front.category.details', $category->category_url) : '',
+            ],
+        ]
+    ];
+
+    $faqDetails = collect($category->faqs ?? [])->filter(function ($faq) {
+        return trim((string) data_get($faq, 'question')) !== '' || trim(strip_tags((string) data_get($faq, 'answer'))) !== '';
+    })->values();
+    $faqSchema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        'mainEntity' => array_map(function ($item) {
+            return [
+                '@type' => 'Question',
+                'name' => $item['question'],
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => $item['answer'],
+                ],
+            ];
+        }, $faqDetails->all()),
+    ];
+@endphp
+
 <section class="pd_banner">
    <div class="banner_wrapper">
       <div class="container">
@@ -273,5 +306,13 @@
       </div>
    </div>
 </section>
+
+<script type="application/ld+json">
+   {!! json_encode($breadcrumSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
+<script type="application/ld+json">
+    {!! json_encode($faqSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
+
 @include('layouts.form')
 @include('layouts.frontfooter')
