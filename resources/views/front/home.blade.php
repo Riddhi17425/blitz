@@ -939,5 +939,138 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 </script>
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://blitzenergyindia.com/#organization",
+      "name": "Blitz Energy India",
+      "url": "https://blitzenergyindia.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://blitzenergyindia.com/public/front/assets/images/logo.svg"
+      },
+      "description": "Blitz Energy India is a manufacturer and supplier of electrical protection and safety devices including Surge Protection Devices, MCBs, Fuses, and solar electrical accessories for residential, commercial, industrial, and solar applications.",
+      "telephone": "+91 97252 01620",
+      "email": "info@blitzelectrical.in",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "B-403/404 Signature-2, Sarkhej Sanand Road, Sarkhej",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "postalCode": "382210",
+        "addressCountry": "IN"
+      },
+      "sameAs": [
+        "https://www.facebook.com/BlitzEnergyIndia/",
+        "https://www.linkedin.com/company/blitz-protection",
+        "https://www.instagram.com/blitz_energy_india"
+      ],
+      "areaServed": [
+        "IN",
+        "NP",
+        "SA",
+        "NG",
+        "KE",
+        "BD",
+        "AE",
+        "LK"
+      ],
+      "knowsAbout": [
+        "Electrical Protection Devices",
+        "Electrical Safety Devices",
+        "Surge Protection Device",
+        "AC SPD",
+        "DC SPD",
+        "Miniature Circuit Breaker",
+        "DC MCB",
+        "Solar Fuse Terminal & Link",
+        "Solar Accessories"
+      ]
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://blitzenergyindia.com/#localbusiness",
+      "name": "Blitz Energy India",
+      "url": "https://blitzenergyindia.com/",
+      "image": "https://blitzenergyindia.com/public/front/assets/images/logo.svg",
+      "parentOrganization": {
+        "@id": "https://blitzenergyindia.com/#organization"
+      },
+      "telephone": "+91 97252 01620",
+      "email": "info@blitzelectrical.in",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "B-403/404 Signature-2, Sarkhej Sanand Road, Sarkhej",
+        "addressLocality": "Ahmedabad",
+        "addressRegion": "Gujarat",
+        "postalCode": "382210",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 22.9875815,
+        "longitude": 72.493289
+      },
+      "areaServed": [
+        "IN",
+        "NP",
+        "SA",
+        "NG",
+        "KE",
+        "BD",
+        "AE",
+        "LK"
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "09:00",
+          "closes": "18:00"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://blitzenergyindia.com/#website",
+      "url": "https://blitzenergyindia.com/",
+      "name": "Blitz Energy India",
+      "description": "Manufacturer and supplier electrical protection devices such as Surge Protection Devices (SPD), MCB, Fuses and solar accessories",
+      "publisher": {
+        "@id": "https://blitzenergyindia.com/#organization"
+      },
+      "inLanguage": "en-IN"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://blitzenergyindia.com/#webpage",
+      "url": "https://blitzenergyindia.com/",
+      "name": "Electrical Protection & Safety Devices | Blitz Energy India",
+      "description": "Protect your electrical systems with Blitz Electrical's surge protection devices, MCBs, and safety solutions for residential, commercial, and industrial applications.",
+      "isPartOf": {
+        "@id": "https://blitzenergyindia.com/#website"
+      },
+      "about": {
+        "@id": "https://blitzenergyindia.com/#organization"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://blitzenergyindia.com/public/front/assets/images/logo.svg"
+      },
+      "inLanguage": "en-IN"
+    }
+  ]
+}
+</script>
 
 @include('layouts.frontfooter')

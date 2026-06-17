@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Http;
-use App\Models\{Category, SubCategory, Banner, BLog, NewsletterInquiry, ContactInquiry, Product, Country, Industry, Testimonial, Setting};
+use App\Models\{Category, SubCategory, Banner, Blog, NewsletterInquiry, ContactInquiry, Product, Country, Industry, Testimonial, Setting};
 use Carbon\Carbon;
 
 class HomeController extends Controller 
