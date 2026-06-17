@@ -66,12 +66,12 @@ class HomeController extends Controller
     }
 
     public function productList(Request $request, $cat_url = null, $sub_cat_url = null){
-        $metaTitle="";
-        $metaDescription="";
         $industries = Industry::whereNull('deleted_at')->get();
         $category = Category::whereNull('deleted_at')->where('is_active', 1)->where('category_url', $cat_url)->first();
         $subCategory = SubCategory::whereNull('deleted_at')->where('is_active', 1)->where('category_id', $category->id)->where('sub_category_url', $sub_cat_url)->first();
         $products = Product::with('technicalSpecifications')->whereNull('deleted_at')->where('is_active', 1)->where('sub_category_id', $subCategory->id)->where('category_id', $subCategory->category_id)->get();
+        $metaTitle = $subCategory->meta_title ?? '';
+        $metaDescription = $subCategory->meta_description ?? '';
 
         return view('front.product-list',compact('metaTitle','metaDescription', 'industries', 'category', 'subCategory', 'products'));
     }
