@@ -29,21 +29,36 @@
                 '@type' => 'ListItem',
                 'position' => 1,
                 'name' => $product->category->title ?? '',
-                'item' => $product->category->category_url ? route('front.category.details', $product->category->category_url) : '',
+                'item' => $product->category->category_url 
+                    ? route('front.category.details', $product->category->category_url) 
+                    : '',
             ],
-            [
-                '@type' => 'ListItem',
-                'position' => 2,
-                'name' => $product->subCategory->title ?? '',
-                'item' => $product->subCategory->sub_category_url ? route('front.product.list', ['cat_url' => $product->category->category_url, 'sub_cat_url' => $product->subCategory->sub_category_url]) : '',
-            ],
-            [
-                '@type' => 'ListItem',
-                'position' => 3,
-                'name' => $product->product_name ?? '',
-                'item' => $product->subCategory->sub_category_url ? route('front.product.details', $product->product_url) : '',
-            ]
         ]
+    ];
+    $position = 2;
+    if(isset($product->subCategory) && $product->subCategory) {
+        $breadcrumSchema['itemListElement'][] = [
+            '@type' => 'ListItem',
+            'position' => $position,
+            'name' => $product->subCategory->title ?? '',
+            'item' => $product->subCategory->sub_category_url 
+                ? route('front.product.list', [
+                    'cat_url' => $product->category->category_url,
+                    'sub_cat_url' => $product->subCategory->sub_category_url
+                ]) 
+                : '',
+        ];
+
+        $position++;
+    }
+
+    $breadcrumSchema['itemListElement'][] = [
+        '@type' => 'ListItem',
+        'position' => $position,
+        'name' => $product->product_name ?? '',
+        'item' => $product->product_url 
+            ? route('front.product.details', $product->product_url) 
+            : '',
     ];
 
     $productSchema = [

@@ -32,7 +32,7 @@
 
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
+  "@@context": "https://schema.org",
   "@type": "ContactPage",
   "@id": "https://blitzenergyindia.com/contact-us#webpage",
   "url": "https://blitzenergyindia.com/contact-us",
