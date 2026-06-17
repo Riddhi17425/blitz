@@ -11,7 +11,7 @@
         </picture>
 
             <div class="thank_you_text">
-                <h2 class="title_44">Thank You!</h1>
+                <h1 class="title_44">Thank You!</h1>
                 <p class="my-3 my-lg-4">
                     We appreciate your interest. Your request has been received successfully. <br>
                     Our team will review the details and get back to you shortly.

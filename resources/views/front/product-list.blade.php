@@ -31,7 +31,7 @@
                   @endif
                </div>
                <h1 class="banner_title">{{ $subCategory->title ?? '' }}</h1>
-               <h6 class="baner_desc">{!! $subCategory->description ?? '' !!}</h6>
+               <p class="baner_desc">{!! $subCategory->description ?? '' !!}</p>
                <div class="banner_btns">
                   <a href="#getInTouchForm" class="com_btn">Request Quote</a>
                   @if($subCategory->catalogue_pdf)
@@ -247,7 +247,7 @@
       <div style="display: flex; justify-content: space-between; align-items: flex-end;">
          <div>
             <p class="title_20 line_left" >Industries We Serve</p>
-            <h1 class="title_44">{{ $industryT ?? 'Protecting Tomorrow\'s Powerful Infrastructure' }}</h1>
+            <h2 class="title_44">{{ $industryT ?? 'Protecting Tomorrow\'s Powerful Infrastructure' }}</h2>
             <p class="mb-0">{{ $industryD ?? 'Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised.' }}</p>
          </div>
          <div class="custom-arrows">

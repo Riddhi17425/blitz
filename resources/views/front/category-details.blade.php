@@ -15,7 +15,7 @@
                   </span>
                   <a href="javascript:void(0);">{{$category->short_form ?? ''}}</a>
                </div>
-               <h2 class="banner_title">{{$category->title ?? ''}}</h2>
+               <h1 class="banner_title">{{$category->title ?? ''}}</h1>
                <p class="baner_desc">{{$category->description ?? ''}}
                </p>
                <div class="banner_btns">
@@ -195,7 +195,7 @@
       <div style="display: flex; justify-content: space-between; align-items: flex-end;">
          <div>
             <p class="title_20 line_left" >Industries We Serve</p>
-            <h1 class="title_44">{{ $industryT ?? 'Protecting Tomorrow\'s Powerful Infrastructure' }}</h1>
+            <h2 class="title_44">{{ $industryT ?? 'Protecting Tomorrow\'s Powerful Infrastructure' }}</h2>
             <p class="mb-0">{{ $industryD ?? 'Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised.' }}</p>
          </div>
          <div class="custom-arrows">

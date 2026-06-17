@@ -16,7 +16,7 @@
                         </span>
                         <a href="javascript:void(0);">Blogs</a>
                     </div>
-                    <h2 class="banner_title">Blitz Electrical Blogs</h2>
+                    <h1 class="banner_title">Blitz Electrical Blogs</h1>
                     <p class="baner_desc mb-0">Stay informed with expert articles, technical guides, and product insights, covering everything you need to know about electrical protection and solar safety.</p>
 
                 </div>

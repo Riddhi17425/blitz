@@ -50,7 +50,7 @@
 
         </div>
 
-        <h2 class="title_60 mb-4">{{$blog->title ?? ''}}</h2>
+        <h1 class="title_60 mb-4">{{$blog->title ?? ''}}</h1>
         <p class="baner_desc mb-0">{!! $blog->short_description ?? '' !!}</p>
 
         <div class="mt-4">

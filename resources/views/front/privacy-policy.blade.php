@@ -4,7 +4,7 @@
    <div class="privacy_banner">
      <img src="{{ asset('public/front/assets/images/How Surge Protection Devices Safeguard Solar Power Systems 2.webp') }}"
         alt="Privacy-Policy banner" class="img-fluid w-100">
-    <h2 class="title_44">Privacy Policy</h2>
+    <h1 class="title_44">Privacy Policy</h1>
    </div>
 </section>
 

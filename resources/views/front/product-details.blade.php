@@ -61,7 +61,7 @@
             </div>
 
             <div class="col-lg-7">
-                <h2 class="product-title">{{ $product->product_name }}</h2>
+                <h1 class="product-title">{{ $product->product_name }}</h1>
                 @if($product->product_modal)
                     <div class="product-sku">{{ $product->product_modal }}</div>
                 @endif

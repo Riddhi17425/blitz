@@ -16,7 +16,7 @@
                         </span>
                         <a href="#">About</a>
                     </div>
-                    <h2 class="banner_title">Stronger Protection For Smarter Infrastructure</h2>
+                    <h1 class="banner_title">Stronger Protection For Smarter Infrastructure</h1>
                     <p class="baner_desc mb">From the heart of India to eight countries across Asia, the Middle East, and
                         Africa, Blitz is the name engineers and industries trust when failure is simply not an option.
                     </p>
