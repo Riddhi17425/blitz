@@ -372,7 +372,7 @@
 
                                     <div id="faq-wrapper">
 
-                                        @if(!empty($blogs->blog_faq))
+                                        @if(isset($blogs->blog_faq) && is_countable($blogs->blog_faq) && count($blogs->blog_faq) > 0)
 
                                         @foreach($blogs->blog_faq as $key => $faq)
 

@@ -61,7 +61,7 @@ class HomeController extends Controller
         $blog = Blog::where('url', $url)->firstOrFail();
         $meta_title = $blog->meta_title;
         $meta_description = $blog->meta_description;
-        
+        $blog->blog_faq = $blog->blog_faq ? json_decode($blog->blog_faq) : "";
         return view('front.blog-details', compact('blog', 'meta_title', 'meta_description'));
     }
 

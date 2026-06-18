@@ -151,6 +151,7 @@ class BlogsController extends Controller
     }
     public function EditBlogs($id){
         $blogs = Blog::find($id);
+        $blogs->blog_faq = json_decode($blogs->blog_faq);
         return view('admin.blogs.edit',compact('blogs'));
     }
 
