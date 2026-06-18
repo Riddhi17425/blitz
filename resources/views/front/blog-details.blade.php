@@ -51,7 +51,7 @@
         </div>
 
         <h1 class="title_60 mb-4">{{$blog->title ?? ''}}</h1>
-        <p class="baner_desc mb-0">{!! $blog->short_description ?? '' !!}</p>
+        <!--<p class="baner_desc mb-0">{!! $blog->short_description ?? '' !!}</p>-->
 
         <div class="mt-4">
             <img class="img-fluid img_rou" src="{{ asset('public/admin/blogs/detail_image/' . $blog->detail_image) }}" alt="{{ $blog->detail_image_alt ?? '' }}">

@@ -46,7 +46,7 @@
                            <a href="{{ route('front.blog.details', $blog->url) }}"> {{ $blog->title ?? '' }} </a>
                         </h5>
                         <p class="blog-desc">
-                            {!! $blog->short_description ?? '' !!}
+                            {!! $blog->meta_description ?? '' !!}
                         </p>
                         <div class="read-more">
                             <a href="{{ route('front.blog.details', $blog->url) }}">Read More

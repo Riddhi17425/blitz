@@ -59,10 +59,11 @@ class HomeController extends Controller
     public function blogsDetails($url = null) 
     {
         $blog = Blog::where('url', $url)->firstOrFail();
-        $meta_title = $blog->meta_title;
-        $meta_description = $blog->meta_description;
+        $metaTitle = $blog->meta_title;
+        $metaDescription = $blog->meta_description;
         $blog->blog_faq = $blog->blog_faq ? json_decode($blog->blog_faq) : "";
-        return view('front.blog-details', compact('blog', 'meta_title', 'meta_description'));
+        
+        return view('front.blog-details', compact('blog', 'metaTitle', 'metaDescription'));
     }
 
     public function productList(Request $request, $cat_url = null, $sub_cat_url = null){
@@ -72,7 +73,7 @@ class HomeController extends Controller
         $products = Product::with('technicalSpecifications')->whereNull('deleted_at')->where('is_active', 1)->where('sub_category_id', $subCategory->id)->where('category_id', $subCategory->category_id)->get();
         $metaTitle = $subCategory->meta_title ?? '';
         $metaDescription = $subCategory->meta_description ?? '';
-
+        
         return view('front.product-list',compact('metaTitle','metaDescription', 'industries', 'category', 'subCategory', 'products'));
     }
 
@@ -177,6 +178,8 @@ class HomeController extends Controller
         // STORE IN GOOGLE SHEETS
         $timestamp = Carbon::now()->format('Y-m-d H:i:s');
         $sheetsData = [
+            'inquiry_type' => $request->input('inquiry_type', 'page'),
+            'date'      => $timestamp,
             'name' => $inquiry->name ?? '',
             'company' => $inquiry->company ?? '',
             'email' => $inquiry->email ?? '',
@@ -184,8 +187,6 @@ class HomeController extends Controller
             'country' => $inquiry->country ?? '',
             'product' => $inquiry->product ?? '',
             'requirement_details' => $inquiry->requirement_details ?? '',
-            'inquiry_type' => $request->input('inquiry_type', 'page'),
-            'date'      => $timestamp,
         ];
         $response = Http::withHeaders(['Content-Type' => 'application/json'])
             ->post('https://script.google.com/macros/s/AKfycbz2pP-5ZXlhDkyF0Eg3DOIbArsWXt15tDeX41JYelNbSGGeVyOVeyYDr1hZhvBMawpZ/exec', 
