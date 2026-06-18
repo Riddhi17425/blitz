@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Blog;
+use App\Models\Category;
 use Intervention\Image\ImageManager;
 use Intervention\Image\Drivers\Gd\Driver as GdDriver;
 use Str;
@@ -19,7 +20,8 @@ class BlogsController extends Controller
     }
 
     public function createBlogs(){
-        return view('admin.blogs.create');
+        $categories = Category::orderBy('title')->get();
+        return view('admin.blogs.create', compact('categories'));
     }
 
     public function BlogsStore(Request $request)
@@ -27,6 +29,7 @@ class BlogsController extends Controller
         // dd($request->all());
         // Step 1: Validation
         $validator = Validator::make($request->all(), [
+            'category_id'      => 'required|exists:categories,id',
             'title'               => 'required|string',
             'meta_title'               => 'required|string',
             'meta_description'               => 'required|string',
@@ -102,6 +105,7 @@ class BlogsController extends Controller
 
             // Step 4: Store in DB
             Blog::create([
+                'category_id'  => $request->category_id ?? null,
                 'title'              => $request->title,
                 'conclusion'         => $request->conclusion,
                 'short_description'  => $request->short_description ?? NULL,
@@ -152,7 +156,9 @@ class BlogsController extends Controller
     public function EditBlogs($id){
         $blogs = Blog::find($id);
         $blogs->blog_faq = json_decode($blogs->blog_faq);
-        return view('admin.blogs.edit',compact('blogs'));
+        $categories = Category::orderBy('title')->get();
+
+        return view('admin.blogs.edit',compact('blogs', 'categories'));
     }
 
     public function DestoryBlogs($id){
@@ -175,6 +181,7 @@ class BlogsController extends Controller
     {
         // Step 1: Validation
         $validator = Validator::make($request->all(), [
+            'category_id'      => 'required|exists:categories,id',
             'title'               => 'required|string',
             'short_description'   => 'nullable|string',
             'detail_description'  => 'nullable|string',
@@ -265,6 +272,7 @@ class BlogsController extends Controller
 
             // Step 5: Update in DB 
             $blogs->update([
+                'category_id'  => $request->category_id,
                 'title'              => $request->title,
                 'conclusion'         => $request->conclusion,
                 'short_description'  => $request->short_description ?? NULL,

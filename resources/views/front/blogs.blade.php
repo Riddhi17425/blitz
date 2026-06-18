@@ -40,7 +40,7 @@
                             <a href="{{ route('front.blog.details', $blog->url) }}"><img src="{{ asset('public/admin/blogs/front_image/' . $blog->front_image) }}" alt="{{ $blog->front_image_alt ?? '' }}"></a>
                         </div>
                         <div class="blog-meta">
-                            • {{ date('M d, Y', strtotime($blog->date)) }}
+                           {{ $blog->category->title ?? '' }} • {{ date('M d, Y', strtotime($blog->date)) }}
                         </div>
                         <h5 class="blog-title">
                            <a href="{{ route('front.blog.details', $blog->url) }}"> {{ $blog->title ?? '' }} </a>

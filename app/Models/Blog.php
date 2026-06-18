@@ -12,4 +12,9 @@ class Blog extends Model
     protected $casts = [
         'blog_faq' => 'array',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
