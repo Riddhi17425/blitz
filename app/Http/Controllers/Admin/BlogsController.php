@@ -123,7 +123,7 @@ class BlogsController extends Controller
                 'detail_image_alt'   => $request->detail_image_alt,
                 'cta_image_alt'      => $request->cta_image_alt,
                 'schema_json'        => $request->schema_json,
-                'blog_faq'           => json_encode($title_description),
+                'blog_faq'           => $title_description,
             ]); 
             return redirect()->route('blogs')->with('success', 'Blogs created successfully!');
         } catch (\Exception $e) {
@@ -290,7 +290,7 @@ class BlogsController extends Controller
                 'detail_image_alt'   => $request->detail_image_alt,
                 'cta_image_alt'      => $request->cta_image_alt,
                 'schema_json'        => $request->schema_json,
-                'blog_faq'           => json_encode($title_description),
+                'blog_faq'           => $title_description,
             ]);
             return redirect()->route('blogs')->with('success', 'Blogs updated successfully!');
         } catch (\Exception $e) {
