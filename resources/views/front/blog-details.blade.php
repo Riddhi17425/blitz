@@ -1,7 +1,8 @@
 @include('layouts.frontheader', [
     'og_image' => asset('public/admin/blogs/front_image/' . $blog->front_image),
-    'blog_schema' => $blog->blog_schema ?? ''
+    'blog_schema' => $blog->schema_json ?? ''
 ])
+
 @if (isset($blog->blog_faq) && is_countable($blog->blog_faq) && count($blog->blog_faq) > 0)
     @php
         $faqSchemaEntities = [];

@@ -24,7 +24,12 @@
     <meta name="twitter:description" content="{{ $metaDescription ?? '' }}">
     <meta name="twitter:image" content="{{ $og_image ?? '' }}">
 
-
+    @if(isset($blog_schema) && $blog_schema != '')
+    <script type="application/ld+json">
+        {!! $blog_schema !!}
+    </script>
+    @endif
+    
     <link rel="icon" href="{{ asset('public/front/assets/images/favicon.png') }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
