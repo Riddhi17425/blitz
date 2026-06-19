@@ -123,6 +123,7 @@ class BlogsController extends Controller
                 'detail_image_alt'   => $request->detail_image_alt,
                 'cta_image_alt'      => $request->cta_image_alt,
                 'schema_json'        => $request->schema_json,
+                //'blog_faq'           => json_encode($title_description),
                 'blog_faq'           => $title_description,
             ]); 
             return redirect()->route('blogs')->with('success', 'Blogs created successfully!');
@@ -155,7 +156,6 @@ class BlogsController extends Controller
     }
     public function EditBlogs($id){
         $blogs = Blog::find($id);
-        $blogs->blog_faq = json_decode($blogs->blog_faq);
         $categories = Category::orderBy('title')->get();
 
         return view('admin.blogs.edit',compact('blogs', 'categories'));
@@ -291,6 +291,7 @@ class BlogsController extends Controller
                 'cta_image_alt'      => $request->cta_image_alt,
                 'schema_json'        => $request->schema_json,
                 'blog_faq'           => $title_description,
+                //'blog_faq'           => json_encode($title_description),
             ]);
             return redirect()->route('blogs')->with('success', 'Blogs updated successfully!');
         } catch (\Exception $e) {
