@@ -276,8 +276,6 @@
         padding: 8px 0 8px 16px;
     }
 
-
-
     .read-more {
         font-size: 14px;
     }
@@ -1459,5 +1457,12 @@
      .product_cta {
         height: 700px;
     }
+
+        .content-section .table-dark th,
+    .content-section .table-dark td
+    {
+        padding:10px 10px;
+    }
+
 
 }
