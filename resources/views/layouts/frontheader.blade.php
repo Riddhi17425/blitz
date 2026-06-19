@@ -178,7 +178,7 @@
                         </ul>
                     </li>
                     {{-- <li class="nav-item"><a class="nav-link" href="#">Catalogue</a></li> --}}
-                    {{-- <li class="nav-item"><a class="nav-link" href="{{ route("front.blogs") }}">Blog</a></li> --}}
+                    <li class="nav-item"><a class="nav-link" href="{{ route("front.blogs") }}">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route("front.contact") }}">Contact</a></li>
                 </ul>
                 <div class="d-flex gap-3 justify-content-center mt-4 mt-lg-0">

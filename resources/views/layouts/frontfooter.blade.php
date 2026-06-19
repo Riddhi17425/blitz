@@ -106,8 +106,8 @@
                        <li><a href="{{ route('front.home') }}">Home</a></li>
                        <li><a href="{{ route('front.about') }}">About</a></li>
                        {{-- <li><a href="#">FAQs</a></li>
-                       <li><a href="#">Catalogues</a></li>
-                       <li><a href="{{ route('front.blogs') }}">Blog</a></li> --}}
+                       <li><a href="#">Catalogues</a></li> --}}
+                       <li><a href="{{ route('front.blogs') }}">Blog</a></li>
                        <li><a href="{{ route('front.contact') }}">Contact Us</a></li>
                    </ul>
                </div>

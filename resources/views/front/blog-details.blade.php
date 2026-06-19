@@ -235,19 +235,19 @@
                 @if (isset($blog->blog_faq) && is_countable($blog->blog_faq) && count($blog->blog_faq) > 0)
                 <div class="content-section" id="faq">
                     <div class="pb_40">
-                        <h2 class="line_left" >FAQS</h2>
+                        <h2 class="line_left" >FAQs</h2>
                         {{-- <h2>{{ $industryT ?? 'Protecting Tomorrow\'s Powerful Infrastructure' }}</h2>
                         <p class="mb-0">{{ $industryD ?? 'Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised.' }}</p> --}}
                     </div>
                     <div class="accordion" id="blitzFaq">
                         @foreach ($blog->blog_faq as $index => $faq)
                         <div class="accordion-item">
-                            <h4 class="accordion-header">
+                            <h3 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse_{{ $index }}">
                                     {{ $faq['faq_title'] ?? '' }}
                                 </button>
-                            </h4>
+                            </h3>
                             <div id="collapse_{{ $index }}" class="accordion-collapse collapse" data-bs-parent="#blitzFaq">
                                 <div class="accordion-body">
                                     {!! $faq['faq_description'] ?? '' !!}
