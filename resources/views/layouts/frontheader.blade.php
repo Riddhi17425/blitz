@@ -11,12 +11,15 @@
     <link rel="canonical" href="{{ url()->current() }}" />
 
     <!--OG Tags-->
+    @php
+        $ogType = request()->is('blog/*') || request()->is('blogs') ? 'article' : 'website';
+    @endphp
     <meta property="og:site_name" content="Blitz">
     <meta property="og:title" content="{{ $metaTitle ?? 'Blitz - Control the Current' }}" />
     <meta property="og:description" content="{{ $metaDescription ?? '' }}" />
     <meta property="og:image" content="{{ $og_image ?? '' }}">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{{ $ogType }}">
     
     <!--Twitter X Card Tags-->
     <meta name="twitter:card" content="Blitz">
@@ -183,8 +186,11 @@
                 </ul>
                 <div class="d-flex gap-3 justify-content-center mt-4 mt-lg-0">
                     <a href="{{ asset('public/brochure.pdf') }}" target="_blank" class="com_btn com_btn_b_b">Download Catalogue</a>
-
-                    <a href="#getInTouchForm" class="com_btn ">Request Quote</a>
+                    @if(isset($ogType) && strtolower($ogType) == 'article')
+                        <a href="{{ route('front.contact') }}#getInTouchForm" class="com_btn ">Request Quote</a>
+                    @else
+                        <a href="#getInTouchForm" class="com_btn ">Request Quote</a>
+                    @endif
                 </div>
             </div>
         </div>
