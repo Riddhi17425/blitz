@@ -238,7 +238,7 @@
                 @if (isset($blog->blog_faq) && is_countable($blog->blog_faq) && count($blog->blog_faq) > 0)
                 <div class="content-section" id="faq">
                     <div class="pb_40">
-                        <p class="title_20 line_left" >faqs</p>
+                        <h2 class="line_left" >faqs</h2>
                         {{-- <h2>{{ $industryT ?? 'Protecting Tomorrow\'s Powerful Infrastructure' }}</h2>
                         <p class="mb-0">{{ $industryD ?? 'Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised.' }}</p> --}}
                     </div>

@@ -1880,7 +1880,7 @@ tbody tr:nth-child(even) {
 
 .content-section table
 {
-  margin-bottom: 12px;
+  margin-bottom: 26px;
 }
 
 .content-section a
@@ -1913,6 +1913,20 @@ tbody tr:nth-child(even) {
 .content strong {
     color: var(--blue-head);
 }
+
+.content-section .table-dark th
+{
+    width: auto;
+}
+
+.content-section .table-dark td
+{
+   width: auto;
+   color: var(--blue) !important;
+   font-weight: 500 !important;
+}
+
+
 
 /* --------------- about =================== */
 
