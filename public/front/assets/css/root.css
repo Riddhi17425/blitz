@@ -27,7 +27,7 @@ body {
     background-color: #FBFCFD;
     color: var(--grey-666);
     font-size: 18px;
-    line-height: 22px;
+    /* line-height: 22px; */
     overflow-x: hidden;
     
 }
