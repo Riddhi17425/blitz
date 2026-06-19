@@ -1825,11 +1825,12 @@ tbody tr:nth-child(even) {
 .sidebar {
     display: flex;
     width: 360px;
-           height: 70vh;
+    height: 70vh;
     padding: 24px;
+    padding-top: 0;
     flex-direction: column;
     align-items: flex-start;
-    gap: 32px;
+    /* gap: 32px; */
     flex-shrink: 0;
     background: var(--bg-com);
 
@@ -1838,6 +1839,15 @@ tbody tr:nth-child(even) {
 
     overflow-y: scroll; 
     scrollbar-width: thin;
+}
+
+.sidebar p {
+    padding: 20px 0;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+     background: var(--bg-com);
 }
 
 
