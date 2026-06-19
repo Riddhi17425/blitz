@@ -65,12 +65,9 @@
         <div class="guide-section-child">
             <!-- Sidebar -->
             <aside class="sidebar">
-                <h4 class="title_24">CONTENTS</h4>
-                <ul>
-                    <li><a href="#details" class="nav-link active">Details</a></li>
-                    <li><a href="#cta" class="nav-link">CTA</a></li>
-                    <li><a href="#conclusion" class="nav-link">Conclusion</a></li>
-                    <li><a href="#faq" class="nav-link">FAQs</a></li>
+                <p class="title_24">CONTENTS</p>
+                <ul id="dynamic-sidebar">
+                    <!-- Links will be generated here dynamically via JS -->
                 </ul>
 
             </aside>
@@ -238,7 +235,7 @@
                 @if (isset($blog->blog_faq) && is_countable($blog->blog_faq) && count($blog->blog_faq) > 0)
                 <div class="content-section" id="faq">
                     <div class="pb_40">
-                        <h2 class="line_left" >faqs</h2>
+                        <h2 class="line_left" >FAQS</h2>
                         {{-- <h2>{{ $industryT ?? 'Protecting Tomorrow\'s Powerful Infrastructure' }}</h2>
                         <p class="mb-0">{{ $industryD ?? 'Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised.' }}</p> --}}
                     </div>
@@ -334,13 +331,44 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const links = document.querySelectorAll(".sidebar ul li a.nav-link");
-        const sections = document.querySelectorAll(".content-section");
+        const sidebarList = document.getElementById("dynamic-sidebar");
+        const h2Elements = document.querySelectorAll(".content h2");
+        const sections = [];
+
+        // Generate sidebar links dynamically based on h2 tags
+        if (h2Elements.length > 0) {
+            h2Elements.forEach((h2, index) => {
+                let targetId = h2.id;
+                if (!targetId) {
+                    targetId = "heading-" + index;
+                    h2.id = targetId;
+                }
+
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.href = "#" + targetId;
+                a.className = "nav-link";
+                if (index === 0) {
+                    a.classList.add("active");
+                }
+                a.textContent = h2.textContent.trim();
+
+                li.appendChild(a);
+                sidebarList.appendChild(li);
+                
+                sections.push(h2);
+            });
+        }
+
+        const links = document.querySelectorAll("#dynamic-sidebar li a.nav-link");
+        let isClickScrolling = false;
 
         // Click Event: Change active class and smooth scroll
         links.forEach(link => {
             link.addEventListener("click", function (e) {
                 e.preventDefault();
+                
+                isClickScrolling = true;
                 
                 links.forEach(l => l.classList.remove("active"));
                 this.classList.add("active");
@@ -349,19 +377,47 @@
                 const targetSection = document.querySelector(targetId);
                 
                 if (targetSection) {
-                    targetSection.scrollIntoView({
+                    const headerOffset = 100; // Adjust this if you have a sticky header
+                    const elementPosition = targetSection.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
                         behavior: "smooth"
                     });
                 }
+                
+                // Auto-scroll sidebar when link is clicked
+                const sidebarContainer = document.querySelector(".sidebar");
+                if (sidebarContainer) {
+                    const containerRect = sidebarContainer.getBoundingClientRect();
+                    const linkRect = this.getBoundingClientRect();
+                    const relativeTop = linkRect.top - containerRect.top + sidebarContainer.scrollTop;
+                    
+                    // Smoothly center the clicked link in the sidebar
+                    const centerOffset = relativeTop - (sidebarContainer.clientHeight / 2) + (linkRect.height / 2);
+                    
+                    sidebarContainer.scrollTo({
+                        top: centerOffset > 0 ? centerOffset : 0,
+                        behavior: 'smooth'
+                    });
+                }
+                
+                // Release the scroll lock after page scroll is likely finished
+                setTimeout(() => {
+                    isClickScrolling = false;
+                }, 800);
             });
         });
 
         // Scroll Event: Automatically update active class based on scroll position
         window.addEventListener("scroll", function () {
             let current = "";
+            let currentLink = null;
+            
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
+                const rect = section.getBoundingClientRect();
+                const sectionTop = rect.top + window.scrollY;
                 // Adjusting the offset so the active class changes properly before it hits the exact top
                 if (window.scrollY >= sectionTop - 180) {
                     current = section.getAttribute("id");
@@ -373,8 +429,31 @@
                     link.classList.remove("active");
                     if (link.getAttribute("href") === "#" + current) {
                         link.classList.add("active");
+                        currentLink = link;
                     }
                 });
+                
+                // Scroll the sidebar to keep the active link visible if the list is long
+                if (!isClickScrolling) {
+                    const sidebarContainer = document.querySelector(".sidebar");
+                    if(sidebarContainer && currentLink) {
+                        const containerRect = sidebarContainer.getBoundingClientRect();
+                        const linkRect = currentLink.getBoundingClientRect();
+                        
+                        if(linkRect.top < containerRect.top || linkRect.bottom > containerRect.bottom) {
+                            const relativeTop = linkRect.top - containerRect.top + sidebarContainer.scrollTop;
+                            const centerOffset = relativeTop - (sidebarContainer.clientHeight / 2) + (linkRect.height / 2);
+                            
+                            sidebarContainer.scrollTo({
+                                top: centerOffset > 0 ? centerOffset : 0, 
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                }
+            } else if (window.scrollY < 200 && links.length > 0) {
+                links.forEach(l => l.classList.remove("active"));
+                links[0].classList.add("active");
             }
         });
     });

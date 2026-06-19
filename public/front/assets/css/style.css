@@ -1825,6 +1825,7 @@ tbody tr:nth-child(even) {
 .sidebar {
     display: flex;
     width: 360px;
+           height: 70vh;
     padding: 24px;
     flex-direction: column;
     align-items: flex-start;
@@ -1835,8 +1836,10 @@ tbody tr:nth-child(even) {
     position: sticky;
     top: 120px;
 
-    height: fit-content;
+    overflow-y: scroll; 
+    scrollbar-width: thin;
 }
+
 
 .sidebar ul {
     list-style: none;
@@ -1862,11 +1865,11 @@ tbody tr:nth-child(even) {
 .sidebar ul li a.active {
     border-left: 2px solid var(--blue);
     color: var(--blue);
-    font-family: Roboto;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 26px;
+    /* font-family: Roboto; */
+    /* font-size: 24px; */
+    /* font-style: normal; */
+    font-weight: 900;
+    /* line-height: 26px; */
 }
 
 .content {
@@ -1886,7 +1889,8 @@ tbody tr:nth-child(even) {
 .content-section a
 {
     text-decoration: underline;
-    color: var(--blue-head);
+    color: var(--red);
+    font-weight: 400;
 }
 
 .content h2 {
@@ -1924,6 +1928,11 @@ tbody tr:nth-child(even) {
    width: auto;
    color: var(--blue) !important;
    font-weight: 500 !important;
+}
+
+.content-section ul li
+{
+    margin-bottom: 5px;
 }
 
 
