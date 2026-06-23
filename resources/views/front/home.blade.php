@@ -784,7 +784,7 @@
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="counter2_left position-relative">
                     <video id="manu_video" class="img_rou img-fluid w-100" poster="{{ asset('public/front/assets/images/Manufacturing Excellence.webp') }}" style="border-radius: 24px; object-fit: cover;">
-                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        <source src="" type="video/mp4">
                         Your browser does not support HTML video.
                     </video>
                     <div id="play_overlay" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); cursor: pointer; z-index: 10;">
