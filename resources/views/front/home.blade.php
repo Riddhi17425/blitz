@@ -60,7 +60,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-10">
-                <p class="title_20 line_center" >ABOUT BLITZ ELECTRICAL</p>
+                <p class="title_20 line_center" >ABOUT BLITZ Energy India</p>
                 <h1 class="title_44 mb_40">Trusted Provider of Electrical Protection & Safety Devices</h1>
                 <p class="home_about_para">Blitz is a globally trusted brand dedicated to advancing surge protection technologies for modern electrical and industrial systems. Specialising in the design and manufacturing of high-performance AC and DC Surge Protection Devices (SPDs), Miniature Circuit Breakers (MCBs), fuse terminals, and fuse links, every product is engineered to operate flawlessly in the world's most demanding environments.</p>
                 <p class="home_about_para">Built in compliance with global standards such as IEC, our solutions ensure operational continuity, equipment longevity, and the highest level of safety, reflecting excellence in reliability, durability, and innovation.</p>
@@ -470,7 +470,7 @@
     <div class="container">
         <div class="text-center">
             <p class="title_20 line_center" >Why Choose Us</p>
-            <h2 class="title_44">Why Blitz Electrical?</h2>
+            <h2 class="title_44">Why Blitz Energy India?</h2>
             <p class="mb-0">From Ahmedabad to the UAE, from Kenya to Bangladesh, Blitz surge protection devices are earning trust one installation at a time.</p>
         </div>
 
@@ -548,7 +548,7 @@
 
                     <p class="title_18">IEC Compliant</p>
                     <h3 class="title_24">Globally Certified</h3>
-                    <p class="mb-0">Blitz electrical protection products meet international standards for reliable deployment across global industrial markets</p>
+                    <p class="mb-0">Blitz Energy India protection products meet international standards for reliable deployment across global industrial markets</p>
                 </div>
             </div>
 
@@ -954,7 +954,7 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       "description": "Blitz Energy India is a manufacturer and supplier of electrical protection and safety devices including Surge Protection Devices, MCBs, Fuses, and solar electrical accessories for residential, commercial, industrial, and solar applications.",
       "telephone": "+91 97252 01620",
-      "email": "info@blitzelectrical.in",
+      "email": "sales@blitzenergyindia.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "B-403/404 Signature-2, Sarkhej Sanand Road, Sarkhej",
@@ -1000,7 +1000,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "@id": "https://blitzenergyindia.com/#organization"
       },
       "telephone": "+91 97252 01620",
-      "email": "info@blitzelectrical.in",
+      "email": "sales@blitzenergyindia.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "B-403/404 Signature-2, Sarkhej Sanand Road, Sarkhej",
@@ -1056,7 +1056,7 @@ document.addEventListener('DOMContentLoaded', function () {
       "@id": "https://blitzenergyindia.com/#webpage",
       "url": "https://blitzenergyindia.com/",
       "name": "Electrical Protection & Safety Devices | Blitz Energy India",
-      "description": "Protect your electrical systems with Blitz Electrical's surge protection devices, MCBs, and safety solutions for residential, commercial, and industrial applications.",
+      "description": "Protect your electrical systems with Blitz Energy India's surge protection devices, MCBs, and safety solutions for residential, commercial, and industrial applications.",
       "isPartOf": {
         "@id": "https://blitzenergyindia.com/#website"
       },
