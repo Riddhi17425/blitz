@@ -19,6 +19,7 @@
 .navbar-nav .nav-item {
     position: relative;
     list-style: none;
+    width:100%;
 }
 
 .navbar-nav .nav-item .nav-link {
