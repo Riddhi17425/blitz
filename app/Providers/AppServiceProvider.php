@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('industryD', "Industries choose Blitz when system protection, uptime, and electrical safety cannot be compromised.");
         });
 
-        View::composer('layouts.form', function ($view) {
+        View::composer(['layouts.form', 'layouts.offcanvas-form'], function ($view) {
             $countries = collect();
             $products = collect();
 

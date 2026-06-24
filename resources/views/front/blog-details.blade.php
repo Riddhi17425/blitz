@@ -232,6 +232,33 @@
                     {!! $blog->conclusion !!}
                 </div>
 
+                <!-- Author Profile -->
+                <div class="author-box d-flex align-items-center p-4 rounded bg-white" id="author-profile">
+                    <!-- Avatar -->
+                    <div class="author-avatar position-relative flex-shrink-0">
+                       
+                        
+                        <!-- The image itself -->
+                        <img class="author-avatar-img" src="{{ asset('public/front/assets/images/kuldip.jpg') }}" onerror="this.src='https://ui-avatars.com/api/?name=Kuldip+Sorathiya&size=100&background=f1f5f9&color=020844'" alt="Kuldip Sorathiya">
+                    </div>
+                    
+                    <!-- Info -->
+                    <div class="author-info">
+                        <h4 class="author-name mb-2 d-flex align-items-center m-0">
+                           Kuldip Sorathiya
+                            <a href="https://www.linkedin.com/in/kvsorathiya/" target="_blank" class="author-social-link ms-2" title="LinkedIn Profile">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                            <a href="https://www.kuldipsorathiya.com/" target="_blank" class="author-social-link ms-2" title="Website">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+                            </a>
+                        </h4>
+                        <p class="author-bio m-0 mt-2">
+                           Kuldip Sorathiya is the Founder of Blitz Energy India, a brand specializing in AC and DC Surge Protection Devices, MCBs, and fuse solutions for solar, industrial, and electrical infrastructure. With a vision to make electrical protection stronger and more reliable, Kuldip leads Blitz's mission of safer, smarter power systems across global markets.
+                        </p>
+                    </div>
+                </div>
+
                 @if (isset($blog->blog_faq) && is_countable($blog->blog_faq) && count($blog->blog_faq) > 0)
                 <div class="content-section" id="faq">
                     <div class="pb_40">
