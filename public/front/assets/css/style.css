@@ -1863,23 +1863,49 @@ tbody tr:nth-child(even) {
 
 .sidebar ul li a {
     display: block;
-    padding: 12px 0 12px 16px;
-    border-left: 2px solid transparent;
+    padding: 10px 16px;
+    border-radius: 8px;
+    color: var(--grey-666);
     transition: all 0.3s ease-in-out;
+    text-decoration: none;
 }
 
-.sidebar ul li a:hover {
+.sidebar ul li .heading-wrapper {
+    transition: all 0.3s ease-in-out;
+    border-radius: 8px;
+    padding-right: 12px;
+}
+
+.sidebar ul li .heading-wrapper a {
+    flex: 1;
+    padding: 10px 16px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li .heading-wrapper:hover {
     color: var(--blue);
+    background-color: rgba(2, 8, 68, 0.04);
+}
+
+.sidebar ul li .heading-wrapper:hover a {
+    background-color: transparent;
 }
 
 .sidebar ul li a.active {
-    border-left: 2px solid var(--blue);
+    background-color: var(--bg-com);
     color: var(--blue);
-    /* font-family: Roboto; */
-    /* font-size: 24px; */
-    /* font-style: normal; */
-    font-weight: 900;
-    /* line-height: 26px; */
+    font-weight: 700;
+    box-shadow: inset 4px 0 0 var(--blue);
+}
+
+.sidebar ul li .heading-wrapper:has(> a.active) {
+    background-color: var(--bg-com);
+    box-shadow: inset 4px 0 0 var(--blue);
+}
+
+.sidebar ul li .heading-wrapper:has(> a.active) a.active {
+    background-color: transparent;
+    box-shadow: none;
 }
 
 .content {
