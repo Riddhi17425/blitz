@@ -30,7 +30,7 @@
                                <path fill-rule="evenodd" clip-rule="evenodd"
                                    d="M5.13017 7.50712C5.40247 7.02665 6.01273 6.85785 6.49322 7.13019L11.172 9.78172C11.7137 10.073 12.2867 10.073 12.8283 9.78172L17.5071 7.13019C17.9876 6.85785 18.5979 7.02665 18.8702 7.50712C19.1425 7.98759 18.9737 8.59785 18.4932 8.87019L13.8057 11.5267L13.7897 11.5355C12.6485 12.1551 11.3519 12.1551 10.2106 11.5355L10.1946 11.5267L5.50713 8.87019C5.02664 8.59785 4.85787 7.98759 5.13017 7.50712Z"
                                    fill="#E5EEFF" />
-                           </svg><a href="mailto:{{ $settings->email ?? 'info@blitzelectrical.in' }}">{{ $settings->email ?? 'info@blitzelectrical.in' }}</a>
+                           </svg><a href="mailto:{{ $settings->email ?? 'sales@blitzenergyindia.com' }}">{{ $settings->email ?? 'sales@blitzenergyindia.com' }}</a>
                            </span>
                    </div>
                    <div class="socials">

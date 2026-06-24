@@ -46,7 +46,7 @@
                          @if(isset($settings->email) && $settings->email != '')
                              <span class="contact-detail"><a href="mailto:{{ $settings->email }}">{{ $settings->email }}</a></span>
                          @else
-                             <span class="contact-detail"><a href="mailto:sales@blitzelectrical.com">sales@blitzelectrical.com</a></span>
+                             <span class="contact-detail"><a href="mailto:sales@blitzenergyindia.com">sales@blitzenergyindia.com</a></span>
                          @endif
                      </div>
                  </div>

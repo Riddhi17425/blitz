@@ -50,7 +50,7 @@
     "name": "Blitz Energy India",
     "url": "https://blitzenergyindia.com/",
     "telephone": "+91 97252 01620",
-    "email": "info@blitzelectrical.in",
+    "email": "sales@blitzenergyindia.com",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "B-403/404 Signature-2, Sarkhej Sanand Road, Sarkhej",
@@ -63,7 +63,7 @@
       "@type": "ContactPoint",
       "telephone": "+91 97252 01620",
       "contactType": "customer support",
-      "email": "info@blitzelectrical.in",
+      "email": "sales@blitzenergyindia.com",
       "availableLanguage": [
         "English",
         "Hindi",
