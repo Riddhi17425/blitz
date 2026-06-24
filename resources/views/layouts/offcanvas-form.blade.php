@@ -9,6 +9,7 @@
             <div class="quote-form-wrapper">
                 <form class="quote-form" id="contact-form-offcanvas" action="{{ route('contact.submit') }}" method="POST">
                     @csrf
+                    <input type="hidden" name="form_source" value="offcanvas">
                     
                     <div class="form-row">
                         <div class="form-group">
@@ -101,9 +102,9 @@
     #inquiryOffcanvas .offcanvas-body {
         /* overflow: hidden !important; */
         padding: 15px 20px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* justify-content: center; */
     }
   
     #inquiryOffcanvas .quote-form {
@@ -144,4 +145,14 @@
    }
 </style>
 
-
+@if(old('form_source') === 'offcanvas' && $errors->any())
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var myOffcanvas = document.getElementById('inquiryOffcanvas');
+            if (myOffcanvas) {
+                var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas);
+                bsOffcanvas.show();
+            }
+        });
+    </script>
+@endif
