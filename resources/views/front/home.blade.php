@@ -714,7 +714,7 @@
                 Testimonial</p>
             <h2 class="title_44">What Our Clients Say</h2>
 
-            <div class="custom-arrows pt_40">
+            <div class="custom-arrows pt_40 d-none d-lg-flex">
                 <div class="custom-prev2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none">
                         <path d="M8.25 16.25L1.25 8.75L8.25 1.25" stroke="#EE1A25" stroke-width="2.5"
@@ -773,6 +773,22 @@
                 </div>
             @endif
         </div>
+
+            {{-- Mobile-only arrows below cards --}}
+            <div class="custom-arrows d-flex d-lg-none justify-content-center mt-3">
+                <div class="custom-prev2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="10" height="18" viewBox="0 0 10 18" fill="none">
+                        <path d="M8.25 16.25L1.25 8.75L8.25 1.25" stroke="#EE1A25" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="custom-next2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+                        <path d="M10.7988 22.4004L17.7988 14.9004L10.7988 7.40039" stroke="#EE1A25" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
         </div>
 
     </div>

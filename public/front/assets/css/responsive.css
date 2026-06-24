@@ -1050,11 +1050,18 @@
 @media (max-width: 768px) {
 
     .testi-card {
-        margin-left: 10px;
+        margin: 0px 8px;
+        box-shadow: unset;
+    }
+
+    .card-top {
+        align-items: start;
+        gap: 18px;
+        flex-direction: column;
     }
 
     .testimonial-section {
-        padding: 2em 2em;
+        /* padding: 2em 2em; */
     }
 
 
@@ -1216,6 +1223,8 @@
         display: none;
         /* Hide custom arrows on mobile if they overlap or break flow, or adjust */
     }
+
+    /* Testimonial arrows visibility handled via Bootstrap d-none/d-flex classes in HTML */
 
     /* 
     .testimonial-section .col-lg-4 {
