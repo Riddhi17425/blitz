@@ -1,0 +1,12 @@
+User-Agent: *
+Disallow: /login
+Disallow: /register
+Disallow: /thank-you
+Disallow: /admin/
+Disallow: /public/
+Disallow: /storage/
+
+Allow: /
+Allow: /public/front/assets/images/favicon.png
+
+Sitemap: https://blitzenergyindia.com/sitemap.xml

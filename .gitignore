@@ -23,3 +23,7 @@ Homestead.json
 Homestead.yaml
 Thumbs.db
 /public/images/*
+<<<<<<< HEAD
+=======
+/public/public
+>>>>>>> 9ce199b (local setup and other option added in contact form for products)

@@ -1,0 +1,8 @@
+[16-Jun-2026 12:37:25 UTC] PHP Warning:  require(/home/nb73eryb5vgv/public_html/blitzenergyindia.com/vendor/composer/../../app/Helpers/helper.php): Failed to open stream: No such file or directory in /home/nb73eryb5vgv/public_html/blitzenergyindia.com/vendor/composer/autoload_real.php on line 41
+[16-Jun-2026 12:37:25 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/nb73eryb5vgv/public_html/blitzenergyindia.com/vendor/composer/../../app/Helpers/helper.php' (include_path='.:/opt/alt/php83/usr/share/pear:/opt/alt/php83/usr/share/php:/usr/share/pear:/usr/share/php') in /home/nb73eryb5vgv/public_html/blitzenergyindia.com/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/nb73eryb5vgv/public_html/blitzenergyindia.com/vendor/composer/autoload_real.php(45): {closure}()
+#1 /home/nb73eryb5vgv/public_html/blitzenergyindia.com/vendor/autoload.php(22): ComposerAutoloaderInit555bc9893e76f0e598d61fc474b90b75::getLoader()
+#2 /home/nb73eryb5vgv/public_html/blitzenergyindia.com/index.php(14): require('/home/nb73eryb5...')
+#3 {main}
+  thrown in /home/nb73eryb5vgv/public_html/blitzenergyindia.com/vendor/composer/autoload_real.php on line 41
