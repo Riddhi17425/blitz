@@ -2,13 +2,9 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
-
 use App\Models\Banner;
-
 use App\Models\Blog;
-
 use App\Models\Category;
-
 use App\Models\ContactInquiry;
 use App\Models\Country;
 use App\Models\Industry;
@@ -16,7 +12,11 @@ use App\Models\NewsletterInquiry;
 use App\Models\Product;
 use App\Models\Setting;
 use App\Models\SubCategory;
-use App\Models\Testimonial;use Illuminate\Http\Request;use Illuminate\Support\Facades\Http;use Illuminate\Support\Facades\Validator;
+use App\Models\Testimonial;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -70,6 +70,7 @@ class HomeController extends Controller
         $blog            = Blog::where('url', $url)->firstOrFail();
         $metaTitle       = $blog->meta_title;
         $metaDescription = $blog->meta_description;
+        // $blog->blog_faq = $blog->blog_faq ? json_decode($blog->blog_faq) : "";
 
         return view('front.blog-details', compact('blog', 'metaTitle', 'metaDescription'));
     }
@@ -161,13 +162,15 @@ class HomeController extends Controller
         $validator = Validator::make($request->all(), [
             'name'                => 'required|string|max:255',
             'email'               => 'required|email|max:255',
-            'phone'               => 'required|string|max:50',
+            'phone'               => 'required|string|max:20',
             'company'             => 'nullable|string|max:255',
             'country'             => 'required|string|max:255',
+            'city'                => 'required|string|max:255',
             'product'             => 'nullable|string|max:255',
             'requirement_details' => 'nullable|string',
             'inquiry_type'        => 'nullable|string|in:page,popup',
         ]);
+
         if ($validator->fails()) {
             if ($request->ajax()) {
                 return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
@@ -175,33 +178,42 @@ class HomeController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        $submittedProduct = $request->input('product');
+        $productForDb     = ($submittedProduct === 'Other') ? null : $submittedProduct;
+        $productForSheet  = $submittedProduct;
+
         $inquiry = ContactInquiry::create([
             'name'                => $request->input('name'),
             'company'             => $request->input('company'),
             'email'               => $request->input('email'),
             'phone'               => $request->input('phone'),
             'country'             => $request->input('country'),
-            'product'             => $request->input('product'),
+            'city'                => $request->input('city'),
+            'product'             => $productForDb,
             'requirement_details' => $request->input('requirement_details'),
             'inquiry_type'        => $request->input('inquiry_type', 'page'),
         ]);
-        // STORE IN GOOGLE SHEETS
-        $timestamp  = Carbon::now()->format('Y-m-d H:i:s');
+
+        $timestamp = Carbon::now()->format('Y-m-d H:i:s');
+
         $sheetsData = [
             'inquiry_type'        => $request->input('inquiry_type', 'page'),
             'date'                => $timestamp,
             'name'                => $inquiry->name ?? '',
             'company'             => $inquiry->company ?? '',
             'email'               => $inquiry->email ?? '',
-            'phone'               => $inquiry->phone ?? '',
+            'phone'               => "'" . $inquiry->phone, // apostrophe still forces plain-text in Sheets
             'country'             => $inquiry->country ?? '',
-            'product'             => $inquiry->product ?? '',
+            'city'                => $inquiry->city ?? '',
+            'product'             => $productForSheet ?? '',
             'requirement_details' => $inquiry->requirement_details ?? '',
         ];
+
         $response = Http::withHeaders(['Content-Type' => 'application/json'])
             ->post('https://script.google.com/macros/s/AKfycbz2pP-5ZXlhDkyF0Eg3DOIbArsWXt15tDeX41JYelNbSGGeVyOVeyYDr1hZhvBMawpZ/exec',
                 $sheetsData
             );
+
         if ($response->failed()) {
             \Log::error('Google Sheet request failed: ' . $response->body());
         }
