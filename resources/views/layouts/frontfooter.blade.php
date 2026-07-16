@@ -110,7 +110,7 @@
                            <li><a href="{{ route('front.about') }}">About</a></li>
                            {{-- <li><a href="#">FAQs</a></li>
                        <li><a href="#">Catalogues</a></li> --}}
-                           <li><a href="{{ route('front.blogs') }}">Blog</a></li>
+                           <li><a href="{{ route('front.blogs') }}">Blogs</a></li>
                            <li><a href="{{ route('front.contact') }}">Contact Us</a></li>
                        </ul>
                    </div>
@@ -120,13 +120,14 @@
                        <ul>
                            @if (isset($categoriesHF) && count($categoriesHF) > 0)
                                @foreach ($categoriesHF as $category)
+                                    @continue($category->category_url == 'solar-accessories')
                                    <li>
-                                       @if ($category->category_url == 'solar-accessories')
+                                       <!-- @if ($category->category_url == 'solar-accessories')
                                            <a href="javascript:void(0);">{{ $category->title }}</a>
-                                       @else
+                                       @else -->
                                            <a
                                                href="{{ route('front.category.details', $category->category_url) }}">{{ $category->title }}</a>
-                                       @endif
+                                       <!-- @endif -->
                                    </li>
                                @endforeach
                            @else

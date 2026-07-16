@@ -123,12 +123,13 @@
                         <ul class="dropdown-menu">
                             @if(isset($categoriesHF) && $categoriesHF->count() > 0)
                                 @foreach($categoriesHF as $category)
+                                    @continue($category->category_url == 'solar-accessories')
                                     <li class="dropdown-submenu position-relative">
-                                        @if($category->category_url == 'solar-accessories')
+                                        <!-- @if($category->category_url == 'solar-accessories')
                                             <a class="dropdown-item d-flex justify-content-between align-items-center gap-3" href="javascript:void(0);">
-                                        @else
+                                        @else -->
                                             <a class="dropdown-item d-flex justify-content-between align-items-center gap-3" href="{{ $category->category_url ? route('front.category.details', $category->category_url) : '#' }}">
-                                        @endif
+                                        <!-- @endif -->
                                             {{ $category->title }}
                                             @if($category->subCategories->count() > 0 || $category->products->count() > 0)
                                                 <span class="submenu-toggle d-flex align-items-center justify-content-end" style="width: 30px; height: 30px;">
@@ -181,7 +182,7 @@
                         </ul>
                     </li>
                     {{-- <li class="nav-item"><a class="nav-link" href="#">Catalogue</a></li> --}}
-                    <li class="nav-item"><a class="nav-link" href="{{ route("front.blogs") }}">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route("front.blogs") }}">Blogs</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route("front.contact") }}">Contact</a></li>
                 </ul>
                 <div class="d-flex gap-3 justify-content-center mt-4 mt-lg-0">

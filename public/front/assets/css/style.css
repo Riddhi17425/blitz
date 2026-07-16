@@ -1223,7 +1223,7 @@ body:has(.navbar-nav .nav-item.dropdown .dropdown-menu.show)::after {
 }
 
 .form-group textarea {
-    height: 100px;
+    height: 55px;
     resize: vertical;
 }
 

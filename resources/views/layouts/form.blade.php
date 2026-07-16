@@ -230,7 +230,7 @@
                         <label>Requirement Details</label>
 
                         <textarea name="requirement_details"
-                            placeholder="Describe your project requirements, product types, quantities, and any specifications...">{{ old('requirement_details') }}</textarea>
+                            placeholder="Describe your project requirement....">{{ old('requirement_details') }}</textarea>
 
                         @error('requirement_details')
                             <span class="text-danger">{{ $message }}</span>
