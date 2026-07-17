@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $metaTitle ?? 'Blitz - Control the Current' }}</title>
-    <meta name="description" content="{{ $metaDescription ?? '' }}"> 
+    <meta name="description" content="{{ $metaDescription ?? '' }}">
     <meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
     <link rel="canonical" href="{{ url()->current() }}" />
 
@@ -20,7 +20,7 @@
     <meta property="og:image" content="{{ $og_image ?? '' }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="{{ $ogType }}">
-    
+
     <!--Twitter X Card Tags-->
     <meta name="twitter:card" content="Blitz">
     <meta name="twitter:title" content="{{ $metaTitle ?? 'Blitz - Control the Current' }}">
@@ -32,7 +32,7 @@
         {!! $blog_schema !!}
     </script>
     @endif
-    
+
     <link rel="icon" href="{{ asset('public/front/assets/images/favicon.png') }}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,22 +50,11 @@
     <link rel="stylesheet" href="{{ asset('public/front/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('public/front/assets/css/responsive.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
-    
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-WTFGJ88W');</script>
-    <!-- End Google Tag Manager -->
+
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTFGJ88W"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    
+
     <!-- Global Custom Cursor -->
     <!-- <div class="custom-cursor" id="customCursor">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
