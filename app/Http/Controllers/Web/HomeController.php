@@ -165,7 +165,7 @@ class HomeController extends Controller
             'phone'               => 'required|string|max:20',
             'company'             => 'nullable|string|max:255',
             'country'             => 'required|string|max:255',
-            'city'                => 'required|string|max:255',
+            'city'                => 'required_if:inquiry_type,page|nullable|string|max:255',
             'product'             => 'nullable|string|max:255',
             'requirement_details' => 'nullable|string',
             'inquiry_type'        => 'nullable|string|in:page,popup',

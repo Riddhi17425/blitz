@@ -29,8 +29,8 @@
                 '@type' => 'ListItem',
                 'position' => 1,
                 'name' => $product->category->title ?? '',
-                'item' => $product->category->category_url 
-                    ? route('front.category.details', $product->category->category_url) 
+                'item' => $product->category->category_url
+                    ? route('front.category.details', $product->category->category_url)
                     : '',
             ],
         ]
@@ -41,11 +41,11 @@
             '@type' => 'ListItem',
             'position' => $position,
             'name' => $product->subCategory->title ?? '',
-            'item' => $product->subCategory->sub_category_url 
+            'item' => $product->subCategory->sub_category_url
                 ? route('front.product.list', [
                     'cat_url' => $product->category->category_url,
                     'sub_cat_url' => $product->subCategory->sub_category_url
-                ]) 
+                ])
                 : '',
         ];
 
@@ -56,8 +56,8 @@
         '@type' => 'ListItem',
         'position' => $position,
         'name' => $product->product_name ?? '',
-        'item' => $product->product_url 
-            ? route('front.product.details', $product->product_url) 
+        'item' => $product->product_url
+            ? route('front.product.details', $product->product_url)
             : '',
     ];
 
@@ -251,7 +251,7 @@
             <form id="product-enquiry-form" action="{{ route('contact.submit') }}" method="POST" class="quote-form w-100">
                 @csrf
                 <input type="hidden" name="inquiry_type" value="popup">
-                
+
                 <div class="form-row">
                     <div class="form-group">
                         <label>Product</label>
@@ -339,6 +339,32 @@ document.addEventListener('DOMContentLoaded', function () {
     $(document).on('click', '[data-close-modal]', function () {
         $('.product-modal').removeClass('active');
     });
+
+    document.addEventListener('DOMContentLoaded', function () {
+    $('#product-enquiry-form').on('submit', function (e) {
+        e.preventDefault();
+        var $form = $(this);
+        var $msg = $('#popup-enquiry-message');
+
+        $.ajax({
+            url: $form.attr('action'),
+            method: 'POST',
+            data: $form.serialize(),
+            success: function (res) {
+                $msg.removeClass('text-danger').addClass('text-success')
+                    .text(res.message).show();
+                $form[0].reset();
+            },
+            error: function (xhr) {
+                var errors = xhr.responseJSON?.errors;
+                var firstError = errors ? Object.values(errors)[0][0] : 'Something went wrong.';
+                $msg.removeClass('text-success').addClass('text-danger')
+                    .text(firstError).show();
+            }
+        });
+    });
+});
+
 });
 </script>
 
