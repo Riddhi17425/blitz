@@ -22,8 +22,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $metaTitle        = "Electrical Protection & Safety Devices | Blitz Energy India";
-        $metaDescription  = "Protect your electrical systems with Blitz Electrical's surge protection devices, MCBs, and safety solutions for residential, commercial, and industrial applications.";
+        $metaTitle        = "Electrical Protection Devices & Surge Protection Solutions | Blitz";
+        $metaDescription  = "Blitz Energy offers IEC-compliant surge protection devices, MCBs, fuse terminals and fuse links for residential, industrial, commercial and solar applications.";
         $banners          = Banner::with('category')->whereNull('deleted_at')->where('status', 'Active')->get();
         $categories       = Category::whereNull('deleted_at')->where('is_active', 1)->get();
         $industries       = Industry::whereNull('deleted_at')->get();
