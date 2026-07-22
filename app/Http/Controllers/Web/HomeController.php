@@ -61,7 +61,7 @@ class HomeController extends Controller
         $metaTitle       = "Blitz Blogs | Surge Protection & Electrical Safety Guides";
         $metaDescription = "Explore expert blogs on surge protection devices, lightning protection, electrical safety, installation guides, and industry insights from Blitz Energy India.";
 
-        $blogs = Blog::wherenull('deleted_at')->where('status', 'Active')->get();
+        $blogs = Blog::wherenull('deleted_at')->where('status', 'Active')->orderBy('created_at', 'DESC')->get();
         return view('front.blogs', compact('metaTitle', 'metaDescription', 'blogs'));
     }
 
