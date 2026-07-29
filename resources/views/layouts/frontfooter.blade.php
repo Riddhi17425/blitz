@@ -867,6 +867,7 @@
        <button class="sticky-inquiry-btn" type="button" data-bs-toggle="offcanvas"
            data-bs-target="#inquiryOffcanvas" aria-controls="inquiryOffcanvas">Inquiry Now</button>
        @include('layouts.offcanvas-form')
+       @include('layouts.whatsappinquiry')
    </footer>
 
    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
