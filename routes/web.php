@@ -24,6 +24,7 @@ use App\Http\Controllers\Web\HomeController;
     Route::get('/contact-us' , [HomeController::class , 'contact'])->name('front.contact');
     Route::post('/newsletter/subscribe', [HomeController::class, 'subscribeNewsletter'])->name('newsletter.subscribe');
     Route::post('/contact/submit', [HomeController::class, 'submitContactInquiry'])->name('contact.submit');
+    Route::post('/whatsapp-inquiry/submit', [HomeController::class, 'submitWhatsappInquiry'])->name('whatsapp.submit');
     Route::get('/blogs' , [HomeController::class , 'blogs'])->name('front.blogs');
     Route::get('/blog/{url?}' , [HomeController::class , 'blogsDetails'])->name('front.blog.details');
     Route::get('/products/{cat_url}/{sub_cat_url}' , [HomeController::class , 'productList'])->name('front.product.list');

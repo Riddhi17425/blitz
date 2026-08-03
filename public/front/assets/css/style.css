@@ -2425,7 +2425,7 @@ body:has(#inquiryOffcanvas.show) .offcanvas-backdrop.show {
     background:var(--blue);
     color:#fff;
     border:none;
-    padding:16px;
+    padding:5px;
     cursor:pointer;
     letter-spacing:2px;
 }
@@ -2437,4 +2437,78 @@ body:has(#inquiryOffcanvas.show) .offcanvas-backdrop.show {
     color:#fff;
     font-size:30px;
     cursor:pointer;
+}
+/* whatsapp validation error k liye */
+.wa-error {
+    color: #d32f2f;
+    font-size: 13px;
+    margin-top: -10px;
+    margin-bottom: 15px;
+    display: none;
+}
+
+.wa-error.active {
+    display: block;
+}
+
+#waSubmittingText {
+    text-align: center;
+    color: var(--blue);
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 16px 0;
+}
+
+/* Phone input with country code styling */
+.wa-modal .iti {
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.wa-modal .iti input#waPhone {
+    width: 100%;
+    padding: 12px 12px 12px 95px !important;
+    margin-bottom: 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.wa-modal .iti__flag-container {
+    display: flex;
+    align-items: center;
+    background-color: transparent !important;
+    background: none !important;
+}
+
+.wa-modal .iti__selected-flag {
+    padding: 0 8px 0 12px;
+    display: flex;
+    align-items: center;
+    background-color: transparent !important;
+    background: none !important;
+}
+
+.wa-modal .iti__country-list {
+    color: #000 !important;
+    text-align: left;
+}
+
+.wa-modal .iti__country-list li,
+.wa-modal .iti__country-name,
+.wa-modal .iti__dial-code {
+    color: #000 !important;
+}
+
+.wa-modal .iti__search-input {
+    color: #000 !important;
+}
+.wa-modal .iti__selected-country {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+.wa-modal .iti__selected-country .iti__selected-dial-code {
+    color: #333 !important;
 }

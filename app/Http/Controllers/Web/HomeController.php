@@ -17,6 +17,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
+use App\Models\WhatsappInquiry;
 
 class HomeController extends Controller
 {
@@ -224,6 +225,42 @@ class HomeController extends Controller
 
         return redirect()->route('thankyou')->with('success', 'Your message has been sent successfully.');
     }
+
+     public function submitWhatsappInquiry(Request $request)
+        {
+            $validator = Validator::make($request->all(), [
+                'phone'   => 'required|string|min:8|max:20',   // 'number' → 'phone', digits_between → string (kyunki ab '+' bhi hoga)
+                'message' => 'nullable|string|max:500',
+            ]);
+
+            if ($validator->fails()) {
+                return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
+            }
+
+            $inquiry = WhatsappInquiry::create([
+                'number'  => $request->input('phone'),   // request se 'phone' liya, DB column 'number' mein save kiya
+                'message' => $request->input('message'),
+            ]);
+
+             $timestamp  = Carbon::now()->format('Y-m-d H:i:s');
+             $sheetsData = [
+                'date'    => $timestamp,
+                'number'  => "'" . $inquiry->number,
+                'message' => $inquiry->message ?? '',
+             ];
+
+                    $response = Http::withHeaders(['Content-Type' => 'application/json'])
+                ->post('https://script.google.com/macros/s/AKfycbxjXCrSOKov-kFCdwkdj5VXyYvB8bQVfjsg_NJder-kbvTRFCpk1ZoelToo6eMueyIZ/exec',
+                    $sheetsData
+                );
+
+             if ($response->failed()) {
+                 \Log::error('Google Sheet request failed: ' . $response->body());
+             }
+
+            return response()->json(['success' => true, 'message' => 'Your inquiry has been submitted.']);
+        }
+
 
     public function privacy()
     {

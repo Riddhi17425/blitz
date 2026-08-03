@@ -878,6 +878,7 @@
    <script src="{{ asset('public/front/assets/js/script.js') }}"></script>
    <script src="{{ asset('public/front/assets/js/newsletter.js') }}"></script>
    <script src="{{ asset('public/front/assets/js/contact.js') }}"></script>
+   <script src="{{ asset('public/front/assets/js/wa-inquiry.js') }}"></script>
    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/23.2.1/js/intlTelInput.min.js"></script>
    <script>
@@ -904,6 +905,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const countrySelect = document.getElementById('country');
     const phoneInputOffcanvas = document.getElementById('phone-offcanvas');
     const countrySelectOffcanvas = document.getElementById('country-offcanvas');
+    const phoneInputWA = document.getElementById('waPhone');
+
 
     const geoLookupPromise = fetch('https://ipwho.is/')
         .then(res => res.json())
@@ -918,7 +921,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Apply country-select matching ONCE, for both selects, directly off the shared promise
     geoLookupPromise.then(data => {
         if (!data || data.success === false) return;
         applyCountryToSelect(countrySelect, data.country);
@@ -966,6 +968,12 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     }
+
+    // WhatsApp inquiry form phone country code setup
+    if (phoneInputWA) {
+        window.itiWA = setupIti(phoneInputWA);
+    }
+
 });
 </script>
 

@@ -22,13 +22,18 @@
             <h3>Blitz</h3>
         </div>
 
-        <form>
-            <input type="tel" placeholder="Enter your phone number" required>
+        <form id="waForm" novalidate>
+            <input type="tel" id="waPhone" name="phone" placeholder="81234 56789"
+                oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,15);" autocomplete="off">
+            <input type="hidden" id="waFullPhone" name="full_phone">
+            <div class="wa-error" id="waPhoneError"></div>
 
-            <textarea rows="4"
+            <textarea id="waMessage" name="message" rows="4"
                 placeholder="How may we assist with you?"></textarea>
+            <div class="wa-error" id="waMessageError"></div>
 
-            <button type="submit">START CHAT</button>
+            <button type="submit" id="waSubmitBtn">START CHAT</button>
+            <div id="waSubmittingText" style="display:none;">Submitting your message...</div>
         </form>
 
     </div>
