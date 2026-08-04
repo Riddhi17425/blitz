@@ -930,6 +930,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function setupIti(input) {
         return window.intlTelInput(input, {
             initialCountry: "auto",
+            dropdownParent: document.body, 
             geoIpLookup: function (callback) {
                 geoLookupPromise.then(data => {
                     if (!data || data.success === false) {

@@ -19,20 +19,21 @@
         <span class="wa-close" onclick="toggleWAModal()">&times;</span>
 
         <div class="wa-header">
-            <h3>Blitz</h3>
+            <h5>Chat with us on WhatsApp</h5>
         </div>
 
         <form id="waForm" novalidate>
+
+             <textarea id="waMessage" name="message" rows="4"
+                placeholder="Message"></textarea>
+            <div class="wa-error" id="waMessageError"></div>
+
             <input type="tel" id="waPhone" name="phone" placeholder="81234 56789"
                 oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,15);" autocomplete="off">
             <input type="hidden" id="waFullPhone" name="full_phone">
             <div class="wa-error" id="waPhoneError"></div>
-
-            <textarea id="waMessage" name="message" rows="4"
-                placeholder="How may we assist with you?"></textarea>
-            <div class="wa-error" id="waMessageError"></div>
-
-            <button type="submit" id="waSubmitBtn">START CHAT</button>
+         
+            <button type="submit" id="waSubmitBtn">Start Chat With Us</button>
             <div id="waSubmittingText" style="display:none;">Submitting your message...</div>
         </form>
 
