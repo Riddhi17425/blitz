@@ -38,6 +38,13 @@ $(document).ready(function(){
                     return $.trim(value);
                 }
             },
+            city: {
+                required: true,
+                maxlength: 255,
+                normalizer: function(value) {
+                    return $.trim(value);
+                }
+            },
             product: {
                 maxlength: 255,
                 normalizer: function(value) {
@@ -70,6 +77,10 @@ $(document).ready(function(){
             country: {
                 required: 'Country is required.',
                 maxlength: 'Country must not exceed 255 characters.'
+            },
+            city: {
+                required: 'City is required.',
+                maxlength: 'City must not exceed 255 characters.'
             },
             product: {
                 maxlength: 'Product must not exceed 255 characters.'
@@ -212,6 +223,11 @@ $(document).ready(function(){
                 maxlength: 255,
                 normalizer: function(value) { return $.trim(value); }
             },
+            city: {
+                required: true,
+                maxlength: 255,
+                normalizer: function(value) { return $.trim(value); }
+            },
             product: {
                 maxlength: 255,
                 normalizer: function(value) { return $.trim(value); }
@@ -240,6 +256,10 @@ $(document).ready(function(){
             country: {
                 required: 'Country is required.',
                 maxlength: 'Country must not exceed 255 characters.'
+            },
+            city: {
+                required: 'City is required.',
+                maxlength: 'City must not exceed 255 characters.'
             },
             product: {
                 maxlength: 'Product must not exceed 255 characters.'
