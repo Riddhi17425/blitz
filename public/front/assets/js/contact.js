@@ -10,6 +10,13 @@ $(document).ready(function(){
                     return $.trim(value);
                 }
             },
+            city: {
+                required: true,
+                maxlength: 255,
+                normalizer: function(value) {
+                    return $.trim(value);
+                }
+            },
             email: {
                 required: true,
                 email: true,
@@ -38,13 +45,6 @@ $(document).ready(function(){
                     return $.trim(value);
                 }
             },
-            city: {
-                required: true,
-                maxlength: 255,
-                normalizer: function(value) {
-                    return $.trim(value);
-                }
-            },
             product: {
                 maxlength: 255,
                 normalizer: function(value) {
@@ -67,6 +67,10 @@ $(document).ready(function(){
                 email: 'Please enter a valid email address.',
                 maxlength: 'Email must not exceed 255 characters.'
             },
+            city: {
+                required: 'City is required.',
+                maxlength: 'City must not exceed 255 characters.'
+            },
             phone: {
                 required: 'Phone number is required.',
                 maxlength: 'Phone number must not exceed 50 characters.'
@@ -77,10 +81,6 @@ $(document).ready(function(){
             country: {
                 required: 'Country is required.',
                 maxlength: 'Country must not exceed 255 characters.'
-            },
-            city: {
-                required: 'City is required.',
-                maxlength: 'City must not exceed 255 characters.'
             },
             product: {
                 maxlength: 'Product must not exceed 255 characters.'
@@ -203,6 +203,13 @@ $(document).ready(function(){
                 maxlength: 255,
                 normalizer: function(value) { return $.trim(value); }
             },
+             city: {
+                required: true,
+                maxlength: 255,
+                normalizer: function(value) {
+                    return $.trim(value);
+                }
+            },
             email: {
                 required: true,
                 email: true,
@@ -223,11 +230,6 @@ $(document).ready(function(){
                 maxlength: 255,
                 normalizer: function(value) { return $.trim(value); }
             },
-            city: {
-                required: true,
-                maxlength: 255,
-                normalizer: function(value) { return $.trim(value); }
-            },
             product: {
                 maxlength: 255,
                 normalizer: function(value) { return $.trim(value); }
@@ -240,6 +242,10 @@ $(document).ready(function(){
             name: {
                 required: 'Full name is required.',
                 maxlength: 'Full name must not exceed 255 characters.'
+            },
+            city: {
+                required: 'City is required.',
+                maxlength: 'City must not exceed 255 characters.'
             },
             email: {
                 required: 'Email is required.',
@@ -256,10 +262,6 @@ $(document).ready(function(){
             country: {
                 required: 'Country is required.',
                 maxlength: 'Country must not exceed 255 characters.'
-            },
-            city: {
-                required: 'City is required.',
-                maxlength: 'City must not exceed 255 characters.'
             },
             product: {
                 maxlength: 'Product must not exceed 255 characters.'
