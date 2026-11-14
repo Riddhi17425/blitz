@@ -10,6 +10,13 @@ $(document).ready(function(){
                     return $.trim(value);
                 }
             },
+            city: {
+                required: true,
+                maxlength: 255,
+                normalizer: function(value) {
+                    return $.trim(value);
+                }
+            },
             email: {
                 required: true,
                 email: true,
@@ -59,6 +66,10 @@ $(document).ready(function(){
                 required: 'Email is required.',
                 email: 'Please enter a valid email address.',
                 maxlength: 'Email must not exceed 255 characters.'
+            },
+            city: {
+                required: 'City is required.',
+                maxlength: 'City must not exceed 255 characters.'
             },
             phone: {
                 required: 'Phone number is required.',
@@ -192,6 +203,13 @@ $(document).ready(function(){
                 maxlength: 255,
                 normalizer: function(value) { return $.trim(value); }
             },
+             city: {
+                required: true,
+                maxlength: 255,
+                normalizer: function(value) {
+                    return $.trim(value);
+                }
+            },
             email: {
                 required: true,
                 email: true,
@@ -224,6 +242,10 @@ $(document).ready(function(){
             name: {
                 required: 'Full name is required.',
                 maxlength: 'Full name must not exceed 255 characters.'
+            },
+            city: {
+                required: 'City is required.',
+                maxlength: 'City must not exceed 255 characters.'
             },
             email: {
                 required: 'Email is required.',

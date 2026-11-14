@@ -44,7 +44,7 @@
                         <div class="form-group">
                             <label>Phone <span class="text-danger">*</span></label>
                             <input type="tel" id="phone-offcanvas" placeholder="99999 99999"
-                                value="{{ old('phone') }}">
+                                value="{{ old('phone') }}" required title="Please add Phone Number">
                             <input type="hidden" name="phone" id="phone_number-offcanvas">
                             @error('phone')
                                 <span class="text-danger">{{ $message }}</span>
