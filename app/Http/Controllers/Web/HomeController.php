@@ -194,7 +194,6 @@ class HomeController extends Controller
             'requirement_details' => $request->input('requirement_details'),
             'inquiry_type'        => $request->input('inquiry_type', 'page'),
         ]);
-
         $timestamp = Carbon::now()->format('Y-m-d H:i:s');
 
         $sheetsData = [
@@ -214,9 +213,35 @@ class HomeController extends Controller
             ->post('https://script.google.com/macros/s/AKfycbz2pP-5ZXlhDkyF0Eg3DOIbArsWXt15tDeX41JYelNbSGGeVyOVeyYDr1hZhvBMawpZ/exec',
                 $sheetsData
             );
-
         if ($response->failed()) {
             \Log::error('Google Sheet request failed: ' . $response->body());
+        }
+
+        //STORE IN Client CRM
+        $crmPayload = [
+            'name'                => $request->input('name') ?? '',
+            'company'             => $request->input('company') ?? '',
+            'email'               => $request->input('email') ?? '',
+            'phone'               => $request->input('phone') ?? '',
+            'country'             => $request->input('country') ?? '',
+            'city'                => $request->input('city') ?? '',
+            'product'             => $productForDb,
+            'requirement_details' => $request->input('requirement_details') ?? '',
+            'inquiry_type'        => $request->input('inquiry_type', 'page') ?? '',
+        ];
+        $crmStored = false;
+        try {
+            $response = Http::post(
+                'https://blitz-energy.odoo.com/web/hook/080cb6fe-86c3-4df8-94a7-ba4730765aaa',
+                $crmPayload
+            );
+            $responseData = $response->json();
+            if (isset($responseData['created']) && $responseData['created'] == 1) {
+                $crmStored = true;
+            }
+        } catch (\Exception $e) {
+            Log::error('CRM submission failed: ' . $e->getMessage());
+            $crmStored = false;
         }
 
         if ($request->ajax()) {
@@ -229,7 +254,7 @@ class HomeController extends Controller
      public function submitWhatsappInquiry(Request $request)
         {
             $validator = Validator::make($request->all(), [
-                'phone'   => 'required|string|min:8|max:20',   // 'number' → 'phone', digits_between → string (kyunki ab '+' bhi hoga)
+                'phone'   => 'required|string|min:8|max:20', 
                 'message' => 'nullable|string|max:500',
             ]);
 
@@ -249,14 +274,34 @@ class HomeController extends Controller
                 'message' => $inquiry->message ?? '',
              ];
 
-                    $response = Http::withHeaders(['Content-Type' => 'application/json'])
-                ->post('https://script.google.com/macros/s/AKfycbxjXCrSOKov-kFCdwkdj5VXyYvB8bQVfjsg_NJder-kbvTRFCpk1ZoelToo6eMueyIZ/exec',
+            $response = Http::withHeaders(['Content-Type' => 'application/json'])->post('https://script.google.com/macros/s/AKfycbxjXCrSOKov-kFCdwkdj5VXyYvB8bQVfjsg_NJder-kbvTRFCpk1ZoelToo6eMueyIZ/exec',
                     $sheetsData
                 );
+            if ($response->failed()) {
+                \Log::error('Google Sheet request failed: ' . $response->body());
+            }
 
-             if ($response->failed()) {
-                 \Log::error('Google Sheet request failed: ' . $response->body());
-             }
+            //STORE IN Client CRM
+            $crmPayload = [
+                'phone'               => $request->input('phone') ?? '',
+                'requirement_details' => $request->input('message') ?? '',
+                'inquiry_type'        => 'Whatsapp Inquiry',
+            ];
+            $crmStored = false;
+            try {
+                $response = Http::post(
+                    'https://blitz-energy.odoo.com/web/hook/080cb6fe-86c3-4df8-94a7-ba4730765aaa',
+                    $crmPayload
+                );
+                $responseData = $response->json();
+                \Log::info('CRM submission response: ' . json_encode($responseData));
+                if (isset($responseData['created']) && $responseData['created'] == 1) {
+                    $crmStored = true;
+                }
+            } catch (\Exception $e) {
+                Log::error('CRM submission failed: ' . $e->getMessage());
+                $crmStored = false;
+            }
 
             return response()->json(['success' => true, 'message' => 'Your inquiry has been submitted.']);
         }
